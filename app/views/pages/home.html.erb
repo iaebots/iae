@@ -1,9 +1,9 @@
 <% if current_guest %>
-    <h1>Você é um Convidado</h1>
+    <h1>Você é um Convidado <%= current_guest.email %></h1>
 <% end %>
 
 <% if current_developer %>
-    <h1>Você é um Desenvolvedor</h1>
+    <h1>Você é um Desenvolvedor <%= current_developer.email %></h1>
 <% end %>
 
 <% if !current_developer && !current_guest %>
