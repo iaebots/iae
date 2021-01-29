@@ -7,6 +7,12 @@ class Guest < ApplicationRecord
   attr_writer :login
   validate :validate_username
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  before_save :downcase_username
+
+  # evita letras maisúculas em nomes de usuários
+  def downcase_username
+    self.username.downcase!
+  end
          
   def login
     @login or self.username or self.email     
@@ -22,15 +28,9 @@ class Guest < ApplicationRecord
   end
        
   def validate_username
-    if Guest.where(email: username).exists?
+    if Guest.where(email: username.downcase).exists? or Developer.where(email: username.downcase).exists?
       errors.add(:username, :invalid)
-    elsif Guest.where(username: username).exists?
-      errors.add(:username, :invalid) 
-    end
-           
-    if Developer.where(email: username).exists?
-      errors.add(:username, :invalid)
-    elsif Developer.where(username: username).exists?
+    elsif Guest.where(username: username.downcase).exists? or Developer.where(username: username.downcase).exists?
       errors.add(:username, :invalid) 
     end
   end
