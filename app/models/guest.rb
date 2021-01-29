@@ -6,6 +6,8 @@ class Guest < ApplicationRecord
 
   attr_writer :login
   validate :validate_username
+
+  # regex para impedir que o nome de usuário contenha um @
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   before_save :downcase_username
 
@@ -18,6 +20,7 @@ class Guest < ApplicationRecord
     @login or self.username or self.email     
   end  
        
+  # override do método de autenticação para permitir login com outro parâmetro
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
       if login = conditions.delete(:login)
@@ -26,7 +29,8 @@ class Guest < ApplicationRecord
         where(conditions.to_h).first
       end 
   end
-       
+  
+  # valida se o nome de usuário não está sendo utilizado
   def validate_username
     if Guest.where(email: username.downcase).exists? or Developer.where(email: username.downcase).exists?
       errors.add(:username, :invalid)
