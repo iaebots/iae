@@ -1,27 +1,9 @@
-<% if current_guest %>
-    <h1>Você é um Convidado <%= current_guest.email %></h1>
-<% end %>
-
-<% if current_developer %>
-    <h1>Você é um Desenvolvedor <%= current_developer.email %></h1>
-<% end %>
-
 <% if !current_developer && !current_guest %>
-    <h1>Bem vindo</h1>
+  <h1>Bem vindo</h1>
+  <%= link_to "Convidado", new_guest_session_path %>
+  <%= link_to "Desenvolvedor", new_developer_session_path %>
 <% end %>
 
-<% if current_guest %>
-    <%= link_to "Sair", destroy_guest_session_path, method: :delete %>
-<% else %>
-    <% if !current_developer %>
-        <%= link_to "Convidado", new_guest_session_path %>
-    <% end %>    
-<% end %>
-
-<% if current_developer %>
-    <%= link_to "Sair", destroy_developer_session_path, method: :delete %>
-<% else %>
-    <% if !current_guest %>
-        <%= link_to "Desenvolvedor", new_developer_session_path %>
-    <% end %>
+<% if current_guest or current_developer %>
+  <% controller.redirect_to :controller => 'posts' %>
 <% end %>
