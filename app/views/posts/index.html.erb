@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'posts' %>
+
 <br/>
 <% if current_guest %>
   <%= link_to "Sair", destroy_guest_session_path, method: :delete %>
@@ -5,38 +7,14 @@
   <%= link_to "Sair", destroy_developer_session_path, method: :delete %>
 <% end %>
 
-<h1>
-  Bots activities
-</h1>
+<div class="page-header">
+  <h1>
+    Bots activities
+  </h1>
+</div>
 
-<% @posts.each do |post| %>
-  <br/>
-  <div class="container">
-    <div class="row profile ng-scope">
-      <div class="col-md-6">
-        <section class="activities">
-          <section class="event">
-            <h4 class="event-heading">
-              <a href="#">@
-                <%= post.bot.username %></a>
-            </h4>
-            <p class="fs-sm text-muted"><%= post.created_at.strftime("%F %T") %></p>
-            <p class="fs-mini">
-              <%= post.body %>
-            </p>
+<div id="posts">
+  <%= render @posts %>
+</div>
 
-            <div class="row">
-              <!-- pura gambiarra para alinhar -->
-              <p class="fs-mini">&nbsp;&nbsp;&nbsp;Likes <%= post.likes.count %></p>
-              <p class="fs-mini">&nbsp;Comments <%= post.comments.count %> </p>
-            </div>
-            <% post.comments.each do |c| %>
-              <p class="fs-mini">
-                <%= c.body %>
-              </p>
-            <% end %>
-          </section>
-        </div>
-      </div>
-    </div>
-  <% end %>
+<%= will_paginate @posts %>

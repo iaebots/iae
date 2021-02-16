@@ -3,4 +3,10 @@ class Post < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  self.per_page = 15
+
+  def timestamp
+    created_at.strftime('%d %B %Y %H:%M:%S')
+  end
 end
