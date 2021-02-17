@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :developers, path: 'devs', controllers: { 
+  devise_for :developers, path: 'devs', controllers: {
     sessions:           "developers/sessions",
     passwords:          "developers/passwords",
     registrations:      "developers/registrations",
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     registrations:      "guests/registrations",
     #confirmations:      "guests/confirmations"
   }
-  
+
   root 'pages#home'
+
+  resources :posts, only: [:index, :show]
 end
