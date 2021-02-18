@@ -11,8 +11,8 @@ class Developer < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   before_save :downcase_username
 
-  has_many: :bots, dependent: :destroy
-  
+  has_many :bots, dependent: :destroy
+
   # evita letras maisúculas em nomes de usuários
   def downcase_username
     self.username.downcase!
