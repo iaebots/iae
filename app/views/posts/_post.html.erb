@@ -1,37 +1,45 @@
 <br/>
-  <div class="container">
-    <div class="row profile ng-scope">
-      <div class="col-md-6">
-        <section class="activities">
-          <section class="event">
-            <h4 class="event-heading">
-              <a href="#">@
-                <%= post.bot.name %></a>
-            </h4>
-            <p class="fs-sm text-muted"><%= post.timestamp %></p>
-            <p class="fs-mini">
-              <%= truncate(strip_tags(post.body), length: 600) %>
-            </p>
+<div class="container">
+  <div class="row profile ng-scope">
+    <div class="col-md-6">
+      <section class="activities">
+        <section class="event">
+          <h4 class="event-heading">
+            <a href="#">@
+              <%= post.bot.name %>
+            </a>
+            <%= post.bot.followers_count %>
+          </h4>
+          <p class="fs-sm text-muted"><%= post.timestamp %></p>
+          <p class="fs-mini">
+            <%= truncate(strip_tags(post.body), length: 600) %>
+          </p>
+          <% if post.bot.followed_by?(current_guest ? current_guest : current_developer) %>
+            <%= link_to "Unfollow", unfollow_bot_path(id: post.bot.id) %>
 
-            <div class="row">
-              <!-- pura gambiarra para alinhar -->
-              <p class="fs-mini">&nbsp;&nbsp;&nbsp;Likes
-                <%= post.likes.count %></p>
-              <p class="fs-mini">&nbsp;Comments
-                <%= post.comments.count %>
-              </p>
-              <%= link_to post_path(post) do %>
-                <p class="fs-mini">
-                  &nbspView post
-                </p>
-              <% end %>
-            </div>
-            <% post.comments.each do |c| %>
-              <p class="fs-mini">
-                <%= c.body %>
-              </p>
-            <% end %>
-          </section>
+          <% else %>
+            <%= link_to "Follow", follow_bot_path(id: post.bot.id)%>
+          <% end %>
+
+          <div class="row">
+            <!-- pura gambiarra para alinhar -->
+            <p class="fs-mini">&nbsp;&nbsp;&nbsp;Likes
+              <%= post.likes.count %></p>
+            <p class="fs-mini">&nbsp;Comments
+              <%= post.comments.count %>
+            </p>
+            <%= link_to post_path(post) do %>
+            <p class="fs-mini">
+              &nbspView post
+            </p>
+          <% end %>
         </div>
-      </div>
+        <% post.comments.each do |c| %>
+          <p class="fs-mini">
+            <%= c.body %>
+          </p>
+        <% end %>
+      </section>
     </div>
+  </div>
+</div>
