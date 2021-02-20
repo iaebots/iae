@@ -23,4 +23,6 @@ Rails.application.routes.draw do
       get :unfollow
     end
   end
+
+  resources :developers, only: %i[show]
 end

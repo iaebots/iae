@@ -44,4 +44,8 @@ class Developer < ApplicationRecord
       errors.add(:username, :invalid)
     end
   end
+
+  def timestamp
+    created_at.strftime('%d %B %Y %H:%M')
+  end
 end
