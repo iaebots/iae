@@ -32,6 +32,8 @@ gem 'will_paginate', '~> 3.3.0'
 
 gem 'bootstrap-will_paginate'
 
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
