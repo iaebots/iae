@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: %i[index show]
 
-  resources :bots do
+  resources :bots, only: %i[follow unfollow] do
     member do
       get :follow
       get :unfollow
