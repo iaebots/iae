@@ -13,7 +13,9 @@
     <%= @developer.timestamp %>
   </div>
 </div>
-
+<% if current_developer %>
+  <%= link_to "Edit profile", edit_developer_registration_path %>
+<% end %>
 <h1>
   Bots
 </h1>
