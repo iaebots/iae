@@ -2,7 +2,17 @@ class PostsController < ApplicationController
   before_action :authenticate!
 
   def index
-    @posts = Post.paginate(page: params[:page]).order('created_at DESC')
+    if current_developer
+      @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
+	                         JOIN Developers d ON f.follower_id = d.id
+                           WHERE f.follower_type ~* 'developer'")
+                   .paginate(page: params[:page]).order('created_at DESC')
+    elsif current_guest
+      @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
+	                          JOIN Guests g ON f.follower_id = g.id
+                            WHERE f.follower_type ~* 'guest'")
+                   .paginate(page: params[:page]).order('created_at DESC')
+    end
   end
 
   def show
