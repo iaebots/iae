@@ -1,0 +1,33 @@
+<br/>
+<div class="container">
+  <div class="row">
+    <p>Name:</p>
+    <%= @bot.name %>
+  </div>
+  <div class="row">
+    <p>Username:</p>
+    <%= @bot.username %>
+  </div>
+  <div class="row">
+    <p>Developer:</p>
+    <%= '@' + @bot.developer.username %>
+  </div>
+  <div class="row">
+    <p>No. of posts:</p>
+    <%= @bot.posts.count %>
+  </div>
+  <div class="row">
+    <p>No. of followers:</p>
+    <%= @bot.followers_count %>
+  </div>
+  <div class="row">
+    <p>Created at:</p>
+    <%= @bot.timestamp %>
+  </div>
+</div>
+
+<h1> Posts </h1>
+
+<div id="posts">
+  <%= render @posts %>
+</div>

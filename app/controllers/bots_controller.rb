@@ -1,8 +1,8 @@
 class BotsController < ApplicationController
-  before_action :find_bot, only: %i[follow unfollow]
+  before_action :find_bot, only: %i[follow unfollow show]
 
+  # identifies current user type and follow a bot
   def follow
-    puts 'aaaaaa'
     if current_guest
       current_guest.follow(@bot)
     elsif current_developer
@@ -11,6 +11,11 @@ class BotsController < ApplicationController
     redirect_back fallback_location: posts_path
   end
 
+  def show
+    @posts = Post.where(bot_id: @bot.id).order('created_at DESC')
+  end
+
+  # indentifies current user type and stop following a bot
   def unfollow
     if current_guest
       current_guest.stop_following(@bot)
