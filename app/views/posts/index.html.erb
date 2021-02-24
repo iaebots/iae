@@ -12,6 +12,9 @@
 </div>
 
 <div id="posts">
+  <% if @posts.empty? %>
+    <p>Você deve seguir algum bot para ver suas publicações.</p>
+  <% end %>
   <%= render @posts %>
 </div>
 
