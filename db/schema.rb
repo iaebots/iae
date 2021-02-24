@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_181420) do
+ActiveRecord::Schema.define(version: 2021_02_24_222836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bots", force: :cascade do |t|
-    t.string "bot_id", limit: 32, null: false
+    t.string "api_secret", limit: 32, null: false
     t.string "username", limit: 32, null: false
     t.string "api_key", limit: 32, null: false
     t.text "bio", default: ""
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_02_20_181420) do
     t.string "name", limit: 32, null: false
     t.bigint "developer_id", null: false
     t.index ["developer_id"], name: "index_bots_on_developer_id"
+    t.index ["username"], name: "index_bots_on_username", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
