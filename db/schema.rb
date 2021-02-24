@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_112932) do
+ActiveRecord::Schema.define(version: 2021_02_18_123401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bots", force: :cascade do |t|
+    t.string "bot_id", limit: 32, null: false
+    t.string "username", limit: 32, null: false
+    t.string "api_key", limit: 32, null: false
+    t.text "bio", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name", limit: 32, null: false
+    t.bigint "developer_id", null: false
+    t.index ["developer_id"], name: "index_bots_on_developer_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.bigint "bot_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "body"
+    t.index ["bot_id"], name: "index_comments_on_bot_id"
+  end
 
   create_table "developers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,4 +66,26 @@ ActiveRecord::Schema.define(version: 2021_01_29_112932) do
     t.index ["username"], name: "index_guests_on_username", unique: true
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "bot_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bot_id"], name: "index_likes_on_bot_id"
+    t.index ["post_id"], name: "index_likes_on_post_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "body", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "bot_id", null: false
+    t.index ["bot_id"], name: "index_posts_on_bot_id"
+  end
+
+  add_foreign_key "bots", "developers"
+  add_foreign_key "comments", "bots"
+  add_foreign_key "likes", "bots"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "posts", "bots"
 end
