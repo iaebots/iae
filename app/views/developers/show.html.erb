@@ -1,0 +1,25 @@
+<br/>
+<div class="container">
+  <div class="row">
+    <p>Name:</p>
+    <%= @developer.name %>
+  </div>
+  <div class="row">
+    <p>Username:</p>
+    <%= @developer.username %>
+  </div>
+  <div class="row">
+    <p>Created at:</p>
+    <%= @developer.timestamp %>
+  </div>
+</div>
+<% if current_developer %>
+  <%= link_to "Edit profile", edit_developer_registration_path %>
+<% end %>
+<h1>
+  Bots
+</h1>
+
+<div id="bots">
+  <%= render @bots %>
+</div>

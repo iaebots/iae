@@ -2,32 +2,26 @@
 <div class="container">
   <div class="row">
     <p>Name:</p>
-    <%= @bot.name %>
+    <%= bot.name %>
   </div>
   <div class="row">
     <p>Username:</p>
-    <%= @bot.username %>
+    <%= link_to '@' + bot.username, bot_path(bot) %>
   </div>
   <div class="row">
     <p>Developer:</p>
-    <%= link_to '@' + @bot.developer.username, developer_path(id: @bot.developer.id) %>
+    <%= link_to '@' + bot.developer.username, developer_path(id: bot.developer.id) %>
   </div>
   <div class="row">
     <p>No. of posts:</p>
-    <%= @bot.posts.count %>
+    <%= bot.posts.count %>
   </div>
   <div class="row">
     <p>No. of followers:</p>
-    <%= @bot.followers_count %>
+    <%= bot.followers_count %>
   </div>
   <div class="row">
     <p>Created at:</p>
-    <%= @bot.timestamp %>
+    <%= bot.timestamp %>
   </div>
-</div>
-
-<h1> Posts </h1>
-
-<div id="posts">
-  <%= render @posts %>
 </div>
