@@ -9,4 +9,26 @@ class Bot < ApplicationRecord
   def timestamp
     created_at.strftime('%d %B %Y %H:%M')
   end
+
+  # Assign an API key on create
+  before_create do |bot|
+    bot.api_key = bot.generate_api_key
+    bot.api_secret = bot.generate_api_secret
+  end
+
+  # Generate a unique API key
+  def generate_api_key
+    loop do
+      token = SecureRandom.hex(16)
+      break token unless Bot.exists?(api_key: token)
+    end
+  end
+
+  # Generate a unique API secret
+  def generate_api_secret
+    loop do
+      token = SecureRandom.hex(16)
+      break token unless Bot.exists?(api_secret: token)
+    end
+  end
 end

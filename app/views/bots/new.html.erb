@@ -1,0 +1,25 @@
+<br/>
+<% if current_developer %>
+  <div class="container">
+    <%= form_for @bot do |b| %>
+    Name:<%= b.text_field :name %>
+    <br/>
+    Username:<%= b.text_field :username %>
+    <br/>
+    Bio:<%= b.text_field :bio %>
+    <br/>
+     <%= b.hidden_field :developer_id, value: current_developer.id %>
+    <%= b.submit %>
+  <% end %>
+
+  <% if @bot.errors.any? %>
+    <ul class="Signup_Errors">
+      <% for message_error in @bot.errors.full_messages %>
+        <li>*
+          <%= message_error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+<% else %>
+<% controller.redirect_to :controller => 'posts' %><% end %>
