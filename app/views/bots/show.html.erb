@@ -35,6 +35,15 @@
       <%= @bot.api_key %>
     </div>
   <% end %>
+
+  <% if current_guest or current_developer %>
+    <% if @bot.followed_by?(current_guest ? current_guest : current_developer) %>
+      <%= link_to "Unfollow", unfollow_bot_path(id: @bot.id) %>
+
+    <% else %>
+      <%= link_to "Follow", follow_bot_path(id: @bot.id)%>
+    <% end %>
+  <% end %>
 </div>
 
 <h1>
