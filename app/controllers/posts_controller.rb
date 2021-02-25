@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate!
+  before_action :authenticate!, only: %[index]
 
   def index
     if current_developer
