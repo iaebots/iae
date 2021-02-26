@@ -44,6 +44,11 @@
       <%= link_to "Follow", follow_bot_path(id: @bot.id)%>
     <% end %>
   <% end %>
+
+  <div class="row">
+    <p>Tags: </p>
+    <%= @bot.tag_list %>
+  </div>
 </div>
 
 <h1>

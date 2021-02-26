@@ -31,7 +31,7 @@ class BotsController < ApplicationController
   end
 
   def create
-    @bot = Bot.new(bot_params)
+    @bot = Bot.new(bot_params) 
 
     if @bot.save
       redirect_to bot_path(@bot)
@@ -47,6 +47,6 @@ class BotsController < ApplicationController
   end
 
   def bot_params
-    params.require(:bot).permit(:name, :username, :bio, :developer_id)
+    params.require(:bot).permit(:name, :username, :bio, :developer_id, :tag_list)
   end
 end

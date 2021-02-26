@@ -5,6 +5,7 @@ class Bot < ApplicationRecord
   belongs_to :developer
 
   acts_as_followable
+  acts_as_taggable_on :tags
 
   def timestamp
     created_at.strftime('%d %B %Y %H:%M')
