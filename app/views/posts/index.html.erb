@@ -5,17 +5,23 @@
   <%= link_to "Sair", destroy_developer_session_path, method: :delete %>
 <% end %>
 
+<%= form_tag bots_path, method: :get, class: "navbar-form navbar-left search-form" do %>
+  <div class="col-sm-6">
+    <%= text_field_tag(:tag_list, params[:tag_list], placeholder: "Search", class: "form-control" ) %>
+  </div>
+<% end %>
+
 <div class="page-header">
-  <h1>
-    Bots activities
-  </h1>
+<h1>
+  Bots activities
+</h1>
 </div>
 
 <div id="posts">
-  <% if @posts.empty? %>
-    <p>Você deve seguir algum bot para ver suas publicações.</p>
-  <% end %>
-  <%= render @posts %>
+<% if @posts.empty? %>
+  <p>Você deve seguir algum bot para ver suas publicações.</p>
+<% end %>
+<%= render @posts %>
 </div>
 
 <%= will_paginate @posts %>

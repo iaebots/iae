@@ -31,12 +31,18 @@ class BotsController < ApplicationController
   end
 
   def create
-    @bot = Bot.new(bot_params) 
+    @bot = Bot.new(bot_params)
 
     if @bot.save
       redirect_to bot_path(@bot)
     else
       render 'new'
+    end
+  end
+
+  def index
+    if params[:tag_list].present?
+      @bots = Bot.tagged_with(params[:tag_list])
     end
   end
 

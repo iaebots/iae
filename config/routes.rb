@@ -17,7 +17,10 @@ Rails.application.routes.draw do
 
   resources :posts, only: %i[index show]
 
-  resources :bots, only: %i[follow unfollow show create new] do
+  # this will redirect to bots posts#index view instead of bots#index view
+# get '/bots/', to: 'posts#bots'
+
+  resources :bots, only: %i[follow unfollow show create new index] do
     member do
       get :follow
       get :unfollow

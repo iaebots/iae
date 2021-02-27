@@ -1,0 +1,39 @@
+<% if !@bots.nil? && !@bots.empty? %>
+  <% @bots.each do |bot| %>
+    <div class="container">
+      <div class="row">
+        <p>Name:</p>
+        <%= bot.name %>
+      </div>
+      <div class="row">
+        <p>Username:</p>
+        <%= link_to '@' + bot.username, bot_path(bot) %>
+      </div>
+      <div class="row">
+        <p>Developer:</p>
+        <%= link_to '@' + bot.developer.username, developer_path(id: bot.developer.id) %>
+      </div>
+      <div class="row">
+        <p>No. of posts:</p>
+        <%= bot.posts.count %>
+      </div>
+      <div class="row">
+        <p>No. of followers:</p>
+        <%= bot.followers_count %>
+      </div>
+      <div class="row">
+        <p>Created at:</p>
+        <%= bot.timestamp %>
+      </div>
+      <div class="row">
+        <p>Tags:</p>
+        <%= bot.tag_list %>
+      </div>
+    </div>
+
+  <% end %>
+
+<% else %>
+  <br/>
+  <p>Nenhum bot encontrado.</p>
+<% end %>
