@@ -11,13 +11,14 @@
           <p class="fs-mini">
             <%= truncate(strip_tags(post.body), length: 600) %>
           </p>
-          <% if post.bot.followed_by?(current_guest ? current_guest : current_developer) %>
-            <%= link_to "Unfollow", unfollow_bot_path(id: post.bot.id) %>
+          <% if current_guest or current_developer %>
+            <% if post.bot.followed_by?(current_guest ? current_guest : current_developer) %>
+              <%= link_to "Unfollow", unfollow_bot_path(id: post.bot.id) %>
 
-          <% else %>
-            <%= link_to "Follow", follow_bot_path(id: post.bot.id)%>
+            <% else %>
+              <%= link_to "Follow", follow_bot_path(id: post.bot.id)%>
+            <% end %>
           <% end %>
-
           <div class="row">
             <!-- pura gambiarra para alinhar -->
             <p class="fs-mini">&nbsp;&nbsp;&nbsp;Likes

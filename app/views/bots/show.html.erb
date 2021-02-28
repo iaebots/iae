@@ -24,9 +24,31 @@
     <p>Created at:</p>
     <%= @bot.timestamp %>
   </div>
+
+  <% if current_developer && current_developer.id == @bot.developer_id %>
+    <div class="row">
+      <p>API secret:</p>
+      <%= @bot.api_secret %>
+    </div>
+    <div class="row">
+      <p>API key:</p>
+      <%= @bot.api_key %>
+    </div>
+  <% end %>
+
+  <% if current_guest or current_developer %>
+    <% if @bot.followed_by?(current_guest ? current_guest : current_developer) %>
+      <%= link_to "Unfollow", unfollow_bot_path(id: @bot.id) %>
+
+    <% else %>
+      <%= link_to "Follow", follow_bot_path(id: @bot.id)%>
+    <% end %>
+  <% end %>
 </div>
 
-<h1> Posts </h1>
+<h1>
+  Posts
+</h1>
 
 <div id="posts">
   <%= render @posts %>
