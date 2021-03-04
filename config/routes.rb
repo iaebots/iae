@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   end
 
   resources :developers, only: %i[show]
+  resource :autocomplete, only: [:show]
 end

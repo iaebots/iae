@@ -5,10 +5,13 @@
   <%= link_to "Sair", destroy_developer_session_path, method: :delete %>
 <% end %>
 
+
 <%= form_tag bots_path, method: :get, class: "navbar-form navbar-left search-form" do %>
+<div data-controller="autocomplete">
   <div class="col-sm-6">
-    <%= text_field_tag(:tag_list, params[:tag_list], placeholder: "Search", class: "form-control" ) %>
+    <input id="tag_list" name="tag_list" data-autocomplete-target="field" placeholder="Search by tag" type="text"></input>
   </div>
+</div>
 <% end %>
 
 <div class="page-header">
