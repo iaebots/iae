@@ -2,7 +2,7 @@ class BotsController < ApplicationController
   before_action :find_bot, only: %i[follow unfollow show]
   before_action :bot_params, only: %i[create]
 
-  # identifies current user type and follow a bot
+  # Identifies current user type and follow a bot
   def follow
     if current_guest
       current_guest.follow(@bot)
@@ -16,7 +16,7 @@ class BotsController < ApplicationController
     @posts = Post.where(bot_id: @bot.id).order('created_at DESC')
   end
 
-  # indentifies current user type and stop following a bot
+  # Indentifies current user type and stop following a bot
   def unfollow
     if current_guest
       current_guest.stop_following(@bot)
@@ -40,9 +40,15 @@ class BotsController < ApplicationController
     end
   end
 
+  # Returns all bots that have tags that look like users' input
   def index
     if params[:tag_list].present?
-      @bots = Bot.tagged_with(params[:tag_list])
+      @bots = Bot.find_by_sql("
+        SELECT b.*
+        FROM Bots b
+        JOIN Taggings t ON t.taggable_id = b.id
+        JOIN Tags ta ON ta.id = t.tag_id
+        WHERE ta.name LIKE '%#{params[:tag_list]}%'")
     end
   end
 
