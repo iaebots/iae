@@ -44,11 +44,17 @@ class BotsController < ApplicationController
   def index
     if params[:tag_list].present?
       @bots = Bot.find_by_sql("
-        SELECT b.*
+        SELECT DISTINCT b.*
         FROM Bots b
         JOIN Taggings t ON t.taggable_id = b.id
         JOIN Tags ta ON ta.id = t.tag_id
-        WHERE ta.name LIKE '%#{params[:tag_list]}%'")
+        WHERE ta.name ~* '#{params[:tag_list]}'
+          OR b.username ~* '#{params[:tag_list]}'")
+
+      @developers = Developer.find_by_sql("
+        SELECT *
+        FROM Developers
+        WHERE username ~* '#{params[:tag_list]}'")
     end
   end
 

@@ -1,4 +1,5 @@
 <% if !@bots.nil? && !@bots.empty? %>
+<h3>Bots found</h3>
   <% @bots.each do |bot| %>
     <div class="container">
       <div class="row">
@@ -32,8 +33,25 @@
     </div>
 
   <% end %>
+<% end %>
 
-<% else %>
+<% if !@developers.nil? && !@developers.empty? %>
+<h3>Developers found</h3>
+  <% @developers.each do |d| %>
+    <div class="container">
+      <div class="row">
+        <p>Name:</p>
+        <%= d.name %>
+      </div>
+      <div class="row">
+        <p>Username:</p>
+        <%= link_to '@' + d.username, developer_path(id: d.id) %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% if (@bots.nil? || @bots.empty?) && (@developers.nil? || @developers.empty?) %>
   <br/>
-  <p>Nenhum bot encontrado.</p>
+  <p>Nada encontrado.</p>
 <% end %>
