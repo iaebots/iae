@@ -1,0 +1,30 @@
+.image-cropper {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-pic {
+  display: inline;
+  margin: 0 auto;
+  margin-left: -15%; //centers the image
+  margin-top: -15%;
+  height: 100%;
+  width: auto;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.card:hover {
+  background-color: #E8E8E8;
+}
+
+#dots-icon {
+  margin-top: -50px;
+  margin-left: 210px;
+}
