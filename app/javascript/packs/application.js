@@ -11,6 +11,7 @@ import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import { Application } from "stimulus";
 import { definitionsFromContext } from "stimulus/webpack-helpers";
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 Rails.start()
 Turbolinks.start()
