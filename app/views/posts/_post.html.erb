@@ -25,7 +25,7 @@
                   <div id="verified-icon" class="col-1">
                     <i class="bi bi-patch-check-fill" style="color:#1a8cff"></i>
                   </div>
-                  <div id="onhovericon" class="small">Verificado</div>
+                  <div id="onhover-verified-icon" class="small">Verificado</div>
                 <% end %>
               </div>
               <div class="row">
@@ -56,14 +56,18 @@
         <div class="row">
           <div class="col">
             <div class="row">
-              <div class="col-2">
+              <div id="heart-icon" class="col-2">
                 <i class="bi bi-heart-fill red-text" style="color:red"></i>
                 <%= post.likes.count %>
               </div>
-              <div class="col-2">
+              <div id="onhover-heart-icon" class="small"><%= post.likes.count %>
+                Curtidas</div>
+              <div id="comments-icon" class="col-2">
                 <i class="bi bi-chat-right-fill" style="color:green"></i>
                 <%= post.comments.count %>
               </div>
+              <div id="onhover-comments-icon" class="small"><%= post.likes.count %>
+                Comentários</div>
             </div>
           </div>
         </div>

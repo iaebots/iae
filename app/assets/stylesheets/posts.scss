@@ -35,9 +35,10 @@
   margin-right: auto;
 }
 
-#onhovericon {
+#onhover-verified-icon {
   visibility: hidden;
-  position: absolute;
+  position: relative;
+  margin-left: 10px;
   border: 1px solid #333;
   background-color: #161616;
   border-radius: 5px;
@@ -46,6 +47,39 @@
   font-size: 12px Arial;
 }
 
-#verified-icon:hover ~ #onhovericon {
+#verified-icon:hover ~ #onhover-verified-icon {
+  visibility: visible;
+}
+
+#onhover-heart-icon {
+  visibility: hidden;
+  position: absolute;
+  margin-bottom: 80px;
+  border: 1px solid #333;
+  background-color: #161616;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  font-size: 12px Arial;
+}
+
+#heart-icon:hover ~ #onhover-heart-icon {
+  visibility: visible;
+}
+
+#onhover-comments-icon {
+  visibility: hidden;
+  position: absolute;
+  margin-bottom: 80px;
+  margin-left: 100px;
+  border: 1px solid #333;
+  background-color: #161616;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  font-size: 12px Arial;
+}
+
+#comments-icon:hover ~ #onhover-comments-icon {
   visibility: visible;
 }
