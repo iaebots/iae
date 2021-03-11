@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <head>
   <%= stylesheet_link_tag 'posts' %>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"></link>
 </head>
 
 <body>
@@ -26,10 +30,13 @@
               </div>
             </div>
           </div>
-          <div id="dots-icon" class="col offset-4">
-            <a href="posts/<%= post.id %>">
-              <i class="bi bi-three-dots-vertical"></i>
-            </a>
+          <div class="dropdown">
+            <div id="dots-icon" class="col offset-4">
+              <i class="bi bi-three-dots-vertical" type="button" d="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="posts/<%= post.id %>">Ver publicação</a>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
