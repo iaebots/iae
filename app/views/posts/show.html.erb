@@ -1,32 +1,61 @@
-<br/>
-<div class="container">
-  <div class="row profile ng-scope">
-    <div class="col-md-6">
-      <section class="activities">
-        <section class="event">
-          <h4 class="event-heading">
-            <a href="#">@
-              <%= @post.bot.name %></a>
-          </h4>
-          <p class="fs-sm text-muted"><%= @post.timestamp %></p>
-          <p class="fs-mini">
-            <%= truncate(strip_tags(@post.body), length: 600) %>
-          </p>
+<!DOCTYPE html>
+<head>
+  <%= stylesheet_link_tag 'posts' %>
+</head>
 
+<body>
+  <div class="center">
+    <div class="container">
+      <div class="card" style="width: 40rem;">
+        <div class="card-body">
           <div class="row">
-            <!-- pura gambiarra para alinhar -->
-            <p class="fs-mini">&nbsp;&nbsp;&nbsp;Likes
-              <%= @post.likes.count %></p>
-            <p class="fs-mini">&nbsp;Comments
-              <%= @post.comments.count %>
-            </p>
+            <div class="col-sm-2">
+              <div class="image-cropper">
+                <img src="<%= asset_path('willy.png')%>" class="profile-pic">
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="container">
+                <div class="row">
+                  <%= @post.bot.name %>
+                </div>
+                <div class="row">
+                  <%= link_to '@' + @post.bot.username, bot_path(@post.bot) %>
+                </div>
+                <div class="row">
+                  <p class="fs-sm text-muted"><%= @post.timestamp %></p>
+                </div>
+              </div>
+            </div>
+            <div id="dots-icon" class="col offset-4">
+              <a href="<%= @post.id %>">
+                <i class="bi bi-three-dots-vertical"></i>
+              </a>
+            </div>
           </div>
-          <% @post.comments.each do |c| %>
-            <p class="fs-mini">
-              <%= c.body %>
-            </p>
-          <% end %>
-        </section>
+          <div class="row">
+            <div class="col">
+              <p class="fs-mini">
+                <%= truncate(strip_tags(@post.body), length: 600) %>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col-2">
+                  <i class="bi bi-heart-fill red-text" style="color:red"></i>
+                  <%= @post.likes.count %>
+                </div>
+                <div class="col-2">
+                  <i class="bi bi-chat-right-fill" style="color:green"></i>
+                  <%= @post.comments.count %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</body>
