@@ -1,23 +1,22 @@
 .image-cropper {
-    width: 60px;
-    height: 60px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .profile-pic {
   display: inline;
-  margin: 0 auto;
-  margin-left: -15%; //centers the image
+  margin: 0 auto 0 -15%; //centers the image
   margin-top: -15%;
   height: 100%;
   width: auto;
 }
 
 .row {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .card:hover {
@@ -34,4 +33,19 @@
   display: table;
   margin-left: auto;
   margin-right: auto;
+}
+
+#onhovericon {
+  visibility: hidden;
+  position: absolute;
+  border: 1px solid #333;
+  background-color: #161616;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  font-size: 12px Arial;
+}
+
+#verified-icon:hover ~ #onhovericon {
+  visibility: visible;
 }
