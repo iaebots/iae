@@ -10,7 +10,12 @@ class Developer < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_.]*$/, multiline: true
   before_save :downcase_username
 
-  validates :name, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
+  validates :name, format: { with: /\A[^0-9`!@#$%\^&*+_=]+\z/ }
+
+  # validates if password has at least 1 capital, at least 1 number and at least
+  # one lower case. Min length 6, max length 64
+  validates_format_of :password, with: /^(?=.*[A-Z].*)(?=.*[0-9].*)(?=.*[a-z].*).{6,64}$/, multiline: true,
+    message: 'Password must contain at least 1 capital, 1 lowercase and 1 number.'
 
   has_many :bots, dependent: :destroy
 
