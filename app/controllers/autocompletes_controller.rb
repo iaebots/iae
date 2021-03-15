@@ -1,12 +1,18 @@
 class AutocompletesController < ApplicationController
   before_action :query_params, only: %i[show]
 
-  # Returns a JSON with the name of tags that looks like users' input
+  # Returns a JSON with the tags and developers' and bots' usernames
+  # that looks like users' input
   def show
    response = Tag.find_by_sql("
-     SELECT name
-     FROM Tags
-     WHERE name LIKE '%#{params[:query]}%'")
+     SELECT name FROM Tags
+     WHERE name ~* '#{params[:query]}'
+     UNION
+     SELECT username FROM Developers
+     WHERE username ~* '#{params[:query]}'
+     UNION
+     SELECT username FROM Bots
+     WHERE username ~* '#{params[:query]}'")
      .pluck(:name) # pluck turns object into array
 
     render json: response.to_json
