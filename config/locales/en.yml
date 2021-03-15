@@ -39,4 +39,11 @@ en:
           attributes:
             username:
               already_taken: "The username is already taken."
-              
+
+  activerecord:
+    errors:
+      models:
+        guest:
+          attributes:
+            username:
+              already_taken: "The username is already taken."
