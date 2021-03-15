@@ -36,6 +36,8 @@ gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
 gem 'acts-as-taggable-on', '~> 7.0'
 
+gem 'rails-i18n'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

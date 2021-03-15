@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    errors:
+      models:
+        developer:
+          attributes:
+            username:
+              already_taken: "The username is already taken."
+              

@@ -1,6 +1,4 @@
 class Developer < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
@@ -8,15 +6,17 @@ class Developer < ApplicationRecord
 
   validate :validate_username
 
-  # regex para impedir que o nome de usuário contenha um @
+  # regex to assure username doesn't have a @
   validates_format_of :username, with: /^[a-zA-Z0-9_.]*$/, multiline: true
   before_save :downcase_username
+
+  validates :name, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
 
   has_many :bots, dependent: :destroy
 
   acts_as_follower
 
-  # evita letras maisúculas em nomes de usuários
+  # remove all capitals from usernames
   def downcase_username
     username.downcase!
   end
@@ -25,7 +25,7 @@ class Developer < ApplicationRecord
     @login or username or email
   end
 
-  # override do método de autenticação para permitir login com outro parâmetro
+  # override auth method to allow login with different params
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -36,12 +36,12 @@ class Developer < ApplicationRecord
     end
   end
 
-  # valida se o nome de usuário não está sendo utilizado
+  # validates if username is not taken
   def validate_username
     if Guest.where(email: username.downcase).exists? || Developer.where(email: username.downcase).exists?
-      errors.add(:username, :invalid)
+      errors.add(:username, :already_taken)
     elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists?
-      errors.add(:username, :invalid)
+      errors.add(:username, :already_taken)
     end
   end
 
