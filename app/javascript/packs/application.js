@@ -9,10 +9,19 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+import { Application } from "stimulus";
+import { definitionsFromContext } from "stimulus/webpack-helpers";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+// stimulus and autocomplete config
+const application = Application.start();
+const context = require.context("packs/stimulus/controllers", true, /\.js$/);
+application.load(definitionsFromContext(context));
+
 require('jquery')
-require("packs/posts")
+
+// custom js scripts
+require('packs/custom/posts')
