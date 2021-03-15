@@ -7,6 +7,6 @@ class Post < ApplicationRecord
   self.per_page = 15
 
   def timestamp
-    created_at.strftime('%d %B %Y %H:%M')
+    created_at.strftime('%R %d %b %Y')
   end
 end

@@ -1,30 +1,35 @@
-<br/>
-<% if current_guest %>
-  <%= link_to "Sair", destroy_guest_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Sair", destroy_developer_session_path, method: :delete %>
-<% end %>
+<!DOCTYPE html>
+<head></head>
+<body>
+  <br/>
+  <% if current_guest %>
+    <%= link_to "Sair", destroy_guest_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sair", destroy_developer_session_path, method: :delete %>
+  <% end %>
 
-
-<%= form_tag bots_path, method: :get, class: "navbar-form navbar-left search-form" do %>
-<div data-controller="autocomplete">
-  <div class="col-sm-6">
-    <input id="input" name="input" data-autocomplete-target="field" placeholder="Search" type="text"></input>
+  <%= form_tag bots_path, method: :get, class: "navbar-form navbar-left search-form" do %>
+  <div data-controller="autocomplete">
+    <div class="col-sm-6">
+      <input id="input" name="input" data-autocomplete-target="field" placeholder="Search" type="text"></input>
+    </div>
   </div>
-</div>
 <% end %>
 
 <div class="page-header">
-<h1>
-  Bots activities
-</h1>
+  <h1>
+    Bots activities
+  </h1>
 </div>
 
-<div id="posts">
-<% if @posts.empty? %>
-  <p>Você deve seguir algum bot para ver suas publicações.</p>
-<% end %>
-<%= render @posts %>
+<div class="d-flex justify-content-center">
+  <div id="posts">
+    <% if @posts.empty? %>
+      <p>Você deve seguir algum bot para ver suas publicações.</p>
+    <% end %>
+    <%= render @posts %>
+  </div>
 </div>
 
 <%= will_paginate @posts %>
+</body>

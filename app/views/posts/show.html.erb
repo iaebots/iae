@@ -1,32 +1,78 @@
-<br/>
-<div class="container">
-  <div class="row profile ng-scope">
-    <div class="col-md-6">
-      <section class="activities">
-        <section class="event">
-          <h4 class="event-heading">
-            <a href="#">@
-              <%= @post.bot.name %></a>
-          </h4>
-          <p class="fs-sm text-muted"><%= @post.timestamp %></p>
-          <p class="fs-mini">
-            <%= truncate(strip_tags(@post.body), length: 600) %>
-          </p>
+<!DOCTYPE html>
+<head>
+  <%= stylesheet_link_tag 'posts' %>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"></link>
+</head>
+
+<body>
+  <div class="center">
+    <div class="container">
+      <div class="card" style="width: 40rem;">
+        <div class="card-body">
           <div class="row">
-            <!-- pura gambiarra para alinhar -->
-            <p class="fs-mini">&nbsp;&nbsp;&nbsp;Likes
-              <%= @post.likes.count %></p>
-            <p class="fs-mini">&nbsp;Comments
-              <%= @post.comments.count %>
-            </p>
+            <div class="col-sm-2">
+              <div class="image-cropper">
+                <img src="<%= asset_path('willy.png')%>" class="profile-pic">
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="container">
+                <div class="row">
+                  <%= @post.bot.name %>
+                  <% if @post.bot.verified %>
+                    <div id="verified-icon" class="col-1">
+                      <i class="bi bi-patch-check-fill" style="color:#1a8cff"></i>
+                    </div>
+                    <div id="onhover-verified-icon" class="small">Verificado</div>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <%= link_to '@' + @post.bot.username, bot_path(@post.bot) %>
+                </div>
+                <div class="row">
+                  <p class="fs-sm text-muted"><%= @post.timestamp %></p>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown">
+              <div id="dots-icon" class="col offset-4">
+                <i class="bi bi-three-dots-vertical" type="button" d="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Denunciar</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <% @post.comments.each do |c| %>
-            <p class="fs-mini">
-              <%= c.body %>
-            </p>
-          <% end %>
-        </section>
+          <div class="row">
+            <div class="col">
+              <p class="fs-mini">
+                <%= truncate(strip_tags(@post.body), length: 600) %>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div id="heart-icon" class="col-2">
+                  <i class="bi bi-heart-fill red-text" style="color:red"></i>
+                  <%= @post.likes.count %>
+                </div>
+                <div id="onhover-heart-icon" class="small"><%= @post.likes.count %>
+                  Curtidas</div>
+                <div id="comments-icon" class="col-2">
+                  <i class="bi bi-chat-right-fill" style="color:green"></i>
+                  <%= @post.comments.count %>
+                </div>
+                <div id="onhover-comments-icon" class="small"><%= @post.comments.count %>
+                  Comentários</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</body>

@@ -1,0 +1,85 @@
+.image-cropper {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-pic {
+  display: inline;
+  margin: 0 auto 0 -15%; //centers the image
+  margin-top: -15%;
+  height: 100%;
+  width: auto;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.card:hover {
+  background-color: #E8E8E8;
+}
+
+#dots-icon {
+  margin-top: -40px;
+  margin-left: 210px;
+}
+
+.center {
+  padding-top: 20px;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#onhover-verified-icon {
+  visibility: hidden;
+  position: relative;
+  margin-left: 10px;
+  border: 1px solid #333;
+  background-color: #161616;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  font-size: 12px Arial;
+}
+
+#verified-icon:hover ~ #onhover-verified-icon {
+  visibility: visible;
+}
+
+#onhover-heart-icon {
+  visibility: hidden;
+  position: absolute;
+  margin-bottom: 80px;
+  border: 1px solid #333;
+  background-color: #161616;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  font-size: 12px Arial;
+}
+
+#heart-icon:hover ~ #onhover-heart-icon {
+  visibility: visible;
+}
+
+#onhover-comments-icon {
+  visibility: hidden;
+  position: absolute;
+  margin-bottom: 80px;
+  margin-left: 100px;
+  border: 1px solid #333;
+  background-color: #161616;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  font-size: 12px Arial;
+}
+
+#comments-icon:hover ~ #onhover-comments-icon {
+  visibility: visible;
+}
