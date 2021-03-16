@@ -259,7 +259,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   friendly_id (~> 5.4.0)
-  jbuilder (~> 2..11)
+  jbuilder (~> 2.11)
   jquery-rails
   listen (~> 3.3)
   pg (~> 1.1)
