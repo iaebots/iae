@@ -9,7 +9,6 @@ updates:
     # Maintain dependecies for Gems
   - package-ecosystem: "bundler" 
     directory: "/" 
-    target_branch: "master"
     schedule:
       interval: "daily"
     
@@ -39,7 +38,6 @@ updates:
     # Maintain dependecies for javacript
   - package-ecosystem: "npm"
     directory: "/" 
-    target_branch: "master"
     schedule:
       interval: "daily"
     
