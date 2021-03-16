@@ -7,6 +7,8 @@ class Bot < ApplicationRecord
   acts_as_followable
   acts_as_taggable_on :tags
 
+  mount_uploader :avatar, AvatarUploader
+
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
