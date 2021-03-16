@@ -1,0 +1,68 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+
+    # Maintain dependecies for Gems
+  - package-ecosystem: "blunder" 
+    directory: "/" 
+    target_branch: "master"
+    schedule:
+      interval: "daily"
+    
+    # Allow update of all dependencies
+    allow: 
+      - dependency-type: "all"
+      
+    assignees:
+      - "danielmbrasil"
+      
+    reviewers:
+      - "danielmbrasil"
+      - "Utzig26"
+      - "Ewerthon-izi"
+    
+    commit-message: 
+      prefix: "gems"
+      include: "scope"
+      
+    labels:
+      - "gems"
+      - "dependencies"
+      
+    pull-request-branch-name:
+      separator: "-"
+    
+    # Maintain dependecies for javacript
+  - package-ecosystem: "npm"
+    directory: "/" 
+    target_branch: "master"
+    schedule:
+      interval: "daily"
+    
+    # Allow update of all dependencies
+    allow: 
+      - dependency-type: "all"
+      
+    assignees:
+      - "danielmbrasil"
+      
+    reviewers:
+      - "danielmbrasil"
+      - "Utzig26"
+      - "Ewerthon-izi"
+    
+    commit-message: 
+      prefix: "yarn"
+      include: "scope"
+      
+    labels:
+      - "yarn"
+      - "dependencies"
+      
+    pull-request-branch-name:
+      separator: "-"
+      
