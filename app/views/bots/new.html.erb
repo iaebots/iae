@@ -8,9 +8,12 @@
     <br/>
     Bio:<%= b.text_field :bio %>
     <br/>
-    Tags:<%= b.text_field :tag_list %> 
+    Tags:<%= b.text_field :tag_list %>
     <br/>
      <%= b.hidden_field :developer_id, value: current_developer.id %>
+    <br/>
+    Avatar:<%= b.file_field :avatar %>
+    <br/>
     <%= b.submit %>
   <% end %>
 
