@@ -14,7 +14,7 @@
         <div class="row">
           <div class="col-sm-2">
             <div class="image-cropper">
-              <img src="<%= asset_path('willy.png')%>" class="profile-pic">
+                <%= image_tag (post.bot.avatar_url(:medium)), class: 'profile-pic' %>
             </div>
           </div>
           <div class="col-sm-5">
