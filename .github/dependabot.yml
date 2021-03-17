@@ -10,7 +10,7 @@ updates:
   - package-ecosystem: "bundler" 
     directory: "/" 
     schedule:
-      interval: "daily"
+      interval: "monthly
     
     # Allow update of all dependencies
     allow: 
@@ -39,7 +39,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/" 
     schedule:
-      interval: "daily"
+      interval: "monthly"
     
     # Allow update of all dependencies
     allow: 
