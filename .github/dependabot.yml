@@ -10,7 +10,7 @@ updates:
   - package-ecosystem: "bundler" 
     directory: "/" 
     schedule:
-      interval: "monthly
+      interval: "monthly"
     
     # Allow update of all dependencies
     allow: 
