@@ -5,6 +5,8 @@ class Developer < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
+  mount_uploader :avatar, AvatarUploader
+
   attr_writer :login
 
   validate :validate_username
