@@ -40,6 +40,10 @@ gem 'rails-i18n'
 
 gem 'friendly_id', '~> 5.4.0'
 
+gem 'carrierwave', '~> 2.0'
+
+gem "mini_magick"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
