@@ -8,6 +8,6 @@ class DevelopersController < ApplicationController
   private
 
   def find_dev
-    @developer = Developer.find(params[:id])
+    @developer = Developer.friendly.find(params[:id])
   end
 end

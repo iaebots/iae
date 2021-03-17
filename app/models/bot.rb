@@ -7,6 +7,9 @@ class Bot < ApplicationRecord
   acts_as_followable
   acts_as_taggable_on :tags
 
+  extend FriendlyId
+  friendly_id :username, use: :slugged # username as friendly_id
+
   def timestamp
     created_at.strftime('%d %B %Y %H:%M')
   end

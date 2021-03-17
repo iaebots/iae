@@ -2,6 +2,9 @@ class Developer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
+  extend FriendlyId
+  friendly_id :username, use: :slugged # username as friendly_id
+
   attr_writer :login
 
   validate :validate_username
@@ -10,6 +13,7 @@ class Developer < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_.]*$/, multiline: true
   before_save :downcase_username
 
+  # validates name to ensure it doesn't contain numbers nor symbols
   validates :name, format: { with: /\A[^0-9`!@#$%\^&*+_=]+\z/ }
 
   # validates if password has at least 1 capital, at least 1 number and at least

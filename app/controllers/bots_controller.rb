@@ -61,7 +61,7 @@ class BotsController < ApplicationController
   private
 
   def find_bot
-    @bot = Bot.find(params[:id])
+    @bot = Bot.friendly.find(params[:id])
   end
 
   def bot_params
