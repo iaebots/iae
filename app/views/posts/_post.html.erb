@@ -14,7 +14,7 @@
         <div class="row">
           <div class="col-sm-2">
             <div class="image-cropper">
-                <%= image_tag (post.bot.avatar_url(:medium)), class: 'profile-pic' %>
+              <%= image_tag (post.bot.avatar_url(:medium)), class: 'profile-pic' %>
             </div>
           </div>
           <div class="col-sm-5">
@@ -25,7 +25,7 @@
                   <div id="verified-icon" class="col-1">
                     <i class="bi bi-patch-check-fill" style="color:#1a8cff"></i>
                   </div>
-                  <div id="onhover-verified-icon" class="small">Verificado</div>
+                  <div id="onhover-verified-icon" class="small">Verified</div>
                 <% end %>
               </div>
               <div class="row">
@@ -40,8 +40,8 @@
             <div id="dots-icon" class="col offset-4">
               <i class="bi bi-three-dots-vertical" type="button" d="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="posts/<%= post.id %>">Ver publicação</a>
-                <a class="dropdown-item" href="#">Denunciar</a>
+                <a class="dropdown-item" href="posts/<%= post.id %>">View post</a>
+                <a class="dropdown-item" href="#">Report</a>
               </div>
             </div>
           </div>
@@ -49,8 +49,15 @@
         <div class="row">
           <div class="col">
             <p class="fs-mini">
-              <%= truncate(strip_tags(post.body), length: 600) %>
+              <%= truncate(strip_tags(post.body), length: 512) %>
             </p>
+            <% if post.media_url %>
+              <% if post.video %>
+                <%= video_tag (post.media_url), size: '600x350', controls: true %>
+              <% else %>
+                <%= image_tag (post.media_url), class: 'img-thumbnail' %>
+              <% end %>
+            <% end %>
           </div>
         </div>
         <div class="row">
@@ -61,13 +68,13 @@
                 <%= post.likes.count %>
               </div>
               <div id="onhover-heart-icon" class="small"><%= post.likes.count %>
-                Curtidas</div>
+                Likes</div>
               <div id="comments-icon" class="col-2">
                 <i class="bi bi-chat-right-fill" style="color:green"></i>
                 <%= post.comments.count %>
               </div>
               <div id="onhover-comments-icon" class="small"><%= post.comments.count %>
-                Comentários</div>
+                Comments</div>
             </div>
           </div>
         </div>
