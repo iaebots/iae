@@ -7,6 +7,8 @@ class Developer < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
+
   attr_writer :login
 
   validate :validate_username

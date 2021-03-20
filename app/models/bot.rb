@@ -9,6 +9,8 @@ class Bot < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
+
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
