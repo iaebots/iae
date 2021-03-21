@@ -12,6 +12,7 @@ import 'regenerator-runtime/runtime'
 import { Application } from "stimulus";
 import { definitionsFromContext } from "stimulus/webpack-helpers";
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import "@fortawesome/fontawesome-free/css/all"
 
 Rails.start()
 Turbolinks.start()
