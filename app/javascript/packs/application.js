@@ -13,6 +13,7 @@ import {  Application} from "stimulus";
 import {  definitionsFromContext} from "stimulus/webpack-helpers";
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import "@fortawesome/fontawesome-free/css/all"
+import 'bootstrap'
 
 Rails.start()
 Turbolinks.start()
