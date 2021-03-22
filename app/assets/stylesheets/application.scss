@@ -1,1 +1,17 @@
 @import "bootstrap";
+
+#notice-wrapper {
+  margin: auto;
+  width: 30%;
+  z-index: 999;
+  background: #2E0724;
+
+  p {
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+  }
+}
