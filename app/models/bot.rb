@@ -11,7 +11,7 @@ class Bot < ApplicationRecord
 
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
 
-  validates_length_of :bio, minimum: 32, maximum: 512 # validates length of bot's bio
+  validates_length_of :bio, minimum: 1, maximum: 512 # validates length of bot's bio
 
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
