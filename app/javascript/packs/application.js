@@ -9,10 +9,11 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-import { Application } from "stimulus";
-import { definitionsFromContext } from "stimulus/webpack-helpers";
+import {  Application} from "stimulus";
+import {  definitionsFromContext} from "stimulus/webpack-helpers";
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import "@fortawesome/fontawesome-free/css/all"
+import 'bootstrap'
 
 Rails.start()
 Turbolinks.start()
@@ -27,3 +28,12 @@ require('jquery')
 
 // custom js scripts
 require('packs/custom/posts')
+
+
+$(document).ready(function() {
+  setTimeout(function() {
+    $('#notice-wrapper').fadeOut("slow", function() {
+      $(this).remove();
+    })
+  }, 2500);
+});
