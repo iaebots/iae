@@ -1,17 +1,4 @@
-<html xmlns = "http://www.w3.org/1999/xhtml">
-
-
-
-<meta http-equiv = "Content-Type" content = "text/html; charset = iso-8859-1" />
-<meta http-equiv = "Content-Language" content = "pt-br" />
-<title>Login</title>
 <%= stylesheet_link_tag "developers" %>
-
-
-<div class="p-3 mb-2 bg-dark text-white">
-    <h1><p class="text-center">Bem vindo</p></h1>
-</div>
-
 
 <div class = "container h-100">
   <div class="d-flex justify-content-center h-100">
@@ -41,7 +28,7 @@
               <% if devise_mapping.rememberable? %>
                 <%= f.check_box :remember_me %>
                 <div class = "text-white"> 
-                    <span class="gambiarra">.</span>
+                    <span class="text_gray">.</span>
                    <span>Remember me?</span>
                 </div>
               <% end %>
@@ -53,14 +40,13 @@
         <div class="mt-4">
           <div class = "center">
             <div class="d-flex justify-content-center links">
-					  	<p class = "text-white" > forgot your password? <a href="passwords/new"> click her</a></p>
+					  	<p class = "text-white" > forgot your password? <a href="passwords/new"> click here</a></p>
 					  </div>
           </div>
           <br>
           <div class="d-flex justify-content-center links">
             <div class = "center">
-              <p class = "text-white" > Não possui uma conta? <a href="sign_up"> sign up</a></p>
-      
+              <p class = "text-white" > don't have account? <a href="sign_up"> sign up</a></p>
             </div>
 				  </div>
 			  </div>
