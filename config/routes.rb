@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  resources :posts, only: %i[index show]
+  resources :posts, only: %i[index show destroy]
 
   # this will redirect to bots posts#index view instead of bots#index view
   # get '/bots/', to: 'posts#bots'
