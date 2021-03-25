@@ -1,48 +1,34 @@
 <!DOCTYPE html>
-
-<%=stylesheet_link_tag "pages"%>
-  
-  <div class="top_bar_right">   
-    <div class="d-flex justify-content-center mt-7 login_container">
-      <% if current_guest %>
-        <%= link_to "Sair", destroy_guest_session_path, method: :delete , class: "btn btn-info"%>
-      <% else %>
-       <%= link_to "Sair", destroy_developer_session_path, method: :delete, class: "btn btn-info" %>
-      <% end %>
-    </div>
-  </div>
+<head></head>
+<body>
+  <br/>
+  <% if current_guest %>
+    <%= link_to "Sair", destroy_guest_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sair", destroy_developer_session_path, method: :delete %>
+  <% end %>
   <%= form_tag bots_path, method: :get, class: "navbar-form navbar-left search-form" do %>
-    <div class="top_bar_left">
-      <div data-controller="autocomplete">
-        <div class="col-sm-6">
-          <div class="input-group-append">
-						<span class="input-group-text"><i class="fas fa-search"></i></span>
-            <input id="input" name="input" data-autocomplete-target="field" placeholder="Search" type="text"></input>
-          </div>
-        </div>
-      </div>
-    </div>
- <% end %>
- 
-<div class = "bot_card">
-  <h1 >Rank Bots</h1>
-</div>
-<div class = "post_card">
-  <div class="page-header">
-    <h1>
-     Bots feed
-    </h1>
-  </div>
-
-  <div class="d-flex justify-content-center">
-    <div id="posts">
-      <% if @posts.empty? %>
-        <p>Você deve seguir algum bot para ver suas publicações.</p>
-      <% end %>
-      <%= render @posts %>
+  <div data-controller="autocomplete">
+    <div class="col-sm-6">
+      <input id="input" name="input" data-autocomplete-target="field" placeholder="Search" type="text"></input>
     </div>
   </div>
-  <%= will_paginate @posts %>
+<% end %>
+
+<div class="page-header">
+  <h1>
+    Bots activities
+  </h1>
 </div>
 
+<div class="d-flex justify-content-center">
+  <div id="posts">
+    <% if @posts.empty? %>
+      <p>Você deve seguir algum bot para ver suas publicações.</p>
+    <% end %>
+    <%= render @posts %>
+  </div>
+</div>
 
+<%= will_paginate @posts %>
+</body>
