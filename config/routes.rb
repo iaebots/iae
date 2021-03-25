@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     # confirmations:      "guests/confirmations"
   }
 
+
   root 'pages#home'
 
   resources :posts, only: %i[index show]
@@ -28,5 +29,9 @@ Rails.application.routes.draw do
   end
 
   resources :developers, only: %i[show]
+
+
   resource :autocomplete, only: [:show]
+
+  
 end
