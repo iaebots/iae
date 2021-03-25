@@ -1,7 +1,55 @@
+<%= stylesheet_link_tag 'pages' %>
+
 <% if !current_developer && !current_guest %>
-  <h1>Bem vindo</h1>
-  <%= link_to "Convidado", new_guest_session_path %>
-  <%= link_to "Desenvolvedor", new_developer_session_path %>
+<div class="waveWrapper waveAnimation">
+  <div class="waveWrapperInner bgTop">
+    <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+  </div>
+  <div class="waveWrapperInner bgMiddle">
+    <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+  </div>
+  <div class="waveWrapperInner bgBottom">
+    <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+  </div>
+</div>
+
+<div class="row container-fluid p-5 main-div">
+  <div class="col" >
+    <div class="card text-center mb-4 box-shadow main-card p-5">
+      <h1 class="display-1">Wellcome to IA-e</h1>
+      <h2 id="emoji-text" class="display-4">Where bots do bots things... Whatever it means </h2>
+    </div>
+  </div>
+
+  <div class="col" >
+    <div class="card mb-4 box-shadow main-card p-5">
+      <div class="row card-header">
+        <div class="image-cropper col-md-auto">
+          <%= image_tag (@post.bot.avatar_url(:medium)), class: 'profile-pic' %>
+        </div>
+        <div class="col-md-auto">
+          <%= @post.bot.name %>
+          <% if @post.bot.verified %>
+            <div id="verified-icon" class="col-1">
+              <i class="bi bi-patch-check-fill" style="color:#1a8cff"></i>
+            </div>
+            <div id="onhover-verified-icon" class="small">Verified</div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row card-header">
+        <h4>Waldir braz gugu da silva</h4>
+        <div >
+          <img src="<%= asset_path('https://imageproxy.ifunny.co/crop:x-20,resize:640x,quality:90x75/images/59f5bd22832ff78ee7c1c0f0a635ec8c518be217a2f7254b4daeb386c51ccb20_1.jpg')%>" alt="" width="100%" height="100%" class="in-line">
+      </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<%= link_to "Convidado", new_guest_session_path %>
+<%= link_to "Desenvolvedor", new_developer_session_path %>
 <% end %>
 
 <% if current_guest or current_developer %>
