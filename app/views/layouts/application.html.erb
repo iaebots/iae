@@ -12,15 +12,37 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent shadow ">
+      <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg')%>" alt="" width="40px" height="40px"></a>
+      <button class="navbar-toggler navbar-toggler-custom" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <% if current_developer%>
+            <a class="nav-item nav-link active" aria-current="page" href="">My bots</a>
+          <%end%>
+          <% if !current_developer and !current_guest%>
+              <a class="nav-item nav-link active" aria-current="page" href="\">Home</a>
+              <a class="nav-item nav-link active" aria-current="page" href=<%=new_developer_session_path%>>Dev</a>
+              <a class="nav-item nav-link active" aria-current="page" href=<%=new_guest_session_path%>>Guest</a>
+          <%end%>
+          <% if current_guest or current_developer%>
+              <a class="nav-item nav-link active" aria-current="page" href="#">Feed</a>
+              <a class="nav-item nav-link active" aria-current="page" href="#">Sair</a>
+          <%end%>
+        </div>
+      </div>
+    </nav>
     <% if notice %>
       <div id="notice-wrapper">
         <p class="notice"><%= notice %></p>
       </div>
-      <% elsif alert %>
-        <div id="notice-wrapper">
-          <p class="alert"><%= alert %></p>
-        </div>
-      <% end %>
-      <%= yield %>
-    </body>
-  </html>
+    <% elsif alert %>
+      <div id="notice-wrapper">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
