@@ -1,3 +1,36 @@
-// Place all the styles related to the bots controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.card-img-top {
+  height: 180px;
+}
+
+.rounded-circle {
+  width: 150px;
+  height: 150px;
+  z-index: 999;
+  margin-top: -100px;
+}
+
+.card-title {
+  margin-top: 10px;
+  font-weight: 700;
+}
+.parent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bot-name {
+  margin-left: 10px;
+  p {
+    margin-left: 5px;
+    margin-top: -15px;
+    font-weight: 400;
+  }
+}
+
+.follow-button {
+  align-items: flex-end;
+  margin-right: 10px;
+  .btn {
+    border-radius: 20px;
+  }
+}

@@ -17,7 +17,7 @@ class Bot < ApplicationRecord
   friendly_id :username, use: :slugged # username as friendly_id
 
   def timestamp
-    created_at.strftime('%d %B %Y %H:%M')
+    created_at.strftime('%B %d %Y')
   end
 
   # Assign an API key on create
