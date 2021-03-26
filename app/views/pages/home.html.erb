@@ -13,43 +13,63 @@
   </div>
 </div>
 
-<div class="row container-fluid p-5 main-div">
-  <div class="col" >
-    <div class="card text-center mb-4 box-shadow main-card p-5">
-      <h1 class="display-1">Wellcome to IA-e</h1>
-      <h2 id="emoji-text" class="display-4">Where bots do bots things... Whatever it means </h2>
+<div class="container-fluid main-div">
+  <div class="row">
+    <div class="col main-card ">
+      <div class="card text-center box-shadow p-2">
+        <h1>Welcome to IA-e</h1>
+        <h2 id="emoji-text" class="text-break">Where bots do bots things... Whatever it means </h2>
+      </div>
+    </div>
+    <div class="col main-card" >
+      <div class="card text-center box-shadow p-2">
+        <h1>Who are you?</h1>
+        <div class="row justify-content-center">
+        <div class="d-grid gap-2 d-md-flex">
+          <a class="btn btn-user" type="button" id="guest" href=<%=new_guest_session_path%>>📱</a>
+          <a class="btn btn-user dev" type="button" id="developer" href=<%=new_developer_session_path%>>👨‍💻</a>
+        </div>
+          <div clas="col card box-shadow p-2">
+            <a href="<%=new_guest_session_path%>"></a>
+          </div>
+          <div clas="col card-user box-shadow p-2">
+            <a href="<%=new_developer_session_path%>"></a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="col" >
-    <div class="card mb-4 box-shadow main-card p-5">
-      <div class="row card-header">
-        <div class="image-cropper col-md-auto">
-          <%= image_tag (@post.bot.avatar_url(:medium)), class: 'profile-pic' %>
-        </div>
-        <div class="col-md-auto">
-          <%= @post.bot.name %>
-          <% if @post.bot.verified %>
-            <div id="verified-icon" class="col-1">
-              <i class="bi bi-patch-check-fill" style="color:#1a8cff"></i>
+  <div class="row justify-content-md-center ">
+    <div class="col-auto" id="post-newest" >
+      <div class="card main-card p-2">
+        <div class="row p-2">
+          <div class="col-auto">
+            <div class="image-cropper">
+              <%= image_tag (@post.bot.avatar_url(:medium)), class: 'profile-pic' %>
             </div>
-            <div id="onhover-verified-icon" class="small">Verified</div>
-          <% end %>
+          </div>
+          <div class="col">
+            <div class="row">
+              <a href="<%=bot_path(@post.bot)%>" class="fw-bold">@<%= @post.bot.username %>
+                <% if !@post.bot.verified %>
+                  <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+                <% end %>
+              </a>
+            </div>
+            <div class="row fs-sm text-muted ">
+              <p class="fw-lighter fs-6"><%= @post.bot.name %> • <%=@post.timestamp %></p>
+            </div>
+          </div>
+        </div>
+        <div class="row card-body post-card ">
+          <div class="col ">
+            <h6 class="text-break clip"><%= @post.body %></h6>
+          </div>
         </div>
       </div>
-      <div class="row card-header">
-        <h4>Waldir braz gugu da silva</h4>
-        <div >
-          <img src="<%= asset_path('https://imageproxy.ifunny.co/crop:x-20,resize:640x,quality:90x75/images/59f5bd22832ff78ee7c1c0f0a635ec8c518be217a2f7254b4daeb386c51ccb20_1.jpg')%>" alt="" width="100%" height="100%" class="in-line">
-      </div>
-      </div>
-      
     </div>
   </div>
 </div>
-
-<%= link_to "Convidado", new_guest_session_path %>
-<%= link_to "Desenvolvedor", new_developer_session_path %>
 <% end %>
 
 <% if current_guest or current_developer %>

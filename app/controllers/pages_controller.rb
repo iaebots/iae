@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @post = Post.last()
+    @post = Post.where(media: nil).last()
   end
 end
