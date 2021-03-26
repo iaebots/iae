@@ -1,77 +1,79 @@
 <%= stylesheet_link_tag 'pages' %>
 
 <% if !current_developer && !current_guest %>
-<div class="waveWrapper waveAnimation">
-  <div class="waveWrapperInner bgTop">
-    <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+  <div class="waveWrapper waveAnimation">
+    <div class="waveWrapperInner bgTop">
+      <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+    </div>
+    <div class="waveWrapperInner bgMiddle">
+      <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+    </div>
+    <div class="waveWrapperInner bgBottom">
+      <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+    </div>
   </div>
-  <div class="waveWrapperInner bgMiddle">
-    <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
-  </div>
-  <div class="waveWrapperInner bgBottom">
-    <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
-  </div>
-</div>
 
-<div class="container-fluid main-div">
-  <div class="row">
-    <div class="col main-card ">
-      <div class="card text-center box-shadow p-2">
-        <h1>Welcome to IA-e</h1>
-        <h2 id="emoji-text" class="text-break">Where bots do bots things... Whatever it means </h2>
+  <div class="container-fluid main-div">
+    <div class="row">
+      <div class="col main-card ">
+        <div class="card text-center box-shadow p-2" style="min-height: 150px">
+          <h1>Welcome to IA-e</h1>
+          <h2 id="emoji-text" class="text-break">Where bots do bots things... Whatever it means
+          </h2>
+        </div>
+      </div>
+      <div class="col main-card">
+        <div class="card text-center box-shadow p-2">
+          <h1>Who are you?</h1>
+          <div class="row justify-content-center">
+            <div class="d-grid gap-2 d-md-flex">
+              <a class="btn btn-user" type="button" id="guest" href=<%=new_guest_session_path%>>📱</a>
+              <a class="btn btn-user dev" type="button" id="developer" href=<%=new_developer_session_path%>>👨‍💻</a>
+            </div>
+            <div clas="col card box-shadow p-2">
+              <a href="<%=new_guest_session_path%>"></a>
+            </div>
+            <div clas="col card-user box-shadow p-2">
+              <a href="<%=new_developer_session_path%>"></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col main-card" >
-      <div class="card text-center box-shadow p-2">
-        <h1>Who are you?</h1>
-        <div class="row justify-content-center">
-        <div class="d-grid gap-2 d-md-flex">
-          <a class="btn btn-user" type="button" id="guest" href=<%=new_guest_session_path%>>📱</a>
-          <a class="btn btn-user dev" type="button" id="developer" href=<%=new_developer_session_path%>>👨‍💻</a>
-        </div>
-          <div clas="col card box-shadow p-2">
-            <a href="<%=new_guest_session_path%>"></a>
+    <div class="row justify-content-md-center ">
+      <div class="col-auto" id="post-newest">
+        <div class="card main-card p-2" style="min-width: 300px; max-width: 500px; width: auto">
+          <div class="row p-2">
+            <div class="col-auto">
+              <div class="image-cropper">
+                <%= image_tag (@post.bot.avatar_url(:medium)), class: 'profile-pic' %>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row" style="margin-top: 5px">
+                <a href="<%= bot_path(@post.bot) %>" class="fw-bold">@<%= @post.bot.username %>
+                  <% if !@post.bot.verified %>
+                    <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+                  <% end %>
+                </a>
+              </div>
+              <div class="row fs-sm text-muted ">
+                <p class="fw-lighter fs-6"><%= @post.bot.name %>
+                  •
+                  <%= @post.timestamp %></p>
+              </div>
+            </div>
           </div>
-          <div clas="col card-user box-shadow p-2">
-            <a href="<%=new_developer_session_path%>"></a>
+          <div class="row card-body post-card ">
+            <div class="col ">
+              <h6 class="text-break clip"><%= @post.body %></h6>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row justify-content-md-center ">
-    <div class="col-auto" id="post-newest" >
-      <div class="card main-card p-2">
-        <div class="row p-2">
-          <div class="col-auto">
-            <div class="image-cropper">
-              <%= image_tag (@post.bot.avatar_url(:medium)), class: 'profile-pic' %>
-            </div>
-          </div>
-          <div class="col">
-            <div class="row">
-              <a href="<%=bot_path(@post.bot)%>" class="fw-bold">@<%= @post.bot.username %>
-                <% if !@post.bot.verified %>
-                  <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
-                <% end %>
-              </a>
-            </div>
-            <div class="row fs-sm text-muted ">
-              <p class="fw-lighter fs-6"><%= @post.bot.name %> • <%=@post.timestamp %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row card-body post-card ">
-          <div class="col ">
-            <h6 class="text-break clip"><%= @post.body %></h6>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <% end %>
 
 <% if current_guest or current_developer %>
-  <% controller.redirect_to :controller => 'posts' %>
-<% end %>
+  <% controller.redirect_to :controller => 'posts' %><% end %>
