@@ -17,11 +17,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # All uploads will be resized to 400x400
   process resize_to_fit: [400, 400]
 
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
-
   # creates smaller version of the uploaded pic
   version :medium do
     process resize_to_fit: [200, 200]
@@ -29,7 +24,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Allowlist of extensions which are allowed to be uploaded.
   def extension_allowlist
-    %w(jpg jpeg png)
+    %w(jpg jpeg png gif)
   end
 
   # Override the filename of the uploaded files
