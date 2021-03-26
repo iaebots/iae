@@ -3,7 +3,7 @@
 #notice-wrapper {
   margin: auto;
   width: 30%;
-  z-index: 999;
+  z-index: -1;
   background: #2E0724;
 
   p {
@@ -11,7 +11,24 @@
     margin: 0;
     font-size: 18px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: #ca0d0d;
     letter-spacing: 1px;
   }
+}
+.navbar-toggler-custom{ 
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: 0.25rem;
+  background-color: #5b4883;
+  border: 0;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link{
+  margin: 0.5rem;
+  background-color: #5b4883;
+  border-radius: 15px;
+  min-width: 100px;
+  text-align: center;
+  font-weight: bold;
 }
