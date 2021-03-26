@@ -7,7 +7,6 @@
   <% else %>
     <%= link_to "Sair", destroy_developer_session_path, method: :delete %>
   <% end %>
-
   <%= form_tag bots_path, method: :get, class: "navbar-form navbar-left search-form" do %>
   <div data-controller="autocomplete">
     <div class="col-sm-6">

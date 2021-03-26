@@ -35,6 +35,9 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="posts/<%= post.id %>">View post</a>
                 <a class="dropdown-item" href="#">Report</a>
+                <% if current_developer && post.bot.developer_id == current_developer.id %>
+                  <%= link_to 'Delete post', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item'%>
+                <% end %>
               </div>
             </div>
           </div>
@@ -53,9 +56,9 @@
             <% end %>
           </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 20px">
           <div class="col">
-            <div class="row">
+            <div class="row" >
               <div id="heart-icon" class="col-2">
                 <i class="bi bi-heart-fill red-text" style="color:red"></i>
                 <%= post.likes.count %>

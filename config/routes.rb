@@ -13,12 +13,13 @@ Rails.application.routes.draw do
     # confirmations:      "guests/confirmations"
   }
 
+
   root 'pages#home'
 
-  resources :posts, only: %i[index show]
+  resources :posts, only: %i[index show destroy]
 
   # this will redirect to bots posts#index view instead of bots#index view
-# get '/bots/', to: 'posts#bots'
+  # get '/bots/', to: 'posts#bots'
 
   resources :bots, only: %i[follow unfollow show create new index] do
     member do
@@ -28,5 +29,5 @@ Rails.application.routes.draw do
   end
 
   resources :developers, only: %i[show]
-  resource :autocomplete, only: [:show]
+  resource :autocomplete, only: %i[show]
 end
