@@ -1,81 +1,56 @@
 <%= stylesheet_link_tag 'posts' %>
 
-<body>
-  <div class="container">
-    <div class="card" style="width: 40rem;">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-2">
-            <div class="image-cropper">
-              <%= image_tag (post.bot.avatar_url(:medium)), class: 'profile-pic' %>
-            </div>
-          </div>
-          <div class="col-sm-5">
-            <div class="container">
-              <div class="row">
-                <%= post.bot.name %>
-                <% if post.bot.verified %>
-                  <div id="verified-icon" class="col-1">
-                    <i class="bi bi-patch-check-fill" style="color:#1a8cff"></i>
-                  </div>
-                  <div id="onhover-verified-icon" class="small">Verified</div>
-                <% end %>
-              </div>
-              <div class="row">
-                <%= link_to '@' + post.bot.username, bot_path(post.bot) %>
-              </div>
-              <div class="row">
-                <p class="fs-sm text-muted"><%= post.timestamp %></p>
-              </div>
-            </div>
-          </div>
-          <div class="dropdown">
-            <div id="dots-icon" class="col offset-4">
-              <i class="bi bi-three-dots-vertical" type="button" d="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="posts/<%= post.id %>">View post</a>
-                <a class="dropdown-item" href="#">Report</a>
-                <% if current_developer && post.bot.developer_id == current_developer.id %>
-                  <%= link_to 'Delete post', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item'%>
-                <% end %>
-              </div>
-            </div>
+<div id="page" class="card">
+  <div id="post" class="card-body">
+    <div class="post-container pt pb pr pl">
+      <div class="bot pr">
+        <%= image_tag (post.bot.avatar_url(:medium)), class: 'bot img' %>
+        <div class="username">
+          <div class="name"><%= post.bot.name %></div>
+          <div class="handle"><%= link_to '@' + post.bot.username, bot_path(post.bot) %></div>
+          <div class="date pt pb">
+            <%= post.timestamp %>
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            <p class="fs-mini">
-              <%= truncate(strip_tags(post.body), length: 512) %>
-            </p>
-            <% if post.media_url %>
-              <% if post.video %>
-                <%= video_tag (post.media_url), size: '600x350', controls: true %>
-              <% else %>
-                <%= image_tag (post.media_url), class: 'img-thumbnail' %>
-              <% end %>
+        <div class="dropdown dropright">
+          <i class="bi bi-three-dots-vertical" type="button" d="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <%= link_to 'View post', post_path(post), class: 'dropdown-item' %>
+            <% if current_developer && post.bot.developer_id == current_developer.id %>
+              <%= link_to 'Delete post', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item'%>
             <% end %>
+            <a class="dropdown-item" href="#">Report</a>
           </div>
         </div>
-        <div class="row" style="margin-top: 20px">
-          <div class="col">
-            <div class="row" >
-              <div id="heart-icon" class="col-2">
-                <i class="bi bi-heart-fill red-text" style="color:red"></i>
-                <%= post.likes.count %>
-              </div>
-              <div id="onhover-heart-icon" class="small"><%= post.likes.count %>
-                Likes</div>
-              <div id="comments-icon" class="col-2">
-                <i class="bi bi-chat-right-fill" style="color:green"></i>
-                <%= post.comments.count %>
-              </div>
-              <div id="onhover-comments-icon" class="small"><%= post.comments.count %>
-                Comments</div>
-            </div>
-          </div>
+      </div>
+
+      <div class="post-content pt">
+        <%= truncate(strip_tags(post.body), length: 512) %>
+      </div>
+      <% if post.media_url %>
+        <% if post.video %>
+          <%= video_tag (post.media_url), size: '600x350', controls: true %>
+        <% else %>
+          <%= image_tag (post.media_url), class: 'img-thumbnail' %>
+        <% end %>
+      <% end %>
+
+      <div class="icons">
+        <div id="heart-icon" class="likes">
+          <i class="bi bi-heart-fill red-text" style="color:red"></i>
+          <b><%= post.likes.count %></b>
+        </div>
+        <div id="onhover-heart-icon" class="small"><%= post.likes.count %>
+          Likes
+        </div>
+        <div id="comments-icon" class="comments">
+          <i class="bi bi-chat-right-fill" style="color:green"></i>
+          <b><%= post.comments.count %></b>
+        </div>
+        <div id="onhover-comments-icon" class="small"><%= post.comments.count %>
+          Comments
         </div>
       </div>
     </div>
   </div>
-  <br/>
-</body>
+</div>
