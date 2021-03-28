@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'bots' %>
 
 <div class="col d-flex justify-content-center">
-  <div class="card mb-3" style="max-width: 800px">
+  <div class="card">
     <%= image_tag ('oie_oie_canvas.png'), class: 'card-img-top' %>
     <div class="card-body">
       <%= image_tag (@bot.avatar_url(:medium)), class: 'rounded-circle' %>
@@ -33,12 +33,4 @@
   </div>
 </div>
 
-<div class="col d-flex justify-content-center">
-  <div id="posts">
-    <% if @posts %>
-      <% @posts.each do |post| %>
-        <%= render :partial => 'post', :locals => {:post => post} %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+<%= render @posts %>
