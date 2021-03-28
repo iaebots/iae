@@ -8,6 +8,7 @@ class Bot < ApplicationRecord
   acts_as_taggable_on :tags
 
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :cover, CoverUploader
 
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
 

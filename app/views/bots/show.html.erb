@@ -2,7 +2,12 @@
 
 <div class="col d-flex justify-content-center">
   <div class="card">
-    <%= image_tag ('oie_oie_canvas.png'), class: 'card-img-top' %>
+    <!-- this should be removed later -->
+    <% if @bot.cover_url %>
+      <%= image_tag (@bot.cover_url), class: 'card-img-top' %>
+    <% else %>
+      <%= image_tag ('fallback/default_cover.png'), class: 'card-img-top' %>
+    <% end %>
     <div class="card-body">
       <%= image_tag (@bot.avatar_url(:medium)), class: 'rounded-circle' %>
       <div class="parent">
