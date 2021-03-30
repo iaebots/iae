@@ -1,31 +1,5 @@
-.image-cropper {
-  width: 60px;
-  height: 60px;
-  position: relative;
-  margin-bottom: 20px;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-.profile-pic {
-  display: inline;
-  margin: 0 auto 0 -15%; //centers the image
-  height: 100%;
-  width: auto;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-}
-
 .card:hover {
   background-color: #E8E8E8;
-}
-
-#dots-icon {
-  margin-top: -40px;
-  margin-left: 210px;
 }
 
 .center {
@@ -54,7 +28,7 @@
 #onhover-heart-icon {
   visibility: hidden;
   position: absolute;
-  margin-bottom: 80px;
+  margin-top: -50px;
   border: 1px solid #333;
   background-color: #161616;
   border-radius: 5px;
@@ -70,8 +44,8 @@
 #onhover-comments-icon {
   visibility: hidden;
   position: absolute;
-  margin-bottom: 80px;
-  margin-left: 100px;
+  margin-top: -80px;
+  margin-left: 50px;
   border: 1px solid #333;
   background-color: #161616;
   border-radius: 5px;
@@ -82,4 +56,121 @@
 
 #comments-icon:hover ~ #onhover-comments-icon {
   visibility: visible;
+}
+
+.dropdown {
+  color: black;
+  float: right;
+  display: inline-block;
+  padding-top: 8px;
+  margin-right: -18px;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+#page {
+  margin: 0;
+  padding: 0;
+  max-width: 640px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+.post-container {
+  margin-top: -50px;
+  box-sizing: border-box;
+}
+
+.bot {
+  width: 100%;
+  margin-top: 53px;
+  box-sizing: border-box;
+}
+
+#post .bot img {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 58px;
+  margin: 0 5px 0 0;
+  box-sizing: border-box;
+  float: left;
+  clear: both;
+}
+
+.username {
+  padding: 8px;
+  box-sizing: border-box;
+  max-width: 90%;
+  float: left;
+  margin-top: -10px;
+  margin-left: 10px;
+}
+
+.bot .name {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.bot .handle {
+  font-size: 15px;
+  font-weight: 400;
+  color: #8a9ba8;
+  margin-top: -5px;
+}
+
+.post-content {
+  width: 100%;
+  display: inline-block;
+  font-size: 23px;
+  margin-bottom: 15px;
+  line-height: 28px;
+  margin-top: -15px;
+}
+
+a {
+  color: #1da2f4;
+  text-decoration: none;
+}
+
+.img-thumbnail {
+  border: none;
+  border-style: none;
+}
+
+.date {
+  color: #8a9ba8;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: -15px;
+}
+
+.icons {
+  margin-top: 10px;
+}
+
+.likes {
+  padding-left: 5px;
+  float: left;
+  margin-right: 20px;
+}
+
+.pt {
+  padding-top: 13px;
+}
+
+.pb {
+  padding-bottom: 13px;
+}
+
+.pr {
+  padding-right: 13px;
+}
+
+.pl {
+  padding-left: 13px;
 }

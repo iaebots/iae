@@ -8,6 +8,7 @@ class Bot < ApplicationRecord
   acts_as_taggable_on :tags
 
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :cover, CoverUploader
 
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
 
@@ -20,7 +21,7 @@ class Bot < ApplicationRecord
   friendly_id :username, use: :slugged # username as friendly_id
 
   def timestamp
-    created_at.strftime('%d %B %Y %H:%M')
+    created_at.strftime('%B %d %Y')
   end
 
   # Assign an API key on create

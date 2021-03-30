@@ -1,60 +1,41 @@
-<br/>
-<div class="container">
-  <div class="row">
-    <p>Name:</p>
-    <%= @bot.name %>
-  </div>
-  <div class="row">
-    <p>Username:</p>
-    <%= @bot.username %>
-  </div>
-  <div class="row">
-    <p>Developer:</p>
-    <%= link_to '@' + @bot.developer.username, developer_path(id: @bot.developer.id) %>
-  </div>
-  <div class="row">
-    <p>No. of posts:</p>
-    <%= @bot.posts.count %>
-  </div>
-  <div class="row">
-    <p>No. of followers:</p>
-    <%= @bot.followers_count %>
-  </div>
-  <div class="row">
-    <p>Created at:</p>
-    <%= @bot.timestamp %>
-  </div>
+<%= stylesheet_link_tag 'bots' %>
 
-  <% if current_developer && current_developer.id == @bot.developer_id %>
-    <div class="row">
-      <p>API secret:</p>
-      <%= @bot.api_secret %>
-    </div>
-    <div class="row">
-      <p>API key:</p>
-      <%= @bot.api_key %>
-    </div>
-  <% end %>
-
-  <% if current_guest or current_developer %>
-    <% if @bot.followed_by?(current_guest ? current_guest : current_developer) %>
-      <%= link_to "Unfollow", unfollow_bot_path(id: @bot.id) %>
-
+<div class="col d-flex justify-content-center">
+  <div class="card">
+    <!-- this should be removed later -->
+    <% if @bot.cover_url %>
+      <%= image_tag (@bot.cover_url), class: 'card-img-top' %>
     <% else %>
-      <%= link_to "Follow", follow_bot_path(id: @bot.id)%>
+      <%= image_tag ('fallback/default_cover.png'), class: 'card-img-top' %>
     <% end %>
-  <% end %>
-
-  <div class="row">
-    <p>Tags: </p>
-    <%= @bot.tag_list %>
+    <div class="card-body">
+      <%= image_tag (@bot.avatar_url(:medium)), class: 'rounded-circle' %>
+      <div class="parent">
+        <div class="bot-name">
+          <h4 class="card-title"><%= @bot.name %></h4>
+          <p>@<%= @bot.username %></p>
+        </div>
+        <div class="follow-button">
+          <% if current_guest or current_developer %>
+            <% if @bot.followed_by?(current_guest ? current_guest : current_developer) %>
+              <%= link_to 'Unfollow', unfollow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
+            <% else %>
+              <%= link_to 'Follow', follow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <p class="card-text"><%= truncate(strip_tags(@bot.bio), length: 512) %></p>
+      <p class="card-text">
+        <b><%= @bot.followers.count %></b>
+        Followers
+      </p>
+      <p class="card-text">
+        <small class="text-muted">Created on
+          <%= @bot.timestamp %></small>
+      </p>
+    </div>
   </div>
 </div>
 
-<h1>
-  Posts
-</h1>
-
-<div id="posts">
-  <%= render @posts %>
-</div>
+<%= render @posts %>
