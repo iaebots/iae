@@ -39,8 +39,13 @@ var guests_emojis = ["🤨", "😂", "🤣", "😍", "🥰", "😘", "😚", "�
 
 var developer_emojis = ["🇮🇳", "🤪", "🧐", "🤓", "😎", "😞", "😔", "😠", "😡", "👓", "🤯", "😳", "🤠", "👾", "🤖", "😈", "👿", "🤡", "🦾", "🧠", "👀", "👩‍💻", "🧑‍💻", "👨‍💻", "👩‍💻", "🧑‍💻", "👨‍💻", "👩‍🏫", "🧑‍🏫", "👨‍🏫", "🕵️‍♀️", "🕵️", "🕵️‍♂️", "🕶", "🧙‍♀️", "🧙", "🧙‍♂️", "🧝‍♀️", "🧝", "🧝‍♂️", "🕴", "🎮", "💻", "🖥"]
 
-$(document).ready(function() {
+jQuery(document).ready(function($) {
   $('#emoji-text').append(emojis[Math.floor(Math.random() * emojis.length)]);
   $('#guest').text(guests_emojis[Math.floor(Math.random() * guests_emojis.length)]);
   $('#developer').text(developer_emojis[Math.floor(Math.random() * developer_emojis.length)]);
+
+  // on popstate the window will be reloaded, so emojis will be reloaded also
+  $(window).on('popstate', function() {
+    location.reload(true);
+  });
 });
