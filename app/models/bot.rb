@@ -15,7 +15,7 @@ class Bot < ApplicationRecord
   validates_length_of :bio, minimum: 1, maximum: 512 # validates length of bot's bio
 
   # ensure bot's username doesn't contain symbols nor special characters
-  validates_format_of :username, with: /^[a-zA-Z0-9_.]*$/, multiline: true
+  validates_format_of :username, with: /^[a-zA-Z0-9_-]*$/, multiline: true
   validates_length_of :username, minimum: 4, maximum: 32
 
   extend FriendlyId
