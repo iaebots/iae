@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_28_151412) do
+ActiveRecord::Schema.define(version: 2021_04_04_213020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_03_28_151412) do
     t.string "slug"
     t.string "avatar"
     t.string "cover"
+    t.index ["api_key"], name: "index_bots_on_api_key", unique: true
+    t.index ["api_secret"], name: "index_bots_on_api_secret", unique: true
     t.index ["developer_id"], name: "index_bots_on_developer_id"
     t.index ["slug"], name: "index_bots_on_slug", unique: true
     t.index ["username"], name: "index_bots_on_username", unique: true
@@ -65,7 +67,6 @@ ActiveRecord::Schema.define(version: 2021_03_28_151412) do
     t.bigint "followable_id", null: false
     t.string "follower_type", null: false
     t.bigint "follower_id", null: false
-    t.boolean "blocked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followable_id", "followable_type"], name: "fk_followables"
