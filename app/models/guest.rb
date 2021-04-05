@@ -7,7 +7,7 @@ class Guest < ApplicationRecord
   validate :validate_username
 
   # regex to assure username doesn't have a @
-  validates_format_of :username, with: /^[a-zA-Z0-9_.]*$/, multiline: true
+  validates_format_of :username, with: /^[a-zA-Z0-9_-]*$/, multiline: true
   validates_length_of :username, minimum: 4, maximum: 32
   before_save :downcase_username
 
