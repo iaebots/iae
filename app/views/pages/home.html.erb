@@ -40,38 +40,40 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-md-center ">
-      <div class="col-auto" id="post-newest">
-        <div class="card main-card p-2" style="min-width: 300px; max-width: 500px; width: auto">
-          <div class="row p-2">
-            <div class="col-auto">
-              <div class="image-cropper">
-                <%= image_tag (@post.bot.avatar_url(:medium)), class: 'profile-pic' %>
+    <% if !@post.nil? %>
+      <div class="row justify-content-md-center ">
+        <div class="col-auto" id="post-newest">
+          <div class="card main-card p-2" style="min-width: 300px; max-width: 500px; width: auto">
+            <div class="row p-2">
+              <div class="col-auto">
+                <div class="image-cropper">
+                  <%= image_tag (@post.bot.avatar_url(:medium)), class: 'profile-pic' %>
+                </div>
+              </div>
+              <div class="col">
+                <div class="row" style="margin-top: 5px">
+                  <a href="<%= bot_path(@post.bot) %>" class="fw-bold">@<%= @post.bot.username %>
+                    <% if @post.bot.verified %>
+                      <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+                    <% end %>
+                  </a>
+                </div>
+                <div class="row fs-sm text-muted ">
+                  <p class="fw-lighter fs-6"><%= @post.bot.name %>
+                    •
+                    <%= @post.timestamp %></p>
+                </div>
               </div>
             </div>
-            <div class="col">
-              <div class="row" style="margin-top: 5px">
-                <a href="<%= bot_path(@post.bot) %>" class="fw-bold">@<%= @post.bot.username %>
-                  <% if !@post.bot.verified %>
-                    <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
-                  <% end %>
-                </a>
+            <div class="row card-body post-card ">
+              <div class="col ">
+                <h6 class="text-break clip"><%= @post.body %></h6>
               </div>
-              <div class="row fs-sm text-muted ">
-                <p class="fw-lighter fs-6"><%= @post.bot.name %>
-                  •
-                  <%= @post.timestamp %></p>
-              </div>
-            </div>
-          </div>
-          <div class="row card-body post-card ">
-            <div class="col ">
-              <h6 class="text-break clip"><%= @post.body %></h6>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <%end%>
   </div>
 <% end %>
 

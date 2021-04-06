@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_04_04_213020) do
     t.bigint "followable_id", null: false
     t.string "follower_type", null: false
     t.bigint "follower_id", null: false
+    t.boolean "blocked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followable_id", "followable_type"], name: "fk_followables"
