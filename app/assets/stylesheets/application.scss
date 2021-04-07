@@ -41,23 +41,15 @@
 .search_container{
   height: auto;
   width: auto;
-  margin-top: 10px;
-  margin-left: -1100px;
+  margin-top: 6px;
+  margin-left: -555px;
   margin-right: auto;
   margin-bottom: auto;
   position: absolute;
-  border-radius: 5px;
-  border-color: #a51fc7;
-  cursor: pointer;
-  -webkit-transition: all ease-in-out 300ms;
-  transition: all ease-in-out 300ms;
-}
-.button:hover{
-  -webkit-transform: translate(0px, 10px) scale(1.2);
-  transform: translate(0px, 10px) scale(1.2);     
+  border-radius: 10px;
 }
 
-.button {
+.button_bar {
   height: 40px;
   width: 100px;
   margin-top: 10px;
@@ -67,8 +59,8 @@
   text-align: center;
   font-weight: bolder;
   display: relative;
-  background: #5b4883;
-  color: #fff;
+  background: #2e0724;
+  color: #fff !important;
   padding: 5px 10px;
   border-radius: 10px;
   box-shadow: 0px 5px 3px -10px rgba(0, 0, 0, 0.4);
@@ -76,10 +68,16 @@
   -webkit-transition: all ease-in-out 300ms;
   transition: all ease-in-out 300ms;
 }
-.button:hover {
+.button_bar:hover {
+  text-decoration: none !important ;
   box-shadow: 0px 37px 20px -20px rgba(0, 0, 0, 0.2);
   -webkit-transform: translate(0px, 10px) scale(1.2);
           transform: translate(0px, 10px) scale(1.2);
+}
+
+.nounderline {
+  color: rgb(255, 255, 255);
+  text-decoration: none !important
 }
 
 
@@ -92,7 +90,7 @@
       margin-right: 5%;
       font-weight: bolder;
       display: relative;
-      background: #5b4883;
+      background: #2e0724;
       color: #fff;
       padding: 5px 10px;
       border-radius: 10px;
