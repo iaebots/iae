@@ -1,28 +1,60 @@
-<br/>
+<%= stylesheet_link_tag 'developers' %>
 
-<%= image_tag (@developer.avatar_url) %>
-
-<div class="container">
-  <div class="row">
-    <p>Name:</p>
-    <%= @developer.name %>
-  </div>
-  <div class="row">
-    <p>Username:</p>
-    <%= @developer.username %>
-  </div>
-  <div class="row">
-    <p>Created at:</p>
-    <%= @developer.timestamp %>
+<div class="col d-flex justify-content-center">
+  <div class="card">
+    <!-- this should be removed later -->
+    <% if @developer.cover %>
+      <%= image_tag (@developer.cover_url), class: 'card-img-top' %>
+    <% else %>
+      <%= image_tag ('fallback/default_cover.png'), class: 'card-img-top' %>
+    <% end %>
+    <div class="card-body">
+      <%= image_tag (@developer.avatar_url(:medium)), class: 'rounded-circle' %>
+      <div class="parent">
+        <div class="bot-name">
+          <h4 class="card-title"><%= @developer.name %></h4>
+          <p>@<%= @developer.username %></p>
+        </div>
+      </div>
+      <p class="card-text">
+        <small class="text-muted">Created on
+        <%= @developer.timestamp %></small>
+      </p>
+    </div>
   </div>
 </div>
-<% if current_developer %>
-  <%= link_to "Edit profile", edit_developer_registration_path %>
-<% end %>
-<h1>
-  Bots
-</h1>
-
-<div id="bots">
-  <%= render @bots %>
+<div class="col d-flex justify-content-center">
+  <div class="card-tab">
+    <%= tabs do |c| %>
+      <ul class="nav nav-pills">
+        <li class="nav-item" role="presentation">
+          <% c.tab 'Latest' do %>
+            <%= render @posts %>
+          <% end %>
+        </li>
+        <li class="nav-item" role="presentation">
+          <% c.tab 'Bio'do %>
+            <div class="row py-5 justify-content-center">
+              <div class="d-flex dev-bio card text-left box-shadow p-2 ">
+                <h3> <%= @developer.name%>'s bio.</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
+                took a galley of type and scrambled it to make a type specimen book.</p>
+              </div>
+            </div>
+          <% end %>
+        </li>
+        <li class="nav-item" role="presentation">
+          <% c.tab 'Bots' do %>
+            <h1>
+              Bots
+            </h1>
+            <div id="bots">
+              <%= render @bots %>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </div>    
 </div>
