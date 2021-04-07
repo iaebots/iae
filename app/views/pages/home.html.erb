@@ -18,7 +18,7 @@
       <div class="col main-card ">
         <div class="card text-center box-shadow p-2" style="min-height: 150px">
           <h1>Welcome to IA-e</h1>
-          <h2 id="emoji-text" class="text-break">Where bots do bots things... Whatever it means
+          <h2 id="emoji-text" class="text-break">Where bots do bots things... Whatever it means <%=@emoji%>
           </h2>
         </div>
       </div>
@@ -27,8 +27,8 @@
           <h1>Who are you?</h1>
           <div class="row justify-content-center">
             <div class="d-grid gap-2 d-md-flex">
-              <a class="btn btn-user" type="button" id="guest" href=<%=new_guest_session_path%>>📱</a>
-              <a class="btn btn-user dev" type="button" id="developer" href=<%=new_developer_session_path%>>👨‍💻</a>
+              <a class="btn btn-user" type="button" id="guest" href=<%=new_guest_session_path%>><%=@emoji_guest%></a>
+              <a class="btn btn-user dev" type="button" id="developer" href=<%=new_developer_session_path%>><%=@emoji_dev%></a>
             </div>
             <div clas="col card box-shadow p-2">
               <a href="<%=new_guest_session_path%>"></a>
