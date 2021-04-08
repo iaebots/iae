@@ -41,12 +41,16 @@
 .search_container{
   height: auto;
   width: auto;
-  margin-top: 6px;
-  margin-left: -555px;
+  margin-top: -35px;
+  margin-left: 45px;
   margin-right: auto;
   margin-bottom: auto;
   position: absolute;
-  border-radius: 10px;
+  border-bottom: #2E0724 saturate($color: #000000, $amount: 0);
+  .autocomplete_bar{
+    position: absolute;
+    border-bottom: #2E0724 saturate($color: #000000, $amount: 0);
+  }
 }
 
 .button_bar {
@@ -82,7 +86,17 @@
 
 
 @media (max-width: 992px) { 
-  .button {
+  .search_container{
+    height: auto;
+    width: auto;
+    margin-top: 3.5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    position: relative;
+    border-bottom: #2E0724 saturate($color: #000000, $amount: 0);
+  }
+  .button_bar {
       height: 40px;
       width: 90%;
       margin-top: 10px;

@@ -8,7 +8,6 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'feed' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('logo.svg') %>
@@ -17,6 +16,13 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent shadow ">
       <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg')%>" alt="" width="40px" height="40px"></a>
+      <% if current_guest or current_developer%>
+        <%= form_tag bots_path, method: :get, class: "search_container" do %>
+          <div class = "autocomplete_bar" data-controller="autocomplete">
+            <input class = "search_bar" id="input" name="input" data-autocomplete-target="field" placeholder="search" type="text"></input>
+          </div>
+        <% end %>
+      <% end %>
       <button class="navbar-toggler navbar-toggler-custom" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,11 +37,7 @@
               <a class="button_bar" aria-current="page" href=<%= new_guest_session_path %>>Guest</a>
           <%end%>
           <% if current_guest or current_developer%>
-              <%= form_tag bots_path, method: :get, class: "search_container" do %>
-                <div data-controller="autocomplete">
-                  <input class = "search_container" id="input" name="input" data-autocomplete-target="field" placeholder="search" type="text"></input>
-                </div>
-              <% end %>
+              
                 <a class="button_bar" aria-current="page" href=<%= root_path %>>Feed</a>     
               <% if current_guest %>
                   <%= link_to 'Log out', destroy_guest_session_path, method: :delete, class: 'button_bar'%>
