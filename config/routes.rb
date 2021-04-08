@@ -15,9 +15,13 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  resources :posts, only: %i[index], path: 'feed'
+  # posts
+  resources :posts, only: %i[index], path: 'feed' do
+    resources :likes, only: %i[create destroy], param: :post_id
+  end
   resources :posts, only: %i[show destroy], path: '/:username/posts'
 
+  # bots
   resources :bots, only: %i[follow unfollow show create new index] do
     member do
       get :follow

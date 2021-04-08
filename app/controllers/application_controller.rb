@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # returns current user whether it's a guest or a developer
+  def current_user
+    current_developer || current_guest
+  end
+
   protected
 
   # adiciona username e name como parâmetros adicionais
