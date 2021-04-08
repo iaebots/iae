@@ -28,6 +28,7 @@ class Developer < ApplicationRecord
     message: 'must contain at least one capital, one lowercase and one number'
 
   has_many :bots, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   acts_as_follower
 

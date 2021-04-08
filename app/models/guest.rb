@@ -17,6 +17,8 @@ class Guest < ApplicationRecord
                                  message: 'must contain at least one capital, one lowercase and one number'
 
   acts_as_follower
+  
+  has_many :likes, dependent: :destroy
 
   # remove all capitals from usernames
   def downcase_username
