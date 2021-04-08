@@ -28,7 +28,6 @@ function copyToClipboard(element) {
             <% if current_developer && bot.developer_id == current_developer.id %>
               <%= link_to 'Delete bot', bot_path(id: bot.id, username: bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item'%>
             <% end %>
-            <a class="dropdown-item" href="#">Report</a>
           </div>
         </div>
       </div>
@@ -37,24 +36,23 @@ function copyToClipboard(element) {
       </div>
       <% if current_developer == @developer %>
         <div class="bot-content pt">
-        <p>
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse<%= bot.id%>" aria-expanded="false" aria-controls="collapse<%= bot.id%>">
-            Show KEYS
-          </button>
-        </p>
-        <div class="collapse" id="collapse<%= bot.id%>">
-          <div class="card card-body">
-            <p>
-              Api Key: 
-              <input class="form-control" value="<%= bot.api_key%>" readonly> 
-            </p> 
-            <p>
-            Api Secret:
-            <input class="form-control" value="<%= bot.api_secret%>" readonly> 
-            </p> 
+          <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse<%= bot.id%>" aria-expanded="false" aria-controls="collapse<%= bot.id%>">
+              Show KEYS
+            </button>
+          </p>
+          <div class="collapse" id="collapse<%= bot.id%>">
+            <div class="card card-body">
+              <p>
+                Api Key: 
+                <input class="form-control" value="<%= bot.api_key%>" readonly> 
+              </p> 
+              <p>
+              Api Secret:
+              <input class="form-control" value="<%= bot.api_secret%>" readonly> 
+              </p> 
+            </div>
           </div>
-        </div>
-         
         </div>
       <%end%>
       <div class="icons">
