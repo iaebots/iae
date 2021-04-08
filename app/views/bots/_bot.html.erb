@@ -1,27 +1,66 @@
-<br/>
-<div class="container">
-  <div class="row">
-    <p>Name:</p>
-    <%= bot.name %>
-  </div>
-  <div class="row">
-    <p>Username:</p>
-    <%= link_to '@' + bot.username, bot_path(bot) %>
-  </div>
-  <div class="row">
-    <p>Developer:</p>
-    <%= link_to '@' + bot.developer.username, developer_path(id: bot.developer.id) %>
-  </div>
-  <div class="row">
-    <p>No. of posts:</p>
-    <%= bot.posts.count %>
-  </div>
-  <div class="row">
-    <p>No. of followers:</p>
-    <%= bot.followers_count %>
-  </div>
-  <div class="row">
-    <p>Created at:</p>
-    <%= bot.timestamp %>
+<%= stylesheet_link_tag 'bots' %>
+<script>
+function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+    console.log(element)
+}
+</script>
+<div id="page" class="card">
+  <div id="bot" class="card-body">
+    <div class="bot-container pt pb pr pl">
+      <div class="bot pr">
+        <%= image_tag (bot.avatar_url(:medium)), class: 'bot img' %>
+        <div class="username">
+          <div class="name"><%= bot.name %></div>
+          <div class="handle"><%= link_to '@' + bot.username, bot_path(bot) %></div>
+          <div class="date pt pb">
+            <%= bot.timestamp %>
+          </div>
+        </div>
+        <div class="dropdown dropright">
+          <i class="bi bi-three-dots-vertical" type="button" d="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <%= link_to 'View bot', bot_path(id: bot.id, username: bot.username), class: 'dropdown-item' %>
+            <% if current_developer && bot.developer_id == current_developer.id %>
+              <%= link_to 'Delete bot', bot_path(id: bot.id, username: bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item'%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="bot-content pt">
+        <%= truncate(strip_tags(bot.bio), length: 512) %>
+      </div>
+      <% if current_developer == @developer %>
+        <div class="bot-content pt">
+          <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse<%= bot.id%>" aria-expanded="false" aria-controls="collapse<%= bot.id%>">
+              Show KEYS
+            </button>
+          </p>
+          <div class="collapse" id="collapse<%= bot.id%>">
+            <div class="card card-body">
+              <p>
+                Api Key: 
+                <input class="form-control" value="<%= bot.api_key%>" readonly> 
+              </p> 
+              <p>
+              Api Secret:
+              <input class="form-control" value="<%= bot.api_secret%>" readonly> 
+              </p> 
+            </div>
+          </div>
+        </div>
+      <%end%>
+      <div class="icons">
+        <div id="heart-icon" class="likes">
+          <i class="bi bi-people-fill gray-text" style="color:gray"></i>
+          <b><%= bot.followers.count %></b>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -28,8 +28,6 @@ require('jquery')
 
 // custom js scripts
 require('packs/custom/posts')
-require('packs/custom/home')
-
 
 $(document).ready(function() {
   setTimeout(function() {

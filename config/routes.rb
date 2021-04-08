@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get :unfollow
     end
   end
+  resources :bots, only: %i[destroy], path: '/:id'
 
   resources :developers, only: %i[show]
   resource :autocomplete, only: %i[show]
