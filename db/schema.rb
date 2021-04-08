@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(version: 2021_04_07_232844) do
     t.string "name", default: "", null: false
     t.string "slug"
     t.string "avatar"
+    t.string "bio"
+    t.boolean "verified"
+    t.string "cover"
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_developers_on_slug", unique: true
