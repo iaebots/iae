@@ -37,14 +37,22 @@
 
       <div class="icons">
         <div id="heart-icon" class="likes">
-          <i class="bi bi-heart-fill red-text" style="color:red"></i>
+          <% if post.liked?(controller.current_user.id) %>
+            <%= link_to post_like_path(post), method: :delete, class: 'btn' do %>
+              <i class="bi bi-heart-fill red-text" style="color: red"></i>
+            <% end %>
+          <% else %>
+              <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
+                <i class="bi bi-heart red-text" style="color: red"></i>
+              <% end %>
+          <% end %>
           <b><%= post.likes.count %></b>
         </div>
         <div id="onhover-heart-icon" class="small"><%= post.likes.count %>
           Likes
         </div>
         <div id="comments-icon" class="comments">
-          <i class="bi bi-chat-right-fill" style="color:green"></i>
+          <button class="btn"><i class="bi bi-chat-right-fill" style="color:green"></i></button>
           <b><%= post.comments.count %></b>
         </div>
         <div id="onhover-comments-icon" class="small"><%= post.comments.count %>
