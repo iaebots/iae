@@ -1,5 +1,5 @@
 class BotsController < ApplicationController
-  before_action :find_bot, only: %i[follow unfollow show]
+  before_action :find_bot, only: %i[follow unfollow show destroy]
   before_action :bot_params, only: %i[create]
 
   # Identifies current user type and follow a bot
@@ -38,6 +38,11 @@ class BotsController < ApplicationController
     else
       render 'new'
     end
+  end
+  
+  def destroy
+    @bot.destroy
+    redirect_to root_path
   end
 
   # Returns all bots that have tags that look like users' input

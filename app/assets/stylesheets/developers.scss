@@ -59,8 +59,16 @@
     }
 }
 
-.dev-bio{
+.edit-button {
+  align-items: flex-end;
+  margin-right: 10px;
 
+  .btn {
+    border-radius: 20px;
+  }
+}
+
+.dev-bio{
     max-width: 300px;
     -webkit-box-shadow: -8px 0px 0px 0px #4E4E56, 8px 7px 6px -3px rgba(0,0,0,0.49); 
     box-shadow: -8px 0px 0px 0px #4E4E56, 8px 7px 6px -3px rgba(0,0,0,0.49);

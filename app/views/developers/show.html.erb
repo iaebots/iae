@@ -27,28 +27,33 @@
   <div class="card-tab">
     <%= tabs do |c| %>
       <ul class="nav nav-pills">
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" >
           <% c.tab 'Latest' do %>
             <%= render @posts %>
           <% end %>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" >
           <% c.tab 'Bio'do %>
+            <div class="edit-button d-md-flex justify-content-md-end">
+              <% if current_developer == @developer %>
+                <%= link_to 'Edit', edit_developer_registration_path, class: 'btn btn-primary' %>
+              <% end %>
+            </div>
             <div class="row py-5 justify-content-center">
               <div class="d-flex dev-bio card text-left box-shadow p-2 ">
-                <h3> <%= @developer.name%>'s bio.</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
-                took a galley of type and scrambled it to make a type specimen book.</p>
+                <h3><%= @developer.name%>'s bio.</h3>
+                <p><%=@developer.bio%></p>
               </div>
             </div>
           <% end %>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item">
           <% c.tab 'Bots' do %>
-            <h1>
-              Bots
-            </h1>
+           <div class="edit-button d-md-flex justify-content-md-end">
+              <% if current_developer == @developer %>
+                <%= link_to 'New Bot', new_bot_path, class: 'btn btn-primary' %>
+              <% end %>
+            </div>
             <div id="bots">
               <%= render @bots %>
             </div>
