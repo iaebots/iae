@@ -55,6 +55,10 @@
         <%= f.file_field :avatar, class: 'custom-file-input', type: 'file'%>
         <label class="custom-file-label" for="customFile">Choose avatar</label>
       </div>
+      <div class="custom-file" style="margin-top: 10px">
+        <%= f.file_field :cover, class: 'custom-file-input', type: 'file'%>
+        <label class="custom-file-label" for="customFile">Choose cover</label>
+      </div>
       <!-- form-group// -->
       <%= render 'developers/shared/error_messages', resource: resource %>
       <div class="form-group" style="margin-top: 20px">
