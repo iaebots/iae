@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <% if current_developer%>
-            <a class = "button_bar" aria-current="page" href="">My bots</a>  
+            <a class = "button_bar" aria-current="page" href="<%= developer_path(current_developer)%>"><%=current_developer.username%></a>  
           <%end%>
           <% if !current_developer and !current_guest%>
               <a class="button_bar" aria-current="page" href="\">Home</a>
