@@ -1,0 +1,13 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation">
+    <div role="alert" class="alert alert-danger alert-dismissable" style="margin-top: 20px">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <p><strong><%= pluralize(resource.errors.count, 'error') %> found</strong></p>
+      <ul class="list-group">
+        <% resource.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

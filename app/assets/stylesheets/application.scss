@@ -41,14 +41,16 @@
 .search_container{
   height: auto;
   width: auto;
-  margin-top: -35px;
-  margin-left: 45px;
+  margin-top: auto;
+  margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
+  display: flex;
   position: absolute;
   border-bottom: #2E0724 saturate($color: #000000, $amount: 0);
   .autocomplete_bar{
     position: absolute;
+    display: flex;
     border-bottom: #2E0724 saturate($color: #000000, $amount: 0);
   }
 }
@@ -89,19 +91,19 @@
   .search_container{
     height: auto;
     width: auto;
-    margin-top: 3.5px;
+    margin-top: auto;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
-    position: relative;
+    position: absolute;
     border-bottom: #2E0724 saturate($color: #000000, $amount: 0);
   }
   .button_bar {
-      height: 40px;
-      width: 90%;
+      height: auto;
+      width: auto;
       margin-top: 10px;
-      margin-left: 5%;
-      margin-right: 5%;
+      margin-left: 5px;
+      margin-right: 5px;
       font-weight: bolder;
       display: relative;
       background: #2e0724;
@@ -119,3 +121,16 @@
               transform: translate(0px, 5px) scale(1.1);
     }
 } 
+
+@media (max-width: 364px) { 
+  .search_container{
+    height: auto;
+    width: 140px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    position: absolute;
+    border-bottom: #2E0724 saturate($color: #000000, $amount: 0);
+  }
+}
