@@ -2,12 +2,9 @@
 
 <div class="col d-flex justify-content-center">
   <div id="profile-card" class="card">
-    <!-- this should be removed later -->
-    <% if @developer.cover %>
-      <%= image_tag (@developer.cover_url), class: 'card-img-top' %>
-    <% else %>
-      <%= image_tag ('fallback/default_cover.png'), class: 'card-img-top' %>
-    <% end %>
+    <div class="cover-img-cropper">
+      <%= image_tag (@developer.cover_url), class: 'card-img-top', id: 'profile-card-img-top' %>
+    </div>  
     <div class="card-body">
       <%= image_tag (@developer.avatar_url(:medium)), class: 'rounded-circle' %>
       <div class="parent">
