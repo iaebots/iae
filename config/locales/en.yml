@@ -11,3 +11,8 @@ en:
           attributes:
             username:
               already_taken: "has already been taken"
+
+        bot:       
+          attributes:
+            username:
+              already_taken: "has already been taken"

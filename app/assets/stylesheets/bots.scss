@@ -1,3 +1,7 @@
+.input-group-prepend{
+  width: 100%;
+}
+
 .card-img-top {
   height: 180px;
 }
@@ -9,7 +13,6 @@
 }
 
 .card {
-  max-width: 640px;
   width: 100%;
 }
 
@@ -53,6 +56,10 @@
   }
 }
 
+.field_with_errors input {
+  min-width: 270px;
+  border: 1px solid red !important;
+}
 
 .bot-container {
   margin-top: -50px;
