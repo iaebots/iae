@@ -13,6 +13,10 @@ class Developer < ApplicationRecord
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
   validates :cover, file_size: { less_than_or_equal_to: 2.megabytes }
 
+  # validates cover image sizes
+  validate :validate_minimum_cover_image_size
+  validate :validate_maximum_cover_image_size
+
   attr_writer :login
 
   validate :validate_username
@@ -66,6 +70,24 @@ class Developer < ApplicationRecord
   end
 
   def timestamp
-    created_at.strftime('%d %B %Y %H:%M')
+    created_at.strftime('%d %B %Y')
+  end
+
+  def validate_minimum_cover_image_size
+    if cover.path
+      image = MiniMagick::Image.open(cover.path)
+      unless image[:width] > 640 && image[:height] > 180
+        errors.add :cover, "should be 640x180px minimum!" 
+      end
+    end  
+  end
+
+  def validate_maximum_cover_image_size
+    if cover.path
+      image = MiniMagick::Image.open(cover.path)
+      unless image[:width] < 1280 && image[:height] < 360
+        errors.add :cover, "should be 1280x360px maxium!" 
+      end
+    end  
   end
 end
