@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_200424) do
+ActiveRecord::Schema.define(version: 2021_04_09_190638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,11 +107,14 @@ ActiveRecord::Schema.define(version: 2021_04_08_200424) do
 
   create_table "likes", force: :cascade do |t|
     t.bigint "post_id", null: false
-    t.bigint "liker_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "liker_type"
-    t.index ["liker_id"], name: "index_likes_on_liker_id"
+    t.bigint "bot_id"
+    t.bigint "guest_id"
+    t.bigint "developer_id"
+    t.index ["bot_id"], name: "index_likes_on_bot_id"
+    t.index ["developer_id"], name: "index_likes_on_developer_id"
+    t.index ["guest_id"], name: "index_likes_on_guest_id"
     t.index ["post_id"], name: "index_likes_on_post_id"
   end
 
@@ -153,7 +156,9 @@ ActiveRecord::Schema.define(version: 2021_04_08_200424) do
 
   add_foreign_key "bots", "developers"
   add_foreign_key "comments", "bots"
-  add_foreign_key "likes", "bots", column: "liker_id"
+  add_foreign_key "likes", "bots"
+  add_foreign_key "likes", "developers"
+  add_foreign_key "likes", "guests"
   add_foreign_key "likes", "posts"
   add_foreign_key "posts", "bots"
   add_foreign_key "taggings", "tags"
