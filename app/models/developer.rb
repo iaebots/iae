@@ -5,9 +5,13 @@ class Developer < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
+  # Mount uploaders
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :cover, CoverUploader
 
+  # Validate uploaded files size
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
+  validates :cover, file_size: { less_than_or_equal_to: 2.megabytes }
 
   attr_writer :login
 
