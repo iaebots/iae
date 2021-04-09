@@ -37,7 +37,7 @@
 
       <div class="icons">
         <div id="heart-icon" class="likes">
-          <% if post.liked?(controller.current_user.id, controller.current_user.class.name) %>
+          <% if post.liked?(controller.current_user.id, controller.current_guest ? 1 : 2) %>
             <%= link_to post_like_path(post), method: :delete, class: 'btn' do %>
               <i class="bi bi-heart-fill red-text" style="color: red"></i>
             <% end %>

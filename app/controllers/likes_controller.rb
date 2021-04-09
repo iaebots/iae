@@ -6,7 +6,11 @@ class LikesController < ApplicationController
   # like post or unlike it if it's already liked
   def create
     if !already_liked?
-      @post.likes.create(liker_id: current_user.id, liker_type: current_user.class.name)
+      if current_guest
+        @post.likes.create(guest_id: current_user.id)
+      else
+        @post.likes.create(developer_id: current_user.id)
+      end
     end
     redirect_back fallback_location: root_path
   end
@@ -24,12 +28,19 @@ class LikesController < ApplicationController
   end
 
   def find_like
-    @like = @post.likes.find_by(liker_id: current_user.id, liker_type: current_user.class.name)
+    if current_guest
+      @like = @post.likes.find_by(guest_id: current_user.id)
+    else
+      @like = @post.likes.find_by(developer_id: current_user.id)
+    end
   end
 
   def already_liked?
-    Like.where(liker_id: current_user.id, post_id: params[:post_id], 
-        liker_type: current_user.class.name).exists?
+    if current_guest
+      Like.where(guest_id: current_user.id, post_id: params[:post_id]).exists?
+    else
+      Like.where(developer_id: current_user.id, post_id: params[:post_id]).exists?
+    end
   end
 
   # check if there is a current user
