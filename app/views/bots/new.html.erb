@@ -1,15 +1,13 @@
+
 <div class="card bg-light">
   <article class="card-body mx-auto" style="max-width: 350px;">
     <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="", width="250", height="350">
   <% if current_developer %>
-    <div class="container">
-      <div class="row h-100 justify-content-center align-items-center">
-        
         <%= form_for @bot do |b| %>
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">
-                <i class="fa fa-user"></i>
+                <i class="bi bi-person-fill"></i>
               </span>
               <%= b.text_field :name , placeholder: 'Name', class: 'form-control', type: 'Name', required: true%>
             </div>
@@ -17,23 +15,16 @@
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">
-               <i class="far fa-user"></i>
+               <i class="bi bi-person"></i>
               </span>
               <%= b.text_field :username , placeholder: 'Username', class: 'form-control', type: 'Usernamer', required: true%>
             </div>
           </div>  
+  
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">
-                <i class="bi bi-book-fill"></i>
-              </span>
-              <%= b.text_field :bio , placeholder: 'Bio', class: 'form-control', type: 'Bio', required: true%>
-            </div>
-          </div> 
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="bi bi-tags-fill"></i>
+                <i class="bi bi-tag-fill"></i>
               </span>
               <%= b.text_field :tag_list , placeholder: 'Tags', class: 'form-control', type: 'tags', required: true%>
             </div>
@@ -41,22 +32,30 @@
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">
-                <i class="bi bi-card-image"></i>
+                <i class="bi bi-book-fill"></i>
               </span>
+              <%= b.text_area :bio , placeholder: 'Bio', class:'form-control' , type: 'Bio', required: true%>
+            </div>
+          </div> 
+          <div class="form-group input-group">
+            <span class="input-group-text">
+              <i class="bi bi-card-image"></i>
+            </span>
+            <div class = "custom-file">
               <%= b.file_field :avatar, class: 'custom-file-input', type: 'file'%>
-                <label class="custom-file-label" for="customFile">Choose avatar</label>
-                <%= b.hidden_field :developer_id, value: current_developer.id %>
+              <label class="custom-file-label" for="customFile">Choose avatar</label>
             </div>
           </div>    
           <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="bi bi-card-image"></i>
-              </span>
-                <label class="custom-file-label" for="customFile">Choose cover</label>
-                <%= b.file_field :cover, class: 'custom-file-input', type: 'file'%>
-            </div>
+            <span class="input-group-text">
+              <i class="bi bi-image-alt"></i>
+            </span>
+            <div class = "custom-file">
+              <%= b.file_field :cover, class: 'custom-file-input', type: 'file'%>
+              <label class="custom-file-label" for="customFile">Choose cover</label> 
+            </div>        
           </div>   
+          <%= b.hidden_field :developer_id, value: current_developer.id %>
           <%= b.submit class: 'btn btn-primary btn-block'%> 
         <% end %>
       <% if @bot.errors.any? %>
@@ -66,10 +65,7 @@
           <%= message_error %></li>
         <% end %>
         </ul>
-      
       <% end %>
-    </div>
-    </div>
   <% else %>
   <% controller.redirect_to :controller => 'posts' %><% end %>
   </article>
