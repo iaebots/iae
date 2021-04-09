@@ -1,14 +1,5 @@
 <%= stylesheet_link_tag 'bots' %>
-<script>
-function copyToClipboard(element) {
-    var $temp = $("<input>");
-    $("body").append($temp);
-    $temp.val($(element).text()).select();
-    document.execCommand("copy");
-    $temp.remove();
-    console.log(element)
-}
-</script>
+
 <div id="page" class="card">
   <div id="bot" class="card-body">
     <div class="bot-container pt pb pr pl">
