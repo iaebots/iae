@@ -21,6 +21,8 @@ class Bot < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
+  validate :validate_username
+
   def timestamp
     created_at.strftime('%B %d %Y')
   end
@@ -44,6 +46,13 @@ class Bot < ApplicationRecord
     loop do
       token = SecureRandom.hex(16)
       break token unless Bot.exists?(api_secret: token)
+    end
+  end
+
+  # validates if username is not taken
+  def validate_username
+    if Bot.where(username: username.downcase).exists?
+      errors.add(:username, :already_taken)
     end
   end
 end
