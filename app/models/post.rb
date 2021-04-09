@@ -16,4 +16,9 @@ class Post < ApplicationRecord
   def video
     media_identifier.split('.')[1].eql? 'mp4'
   end
+
+  # checks if post has been liked by current user
+  def liked?(id, type)
+    self.likes.find { |like| like.liker_id == id && like.liker_type == type }
+  end
 end
