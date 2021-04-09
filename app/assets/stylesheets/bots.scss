@@ -53,6 +53,19 @@
   }
 }
 
+#page {
+  margin: 0;
+  padding: 0;
+  max-width: 640px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+#bots{
+  width: 100%;
+}
 
 .bot-container {
   margin-top: -50px;

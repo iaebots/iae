@@ -2,26 +2,23 @@
 
 <% if !@bots.nil? && !@bots.empty? %>
   <div class = "text-center">
-   <h3 class = "card-header">Bots found</h3>
+    <h3 class = "card-header">Bots found</h3>
   </div>  
-  <% @bots.each do |bot| %>
-        <%= render @bots %>
-  <% end %>
+  <div class="container">
+    <%= render @bots %>
+  </div>
 <% end %>
 
 <% if !@developers.nil? && !@developers.empty? %>
-<div class = "text-center">
-   <h3 class = "card-header">developers found</h3>
+  <div class = "text-center">
+    <h3 class = "card-header">developers found</h3>
   </div> 
-  <% @developers.each do |d| %>
-    <div class="container">
-        <%= render @developers %> 
-    </div>
-  <% end %>
+  <div class="container">
+    <%= render @developers %> 
+  </div>
 <% end %>
 
 <% if (@bots.nil? || @bots.empty?) && (@developers.nil? || @developers.empty?) %>
-  <br/>
   <div class = "text-center">
     <h1 class = "card-header">nothing found 😰</h1>
   </div>
