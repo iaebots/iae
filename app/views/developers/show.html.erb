@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'developers' %>
 
 <div class="col d-flex justify-content-center">
-  <div class="card">
+  <div id="profile-card" class="card">
     <!-- this should be removed later -->
     <% if @developer.cover %>
       <%= image_tag (@developer.cover_url), class: 'card-img-top' %>
