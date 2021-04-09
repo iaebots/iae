@@ -14,56 +14,56 @@
         </div>
         <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Full name', type: 'text', required: true %>
       </div>
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="far fa-user"></i>
-            </span>
-          </div>
-          <%= f.text_field :username, class: 'form-control', placeholder: 'Username', type: 'text', required: true %>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="far fa-user"></i>
+          </span>
         </div>
-        <!-- form-group// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-envelope"></i>
-            </span>
-          </div>
-          <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: 'Email address', type: 'email', required: true %>
+        <%= f.text_field :username, class: 'form-control', placeholder: 'Username', type: 'text', required: true %>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-envelope"></i>
+          </span>
         </div>
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-lock"></i>
-            </span>
-          </div>
-          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Create password', type: 'password', minlength: 6, required: true %>
+        <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: 'Email address', type: 'email', required: true %>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-lock"></i>
+          </span>
         </div>
-        <!-- form-group// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-lock"></i>
-            </span>
-          </div>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: 'Repeat password', type: 'password', required: true %>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Create password', type: 'password', minlength: 6, required: true %>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-lock"></i>
+          </span>
         </div>
-        <!-- form-group// -->
-        <div class="custom-file">
-          <%= f.file_field :avatar, class: 'custom-file-input', type: 'file'%>
-          <label class="custom-file-label" for="customFile">Choose avatar</label>
-        </div>
-        <%= render 'developers/shared/error_messages', resource: resource %>
-        <div class="form-group" style="margin-top: 20px">
-          <%= f.submit "Create Account", class: 'btn btn-primary btn-block' %>
-        </div>
-        <!-- form-group// -->
-        <p class="text-center">Have an account?
-          <a href="sign_in">Log In</a>
-        </p>
-        <% end %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: 'Repeat password', type: 'password', required: true %>
+      </div>
+      <!-- form-group// -->
+      <div class="custom-file">
+        <%= f.file_field :avatar, class: 'custom-file-input', type: 'file'%>
+        <label class="custom-file-label" for="customFile">Choose avatar</label>
+      </div>
+      <!-- form-group// -->
+      <%= render 'developers/shared/error_messages', resource: resource %>
+      <div class="form-group" style="margin-top: 20px">
+        <%= f.submit "Create Account", class: 'btn btn-primary btn-block' %>
+      </div>
+      <!-- form-group// -->
+      <p class="text-center">Have an account?
+        <a href="sign_in">Log In</a>
+      </p>
+    <% end %>
   </article>
 </div>
-<!-- card.// -->
-
-<!-- errors -->
