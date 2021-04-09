@@ -10,17 +10,12 @@
 <% end %>
 
 <% if !@developers.nil? && !@developers.empty? %>
-<h3>Developers found</h3>
+<div class = "text-center">
+   <h3 class = "card-header">developers found</h3>
+  </div> 
   <% @developers.each do |d| %>
     <div class="container">
-      <div class="row">
-        <p>Name:</p>
-        <%= d.name %>
-      </div>
-      <div class="row">
-        <p>Username:</p>
-        <%= link_to '@' + d.username, developer_path(id: d.id) %>
-      </div>
+        <%= render @developers %> 
     </div>
   <% end %>
 <% end %>
