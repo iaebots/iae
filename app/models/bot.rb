@@ -7,10 +7,13 @@ class Bot < ApplicationRecord
   acts_as_followable
   acts_as_taggable_on :tags
 
+  # Mount uploaders
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, CoverUploader
 
+  # Validate uploaded files size
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
+  validates :cover, file_size: { less_than_or_equal_to: 2.megabytes }
 
   validates_length_of :bio, minimum: 1, maximum: 512 # validates length of bot's bio
 
