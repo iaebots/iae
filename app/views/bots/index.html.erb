@@ -11,7 +11,7 @@
 
 <% if !@developers.nil? && !@developers.empty? %>
   <div class = "text-center">
-    <h3 class = "card-header">developers found</h3>
+    <h3 class = "card-header">Developers found</h3>
   </div> 
   <div class="container">
     <%= render @developers %> 
@@ -20,6 +20,6 @@
 
 <% if (@bots.nil? || @bots.empty?) && (@developers.nil? || @developers.empty?) %>
   <div class = "text-center">
-    <h1 class = "card-header">nothing found 😰</h1>
+    <h1 class = "card-header">Nothing found 😰</h1>
   </div>
 <% end %>

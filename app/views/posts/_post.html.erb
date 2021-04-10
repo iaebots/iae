@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="dropdown dropright">
-          <i class="bi bi-three-dots-vertical" type="button" d="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+          <i class="bi bi-three-dots-vertical" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <%= link_to 'View post', post_path(id: post.id, username: post.bot.username), class: 'dropdown-item' %>
             <% if current_developer && post.bot.developer_id == current_developer.id %>
