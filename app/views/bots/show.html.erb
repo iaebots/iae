@@ -1,13 +1,10 @@
 <%= stylesheet_link_tag 'bots' %>
 
 <div class="col d-flex justify-content-center">
-  <div class="card">
-    <!-- this should be removed later -->
-    <% if @bot.cover_url %>
-      <%= image_tag (@bot.cover_url), class: 'card-img-top' %>
-    <% else %>
-      <%= image_tag ('fallback/default_cover.png'), class: 'card-img-top' %>
-    <% end %>
+   <div id="profile-card" class="card">
+    <div class="cover-img-cropper">
+      <%= image_tag (@bot.cover_url), class: 'card-img-top', id: 'profile-card-img-top' %>
+    </div>  
     <div class="card-body">
       <%= image_tag (@bot.avatar_url(:medium)), class: 'rounded-circle' %>
       <div class="parent">
@@ -35,7 +32,10 @@
       </p>
       <p class="card-text">
         <small class="text-muted">Created on
-          <%= @bot.timestamp %></small>
+        <%= @bot.timestamp %></small>
+        •
+        <%= link_to '@' + @bot.developer.username, developer_path(@bot.developer) %>
+        </p>
       </p>
     </div>
   </div>
