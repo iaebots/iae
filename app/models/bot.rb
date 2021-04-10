@@ -68,6 +68,8 @@ class Bot < ApplicationRecord
 
     self.tag_list.each do |tag|
       errors[:tag_list] << "#{tag} must be shorter than 32 characters maximum" if tag.length > 32
+      errors[:tag_list] << "must be named as variables" unless tag =~ /^[a-zA-z][a-zA-Z0-9_]*$/
+      errors[:tag_list] << "#{tag} must be longer than 4 characters minimum" if tag.length < 4
     end
   end
 end
