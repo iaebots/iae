@@ -45,4 +45,8 @@ class PagesController < ApplicationController
   def report
   
   end
+  
+  def rules
+
+  end  
 end

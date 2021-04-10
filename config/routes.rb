@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   get 'report', to: 'pages#report'
   resources :developers, only: %i[show]
   resource :autocomplete, only: %i[show]
+  get 'rules', to: 'pages#rules'
 end

@@ -112,6 +112,14 @@
       .form_container {
           margin-top: 100px;
       }
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+      }
     /*  .login_btn {   //change collor icons before box text
           width: 100%;
           background: #e9ecef !important;
