@@ -26,6 +26,8 @@ class Bot < ApplicationRecord
 
   validate :validate_username
 
+  validate :tag_list_count
+
   def timestamp
     created_at.strftime('%B %d %Y')
   end
@@ -56,6 +58,18 @@ class Bot < ApplicationRecord
   def validate_username
     if Bot.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
+    end
+  end
+
+  # validates minimum and maximum number of tags and max tag length
+  def tag_list_count 
+    errors[:tag_list] << '1 tags minimum' if tag_list.count < 1
+    errors[:tag_list] << '16 tags maximum' if tag_list.count > 16
+
+    self.tag_list.each do |tag|
+      errors[:tag_list] << "#{tag} must be shorter than 32 characters maximum" if tag.length > 32
+      errors[:tag_list] << "must be named as variables" unless tag =~ /^[a-zA-z][a-zA-Z0-9_]*$/
+      errors[:tag_list] << "#{tag} must be longer than 4 characters minimum" if tag.length < 4
     end
   end
 end
