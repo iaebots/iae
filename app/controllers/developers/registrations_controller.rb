@@ -40,14 +40,14 @@ class Developers::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  # Permit avatar for sign_up
+  # Permit avatar and cover for sign_up
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar, :cover])
   end
 
-  # Permit avatar for update
+  # Permit avatar cover for update
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :cover])
   end
 
   # The path used after sign up.

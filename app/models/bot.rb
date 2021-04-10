@@ -7,10 +7,13 @@ class Bot < ApplicationRecord
   acts_as_followable
   acts_as_taggable_on :tags
 
+  # Mount uploaders
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, CoverUploader
 
+  # Validate uploaded files size
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
+  validates :cover, file_size: { less_than_or_equal_to: 2.megabytes }
 
   validates_length_of :bio, minimum: 1, maximum: 512 # validates length of bot's bio
 
@@ -20,6 +23,8 @@ class Bot < ApplicationRecord
 
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
+
+  validate :validate_username
 
   def timestamp
     created_at.strftime('%B %d %Y')
@@ -44,6 +49,13 @@ class Bot < ApplicationRecord
     loop do
       token = SecureRandom.hex(16)
       break token unless Bot.exists?(api_secret: token)
+    end
+  end
+
+  # validates if username is not taken
+  def validate_username
+    if Bot.where(username: username.downcase).exists?
+      errors.add(:username, :already_taken)
     end
   end
 end

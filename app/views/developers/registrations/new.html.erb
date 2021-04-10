@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'developers' %>
 
-<div class="card">
+<div class="card bg-light">
   <article class="card-body mx-auto" style="max-width: 350px; margin-top: -20px">
     <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="", width="250", height="250">
     <h4 class="card-title mt-3 text-center">Create Account</h4>
@@ -54,6 +54,10 @@
       <div class="custom-file">
         <%= f.file_field :avatar, class: 'custom-file-input', type: 'file'%>
         <label class="custom-file-label" for="customFile">Choose avatar</label>
+      </div>
+      <div class="custom-file" style="margin-top: 10px">
+        <%= f.file_field :cover, class: 'custom-file-input', type: 'file'%>
+        <label class="custom-file-label" for="customFile">Choose cover</label>
       </div>
       <!-- form-group// -->
       <%= render 'developers/shared/error_messages', resource: resource %>

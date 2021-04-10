@@ -1,3 +1,7 @@
+.input-group-prepend{
+  width: 100%;
+}
+
 .card-img-top {
   height: 180px;
 }
@@ -9,7 +13,6 @@
 }
 
 .card {
-  max-width: 640px;
   width: 100%;
 }
 
@@ -65,6 +68,11 @@
 
 #bots{
   width: 100%;
+}
+
+.field_with_errors input {
+  min-width: 270px;
+  border: 1px solid red !important;
 }
 
 .bot-container {
@@ -123,4 +131,15 @@
 .center_objects{
   display: flex;
   object-position: center;
+}
+
+.dropdown {
+  color: black;
+  float: right;
+  display: inline-block;
+  padding-top: 8px;
+  margin-right: -18px;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 20px;
 }

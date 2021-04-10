@@ -15,7 +15,7 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
-  process resize_to_fit: [780, 180]
+  # process resize_to_fit: [780, 180]
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   def extension_allowlist

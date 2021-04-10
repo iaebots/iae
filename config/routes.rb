@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
   resources :bots, only: %i[destroy], path: '/:id'
-
+  get 'report', to: 'pages#report'
   resources :developers, only: %i[show]
   resource :autocomplete, only: %i[show]
 end

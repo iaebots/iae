@@ -34,7 +34,7 @@
     justify-content: space-between;
   }
   
-  .developer-name {
+  .dev-name {
     margin-left: 10px;
   
     p {
@@ -54,18 +54,18 @@
   }
   
   
-  .developer-container {
+  .dev-container {
     margin-top: -50px;
     box-sizing: border-box;
   }
   
-  .developer {
+  .dev {
     width: 100%;
     margin-top: 53px;
     box-sizing: border-box;
   }
   
-  #developer .developer img {
+  #dev .dev img {
     width: 54px;
     height: 54px;
     object-fit: cover;
@@ -85,20 +85,20 @@
     margin-left: 10px;
   }
   
-  .developer .name {
+  .dev .name {
     font-size: 15px;
     font-weight: 700;
     margin-bottom: 3px;
   }
   
-  .developer .handle {
+  .dev .handle {
     font-size: 15px;
     font-weight: 400;
     color: #8a9ba8;
     margin-top: -5px;
   }
   
-  .developer-content {
+  .dev-content {
     width: 100%;
     display: inline-block;
     font-size: 17px;
