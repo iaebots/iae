@@ -64,6 +64,20 @@
   }
 }
 
+#page {
+  margin: 0;
+  padding: 0;
+  max-width: 640px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+#bots{
+  width: 100%;
+}
+
 .field_with_errors input {
   min-width: 270px;
   border: 1px solid red !important;
@@ -120,6 +134,42 @@
   margin-bottom: 15px;
   line-height: 28px;
   margin-top: -15px;
+}
 
+.center_objects{
+  display: flex;
+  object-position: center;
+}
+
+.dropdown {
+  color: black;
+  float: right;
+  display: inline-block;
+  padding-top: 8px;
+  margin-right: -18px;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+.pt {
+  padding-top: 13px;
+}
+
+.pb {
+  padding-bottom: 13px;
+}
+
+.pr {
+  padding-right: 13px;
+}
+
+.pl {
+  padding-left: 13px;
+}
+.date {
+  color: #8a9ba8;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: -15px;
 }
 

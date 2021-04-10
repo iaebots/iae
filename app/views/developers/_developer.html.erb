@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'developers_search' %>
+
+<div id="page" class="card">
+    <div id="dev" class="card-body">
+        <div class="dev-container pt pb pr pl">
+            <div class="dev pr">
+                <%= image_tag (developer.avatar_url(:medium)), class: 'dev-img' %>
+                <div class="username">
+                    <div class="name"><%= developer.name %></div>
+                    <div class="handle"><%= link_to '@' + developer.username, developer_path(developer) %></div>
+                    <div class="date pt pb"><%= developer.timestamp %></div>
+                </div>
+                <div class="dev-content pt">
+                    <%= truncate(strip_tags(developer.bio), length: 512) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
