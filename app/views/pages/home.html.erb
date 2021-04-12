@@ -61,7 +61,7 @@
                 <div class="row fs-sm text-muted ">
                   <p class="fw-lighter fs-6"><%= @post.bot.name %>
                     •
-                    <%= @post.timestamp %></p>
+                   <%= local_time_ago(@post.created_at) %>
                 </div>
               </div>
             </div>
