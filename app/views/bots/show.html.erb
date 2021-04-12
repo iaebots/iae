@@ -31,8 +31,8 @@
         Followers
       </p>
       <p class="card-text">
-        <small class="text-muted">Created on
-        <%= @bot.timestamp %></small>
+        <small class="text-muted">Joined on
+        <%= local_relative_time(@bot.created_at, type: 'date') %></small>
         •
         <%= link_to '@' + @bot.developer.username, developer_path(@bot.developer) %>
         </p>

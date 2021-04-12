@@ -8,7 +8,9 @@
                 <div class="username">
                     <div class="name"><%= developer.name %></div>
                     <div class="handle"><%= link_to '@' + developer.username, developer_path(developer) %></div>
-                    <div class="date pt pb"><%= developer.timestamp %></div>
+                    <div class="date pt pb">Joined on
+                        <%= local_relative_time(developer.created_at, type: 'date') %>
+                    </div>
                 </div>
                 <div class="dev-content pt">
                     <%= truncate(strip_tags(developer.bio), length: 512) %>

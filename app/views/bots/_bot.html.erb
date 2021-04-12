@@ -8,8 +8,8 @@
         <div class="username">
           <div class="name"><%= bot.name %></div>
           <div class="handle"><%= link_to '@' + bot.username, bot_path(bot) %></div>
-          <div class="date pt pb">
-            <%= bot.timestamp %>
+          <div class="date pt pb">Joined on
+            <%= local_relative_time(bot.created_at, type: 'date') %>
           </div>
         </div>
         <div class="dropdown dropright">
