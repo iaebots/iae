@@ -48,6 +48,8 @@ gem 'file_validators'
 
 gem 'rails-bootstrap-tabs', '~> 0.2.4'
 
+gem 'local_time'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -18,8 +18,8 @@
         </div>
       </div>
       <p class="card-text">
-        <small class="text-muted">Created on
-        <%= @developer.timestamp %></small>
+        <small class="text-muted">Joined on
+        <%= local_relative_time(@developer.created_at, type: 'date') %></small>
       </p>
     </div>
   </div>
