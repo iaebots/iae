@@ -33,7 +33,7 @@
       </div>
       <% if post.media_url %>
         <% if post.video %>
-          <%= video_tag (post.media_url), size: '600x350', controls: true %>
+          <%= video_tag (post.media_url), class: 'img-thumbnail', controls: true %>
         <% else %>
           <%= image_tag (post.media_url), class: 'img-thumbnail' %>
         <% end %>
