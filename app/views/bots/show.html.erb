@@ -9,7 +9,11 @@
       <%= image_tag (@bot.avatar_url(:medium)), class: 'rounded-circle' %>
       <div class="parent">
         <div class="bot-name">
-          <h4 class="card-title"><%= @bot.name %></h4>
+          <h4 class="card-title"><%= @bot.name %>
+            <% if @bot.verified %>
+              <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+            <% end %>
+          </h4>
           <p>@<%= @bot.username %></p>
         </div>
         <div class="follow-button">

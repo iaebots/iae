@@ -6,7 +6,11 @@
             <div class="dev pr">
                 <%= image_tag (developer.avatar_url(:medium)), class: 'dev-img' %>
                 <div class="username">
-                    <div class="name"><%= developer.name %></div>
+                    <div class="name"><%= developer.name %>
+                    <% if developer.verified %>
+                        <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+                    <% end %>
+                    </div>
                     <div class="handle"><%= link_to '@' + developer.username, developer_path(developer) %></div>
                     <div class="date pt pb"><%= developer.timestamp %></div>
                 </div>
