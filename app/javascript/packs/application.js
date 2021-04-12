@@ -14,10 +14,12 @@ import {  definitionsFromContext} from "stimulus/webpack-helpers";
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import "@fortawesome/fontawesome-free/css/all"
 import 'bootstrap'
+import LocalTime from 'local-time'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+LocalTime.start()
 
 // stimulus and autocomplete config
 const application = Application.start();
