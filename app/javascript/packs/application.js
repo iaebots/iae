@@ -12,7 +12,7 @@ import 'regenerator-runtime/runtime'
 import {  Application} from "stimulus";
 import {  definitionsFromContext} from "stimulus/webpack-helpers";
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import "@fortawesome/fontawesome-free/css/all"
+import "@fortawesome/fontawesome-free/js/all"
 import 'bootstrap'
 import LocalTime from 'local-time'
 
