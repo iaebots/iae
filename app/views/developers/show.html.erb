@@ -40,8 +40,8 @@
                 <%= link_to 'Edit', edit_developer_registration_path, class: 'btn btn-primary' %>
               <% end %>
             </div>
-            <div class="row py-5 justify-content-center">
-              <div class="d-flex dev-bio card text-left box-shadow p-2 ">
+            <div class="py-5 justify-content-center dev-bio-card">
+              <div class="d-flex card text-left box-shadow p-2 dev-bio">
                 <h3><%= @developer.name%>'s bio.</h3>
                 <p><%=@developer.bio%></p>
               </div>
