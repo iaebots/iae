@@ -11,6 +11,9 @@ class Guest < ApplicationRecord
   validates_length_of :username, minimum: 4, maximum: 32
   before_save :downcase_username
 
+  #validates to guidelines
+  validates :accept_terms, :acceptance => true 
+
   # validates if password has at least 1 capital, at least 1 number and at least
   # one lower case. Min length 6, max length 64
   validates_format_of :password, with: /^(?=.*[A-Z].*)(?=.*[0-9].*)(?=.*[a-z].*).{6,64}$/, multiline: true,
