@@ -41,7 +41,6 @@
         </div>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: 'Repeat password', type: 'password', required: true %>
       </div>
-    
       <div class = 'col'>
         <label class="container-checkbox">  I accept the <%=link_to 'guidelines', href = "/rules"%>
         <%=f.check_box :accept_terms, required: true , class: 'container-checkbox'%>
@@ -49,14 +48,13 @@
       </label>
       </div>
       <!-- form-group// -->
-      <p class="text-center">Have an account? 
-        <a href="sign_in">Log In</a>
-      </p>
-        <!-- form-group// -->
       <%= render "guests/shared/error_messages", resource: resource %>
       <div class="form-group" style="margin-top: 20px">
         <%= f.submit "Create Account", class: 'btn btn-primary btn-block' %>
       </div>
+      <p class="text-center">Have an account? 
+        <a href="sign_in">Log In</a>
+      </p>
   <% end %>
   </article>
 </div>
