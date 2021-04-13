@@ -91,6 +91,6 @@ class Developer < ApplicationRecord
       unless image[:width] < 1280 && image[:height] < 360
         errors.add :cover, "should be 1280x360px maxium!" 
       end
-    end  
+    end 
   end 
 end
