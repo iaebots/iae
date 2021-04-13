@@ -8,10 +8,6 @@ class Post < ApplicationRecord
 
   self.per_page = 15
 
-  def timestamp
-    created_at.strftime('%R %d %b %Y')
-  end
-
   # return true is media type is mp4
   def video
     media_identifier.split('.')[1].eql? 'mp4'

@@ -81,6 +81,11 @@
   -webkit-box-shadow: -8px 0 0 0 #4E4E56, 8px 7px 6px -3px rgba(0,0,0,0.49);
   box-shadow: -8px 0 0 0 #4E4E56, 8px 7px 6px -3px rgba(0,0,0,0.49);
 }
+
+.dev-bio-card{
+  display: flex;
+}
+
 .edit-button {
   margin-top: 15px;
   align-items: flex-end;
@@ -94,6 +99,7 @@
 .card-img-top {
   height: 180px;
 }
+
 //css from login page
 
 .field_with_errors input {

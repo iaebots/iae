@@ -72,10 +72,6 @@ class Developer < ApplicationRecord
     end
   end
 
-  def timestamp
-    created_at.strftime('%d %B %Y')
-  end
-
   def validate_minimum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)

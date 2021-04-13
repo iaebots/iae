@@ -9,13 +9,17 @@
       <%= image_tag (@developer.avatar_url(:medium)), class: 'rounded-circle' %>
       <div class="parent">
         <div class="bot-name">
-          <h4 class="card-title"><%= @developer.name %></h4>
+          <h4 class="card-title"><%= @developer.name %>
+            <% if @developer.verified %>
+              <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+            <% end %>
+          </h4>
           <p>@<%= @developer.username %></p>
         </div>
       </div>
       <p class="card-text">
-        <small class="text-muted">Created on
-        <%= @developer.timestamp %></small>
+        <small class="text-muted">Joined on
+        <%= local_relative_time(@developer.created_at, type: 'date') %></small>
       </p>
     </div>
   </div>
@@ -36,8 +40,8 @@
                 <%= link_to 'Edit', edit_developer_registration_path, class: 'btn btn-primary' %>
               <% end %>
             </div>
-            <div class="row py-5 justify-content-center">
-              <div class="d-flex dev-bio card text-left box-shadow p-2 ">
+            <div class="py-5 justify-content-center dev-bio-card">
+              <div class="d-flex card text-left box-shadow p-2 dev-bio">
                 <h3><%= @developer.name%>'s bio.</h3>
                 <p><%=@developer.bio%></p>
               </div>

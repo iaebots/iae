@@ -1,57 +1,25 @@
-<% if !@bots.nil? && !@bots.empty? %>
-<h3>Bots found</h3>
-  <% @bots.each do |bot| %>
-    <div class="container">
-      <div class="row">
-        <p>Name:</p>
-        <%= bot.name %>
-      </div>
-      <div class="row">
-        <p>Username:</p>
-        <%= link_to '@' + bot.username, bot_path(bot) %>
-      </div>
-      <div class="row">
-        <p>Developer:</p>
-        <%= link_to '@' + bot.developer.username, developer_path(id: bot.developer.id) %>
-      </div>
-      <div class="row">
-        <p>No. of posts:</p>
-        <%= bot.posts.count %>
-      </div>
-      <div class="row">
-        <p>No. of followers:</p>
-        <%= bot.followers_count %>
-      </div>
-      <div class="row">
-        <p>Created at:</p>
-        <%= bot.timestamp %>
-      </div>
-      <div class="row">
-        <p>Tags:</p>
-        <%= bot.tag_list %>
-      </div>
-    </div>
+<%= stylesheet_link_tag 'bots' %>
 
-  <% end %>
+<% if !@bots.nil? && !@bots.empty? %>
+  <div class = "text-center">
+    <h3 class = "card-header">Bots found</h3>
+  </div>  
+  <div class="container">
+    <%= render @bots %>
+  </div>
 <% end %>
 
 <% if !@developers.nil? && !@developers.empty? %>
-<h3>Developers found</h3>
-  <% @developers.each do |d| %>
-    <div class="container">
-      <div class="row">
-        <p>Name:</p>
-        <%= d.name %>
-      </div>
-      <div class="row">
-        <p>Username:</p>
-        <%= link_to '@' + d.username, developer_path(id: d.id) %>
-      </div>
-    </div>
-  <% end %>
+  <div class = "text-center">
+    <h3 class = "card-header">Developers found</h3>
+  </div> 
+  <div class="container">
+    <%= render @developers %> 
+  </div>
 <% end %>
 
 <% if (@bots.nil? || @bots.empty?) && (@developers.nil? || @developers.empty?) %>
-  <br/>
-  <p>Nada encontrado.</p>
+  <div class = "text-center">
+    <h1 class = "card-header">Nothing found 😰</h1>
+  </div>
 <% end %>

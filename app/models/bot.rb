@@ -28,10 +28,6 @@ class Bot < ApplicationRecord
 
   validate :tag_list_count
 
-  def timestamp
-    created_at.strftime('%B %d %Y')
-  end
-
   # Assign an API key on create
   before_create do |bot|
     bot.api_key = bot.generate_api_key
