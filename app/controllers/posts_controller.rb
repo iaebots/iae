@@ -14,6 +14,7 @@ class PostsController < ApplicationController
                               AND f.follower_id = #{current_guest.id}")
                    .paginate(page: params[:page]).order('created_at DESC')
     end
+    @bots = Bot.where(verified: true).max(5)
   end
 
   def show; end

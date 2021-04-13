@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag 'bots' %>
+<div id="page" class="card">
+    <div id="bot" class-="card-body">
+        <div class="bot-container pt pb pr pl">
+            <div class="bot pr">
+                <%= image_tag (bot.avatar_url(:medium)), class: 'bot img' %>
+                 <div class="parent">
+                    <div class="bot-name">
+                    <h4 class="card-title"><%= bot.name %>
+                        <% if bot.verified %>
+                            <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+                        <% end %>
+                    </h4>
+                    <p>@<%= bot.username %></p>
+                    </div>
+                    <div class="follow-button">
+                        <% if current_guest or current_developer %>
+                            <% if bot.followed_by?(current_guest ? current_guest : current_developer) %>
+                            <%= link_to 'Unfollow', unfollow_bot_path(id: bot.id), class: 'btn btn-primary' %>
+                            <% else %>
+                            <%= link_to 'Follow', follow_bot_path(id: bot.id), class: 'btn btn-primary' %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
