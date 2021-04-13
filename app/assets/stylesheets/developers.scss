@@ -14,8 +14,6 @@
   //margin-top: -20px;
   position: absolute;
 }
-
-  
   .col {
     margin: 0;
     padding: 0;
@@ -82,7 +80,7 @@
   max-width: 300px;
   -webkit-box-shadow: -8px 0 0 0 #4E4E56, 8px 7px 6px -3px rgba(0,0,0,0.49);
   box-shadow: -8px 0 0 0 #4E4E56, 8px 7px 6px -3px rgba(0,0,0,0.49);
-
+}
 .edit-button {
   margin-top: 15px;
   align-items: flex-end;
@@ -91,8 +89,6 @@
   .btn {
     border-radius: 20px;
   }
-}
-
 }
 
 //css from login page
@@ -108,6 +104,27 @@ html {
   padding: 0;
   height: 100%;
   background: rgb(255, 255, 255) !important;
+}
+.brand_logo_container {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    top: -75px;
+    border-radius: 50%;
+    background: rgb(255,255,255);
+    background-size: cover;
+    border: 6px solid #343a40;
+    padding: 10px;
+    text-align: center;
+}
+.brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+.form_container {
+    margin-top: 100px;
 }
 
 .text_gray {
@@ -156,13 +173,20 @@ div.user_card {
   margin-top: 100px;
 }
 
-.container {
+.date {
+  color: #8a9ba8;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: -15px;
+}
+ /* Customize the label (the container) */
+ .container-checkbox {
   display: block;
   position: relative;
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  
+  font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -170,7 +194,7 @@ div.user_card {
 }
 
 /* Hide the browser's default checkbox */
-.container input {
+.container-checkbox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -178,6 +202,7 @@ div.user_card {
   width: 0;
 }
 
+/* Create a custom checkbox */
 .checkmark {
   position: absolute;
   top: 0;
@@ -186,13 +211,14 @@ div.user_card {
   width: 25px;
   background-color: #eee;
 }
+
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.container-checkbox:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.container-checkbox input:checked ~ .checkmark {
   background-color: #2196F3;
 }
 
@@ -204,12 +230,12 @@ div.user_card {
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.container-checkbox input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.container-checkbox .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -219,4 +245,4 @@ div.user_card {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-}
+} 
