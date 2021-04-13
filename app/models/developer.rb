@@ -21,6 +21,9 @@ class Developer < ApplicationRecord
 
   validate :validate_username
 
+  # validate checkbox guidelines
+  validates :accept_terms, :acceptance => true
+
   # regex to assure username doesn't have a @
   validates_format_of :username, with: /^[a-zA-Z0-9_-]*$/, multiline: true
   validates_length_of :username, minimum: 4, maximum: 32
@@ -89,5 +92,5 @@ class Developer < ApplicationRecord
         errors.add :cover, "should be 1280x360px maxium!" 
       end
     end  
-  end
+  end 
 end
