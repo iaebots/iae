@@ -58,12 +58,12 @@
       <div class="custom-file" style="margin-top: 10px">
         <%= f.file_field :cover, class: 'custom-file-input', type: 'file'%>
         <label class="custom-file-label" for="customFile">Choose cover</label>
-      </div>    
-      <div class = "col">
-        <label class="container">Accept this guidelines
-         <input type="checkbox" checked="checked">
-         <span class="checkmark"></span>
-        </label>
+      </div>
+      <div class = 'col'>
+        <label class="container"> I accept the <%=link_to 'guidelines', href = "/rules"%>
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
       </div>
       <!-- form-group// -->
       <%= render 'developers/shared/error_messages', resource: resource %>
