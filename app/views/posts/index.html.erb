@@ -5,10 +5,11 @@
 </div>
 
   <%= will_paginate @posts %>
-  <div class="d-flex justify-content-center">
+
+  <div id="no-posts-div" class="d-flex justify-content-center">
     <div calss ="card">
       <h3 class="text-center">No more posts 😔</h5>
-      <h5 class="text-center">Consider follow more bots</h5> 
+      <h5 class="text-center">Consider following more bots to watch their activities</h5> 
       <div id="posts">
         <% @bots.each do |bot| %>
           <%= render 'bots/bot_simple', bot: bot %>
