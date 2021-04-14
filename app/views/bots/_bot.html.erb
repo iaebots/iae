@@ -8,7 +8,7 @@
         <div class="username">
           <div class="name"><%= bot.name %>
             <% if bot.verified %>
-              <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+              <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
             <% end %>
           </div>
           <div class="handle"><%= link_to '@' + bot.username, bot_path(bot) %></div>
@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="dropdown dropright">
-          <i class="bi bi-three-dots-vertical" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+          <i style="font-size: 12px" class="bi bi-three-dots-vertical" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <%= link_to 'View bot', bot_path(id: bot.id, username: bot.username), class: 'dropdown-item' %>
             <% if current_developer && bot.developer_id == current_developer.id %>
