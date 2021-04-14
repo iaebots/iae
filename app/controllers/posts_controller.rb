@@ -3,18 +3,22 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
 
   def index
-    if current_developer
-      @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
-                           WHERE f.follower_type ~* 'developer'
-                            AND f.follower_id = #{current_developer.id}")
-                   .paginate(page: params[:page]).order('created_at DESC')
-    elsif current_guest
-      @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
-                            WHERE f.follower_type ~* 'guest'
-                              AND f.follower_id = #{current_guest.id}")
-                   .paginate(page: params[:page]).order('created_at DESC')
-    end
-    @bots = Bot.where(verified: true).max(5)
+    @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
+                          WHERE f.follower_type ~* '#{current_user.class.name}'
+                          AND f.follower_id = #{current_user.id}")
+                 .paginate(page: params[:page]).order('created_at DESC')
+
+    @bots = Bot.find_by_sql("SELECT b.*
+                                FROM Bots b
+                                WHERE b.id NOT IN (
+                                          SELECT b.id
+                                          FROM Bots b JOIN Follows f
+                                          ON f.followable_id = b.id
+                                          WHERE f.follower_type ~* '#{current_user.class.name}'
+                                          AND f.follower_id = #{current_user.id}
+                                        )
+                            ORDER BY b.verified ASC
+                            LIMIT 10")
   end
 
   def show; end
