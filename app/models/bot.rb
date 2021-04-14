@@ -54,6 +54,8 @@ class Bot < ApplicationRecord
   def validate_username
     if Bot.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
+    elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists? 
+      errors.add(:username, :already_taken)
     end
   end
 
