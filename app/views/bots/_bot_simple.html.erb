@@ -27,6 +27,10 @@
                         <% end %>
                     </div>
                 </div>
+                <span class="badge badge-primary">
+                <% bot.tag_list.first(5).each do |tag| %>
+                        <%= tag %>
+                <% end %></span>
             </div>
         </div>
     </div>
