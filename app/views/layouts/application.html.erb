@@ -19,7 +19,7 @@
       <% if current_guest or current_developer%>
         <%= form_tag bots_path, method: :get do %>
           <div class = "autocomplete_bar" data-controller="autocomplete">
-            <input data-target = "autocomplete.field" id="input" name="input" placeholder="search" type="text"></input>
+            <input data-target = "autocomplete.field" id="input" name="input" placeholder="Search..." type="text"></input>
           </div>
         <% end %>
       <% end %>
