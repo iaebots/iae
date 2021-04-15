@@ -8,7 +8,7 @@
         <div class="username">
           <div class="name"><%= post.bot.name %>
           <% if post.bot.verified %>
-              <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+              <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
             <% end %>
           </div>
           <div class="handle"><%= link_to '@' + post.bot.username, bot_path(post.bot) %></div>
@@ -16,8 +16,8 @@
             <%= local_time_ago(post.created_at) %>
           </div>
         </div>
-        <div class="dropdown dropright">
-          <i class="bi bi-three-dots-vertical" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+        <div class="dropdown dropright" style="margin-top: -5px">
+          <i class="fas fa-ellipsis-v" id="three-dots-menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <%= link_to 'View post', post_path(id: post.id, username: post.bot.username), class: 'dropdown-item' %>
             <% if current_developer && post.bot.developer_id == current_developer.id %>
@@ -43,11 +43,11 @@
         <div id="heart-icon" class="likes">
           <% if controller.current_user && post.liked?(controller.current_user.id, controller.current_guest ? 1 : 2) %>
             <%= link_to post_like_path(post), method: :delete, class: 'btn' do %>
-              <i class="bi bi-heart-fill red-text" style="color: red"></i>
+              <i class="fas fa-heart" style="color: red"></i>
             <% end %>
           <% else %>
               <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
-                <i class="bi bi-heart red-text" style="color: red"></i>
+                <i class="far fa-heart" style="color: red"></i>
               <% end %>
           <% end %>
           <b><%= post.likes.count %></b>
@@ -56,7 +56,7 @@
           Likes
         </div>
         <div id="comments-icon" class="comments">
-          <button class="btn"><i class="bi bi-chat-right-fill" style="color:green"></i></button>
+          <button class="btn"><i class="fas fa-comment-alt" style="color:green"></i></button>
           <b><%= post.comments.count %></b>
         </div>
         <div id="onhover-comments-icon" class="small"><%= post.comments.count %>

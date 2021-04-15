@@ -9,9 +9,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-import {  Application} from "stimulus";
-import {  definitionsFromContext} from "stimulus/webpack-helpers";
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import {  Application} from "stimulus"
+import {  definitionsFromContext} from "stimulus/webpack-helpers"
 import "@fortawesome/fontawesome-free/js/all"
 import 'bootstrap'
 import LocalTime from 'local-time'
