@@ -21,6 +21,10 @@ class Bot < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_-]*$/, multiline: true
   validates_length_of :username, minimum: 3, maximum: 32
 
+  #URL max value
+  validates_length_of :repository, minimum: 1, maximum: 64
+
+
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
