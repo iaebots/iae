@@ -12,7 +12,7 @@
                     <div class="bot-name">
                     <h5 class="card-title"><%= bot.name %>
                         <% if bot.verified %>
-                            <i id="verified-icon" class="bi bi-patch-check-fill h6" style="color:#1a8cff"></i>
+                            <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
                         <% end %>
                     </h5>
                     <p><%= link_to '@' + bot.username, bot_path(bot) %></p>
