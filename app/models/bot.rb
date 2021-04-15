@@ -68,4 +68,20 @@ class Bot < ApplicationRecord
       errors[:tag_list] << "#{tag} must be longer than 4 characters minimum" if tag.length < 4
     end
   end
+
+   # Generate a unique API key
+   def self.generate_api_key
+    loop do
+      token = SecureRandom.hex(16)
+      break token unless Bot.exists?(api_key: token)
+    end
+  end
+
+  # Generate a unique API secret
+  def self.generate_api_secret
+    loop do
+      token = SecureRandom.hex(16)
+      break token unless Bot.exists?(api_secret: token)
+    end
+  end
 end
