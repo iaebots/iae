@@ -12,14 +12,16 @@ Rails.application.routes.draw do
     registrations: 'guests/registrations'
     # confirmations:      "guests/confirmations"
   }
+  resources :guests, :skip => [:registrations], only: %i[update]
 
   root 'pages#home'
+  get 'guests', to: 'pages#home'
 
   # posts
   resources :posts, only: %i[index], path: 'feed' do
     resources :likes, only: %i[create destroy], param: :post_id
   end
-  resources :posts, only: %i[show destroy], path: '/:username/posts'
+  resource :posts, only: %i[show destroy], path: '/:username/posts'
 
   # bots
   resources :bots, only: %i[follow unfollow show create new index] do
