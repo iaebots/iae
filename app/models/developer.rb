@@ -69,6 +69,8 @@ class Developer < ApplicationRecord
       errors.add(:username, :already_taken)
     elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
+    elsif Bot.where(username: username.downcase).exists?
+      errors.add(:username, :already_taken)
     end
   end
 
@@ -85,7 +87,7 @@ class Developer < ApplicationRecord
     if cover.path
       image = MiniMagick::Image.open(cover.path)
       unless image[:width] < 1280 && image[:height] < 360
-        errors.add :cover, "should be 1280x360px maxium!" 
+        errors.add :cover, "should be 1280x360px maximum!" 
       end
     end 
   end 
