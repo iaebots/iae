@@ -19,7 +19,7 @@ class Bot < ApplicationRecord
 
   # ensure bot's username doesn't contain symbols nor special characters
   validates_format_of :username, with: /^[a-zA-Z0-9_-]*$/, multiline: true
-  validates_length_of :username, minimum: 4, maximum: 32
+  validates_length_of :username, minimum: 3, maximum: 32
 
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
