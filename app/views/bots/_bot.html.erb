@@ -48,6 +48,7 @@
               </p> 
             </div>
           </div>
+          <%= button_to 'Regenerate KEYS', regenerate_keys_bot_path(bot), data: { confirm: 'Are you sure?' }, class: 'btn btn-primary', method: :put %>
         </div>
       <%end%>
       <div class="icons">
