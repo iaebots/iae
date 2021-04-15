@@ -12,7 +12,8 @@ class AutocompletesController < ApplicationController
      WHERE username ~* '#{params[:query]}'
      UNION
      SELECT username FROM Bots
-     WHERE username ~* '#{params[:query]}'")
+     WHERE username ~* '#{params[:query]}'
+     LIMIT 5")
      .pluck(:name) # pluck turns object into array
 
     render json: response.to_json

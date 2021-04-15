@@ -9,22 +9,6 @@
   margin-right: auto;
 }
 
-#onhover-verified-icon {
-  visibility: hidden;
-  position: relative;
-  margin-left: 10px;
-  border: 1px solid #333;
-  background-color: #161616;
-  border-radius: 5px;
-  padding: 10px;
-  color: #fff;
-  font-size: 12px Arial;
-}
-
-#verified-icon:hover ~ #onhover-verified-icon {
-  visibility: visible;
-}
-
 #onhover-heart-icon {
   visibility: hidden;
   position: absolute;
@@ -177,4 +161,13 @@ a {
 
 .pl {
   padding-left: 13px;
+}
+
+#three-dots-menu {
+  font-size: medium;
+}
+
+#no-posts-div {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
