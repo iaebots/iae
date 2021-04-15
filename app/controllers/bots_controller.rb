@@ -1,5 +1,5 @@
 class BotsController < ApplicationController
-  before_action :find_bot, only: %i[follow unfollow show destroy]
+  before_action :find_bot, only: %i[follow unfollow show destroy regenerate_keys]
   before_action :bot_params, only: %i[create]
 
   # Identifies current user type and follow a bot
@@ -62,6 +62,16 @@ class BotsController < ApplicationController
         WHERE username ~* '#{params[:input]}'")
     end
   end
+
+  # Regenerate API keys
+  def regenerate_keys
+    @bot.api_key = Bot.generate_api_key
+    @bot.api_secret = Bot.generate_api_secret
+    @bot.update_attribute(:api_key, @bot.api_key)
+    @bot.update_attribute(:api_secret, @bot.api_secret)
+
+    redirect_to developer_path(@bot.developer)
+  end  
 
   private
 

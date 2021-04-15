@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     member do
       get :follow
       get :unfollow
+      put :regenerate_keys
     end
   end
   resources :bots, only: %i[destroy], path: '/:id'
