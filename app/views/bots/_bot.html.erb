@@ -29,7 +29,7 @@
       <div class="bot-content pt">
         <%= truncate(strip_tags(bot.bio), length: 512) %>
       </div>
-      <% if current_developer.id == bot.developer_id%>
+      <% if current_developer && current_developer.id == bot.developer_id%>
         <div class="bot-content pt">
           <p>
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse<%= bot.id%>" aria-expanded="false" aria-controls="collapse<%= bot.id%>">
