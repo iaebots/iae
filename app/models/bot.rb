@@ -22,7 +22,7 @@ class Bot < ApplicationRecord
   validates_length_of :username, minimum: 3, maximum: 32
 
   #URL max value
-  validates_length_of :repository, minimum: 1, maximum: 64
+  validates_length_of :repository, maximum: 64 
 
 
   extend FriendlyId
