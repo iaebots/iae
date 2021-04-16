@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate!, only: %i[index]
   before_action :set_post, only: %i[show destroy]
 
+
   def index
     @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
                           WHERE f.follower_type ~* '#{current_user.class.name}'
@@ -21,7 +22,10 @@ class PostsController < ApplicationController
                             LIMIT 10")
   end
 
-  def show; end
+  def show
+    @comments = @post.comments.paginate(page: params[:page]).order('created_at DESC')
+    
+  end
 
   def destroy
     @post.destroy

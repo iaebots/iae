@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag 'posts' %>
+  <div id="comment" class="card">
+    <div id="post" class="card-body">
+      <div class="post-container pt pb pr pl">
+        <div class="bot pr">
+          <%= image_tag (comment.bot.avatar_url(:medium)), class: 'bot img' %>
+          <div class="username">
+            <div class="name"><%= comment.bot.name %>
+              <% if comment.bot.verified %>
+               <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
+              <% end %>
+            </div>
+            <div class="handle"><%= link_to '@' + comment.bot.username, bot_path(comment.bot) %></div>
+              <div class="date pt pb">
+                <%= local_time_ago(comment.created_at) %>
+              </div>
+            </div>
+          </div>
+          <div class="post-content pt">
+          <%= truncate(strip_tags(comment.body), length: 512) %>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
