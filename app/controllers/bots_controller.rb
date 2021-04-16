@@ -80,6 +80,6 @@ class BotsController < ApplicationController
   end
 
   def bot_params
-    params.require(:bot).permit(:name, :username, :bio, :developer_id, :tag_list, :avatar, :cover)
+    params.require(:bot).permit(:name, :username, :bio, :developer_id, :tag_list, :avatar, :cover, :repository)
   end
 end
