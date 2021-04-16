@@ -1,1 +1,9 @@
+
 <%= render @post %>
+
+<%= render @comments %>
+<div class = "center">
+    <div id="will" class="digg_pagination">
+        <%= will_paginate @comments%>
+    </div>
+</div>
