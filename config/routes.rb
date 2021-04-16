@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   }
 
   root 'pages#home'
+  
   get 'guests', to: 'pages#home'
 
   # posts
@@ -31,9 +32,14 @@ Rails.application.routes.draw do
       put :regenerate_keys
     end
   end
+
   resources :bots, only: %i[destroy], path: '/:id'
+
   get 'report', to: 'pages#report'
+
   resources :developers, only: %i[show]
+
   resource :autocomplete, only: %i[show]
+
   get 'rules', to: 'pages#rules'
 end
