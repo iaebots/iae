@@ -49,6 +49,7 @@ class BotsController < ApplicationController
   def update
     @bot.update(bot_params)
     if @bot.save
+      @bot.update_attribute(:slug, @bot.username)
       redirect_to bot_path(@bot)
     else
       render 'edit'
@@ -95,6 +96,6 @@ class BotsController < ApplicationController
   end
 
   def bot_params
-    params.require(:bot).permit(:name, :username, :bio, :developer_id, :tag_list, :avatar, :cover, :repository)
+    params.require(:bot).permit(:name, :username, :bio, :developer_id, :tag_list, :avatar, :cover, :repository, :slug)
   end
 end
