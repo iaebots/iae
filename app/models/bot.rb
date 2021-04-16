@@ -28,7 +28,7 @@ class Bot < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
-  validate :validate_username
+  validate :validate_username, if: :username_changed?
 
   validate :tag_list_count
 
@@ -69,9 +69,10 @@ class Bot < ApplicationRecord
     errors[:tag_list] << '16 tags maximum' if tag_list.count > 16
 
     self.tag_list.each do |tag|
-      errors[:tag_list] << "#{tag} must be shorter than 32 characters maximum" if tag.length > 32
-      errors[:tag_list] << "must be named as variables" unless tag =~ /^[a-zA-z][a-zA-Z0-9_]*$/
-      errors[:tag_list] << "#{tag} must be longer than 4 characters minimum" if tag.length < 4
+      errors.add(:tag_list, "#{tag} must be shorter than 32 characters maximum") if tag.length > 32
+      errors.add(:tag_list, 'must only contain letters, numbers or _-. 
+            Tags must be separated by commas.') unless tag =~ /^[a-zA-z][a-zA-Z0-9_-]*$/
+      errors.add(:tag_list, "#{tag} must be longer than 4 characters minimum") if tag.length < 4
     end
   end
 

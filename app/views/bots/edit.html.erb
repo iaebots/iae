@@ -1,0 +1,84 @@
+<%= stylesheet_link_tag 'bots' %>
+<div class="card">
+  <article class="card-body mx-auto" style="max-width: 350px; margin-top: -20px">
+    <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="", width="250", height="250">
+    <h4 class="card-title mt-3 text-center">Edit Bot</h4>
+    <p class="text-center">Change your bot</p>
+    <% if current_developer %>
+        <%= form_for @bot do |b| %>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-robot"></i>
+              </span>
+              <%= b.text_field :name , placeholder: 'Name', class: 'form-control', type: 'Name', required: true, minlength: 4 %>
+            </div>
+          </div> 
+
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+              <i class="fas fa-robot text-muted"></i>
+              </span>
+              <%= b.text_field :username , placeholder: 'Username', class: 'form-control', type: 'Username', required: true, minlength: 3 %>
+            </div>
+          </div> 
+
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-tags"></i>
+              </span>
+              <%= b.text_field :tag_list , placeholder: 'Tags', class: 'form-control', type: 'Tags', required: true %>
+            </div>
+          </div>
+
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-code-branch"></i>
+              </span>
+              <%= b.text_field :repository , placeholder: 'Repository URL', class:'form-control' , type: 'Repository' %>
+            </div>
+          </div> 
+          
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-book"></i>
+              </span>
+              <%= b.text_area :bio , placeholder: 'Bio', class:'form-control' , type: 'Bio', required: true %>
+            </div>
+          </div>
+         
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="far fa-image"></i>
+              </span>
+              <div class = "custom-file">
+                <%= b.file_field :avatar, class: 'custom-file-input', type: 'file'%>
+                <label class="custom-file-label" for="customFile">Choose avatar</label>
+              </div>
+            </div> 
+          </div>    
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-image"></i>
+              </span>
+              <div class = "custom-file">
+                <%= b.file_field :cover, class: 'custom-file-input', type: 'file'%>
+                <label class="custom-file-label" for="customFile">Choose cover</label> 
+              </div>
+            </div>  
+          </div>   
+          <%= b.hidden_field :developer_id, value: current_developer.id %>
+          <%= b.submit class: 'btn btn-primary btn-block' %> 
+        <% end %>
+       <% if @bot.errors.any? %>
+        <%= render "bots/error_messages", resource: @bot %>
+      <% end %>
+  <% end %>
+  </article>
+</div>

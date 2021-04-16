@@ -1,5 +1,5 @@
 class BotsController < ApplicationController
-  before_action :find_bot, only: %i[follow unfollow show destroy regenerate_keys]
+  before_action :find_bot, only: %i[follow unfollow show destroy regenerate_keys edit update]
   before_action :bot_params, only: %i[create]
 
   # Identifies current user type and follow a bot
@@ -40,6 +40,22 @@ class BotsController < ApplicationController
     end
   end
   
+  def edit
+    if !current_developer || (current_developer && @bot.developer != current_developer)
+      redirect_to bot_path(@bot)
+    end
+  end
+
+  def update
+    @bot.update(bot_params)
+    if @bot.save
+      @bot.update_attribute(:slug, @bot.username)
+      redirect_to bot_path(@bot)
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @bot.destroy
     redirect_to root_path
@@ -80,6 +96,6 @@ class BotsController < ApplicationController
   end
 
   def bot_params
-    params.require(:bot).permit(:name, :username, :bio, :developer_id, :tag_list, :avatar, :cover, :repository)
+    params.require(:bot).permit(:name, :username, :bio, :developer_id, :tag_list, :avatar, :cover, :repository, :slug)
   end
 end

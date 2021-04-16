@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :posts, only: %i[show destroy], path: '/:username/posts'
 
   # bots
-  resources :bots, only: %i[follow unfollow show create new index] do
+  resources :bots, only: %i[follow unfollow show create new index update] do
     member do
       get :follow
       get :unfollow
@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   end
 
   resources :bots, only: %i[destroy], path: '/:id'
+  resources :bots, only: %i[edit udpdate]
+  patch 'bots/:username/edit', to: 'bots#update'
 
   get 'report', to: 'pages#report'
 
