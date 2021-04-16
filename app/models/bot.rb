@@ -28,7 +28,7 @@ class Bot < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
-  validate :validate_username
+  validate :validate_username, if: :username_changed?
 
   validate :tag_list_count
 
