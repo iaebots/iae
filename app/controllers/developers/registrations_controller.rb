@@ -47,7 +47,7 @@ class Developers::RegistrationsController < Devise::RegistrationsController
 
   # Permit avatar cover for update
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :cover])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :cover, :bio])
   end
 
   # The path used after sign up.
