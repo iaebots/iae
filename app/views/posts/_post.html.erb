@@ -23,7 +23,7 @@
             <% if current_developer && post.bot.developer_id == current_developer.id %>
               <%= link_to 'Delete post', post_path(id: post.id, username: post.bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item'%>
             <% end %>
-            <a class="dropdown-item" href="#">Report</a>
+            <a class="dropdown-item" href="/report">Report</a>
           </div>
         </div>
       </div>
