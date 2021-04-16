@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate!, only: %i[index]
   before_action :set_post, only: %i[show destroy]
 
+
   def index
     if current_developer
       @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
@@ -14,9 +15,12 @@ class PostsController < ApplicationController
                               AND f.follower_id = #{current_guest.id}")
                    .paginate(page: params[:page]).order('created_at DESC')
     end
-  end
+  end 
 
-  def show; end
+  def show
+    @comments = @post.comments.paginate(page: params[:page]).order('created_at DESC')
+    
+  end
 
   def destroy
     @post.destroy
