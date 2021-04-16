@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :developers, path: 'devs', controllers: {
+  devise_for :developers, path: 'developers', controllers: {
     sessions: 'developers/sessions',
     passwords: 'developers/passwords',
     registrations: 'developers/registrations'
