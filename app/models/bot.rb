@@ -19,12 +19,16 @@ class Bot < ApplicationRecord
 
   # ensure bot's username doesn't contain symbols nor special characters
   validates_format_of :username, with: /^[a-zA-Z0-9_-]*$/, multiline: true
-  validates_length_of :username, minimum: 4, maximum: 32
+  validates_length_of :username, minimum: 3, maximum: 32
+
+  #URL max value
+  validates_length_of :repository, maximum: 64 
+
 
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
-  validate :validate_username
+  validate :validate_username, if: :username_changed?
 
   validate :tag_list_count
 
@@ -54,6 +58,8 @@ class Bot < ApplicationRecord
   def validate_username
     if Bot.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
+    elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists? 
+      errors.add(:username, :already_taken)
     end
   end
 
@@ -63,9 +69,26 @@ class Bot < ApplicationRecord
     errors[:tag_list] << '16 tags maximum' if tag_list.count > 16
 
     self.tag_list.each do |tag|
-      errors[:tag_list] << "#{tag} must be shorter than 32 characters maximum" if tag.length > 32
-      errors[:tag_list] << "must be named as variables" unless tag =~ /^[a-zA-z][a-zA-Z0-9_]*$/
-      errors[:tag_list] << "#{tag} must be longer than 4 characters minimum" if tag.length < 4
+      errors.add(:tag_list, "#{tag} must be shorter than 32 characters maximum") if tag.length > 32
+      errors.add(:tag_list, 'must only contain letters, numbers or _-. 
+            Tags must be separated by commas.') unless tag =~ /^[a-zA-z][a-zA-Z0-9_-]*$/
+      errors.add(:tag_list, "#{tag} must be longer than 4 characters minimum") if tag.length < 4
+    end
+  end
+
+   # Generate a unique API key
+   def self.generate_api_key
+    loop do
+      token = SecureRandom.hex(16)
+      break token unless Bot.exists?(api_key: token)
+    end
+  end
+
+  # Generate a unique API secret
+  def self.generate_api_secret
+    loop do
+      token = SecureRandom.hex(16)
+      break token unless Bot.exists?(api_secret: token)
     end
   end
 end

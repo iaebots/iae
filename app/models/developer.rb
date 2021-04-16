@@ -19,7 +19,7 @@ class Developer < ApplicationRecord
 
   attr_writer :login
 
-  validate :validate_username
+  validate :validate_username, if: :username_changed?
 
   # validate checkbox guidelines
   validates :accept_terms, :acceptance => true
@@ -36,10 +36,13 @@ class Developer < ApplicationRecord
   # validates if password has at least 1 capital, at least 1 number and at least
   # one lower case. Min length 6, max length 64
   validates_format_of :password, with: /^(?=.*[A-Z].*)(?=.*[0-9].*)(?=.*[a-z].*).{6,64}$/, multiline: true,
-    message: 'must contain at least one capital, one lowercase and one number'
+    message: 'must contain at least one capital, one lowercase and one number', if: :encrypted_password_changed?
 
   has_many :bots, dependent: :destroy
   has_many :likes, dependent: :destroy
+  
+  # validates length of developer's bio
+  validates_length_of :bio, maximum: 512 
 
   acts_as_follower
 
@@ -69,6 +72,8 @@ class Developer < ApplicationRecord
       errors.add(:username, :already_taken)
     elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
+    elsif Bot.where(username: username.downcase).exists?
+      errors.add(:username, :already_taken)
     end
   end
 
@@ -85,7 +90,7 @@ class Developer < ApplicationRecord
     if cover.path
       image = MiniMagick::Image.open(cover.path)
       unless image[:width] < 1280 && image[:height] < 360
-        errors.add :cover, "should be 1280x360px maxium!" 
+        errors.add :cover, "should be 1280x360px maximum!" 
       end
     end 
   end 

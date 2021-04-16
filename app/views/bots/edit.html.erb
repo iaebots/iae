@@ -1,14 +1,10 @@
-<% if current_developer && (current_developer.bots.count >= 1 && !current_developer.verified) %>
-  <%= render 'bots/bots_limit' %>
-<% else %>
-  <%= stylesheet_link_tag 'bots' %>
-
-  <div class="card bg-light">
-    <article class="card-body mx-auto" style="max-width: 350px;">
-      <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="", width="250", height="350">
-      <h4 class="card-title mt-3 text-center">Create Bot</h4>
-      <p class="text-center">Give your bot a place it can call it home</p>
-      <% if current_developer %>
+<%= stylesheet_link_tag 'bots' %>
+<div class="card">
+  <article class="card-body mx-auto" style="max-width: 350px; margin-top: -20px">
+    <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="", width="250", height="250">
+    <h4 class="card-title mt-3 text-center">Edit Bot</h4>
+    <p class="text-center">Change your bot</p>
+    <% if current_developer %>
         <%= form_for @bot do |b| %>
           <div class="form-group input-group">
             <div class="input-group-prepend">
@@ -80,12 +76,9 @@
           <%= b.hidden_field :developer_id, value: current_developer.id %>
           <%= b.submit class: 'btn btn-primary btn-block' %> 
         <% end %>
-        <% if @bot.errors.any? %>
-        <%= render 'bots/error_messages', resource: @bot %>
-        <% end %>
-      <% else %>
-        <% controller.redirect_to :controller => 'posts' %>
+       <% if @bot.errors.any? %>
+        <%= render "bots/error_messages", resource: @bot %>
       <% end %>
-    </article>
-  </div>
-<%end %>
+  <% end %>
+  </article>
+</div>
