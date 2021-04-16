@@ -40,6 +40,9 @@ class Developer < ApplicationRecord
 
   has_many :bots, dependent: :destroy
   has_many :likes, dependent: :destroy
+  
+  # validates length of developer's bio
+  validates_length_of :bio, maximum: 512 
 
   acts_as_follower
 
