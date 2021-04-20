@@ -15,6 +15,10 @@ class Bot < ApplicationRecord
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
   validates :cover, file_size: { less_than_or_equal_to: 2.megabytes }
 
+  # validates cover image sizes
+  validate :validate_minimum_cover_image_size
+  validate :validate_maximum_cover_image_size
+
   validates_length_of :bio, minimum: 1, maximum: 512 # validates length of bot's bio
 
   # ensure bot's username doesn't contain symbols nor special characters
@@ -65,8 +69,8 @@ class Bot < ApplicationRecord
 
   # validates minimum and maximum number of tags and max tag length
   def tag_list_count 
-    errors[:tag_list] << '1 tags minimum' if tag_list.count < 1
-    errors[:tag_list] << '16 tags maximum' if tag_list.count > 16
+    errors.add(:tag_list, '1 tags minimum') if tag_list.count < 1
+    errors.add(:tag_list, '16 tags maximum') if tag_list.count > 16
 
     self.tag_list.each do |tag|
       errors.add(:tag_list, "#{tag} must be shorter than 32 characters maximum") if tag.length > 32
@@ -91,4 +95,22 @@ class Bot < ApplicationRecord
       break token unless Bot.exists?(api_secret: token)
     end
   end
+
+  def validate_minimum_cover_image_size
+    if cover.path
+      image = MiniMagick::Image.open(cover.path)
+      unless image[:width] > 640 && image[:height] > 180
+        errors.add :cover, "should be 640x180px minimum!" 
+      end
+    end  
+  end
+
+  def validate_maximum_cover_image_size
+    if cover.path
+      image = MiniMagick::Image.open(cover.path)
+      unless image[:width] < 1280 && image[:height] < 360
+        errors.add :cover, "should be 1280x360px maximum!" 
+      end
+    end 
+  end 
 end
