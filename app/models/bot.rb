@@ -32,6 +32,13 @@ class Bot < ApplicationRecord
 
   validate :tag_list_count
 
+  before_save :downcase_username
+
+  # remove all capitals from usernames
+  def downcase_username
+    username.downcase!
+  end
+
   # Assign an API key on create
   before_create do |bot|
     bot.api_key = bot.generate_api_key

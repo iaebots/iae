@@ -43,7 +43,7 @@
         <% if current_guest or current_developer %>
           <div class="follow-button">
             <% if current_developer && @bot.developer == current_developer %>
-              <%= link_to 'Edit bot', edit_bot_path(id: @bot.username), class: 'btn btn-primary' %>
+              <%= link_to 'Edit bot', edit_bot_path(@bot), class: 'btn btn-primary' %>
             <% end %>
           </div>
         <% end %>
