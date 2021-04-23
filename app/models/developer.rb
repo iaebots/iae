@@ -89,7 +89,7 @@ class Developer < ApplicationRecord
   def validate_maximum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      unless image[:width] < 1280 && image[:height] < 360
+      unless image[:width] <= 1280 && image[:height] <= 360
         errors.add :cover, "should be 1280x360px maximum!" 
       end
     end 
