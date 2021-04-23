@@ -52,6 +52,8 @@ gem 'local_time'
 
 gem 'rack-attack'
 
+gem 'route_downcaser'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
