@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_013759) do
+ActiveRecord::Schema.define(version: 2021_04_27_130351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,13 @@ ActiveRecord::Schema.define(version: 2021_04_13_013759) do
     t.boolean "verified"
     t.string "cover"
     t.boolean "accept_terms"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_developers_on_slug", unique: true
@@ -102,6 +109,13 @@ ActiveRecord::Schema.define(version: 2021_04_13_013759) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.boolean "accept_terms"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.index ["email"], name: "index_guests_on_email", unique: true
     t.index ["reset_password_token"], name: "index_guests_on_reset_password_token", unique: true
     t.index ["username"], name: "index_guests_on_username", unique: true

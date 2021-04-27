@@ -1,5 +1,5 @@
 class Guest < ApplicationRecord
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
   attr_writer :login
@@ -52,5 +52,4 @@ class Guest < ApplicationRecord
       errors.add(:username, :already_taken)
     end
   end
-
 end
