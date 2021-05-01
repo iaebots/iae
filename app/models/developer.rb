@@ -1,5 +1,5 @@
 class Developer < ApplicationRecord
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
   extend FriendlyId
@@ -93,5 +93,5 @@ class Developer < ApplicationRecord
         errors.add :cover, "should be 1280x360px maximum!" 
       end
     end 
-  end 
+  end
 end
