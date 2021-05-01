@@ -1,5 +1,5 @@
 class Developer < ApplicationRecord
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
   extend FriendlyId

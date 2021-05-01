@@ -1,5 +1,5 @@
 class Guest < ApplicationRecord
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
   attr_writer :login
