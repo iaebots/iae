@@ -10,14 +10,11 @@ updates:
   - package-ecosystem: "bundler" 
     directory: "/" 
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     
     # Allow update of all dependencies
     allow: 
       - dependency-type: "all"
-      
-    assignees:
-      - "danielmbrasil"
       
     reviewers:
       - "danielmbrasil"
@@ -39,14 +36,11 @@ updates:
   - package-ecosystem: "npm"
     directory: "/" 
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     
     # Allow update of all dependencies
     allow: 
       - dependency-type: "all"
-      
-    assignees:
-      - "danielmbrasil"
       
     reviewers:
       - "danielmbrasil"
