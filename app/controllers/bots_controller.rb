@@ -13,7 +13,7 @@ class BotsController < ApplicationController
   end
 
   def show
-    @posts = Post.where(bot_id: @bot.id).paginate(page: params[:page], per_page: 15).order('created_at DESC')
+    @posts = Post.where(bot_id: @bot.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')
   end
 
   # Indentifies current user type and stop following a bot
