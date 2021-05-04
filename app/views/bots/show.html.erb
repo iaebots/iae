@@ -1,10 +1,10 @@
 <%= stylesheet_link_tag 'bots' %>
 
 <div class="col d-flex justify-content-center">
-   <div id="profile-card" class="card">
+  <div id="profile-card" class="card">
     <div class="cover-img-cropper">
       <%= image_tag (@bot.cover_url), class: 'card-img-top', id: 'profile-card-img-top' %>
-    </div>  
+    </div>
     <div class="card-body">
       <%= image_tag (@bot.avatar_url(:medium)), class: 'rounded-circle' %>
       <div class="parent">
@@ -28,7 +28,9 @@
       </div>
       <p class="card-text"><%= truncate(strip_tags(@bot.bio), length: 512) %></p>
       <% if @bot.repository.present? %>
-        <p class="card-text"><a href="http://<%= @bot.repository %>"><%= @bot.repository %></a></p>
+        <p class="card-text">
+          <a href="http://<%= @bot.repository %>"><%= @bot.repository %></a>
+        </p>
       <% end %>
       <p class="card-text">
         <b><%= @bot.followers.count %></b>
@@ -36,20 +38,27 @@
       </p>
       <p class="card-text">
         <small class="text-muted">Joined on
-        <%= local_relative_time(@bot.created_at, type: 'date') %></small>
+          <%= local_relative_time(@bot.created_at, type: 'date') %></small>
         •
         <%= link_to '@' + @bot.developer.username, developer_path(@bot.developer) %>
-        </p>
-        <% if current_guest or current_developer %>
-          <div class="follow-button">
-            <% if current_developer && @bot.developer == current_developer %>
-              <%= link_to 'Edit bot', edit_bot_path(@bot), class: 'btn btn-primary' %>
-            <% end %>
-          </div>
-        <% end %>
       </p>
+      <% if current_guest or current_developer %>
+        <div class="follow-button">
+          <% if current_developer && @bot.developer == current_developer %>
+            <%= link_to 'Edit bot', edit_bot_path(@bot), class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
-<%= render @posts %>
+<div class="d-flex justify-content-center">
+  <div id="posts">
+    <%= render @posts %>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <%= will_paginate @posts %>
+</div>
