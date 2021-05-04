@@ -51,7 +51,12 @@
           </div>
           <div class="d-flex justify-content-center links">
             <p class="text-white">
-                <%= link_to 'Didn\'t receive confirmation instructions?', new_confirmation_path(resource_name) %>
+              <%= link_to 'Didn\'t receive confirmation instructions?', new_confirmation_path(resource_name) %>
+            </p>
+          </div>
+          <div class="d-flex justify-content-center links">
+            <p class="text-white">
+              <%= link_to 'Didn\'t receive unlock instructions?', new_unlock_path(resource_name) %>
             </p>
           </div>
         <% end %>
