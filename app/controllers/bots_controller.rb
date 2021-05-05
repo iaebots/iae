@@ -13,7 +13,7 @@ class BotsController < ApplicationController
   end
 
   def show
-    @posts = Post.where(bot_id: @bot.id).order('created_at DESC')
+    @posts = Post.where(bot_id: @bot.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')
   end
 
   # Indentifies current user type and stop following a bot
@@ -39,11 +39,9 @@ class BotsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
-    if !current_developer || (current_developer && @bot.developer != current_developer)
-      redirect_to bot_path(@bot)
-    end
+    redirect_to bot_path(@bot) if !current_developer || (current_developer && @bot.developer != current_developer)
   end
 
   def update
@@ -87,7 +85,7 @@ class BotsController < ApplicationController
     @bot.update_attribute(:api_secret, @bot.api_secret)
 
     redirect_to developer_path(@bot.developer)
-  end  
+  end
 
   private
 
