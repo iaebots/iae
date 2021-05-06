@@ -1,5 +1,14 @@
 @import "bootstrap/scss/bootstrap";
 
+
+
+.avatar {
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+}
 #notice-wrapper {
   margin: auto;
   width: 30%;
