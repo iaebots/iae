@@ -3,6 +3,7 @@
 class Developers::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: %i[create]
   before_action :configure_account_update_params, only: %i[update]
+  include Accessible
 
   # GET /resource/sign_up
   # def new
