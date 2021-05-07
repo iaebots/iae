@@ -14,40 +14,37 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent shadow ">
-      <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg')%>" alt="" width="40px" height="40px"></a>
-      <% if current_guest or current_developer%>
-        <%= form_tag bots_path, method: :get do %>
-          <div class = "autocomplete_bar" data-controller="autocomplete">
-            <input data-target = "autocomplete.field" id="input" name="input" placeholder="Search..." type="text"></input>
-          </div>
+    <nav class="navbar navbar-dark bg-transparent shadow" style="padding-left:3rem; padding-right:3rem;">
+      <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg')%>" alt="" width="30px" height="30px"></a>
+      <div class="btn-group dropdown dropdown-menu-right">
+        <% if current_developer%>
+          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= current_developer.avatar_url(:medium)%>" alt="Avatar" class="avatar" width="30px" height="30px"></a>
+        <%else%>
+          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= asset_path('logo.svg')%>" alt="Avatar" class="avatar" width="30px" height="30px"></a>
         <% end %>
-      <% end %>
-      <button class="navbar-toggler navbar-toggler-custom" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+        <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="dropdownMenu2">
+          <% if current_developer or current_guest%>
+            <%= form_tag bots_path, method: :get do %>
+              <div class = "autocomplete_bar dropdown-item d-flex" data-controller="autocomplete">
+                <input data-target = "autocomplete.field" id="input" name="input" placeholder="Search..." type="text"></input>
+              </div>
+            <% end %>
+          <% end %>
           <% if current_developer%>
-            <a class = "button_bar" aria-current="page" href="<%= developer_path(current_developer)%>"><%=current_developer.username%></a>  
-          <%end%>
+            <%= link_to 'My account', developer_path(current_developer), method: :get, class: 'dropdown-item', type: 'button'%>
+            <%= link_to 'Log out', destroy_developer_session_path, method: :delete, class: 'dropdown-item', type: 'button'%>
+          <% end %>
+          <% if current_guest%>
+            <%= link_to 'My account', edit_guest_registration_path, method: :get, class: 'dropdown-item', type: 'button'%>
+            <%= link_to 'Log out', destroy_guest_session_path, method: :delete, class: 'dropdown-item', type: 'button'%>
+          <% end %>
           <% if !current_developer and !current_guest%>
-              <a class="button_bar" aria-current="page" href="\">Home</a>
-              <a class="button_bar" aria-current="page" href=<%= new_developer_session_path %>>Dev</a>
-              <a class="button_bar" aria-current="page" href=<%= new_guest_session_path %>>Guest</a>
-          <%end%>
-          <% if current_guest or current_developer%>
-              
-                <a class="button_bar" aria-current="page" href=<%= root_path %>>Feed</a>     
-              <% if current_guest %>
-                  <%= link_to 'Log out', destroy_guest_session_path, method: :delete, class: 'button_bar'%>
-              <% else %>
-                <%= link_to 'Log out', destroy_developer_session_path, method: :delete, class: 'button_bar'%>
-              <% end %>
-          <%end%>
+            <%= link_to 'Developer',  new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button'%>
+            <%= link_to 'Guest',  new_guest_session_path, method: :get, class: 'dropdown-item', type: 'button'%>
+          <% end %>
         </div>
       </div>
-    </nav>
+    </nav> 
     <% if notice %>
       <div id="notice-wrapper" >
         <p class="notice"><%= notice %></p>
