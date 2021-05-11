@@ -161,7 +161,7 @@ GEM
     pg (1.2.3)
     popper_js (2.9.2)
     public_suffix (4.0.6)
-    puma (5.2.2)
+    puma (5.3.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -293,7 +293,7 @@ DEPENDENCIES
   local_time
   mini_magick
   pg (~> 1.1)
-  puma (~> 5.2)
+  puma (~> 5.3)
   rack-attack
   rack-mini-profiler (~> 2.3)
   rails (~> 6.1.3)
