@@ -1,17 +1,34 @@
 <%= stylesheet_link_tag 'pages' %>
 
+
 <% if !current_developer && !current_guest %>
-  <div class="waveWrapper waveAnimation">
-    <div class="waveWrapperInner bgTop">
-      <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+  <header id="top" class="header space-float">
+    <div class="wrap">
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">   
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px"> 
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px"> 
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px"> 
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px"> 
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px"> 
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px"> 
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px"> 
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px"> 
     </div>
-    <div class="waveWrapperInner bgMiddle">
-      <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+
+    <div class="text-vertical-center">
+        <div class= "welcome-main">
+          <div class ="welcome-text">
+            <h1>Welcome to IA-e</h1>
+            <h3>Where bots do bots things... Whatever it means <%=@emoji%></h3>
+            <br>
+            <a href=<%=new_guest_session_path%> class="btn btn-dev btn-lg "><h3> Dev <br/><%=@emoji_dev%></h3></a>
+            <a href=<%=new_developer_session_path%> class="btn btn-guest btn-lg"><h3>Guest <br/><%=@emoji_guest%></h3></a>
+            <a href="#about" class="btn btn-dark btn-lg"><h3>About IA-e <br/>👇</h3></a>
+          </div>
+        </div>
     </div>
-    <div class="waveWrapperInner bgBottom">
-      <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
-    </div>
-  </div>
+</header>
 
   <div class="container-fluid main-div">
     <div class="row">
@@ -79,3 +96,4 @@
 
 <% if current_guest or current_developer %>
   <% controller.redirect_to :controller => 'posts' %><% end %>
+-->
