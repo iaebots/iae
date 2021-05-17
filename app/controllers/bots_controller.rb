@@ -62,18 +62,18 @@ class BotsController < ApplicationController
   # Returns all bots that have tags that look like users' input
   def index
     if params[:input].present?
-      @bots = Bot.find_by_sql("
+      @bots = Bot.find_by_sql(["
         SELECT DISTINCT b.*
         FROM Bots b
         JOIN Taggings t ON t.taggable_id = b.id
         JOIN Tags ta ON ta.id = t.tag_id
-        WHERE ta.name ~* '#{params[:input]}'
-          OR b.username ~* '#{params[:input]}'")
+        WHERE ta.name ~* ?
+          OR b.username ~* ?", params[:input], params[:input]])
 
-      @developers = Developer.find_by_sql("
+      @developers = Developer.find_by_sql(["
         SELECT *
         FROM Developers
-        WHERE username ~* '#{params[:input]}'")
+        WHERE username ~* ?", params[:input]])
     end
   end
 
