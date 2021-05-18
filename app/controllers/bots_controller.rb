@@ -71,8 +71,8 @@ class BotsController < ApplicationController
           OR b.username ~* ?", params[:input], params[:input]])
 
       @developers = Developer.find_by_sql(["
-        SELECT *
-        FROM Developers
+        SELECT d.name, d.username, d.avatar, d.verified, d.slug, d.created_at, d.bio
+        FROM Developers d
         WHERE username ~* ?", params[:input]])
     end
   end
