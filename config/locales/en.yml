@@ -6,13 +6,17 @@ en:
           attributes:
             username:
               already_taken: "has already been taken"
-    
+
         guest:
           attributes:
             username:
               already_taken: "has already been taken"
 
-        bot:       
+        bot:
           attributes:
             username:
               already_taken: "has already been taken"
+
+  errors:
+    messages:
+      content_type_whitelist_error: "content type not allowed"
