@@ -106,7 +106,7 @@ class Bot < ApplicationRecord
   def validate_minimum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      unless image[:width] > 640 && image[:height] > 180
+      unless image[:width] >= 640 && image[:height] >= 180
         errors.add :cover, "should be 640x180px minimum!" 
       end
     end  
@@ -119,5 +119,5 @@ class Bot < ApplicationRecord
         errors.add :cover, "should be 1280x360px maximum!" 
       end
     end 
-  end 
+  end
 end
