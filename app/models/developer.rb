@@ -22,7 +22,7 @@ class Developer < ApplicationRecord
   validate :validate_username, if: :username_changed?
 
   # validate checkbox guidelines
-  validates :accept_terms, :acceptance => true
+  validates :accept_terms, acceptance: true
 
   # regex to assure username doesn't have a @
   validates_format_of :username, with: /\A[a-zA-Z0-9_-]*\z/
@@ -33,10 +33,9 @@ class Developer < ApplicationRecord
   validates :name, format: { with: /\A[^0-9`!@#$%\^&*+_=]+\z/ }
   validates_length_of :name, minimum: 4, maximum: 64
 
-  # validates if password has at least 1 capital, at least 1 number and at least
-  # one lower case. Min length 6, max length 64
-  validates_format_of :password, with: /\A(?=.*[A-Z].*)(?=.*[0-9].*)(?=.*[a-z].*).{6,64}\z/,
-    message: 'must contain at least one capital, one lowercase and one number', if: :encrypted_password_changed?
+  # validate password strength
+  validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
+                       if: :encrypted_password_changed?
 
   has_many :bots, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -80,18 +79,14 @@ class Developer < ApplicationRecord
   def validate_minimum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      unless image[:width] > 640 && image[:height] > 180
-        errors.add :cover, "should be 640x180px minimum!"
-      end
+      errors.add :cover, 'should be 640x180px minimum!' unless image[:width] > 640 && image[:height] > 180
     end
   end
 
   def validate_maximum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      unless image[:width] <= 1280 && image[:height] <= 360
-        errors.add :cover, "should be 1280x360px maximum!"
-      end
+      errors.add :cover, 'should be 1280x360px maximum!' unless image[:width] <= 1280 && image[:height] <= 360
     end
   end
 end
