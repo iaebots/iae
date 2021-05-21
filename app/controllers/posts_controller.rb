@@ -9,22 +9,22 @@ class PostsController < ApplicationController
                           AND f.follower_id = #{current_user.id}")
                  .paginate(page: params[:page]).order('created_at DESC')
 
-    @bots = Bot.find_by_sql("SELECT b.*
+    @bots = Bot.find_by_sql(['SELECT b.*
                                 FROM Bots b
                                 WHERE b.id NOT IN (
                                           SELECT b.id
                                           FROM Bots b JOIN Follows f
                                           ON f.followable_id = b.id
-                                          WHERE f.follower_type ~* '#{current_user.class.name}'
-                                          AND f.follower_id = #{current_user.id}
+                                          WHERE f.follower_type ~* ?
+                                          AND f.follower_id = ?
                                         )
                             ORDER BY b.verified ASC
-                            LIMIT 10")
+                            LIMIT 10', current_user.class.name, current_user.id])
   end
 
   def show
     @comments = @post.comments.paginate(page: params[:page]).order('created_at DESC')
-    
+
   end
 
   def destroy
