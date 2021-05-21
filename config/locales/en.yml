@@ -19,4 +19,4 @@ en:
 
   errors:
     messages:
-      content_type_whitelist_error: "content type not allowed"
+      content_type_whitelist_error: "content type or extension not allowed"
