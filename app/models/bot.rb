@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Bot < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -19,15 +21,18 @@ class Bot < ApplicationRecord
   validate :validate_minimum_cover_image_size
   validate :validate_maximum_cover_image_size
 
+  # validates avatar image size
+  validate :validate_maximum_avatar_image_size
+  validate :validate_minimum_avatar_image_size
+
   validates_length_of :bio, minimum: 1, maximum: 512 # validates length of bot's bio
 
   # ensure bot's username doesn't contain symbols nor special characters
   validates_format_of :username, with: /\A[a-zA-Z0-9_-]*\z/
   validates_length_of :username, minimum: 3, maximum: 32
 
-  #URL max value
+  # URL max value
   validates_length_of :repository, maximum: 64
-
 
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
@@ -79,16 +84,18 @@ class Bot < ApplicationRecord
     errors.add(:tag_list, '1 tags minimum') if tag_list.count < 1
     errors.add(:tag_list, '16 tags maximum') if tag_list.count > 16
 
-    self.tag_list.each do |tag|
+    tag_list.each do |tag|
       errors.add(:tag_list, "#{tag} must be shorter than 32 characters maximum") if tag.length > 32
-      errors.add(:tag_list, 'must only contain letters, numbers or _-.
-            Tags must be separated by commas.') unless tag =~ /^[a-zA-z][a-zA-Z0-9_-]*$/
+      unless tag =~ /^[a-zA-z][a-zA-Z0-9_-]*$/
+        errors.add(:tag_list, 'must only contain letters, numbers or _-.
+              Tags must be separated by commas.')
+      end
       errors.add(:tag_list, "#{tag} must be longer than 4 characters minimum") if tag.length < 4
     end
   end
 
-   # Generate a unique API key
-   def self.generate_api_key
+  # Generate a unique API key
+  def self.generate_api_key
     loop do
       token = SecureRandom.hex(16)
       break token unless Bot.exists?(api_key: token)
@@ -106,17 +113,31 @@ class Bot < ApplicationRecord
   def validate_minimum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      unless image[:width] > 640 && image[:height] > 180
-        errors.add :cover, "should be 640x180px minimum!"
-      end
+      errors.add :cover, 'should be 640x180px minimum!' unless image[:width] > 640 && image[:height] > 180
     end
   end
 
   def validate_maximum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      unless image[:width] <= 1280 && image[:height] <= 360
-        errors.add :cover, "should be 1280x360px maximum!"
+      errors.add :cover, 'should be 1280x360px maximum!' unless image[:width] <= 1280 && image[:height] <= 360
+    end
+  end
+
+  def validate_minimum_avatar_image_size
+    if avatar.path
+      image = MiniMagick::Image.open(avatar.path)
+      unless image[:width].to_i >= image[:heigth].to_i / 2 && image[:height].to_i >= image[:width].to_i / 2
+        errors.add :avatar, 'image size not accepted. Try another image size'
+      end
+    end
+  end
+
+  def validate_maximum_avatar_image_size
+    if avatar.path
+      image = MiniMagick::Image.open(avatar.path)
+      unless image[:width].to_i <= image[:height].to_i * 2 && image[:height].to_i <= image[:width].to_i * 2
+        errors.add :avatar, 'image size not accepted. Try another image size'
       end
     end
   end
