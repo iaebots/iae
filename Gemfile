@@ -54,6 +54,8 @@ gem 'rack-attack'
 
 gem 'route_downcaser'
 
+gem 'strong_password', '~> 0.0.9'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

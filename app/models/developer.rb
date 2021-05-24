@@ -39,11 +39,9 @@ class Developer < ApplicationRecord
   validates :name, format: { with: /\A[^0-9`!@#$%\^&*+_=]+\z/ }
   validates_length_of :name, minimum: 4, maximum: 64
 
-  # validates if password has at least 1 capital, at least 1 number and at least
-  # one lower case. Min length 6, max length 64
-  validates_format_of :password, with: /\A(?=.*[A-Z].*)(?=.*[0-9].*)(?=.*[a-z].*).{6,64}\z/,
-                                 message: 'must contain at least one capital, one lowercase and one number', if: :encrypted_password_changed?
-
+  # validate password strength
+  validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
+                       if: :encrypted_password_changed?
   has_many :bots, dependent: :destroy
   has_many :likes, dependent: :destroy
 
