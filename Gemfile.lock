@@ -114,7 +114,7 @@ GEM
       warden (~> 1.2.3)
     erubi (1.10.0)
     execjs (2.7.0)
-    ffi (1.15.0)
+    ffi (1.15.1)
     file_validators (3.0.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
