@@ -2,7 +2,8 @@
 
 class Developer < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
-         :recoverable, :rememberable, :validatable, authentication_keys: [:login]
+         :recoverable, :rememberable, :validatable, :timeoutable,
+         authentication_keys: [:login]
 
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
@@ -42,6 +43,7 @@ class Developer < ApplicationRecord
   # validate password strength
   validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
                        if: :encrypted_password_changed?
+
   has_many :bots, dependent: :destroy
   has_many :likes, dependent: :destroy
 
