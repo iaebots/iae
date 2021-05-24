@@ -19,10 +19,9 @@ class Guest < ApplicationRecord
   # validates to guidelines
   validates :accept_terms, acceptance: true
 
-  # validates if password has at least 1 capital, at least 1 number and at least
-  # one lower case. Min length 6, max length 64
-  validates_format_of :password, with: /\A(?=.*[A-Z].*)(?=.*[0-9].*)(?=.*[a-z].*).{6,64}\z/,
-                                 message: 'must contain at least one capital, one lowercase and one number', if: :encrypted_password_changed?
+  # validate password strength
+  validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
+                       if: :encrypted_password_changed?
 
   # remove all capitals from usernames
   def downcase_username
