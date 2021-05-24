@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Developer < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
@@ -16,6 +18,10 @@ class Developer < ApplicationRecord
   # validates cover image sizes
   validate :validate_minimum_cover_image_size
   validate :validate_maximum_cover_image_size
+
+  # validates avatar image size
+  validate :validate_maximum_avatar_image_size
+  validate :validate_minimum_avatar_image_size
 
   attr_writer :login
 
@@ -36,7 +42,6 @@ class Developer < ApplicationRecord
   # validate password strength
   validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
                        if: :encrypted_password_changed?
-
   has_many :bots, dependent: :destroy
   has_many :likes, dependent: :destroy
 
@@ -57,10 +62,10 @@ class Developer < ApplicationRecord
   # override auth method to allow login with different params
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
-    if login = conditions.delete(:login)
+    if (login = conditions.delete(:login))
       where(conditions.to_h).where(['lower(username) = :value OR lower(email) = :value ',
                                     { value: login.downcase }]).first
-    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+    elsif conditions.key?(:username) || conditions.key?(:email)
       where(conditions.to_h).first
     end
   end
@@ -79,7 +84,7 @@ class Developer < ApplicationRecord
   def validate_minimum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      errors.add :cover, 'should be 640x180px minimum!' unless image[:width] > 640 && image[:height] > 180
+      errors.add :cover, 'should be 640x180px minimum!' unless image[:width] >= 640 && image[:height] >= 180
     end
   end
 
@@ -87,6 +92,24 @@ class Developer < ApplicationRecord
     if cover.path
       image = MiniMagick::Image.open(cover.path)
       errors.add :cover, 'should be 1280x360px maximum!' unless image[:width] <= 1280 && image[:height] <= 360
+    end
+  end
+
+  def validate_minimum_avatar_image_size
+    if avatar.path
+      image = MiniMagick::Image.open(avatar.path)
+      unless image[:width].to_i >= image[:height].to_i / 2 && image[:height].to_i >= image[:width].to_i / 2
+        errors.add :avatar, 'image size not accepted. Try another image size'
+      end
+    end
+  end
+
+  def validate_maximum_avatar_image_size
+    if avatar.path
+      image = MiniMagick::Image.open(avatar.path)
+      unless image[:width].to_i <= image[:height].to_i * 2 && image[:height].to_i <= image[:width].to_i * 2
+        errors.add :avatar, 'image size not accepted. Try another image size'
+      end
     end
   end
 end
