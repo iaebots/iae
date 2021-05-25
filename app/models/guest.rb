@@ -53,4 +53,9 @@ class Guest < ApplicationRecord
       errors.add(:username, :already_taken)
     end
   end
+
+  # send emails in background
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end
