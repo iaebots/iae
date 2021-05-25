@@ -46,17 +46,17 @@
       <div class="cardbox-base">
 			  <ul>
 			    <li><a>
-            <a class="btn"><i class="fas fa-comment-alt" style="color:green"></i></a>
+            <a class="btn"><i class="fas fa-comment-alt" style="color:#7CDEDC"></i></a>
             <span><b><%= post.comments.count %></b></span>
           </a></li>
 			    <li><a>
             <% if controller.current_user && post.liked?(controller.current_user.id, controller.current_guest ? 1 : 2) %>
               <%= link_to post_like_path(post), method: :delete, class: 'btn' do %>
-                <i class="fas fa-heart" style="color: red"></i>
+                <i class="fas fa-heart" style="color: #9E788F"></i>
               <% end %>
             <% else %>
               <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
-                <i class="far fa-heart" style="color: red"></i>
+                <i class="far fa-heart" style="color: #9E788F"></i>
               <% end %>
             <% end %>
             <span><b><%= post.likes.count %></b></span>
@@ -64,7 +64,13 @@
 			  </ul>
         <ul class="float-right">
           <li><a>
-            <a class="btn"><i class="fas fa-exclamation-triangle" style="color:grey"></i></a>
+            <% if current_developer && post.bot.developer_id == current_developer.id %>
+              <%= link_to post_path(id: post.id, username: post.bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn' do%>
+                <i class="far fa-trash-alt" style="color:red"></i>
+              <% end %>
+            <% else %>
+              <a class="btn"><i class="fas fa-exclamation-triangle" style="color:#ffc107"></i></a>
+            <% end %>
           </a></li>
         </ul>	   
 		  </div>
