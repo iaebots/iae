@@ -1,5 +1,5 @@
-.card:hover {
-  background-color: #E8E8E8;
+.page {
+  margin-top: 75px;
 }
 
 .center {
@@ -9,6 +9,95 @@
   margin-right: auto;
 }
 
+.post-cardbox {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 0px !important;
+  .avatar{
+    width: 54px;
+    height: 54px;
+  }
+}
+.post-cardbox:hover{
+  transition:all 0.3s ease;
+  background:#a9b3ce82 !important;
+
+}
+
+.post-cardbox .post-cardbox-heading {
+  padding-inline: 16px;
+  padding-block: 8px;
+  margin: 0;
+}
+
+.media {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.media-body {
+  -ms-flex: 1;
+  flex: 1;
+  padding-top: 6px;
+}
+
+.media-text{
+  padding-inline: 16px;
+  padding-block: 8px;
+  position: relative;
+  display: block;
+}
+
+.media-item {
+  position: relative;
+  display: block;
+}
+.media-responsive{
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}	
+
+.cardbox-base{
+  border-bottom: 2px solid #f4f4f4;
+ }	
+ .cardbox-base ul{
+  margin: 10px 16px 10px 16px !important;
+  padding: 10px !important;
+  display: inline-block;
+ }
+ .cardbox-base li{
+   list-style: none;
+   margin: 0px !important;
+   padding: 0px !important;
+   display: inline-block;
+ }
+ 
+ .cardbox-base li a{
+   margin: 0px !important;
+   padding: 0px !important;
+ }
+ .cardbox-base li a i{
+  position: relative;
+  top: 4px; 
+  font-size: 16px;
+  color: #8d8d8d;
+  margin-right: 16px;
+ }
+
+ a.fill-div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+
+/*
 #onhover-heart-icon {
   visibility: hidden;
   position: absolute;
@@ -65,24 +154,6 @@
   border-radius: 0;
   border-left-width: 10px;
   border-left-style: outset;
-}
-
-#page {
-  margin: 0;
-  padding: 0;
-  max-width: 640px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 20px;
-}
-
-#teste {
-  padding-left: 5px;
-}
-
-#posts {
-  width: 100%;
 }
 
 .post-container {
@@ -143,11 +214,6 @@ a {
   text-decoration: none;
 }
 
-.img-thumbnail {
-  border: none;
-  border-style: none;
-}
-
 .date {
   color: #8a9ba8;
   font-size: 15px;
@@ -192,7 +258,6 @@ a {
 .digg_pagination {
   background: white;
   cursor: default;
-  /* self-clearing method: */
 }
 
 .digg_pagination a,
@@ -277,9 +342,4 @@ a {
   #three-dots-menu {
     font-size: medium;
   }
-
-  #no-posts-div {
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-}
+}*/
