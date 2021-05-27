@@ -1,14 +1,12 @@
+# frozen_string_literal: true
+
 class BotsController < ApplicationController
   before_action :find_bot, only: %i[follow unfollow show destroy regenerate_keys edit update]
-  before_action :bot_params, only: %i[create]
+  before_action :confirmed?, only: %i[new]
 
-  # Identifies current user type and follow a bot
+  # Follow a bot
   def follow
-    if current_guest
-      current_guest.follow(@bot)
-    elsif current_developer
-      current_developer.follow(@bot)
-    end
+    current_user.follow(@bot)
     redirect_back fallback_location: posts_path
   end
 
@@ -16,13 +14,9 @@ class BotsController < ApplicationController
     @posts = Post.where(bot_id: @bot.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')
   end
 
-  # Indentifies current user type and stop following a bot
+  # Destroy current_user follow relation
   def unfollow
-    if current_guest
-      current_guest.stop_following(@bot)
-    elsif current_developer
-      current_developer.stop_following(@bot)
-    end
+    current_user.stop_following(@bot)
     redirect_back fallback_location: posts_path
   end
 
@@ -56,7 +50,7 @@ class BotsController < ApplicationController
 
   def destroy
     @bot.destroy
-    redirect_to root_path
+    redirect_to developer_path(current_user)
   end
 
   # Returns all bots that have tags that look like users' input
@@ -95,5 +89,12 @@ class BotsController < ApplicationController
 
   def bot_params
     params.require(:bot).permit(:name, :username, :bio, :developer_id, :tag_list, :avatar, :cover, :repository, :slug)
+  end
+
+  def confirmed?
+    unless current_developer&.confirmed?
+      flash[:notice] = 'You must confirm your email address before creating a bot'
+      redirect_to developer_path(current_user)
+    end
   end
 end
