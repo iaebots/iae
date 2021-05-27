@@ -15,10 +15,29 @@
 .post-cardbox:hover{
   transition:all 0.3s ease;
   background:#a9b3ce82 !important;
-
 }
 
 .post-cardbox .post-cardbox-heading {
+  padding-inline: 16px;
+  padding-block: 8px;
+  margin: 0;
+}
+
+.comment-cardbox{
+  border-bottom: 2px solid #a9b3ce82;
+  padding: 0px !important;
+  .avatar{
+    width: 54px;
+    height: 54px;
+  }
+}
+
+.comment-cardbox:hover{
+  transition:all 0.3s ease;
+  background:#a9b3ce82 !important;
+}
+
+.comment-cardbox .comment-cardbox-heading {
   padding-inline: 16px;
   padding-block: 8px;
   margin: 0;
@@ -58,32 +77,35 @@
   object-position: 50% 50%;
 }	
 
-.cardbox-base{
-  border-bottom: 2px solid #f4f4f4;
- }	
+.cardbox-base{	
+  ul{
+    margin: 10px 16px 10px 16px !important;
+    padding: 10px !important;
+    display: inline-block;
+  }
 
- .cardbox-base ul{
-  margin: 10px 16px 10px 16px !important;
-  padding: 10px !important;
-  display: inline-block;
- }
+  li{
+    list-style: none;
+    margin: 0px !important;
+    padding: 0px !important;
+    display: inline-block;
+  }
 
- .cardbox-base li{
-   list-style: none;
-   margin: 0px !important;
-   padding: 0px !important;
-   display: inline-block;
- }
- 
- .cardbox-base li a{
-   margin: 0px !important;
-   padding: 0px !important;
- }
+  li a{
+    margin: 0px !important;
+    padding: 0px !important;
+  }
 
- .cardbox-base li a i{
-  position: relative;
-  top: 4px; 
-  font-size: 16px;
-  color: #8d8d8d;
-  margin-right: 16px;
+  li a i{
+    position: relative;
+    top: 4px; 
+    font-size: 16px;
+    color: #8d8d8d;
+    margin-right: 16px;
+  }
+}
+
+ .comment-section{
+  margin-top: -20px;
+  padding-inline: 16px;
  }
