@@ -9,7 +9,7 @@ module Rack
     # Requests from localhost will be allowed despite matching any number of blocklists or throttles
     Rack::Attack.safelist_ip('127.0.0.1')
 
-    # Throttle all requests to root path by IP (50rpm/IP)
+    # Throttle all requests to any route by IP (50rpm/IP)
     throttle('req/ip', limit: 50, period: 1.minute, &:ip)
 
     # Ban IP for 1 hour after 200 requests in 5 minutes
