@@ -40,7 +40,7 @@ module Rack
 
   # Ban IP for 12 hours after 50 sign-in attempts in 5 minutes
   Rack::Attack.blocklist('ban on too man sing-ins attempts') do |req|
-    Rack::Attack::Allow2Ban.filter(req.ip, maxretry: 50, findtime: 5.minutes, bantime: 12.hours) do
+    Rack::Attack::Allow2Ban.filter(req.ip, maxretry: 50, findtime: 5.minutes, bantime: 24.hours) do
       (req.path == '/guests/sign_in' || req.path == '/developers/sign_in') && req.post?
     end
   end
