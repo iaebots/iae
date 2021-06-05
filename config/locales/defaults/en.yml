@@ -1,4 +1,10 @@
+# English efault messages
+
 en:
   errors:
-    messages:
-      content_type_whitelist_error: "content type or extension not allowed"
+    validation:
+      messages:
+        content_type_whitelist_error: "content type or extension not allowed."
+        not_saved:
+          one: "1 error found"
+          other: "%{count} errors found"

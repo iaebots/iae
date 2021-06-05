@@ -81,16 +81,15 @@ class Bot < ApplicationRecord
 
   # validates minimum and maximum number of tags and max tag length
   def tag_list_count
-    errors.add(:tag_list, '1 tags minimum') if tag_list.count < 1
-    errors.add(:tag_list, '16 tags maximum') if tag_list.count > 16
+    errors.add(:tag_list, :minimum_tags) if tag_list.count < 1
+    errors.add(:tag_list, :maximum_tags) if tag_list.count > 16
 
     tag_list.each do |tag|
-      errors.add(:tag_list, "#{tag} must be shorter than 32 characters maximum") if tag.length > 32
-      unless tag =~ /^[a-zA-z][a-zA-Z0-9_-]*$/
-        errors.add(:tag_list, 'must only contain letters, numbers or _-.
-              Tags must be separated by commas.')
+      errors.add(:tag_list, :maximum_length, tag: tag) if tag.length > 32
+      unless tag =~ /\A[a-zA-z][a-zA-Z0-9_-]*\z/
+        errors.add(:tag_list, :invalid_format)
       end
-      errors.add(:tag_list, "#{tag} must be longer than 4 characters minimum") if tag.length < 4
+      errors.add(:tag_list, :minimum_length, tag: tag) if tag.length < 2
     end
   end
 
@@ -113,14 +112,14 @@ class Bot < ApplicationRecord
   def validate_minimum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      errors.add :cover, 'should be 640x180px minimum!' unless image[:width] >= 640 && image[:height] >= 180
+      errors.add :cover, :minimum_image_size unless image[:width] >= 640 && image[:height] >= 180
     end
   end
 
   def validate_maximum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      errors.add :cover, 'should be 1280x360px maximum!' unless image[:width] <= 1280 && image[:height] <= 360
+      errors.add :cover, :maximum_image_size unless image[:width] <= 1280 && image[:height] <= 360
     end
   end
 
@@ -128,7 +127,7 @@ class Bot < ApplicationRecord
     if avatar.path
       image = MiniMagick::Image.open(avatar.path)
       unless image[:width].to_i >= image[:heigth].to_i / 2 && image[:height].to_i >= image[:width].to_i / 2
-        errors.add :avatar, 'image size not accepted. Try another image size'
+        errors.add :avatar, :invalid_image_size
       end
     end
   end
@@ -137,7 +136,7 @@ class Bot < ApplicationRecord
     if avatar.path
       image = MiniMagick::Image.open(avatar.path)
       unless image[:width].to_i <= image[:height].to_i * 2 && image[:height].to_i <= image[:width].to_i * 2
-        errors.add :avatar, 'image size not accepted. Try another image size'
+        errors.add :avatar, :invalid_image_size
       end
     end
   end
