@@ -1,0 +1,15 @@
+# Guest model English messages
+
+en:
+  activerecord:
+    errors:
+      models:
+        guest:
+          attributes:
+            username:
+              already_taken: "has already been taken."
+            password:
+              password:
+                password_strength: "is too weak. Try again with a stronger password."
+      messages:
+        confirmation: "must match password."

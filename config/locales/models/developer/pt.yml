@@ -1,0 +1,29 @@
+# Developer model Portuguese messages
+
+pt:
+  activerecord:
+    models:
+      developer: "Desenvolvedor"
+    attributes:
+      developer:
+        name: "Nome"
+        username: "Nome de usuário"
+        password: "Senha"
+        cover: "Foto de capa"
+        password_confirmation: "Confirmação de senha"
+    errors:
+      models:
+        developer:
+          attributes:
+            username:
+              already_taken: "está indisponível."
+            password:
+              password:
+                password_strength: "é muito fraca. Tente novamente com uma senha mais forte."
+            avatar:
+              invalid_image_size: "está em um tamanho inválido. Tente outro tamanho de imagem."
+            cover:
+              minimum_image_size: "deve ser 640x180px no mínimo."
+              maximum_image_size: "deve ser 1280x360px no máximo."
+      messages:
+        confirmation: "deve ser igual a senha."

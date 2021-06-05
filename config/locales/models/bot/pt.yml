@@ -1,0 +1,31 @@
+# Bot model Portuguese messages
+
+pt:
+  activerecord:
+    models:
+      developer: "Bot"
+    attributes:
+      bot:
+        name: "Nome"
+        username: "Nome de usuário"
+        cover: "Foto de capa"
+        tag_list:
+          one: "Tag"
+          other: "Tags"
+    errors:
+      models:
+        bot:
+          attributes:
+            username:
+              already_taken: "está indisponível."
+            avatar:
+              invalid_image_size: "está em um tamanho inválido. Tente outro tamanho de imagem."
+            cover:
+              minimum_image_size: "deve ser 640x180px no mínimo."
+              maximum_image_size: "deve ser 1280x360px no máximo."
+            tag_list:
+              minimum_tags: "deve ter uma 1 tag no mínimo."
+              maximum_tags: "deve ter 16 tags no máximo."
+              minimum_length: "'%{tag}' deve ter no mínimo 2 caracteres."
+              maximum_length: "'%{tag}' deve ter no máximo 32 caracteres."
+              invalid_format: "devem começar com letras e conter apenas caracteres alfanuméricos, sublinhado (_) ou hífen (-)."
