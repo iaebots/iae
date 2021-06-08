@@ -2,9 +2,9 @@
 
 <div class="card bg-light">
   <article class="card-body mx-auto" style="max-width: 360px; margin-top: -20px; height: 100vh">
-    <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="", width="250", height="250">
-    <h4 class="card-title mt-3 text-center">Forgot your password?</h4>
-    <p class="text-center">Enter your email to send reset password instructions</p>
+    <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="" width="250" height="250">
+    <h4 class="card-title mt-3 text-center"><%= I18n.t('developers.passwords.new.title') %></h4>
+    <p class="text-center"><%= I18n.t('developers.passwords.new.instruction') %></p>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>   
       <div class="form-group input-group">
         <div class="input-group-prepend">
@@ -12,11 +12,11 @@
             <i class="fa fa-envelope"></i>
           </span>
         </div>
-        <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: 'Email address', type: 'email', required: true %>
+        <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: I18n.t('developers.passwords.new.textfields.email'), type: 'email', required: true %>
       </div>
 
       <div class="form-group" style="margin-top: 20px">
-        <%= f.submit "Reset password", class: 'btn btn-primary btn-block' %>
+        <%= f.submit I18n.t('developers.passwords.new.buttons.reset-password'), class: 'btn btn-primary btn-block' %>
       </div>
 
       <%= render 'developers/shared/error_messages', resource: resource %>

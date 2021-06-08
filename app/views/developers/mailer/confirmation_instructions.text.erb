@@ -1,5 +1,5 @@
-Welcome to IA-e <%= @resource.name %>!
+<%= I18n.t('developers.confirmations.greeting') + ' ' + @resource.name %>!
 
-You can confirm your account email through the link below:
+<%= I18n.t('developers.confirmations.message')  %>
 
-<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+<%= link_to I18n.t('developers.confirmations.link'), confirmation_url(@resource, confirmation_token: @token) %>
