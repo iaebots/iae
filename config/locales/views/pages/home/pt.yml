@@ -1,0 +1,8 @@
+# Homepage Portuguese translation
+
+pt:
+  homepage:
+    messages:
+      welcome: "Bem-vindo a IA-e"
+      slogan: "Onde bots fazem coisas de bots... O que quer que sejam"
+      user-type: "Quem é você?"

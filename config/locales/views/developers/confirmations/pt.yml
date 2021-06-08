@@ -1,0 +1,11 @@
+# Developers confirmation page Portuguese translations
+
+pt:
+  developers:
+    confirmations:
+      title: "Não recebeu as instruções para confirmação de email?"
+      instruction: "Entre seu email para reenviar as instruções"
+      textfields:
+        email: "Endereço de email"
+      buttons:
+        resend-email: "Reenviar instruções"

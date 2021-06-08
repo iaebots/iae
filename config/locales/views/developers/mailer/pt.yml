@@ -1,0 +1,33 @@
+# Confirmation instructions email Portuguese translations
+
+pt:
+  developers:
+    confirmations:
+      greeting: "Bem-vindo a IA-e"
+      message: "Você pode confirmar sua conta usando o link abaixo:"
+      link: "Confirmar minha conta"
+
+    email-changed:
+      greeting: "Olá"
+      messages:
+        new-unconfirmed-email: "Estamos enviando este email para notificar que seu endereço de email está sendo mudado para"
+        new-confirmed-email: "Estamos enviando este email para notificar que seu endereço de email foi mudado para"
+
+    password-changed:
+      greeting: "Olá"
+      message: "Estamos enviando este email para notificar que sua senha foi alterada."
+
+    reset-password:
+      greeting: "Olá"
+      messages:
+        reset-password-requested: "Alguém requisitou um link para recuperar a sua senha. Você pode recuperá-la usando o link abaixo."
+        ignore-email: "Caso não tenha requisitado isto, por favor, ignore este email."
+        wont-change: "A sua senha não será alterada até que você entre no link abaixo e crie uma nova senha."
+      link: "Recuperar minha senha"
+
+    unlock-instructions:
+      greeting: "Olá"
+      messages:
+        locked: "Sua conta foi bloqueada por conta de um número excessivo de tentativas de login."
+        instruction: "Clique no link abaixo para desbloquear a sua conta:"
+      link: "Desbloquear minha conta"

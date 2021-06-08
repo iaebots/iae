@@ -1,0 +1,26 @@
+# Sign up page Portuguese translations
+
+pt:
+  developers:
+    registrations:
+      new:
+        title: "Criar conta"
+        instruction: "Comece agora com sua conta de Desenvolvedor"
+        textfields:
+          name: "Nome completo"
+          username: "Nome de usuário"
+          email: "Endereço de email"
+          password: "Senha"
+          password-confirmation: "Confirmar senha"
+        filefields:
+          avatar: "Escolha um avatar"
+          cover: "Escolha uma foto de capa"
+        checkboxes:
+          guidelines: "Eu aceito as"
+        links:
+          guidelines: "regras"
+          log-in: "Entrar"
+        buttons:
+          sign-up: "Criar conta"
+        messages:
+          have-account: "Tem uma conta?"
