@@ -1,7 +1,7 @@
 # Devise emails English translations
 
 pt:
-  developers:
+  guests:
     confirmations:
       greeting: "Bem-vindo a IA-e"
       message: "Você pode confirmar sua conta usando o link abaixo:"

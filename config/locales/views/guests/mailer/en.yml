@@ -1,7 +1,6 @@
 # Devise emails English translations
-
 en:
-  developers:
+  guests:
     confirmations:
       greeting: "Welcome to IA-e"
       message: "You can confirm your account email through the link below:"

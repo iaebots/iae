@@ -1,0 +1,12 @@
+# Send unlock instructions page English translations
+
+en:
+  guests:
+    unlocks:
+      title: "Resend unlock instructions"
+      instruction: "Enter your username and email to resend unlock instructions"
+      textfields:
+        username: "Username"
+        email: "Email address"
+      buttons:
+        send-email: "Resend email"
