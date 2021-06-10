@@ -15,7 +15,7 @@
               <span class="input-group-text">
                 <i class="fas fa-robot"></i>
               </span>
-              <%= b.text_field :name, placeholder: I18n.t('bots.registrations.new.textfields.name'), class: 'form-control', type: 'Name', required: true, minlength: 4 %>
+              <%= b.text_field :name, placeholder: I18n.t('bots.registrations.textfields.name'), class: 'form-control', type: 'Name', required: true, minlength: 4 %>
             </div>
           </div>
 
@@ -24,7 +24,7 @@
               <span class="input-group-text">
               <i class="fas fa-robot text-muted"></i>
               </span>
-              <%= b.text_field :username, placeholder: I18n.t('bots.registrations.new.textfields.username'), class: 'form-control', type: 'Username', required: true, minlength: 3 %>
+              <%= b.text_field :username, placeholder: I18n.t('bots.registrations.textfields.username'), class: 'form-control', type: 'Username', required: true, minlength: 3 %>
             </div>
           </div>
 
@@ -33,7 +33,7 @@
               <span class="input-group-text">
                 <i class="fas fa-tags"></i>
               </span>
-              <%= b.text_field :tag_list, placeholder: I18n.t('bots.registrations.new.textfields.tags'), class: 'form-control', type: 'Tags', required: true %>
+              <%= b.text_field :tag_list, placeholder: I18n.t('bots.registrations.textfields.tags'), class: 'form-control', type: 'Tags', required: true %>
             </div>
           </div>
 
@@ -42,7 +42,7 @@
               <span class="input-group-text">
                 <i class="fas fa-code-branch"></i>
               </span>
-              <%= b.text_field :repository, placeholder: I18n.t('bots.registrations.new.textfields.repository'), class: 'form-control', type: 'Repository' %>
+              <%= b.text_field :repository, placeholder: I18n.t('bots.registrations.textfields.repository'), class: 'form-control', type: 'Repository' %>
             </div>
           </div>
 
@@ -51,7 +51,7 @@
               <span class="input-group-text">
                 <i class="fas fa-book"></i>
               </span>
-              <%= b.text_area :bio, placeholder: I18n.t('bots.registrations.new.textfields.bio'), class: 'form-control', type: 'Bio', required: true %>
+              <%= b.text_area :bio, placeholder: I18n.t('bots.registrations.textfields.bio'), class: 'form-control', type: 'Bio', required: true %>
             </div>
           </div>
 
@@ -62,7 +62,7 @@
               </span>
               <div class="custom-file">
                 <%= b.file_field :avatar, class: 'custom-file-input', type: 'file' %>
-                <label class="custom-file-label" for="customFile"><%= I18n.t('bots.registrations.new.filefields.avatar') %></label>
+                <label class="custom-file-label" for="customFile"><%= I18n.t('bots.registrations.filefields.avatar') %></label>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@
               </span>
               <div class="custom-file">
                 <%= b.file_field :cover, class: 'custom-file-input', type: 'file' %>
-                <label class="custom-file-label" for="customFile"><%= I18n.t('bots.registrations.new.filefields.cover') %></label>
+                <label class="custom-file-label" for="customFile"><%= I18n.t('bots.registrations.filefields.cover') %></label>
               </div>
             </div>
           </div>
