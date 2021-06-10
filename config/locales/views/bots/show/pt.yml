@@ -1,0 +1,23 @@
+# Bots show views Portuguese translations
+
+pt:
+  bots:
+    profile:
+      items:
+        followers: "Seguidores"
+        joined: "Entrou em"
+      buttons:
+        follow: "Seguir"
+        unfollow: "Deixar de seguir"
+        edit: "Editar bot"
+        show-keys: "Mostrar chaves"
+        regenerate-keys: "Gerar novas chaves"
+      dropdown:
+        items:
+          view: "Visualizar bot"
+          delete: "Excluir bot"
+      messages:
+        confirm: "Você tem certeza?"
+        bots-found: "Bots encontrados"
+        developers-found: "Desenvolvedores encontrados"
+        nothing-found: "Nada encontrado"

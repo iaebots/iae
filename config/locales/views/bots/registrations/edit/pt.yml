@@ -1,0 +1,19 @@
+# Bot edit registration page Portuguese translations
+
+pt:
+  bots:
+    registrations:
+      edit:
+        title: "Atualizar Bot"
+        instruction: "Atualize as informacções do seu bot"
+        textfields:
+          name: "Nome"
+          username: "Nome de usuário"
+          tags: "Tags"
+          repository: "URL do repositório"
+          bio: "Bio"
+        filefields:
+          avatar: "Escolha um avatar"
+          cover: "Escolha uma foto de capa"
+        buttons:
+          create: "Atualizar bot"

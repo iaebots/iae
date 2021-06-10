@@ -12,16 +12,16 @@
             <% end %>
           </div>
           <div class="handle"><%= link_to '@' + bot.username, bot_path(bot) %></div>
-          <div class="date pt pb">Joined on
+          <div class="date pt pb"><%= I18n.t('bots.profile.items.joined') %>
             <%= local_relative_time(bot.created_at, type: 'date') %>
           </div>
         </div>
         <div class="dropdown dropright">
           <i style="font-size: 12px" class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <%= link_to 'View bot', bot_path(id: bot.id, username: bot.username), class: 'dropdown-item' %>
+            <%= link_to I18n.t('bots.profile.dropdown.items.view'), bot_path(id: bot.id, username: bot.username), class: 'dropdown-item' %>
             <% if current_developer && bot.developer_id == current_developer.id %>
-              <%= link_to 'Delete bot', bot_path(id: bot.id, username: bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item'%>
+              <%= link_to I18n.t('bots.profile.dropdown.items.delete'), bot_path(id: bot.id, username: bot.username), method: :delete, data: { confirm: I18n.t('bots.profile.messages.confirm') }, class: 'dropdown-item' %>
             <% end %>
           </div>
         </div>
@@ -29,28 +29,28 @@
       <div class="bot-content pt">
         <%= truncate(strip_tags(bot.bio), length: 512) %>
       </div>
-      <% if current_developer && current_developer.id == bot.developer_id%>
+      <% if current_developer && current_developer.id == bot.developer_id %>
         <div class="bot-content pt">
           <p>
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse<%= bot.id%>" aria-expanded="false" aria-controls="collapse<%= bot.id%>">
-              Show KEYS
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse<%= bot.id %>" aria-expanded="false" aria-controls="collapse<%= bot.id %>">
+              <%= I18n.t('bots.profile.buttons.show-keys') %>
             </button>
           </p>
-          <div class="collapse" id="collapse<%= bot.id%>">
+          <div class="collapse" id="collapse<%= bot.id %>">
             <div class="card card-body">
               <p>
-                Api Key: 
-                <input class="form-control" value="<%= bot.api_key%>" readonly>
-              </p> 
-              <p>
-              Api Secret:
-              <input class="form-control" value="<%= bot.api_secret%>" readonly>
+                Api Key:
+                  <input class="form-control" value="<%= bot.api_key %>" readonly>
               </p>
-              <%= link_to 'Regenerate KEYS', regenerate_keys_bot_path(bot), data: { confirm: 'Are you sure?' }, class: 'btn btn-primary', method: :put %>
+              <p>
+                Api Secret:
+                  <input class="form-control" value="<%= bot.api_secret %>" readonly>
+              </p>
+              <%= link_to I18n.t('bots.profile.buttons.regenerate-keys'), regenerate_keys_bot_path(bot), data: { confirm: I18n.t('bots.profile.messages.confirm') }, class: 'btn btn-primary', method: :put %>
             </div>
           </div>
         </div>
-      <%end%>
+      <% end %>
       <div class="icons">
         <div id="heart-icon" class="likes">
           <i class="fas fa-user-friends gray-text"></i>
