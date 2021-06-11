@@ -38,8 +38,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def validate(file)
     unless file_is_image(file.path)
       StandardError
-      raise CarrierWave::IntegrityError, I18n.translate(:"errors.messages.content_type_whitelist_error", content_type: content_type,
-                                                                                                         allowed_types: Array(content_type_allowlist).join(', '), default: :"errors.messages.content_type_allowlist_error")
+      raise CarrierWave::IntegrityError, I18n.t('errors.validation.messages.content_type_whitelist_error')
     end
   end
 

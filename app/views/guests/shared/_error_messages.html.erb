@@ -2,7 +2,7 @@
   <div id="error_explanation">
     <div role="alert" class="alert alert-danger alert-dismissable" style="margin-top: 20px">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <p><strong><%= pluralize(resource.errors.count, 'error') %> found</strong></p>
+      <p><strong><%= I18n.t("errors.validation.messages.not_saved", count: resource.errors.count) %></strong></p>
       <ul class="list-group">
         <% resource.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

@@ -60,6 +60,3 @@ pt:
       expired: "expirou, por favor solicite uma nova"
       not_found: "não encontrado"
       not_locked: "não está bloqueada"
-      not_saved:
-        one: "1 erro impediu que %{resource} fosse salvo(a):"
-        other: "%{count} erros impediram que %{resource} fosse salvo(a):"

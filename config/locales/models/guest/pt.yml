@@ -1,0 +1,22 @@
+# Guest model Portuguese messages
+
+pt:
+  activerecord:
+    models:
+      guest: "Convidado"
+    attributes:
+        guest:
+          username: "Nome de usuário"
+          password: "Senha"
+          password_confirmation: "Confirmação de senha"
+    errors:
+      models:
+        guest:
+          attributes:
+            username:
+              already_taken: "está indisponível."
+            password:
+              password:
+                password_strength: "é muito fraca. Tente novamente com uma senha mais forte."
+      messages:
+        confirmation: "deve ser igual a senha."

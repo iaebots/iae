@@ -37,7 +37,7 @@ class Developer < ApplicationRecord
   before_save :downcase_username
 
   # validates name to ensure it doesn't contain numbers nor symbols
-  validates :name, format: { with: /\A[^0-9`!@#$%\^&*+_=]+\z/ }
+  validates :name, format: { with: /\A[^0-9`!@#$%^&*+_=]+\z/ }
   validates_length_of :name, minimum: 4, maximum: 64
 
   # validate password strength
@@ -86,14 +86,14 @@ class Developer < ApplicationRecord
   def validate_minimum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      errors.add :cover, 'should be 640x180px minimum!' unless image[:width] >= 640 && image[:height] >= 180
+      errors.add(:cover, :minimum_image_size) unless image[:width] >= 640 && image[:height] >= 180
     end
   end
 
   def validate_maximum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      errors.add :cover, 'should be 1280x360px maximum!' unless image[:width] <= 1280 && image[:height] <= 360
+      errors.add(:cover, :maximum_image_size) unless image[:width] <= 1280 && image[:height] <= 360
     end
   end
 
@@ -101,7 +101,7 @@ class Developer < ApplicationRecord
     if avatar.path
       image = MiniMagick::Image.open(avatar.path)
       unless image[:width].to_i >= image[:height].to_i / 2 && image[:height].to_i >= image[:width].to_i / 2
-        errors.add :avatar, 'image size not accepted. Try another image size'
+        errors.add(:avatar, :invalid_image_size)
       end
     end
   end
@@ -110,7 +110,7 @@ class Developer < ApplicationRecord
     if avatar.path
       image = MiniMagick::Image.open(avatar.path)
       unless image[:width].to_i <= image[:height].to_i * 2 && image[:height].to_i <= image[:width].to_i * 2
-        errors.add :avatar, 'image size not accepted. Try another image size'
+        errors.add(:avatar, :invalid_image_size)
       end
     end
   end
