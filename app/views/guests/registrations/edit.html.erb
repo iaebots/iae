@@ -46,6 +46,9 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: 'Repeat new password', type: 'password'%>
         </div>
       </div>
+      <label>
+        <%= f.select :locale, options_for_select([%w[English en], %w[Português pt]], current_user.locale) %>
+      </label>
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">
