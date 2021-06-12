@@ -1,21 +1,12 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  helper_method :current_user
 
   # Returns current user whether it's a guest or a developer
   def current_user
     current_developer || current_guest
-  end
-
-  protected
-
-  # Permit username and name as strong parameters for Devise Sign-up
-  def configure_permitted_parameters
-    added_attrs = %i[name username email password password_confirmation remember_me]
-    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
   private
