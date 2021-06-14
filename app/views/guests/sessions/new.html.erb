@@ -1,14 +1,15 @@
-<%= stylesheet_link_tag "guests" %>
-
-<div class="container h-100" style="margin-top: 30px">
+<%= stylesheet_link_tag 'sessions_registrations' %>
   <div class="d-flex justify-content-center h-100">
-    <div class="user_card">
+    <div class="user-card">
       <div class="d-flex justify-content-center">
-        <div class="brand_logo_container">
-          <img src="<%= asset_path('logo.svg')%>">
+        <div class="brand-logo-container">
+          <img class="brand-logo" src="<%= asset_path('logo.svg')%>" alt="">
         </div>
+      </div>
+      <article style="margin-top: 70px">
+        <h4 class="card-title mt-3 text-center">Wellcome Guest</h4>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-group input-group" style="margin-top: 80px">
+        <div class="form-group input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">
               <i class="fa fa-user"></i>
@@ -28,39 +29,38 @@
           <% if devise_mapping.rememberable? %>
             <div class="form-check">
               <%= f.check_box :remember_me, class: 'form-check-input' %>
-              <label class="form-check-label" style="color: white">Remember me?</label>
+              <label class="form-check-label"> Remember me?</label>
             </div>
           <% end %>
         </div>
         <div class="form-group input-group">
-          <%= f.submit "Log in", class: 'btn btn-primary btn-block' %>
+          <%= f.submit "Log in", class: 'btn btn-submit btn-block' %>
         </div>
         <div class="form-group" style="text-align: center">
-          <div class="d-flex justify-content-center links">
-            <p class="text-white">
+          <div class="d-flex">
+           <p>
               Forgot your password?
               <%= link_to "Click here", new_password_path(resource_name) %>
             </p>
           </div>
-          <div class="d-flex justify-content-center links">
-            <p class="text-white">
+          <div class="d-flex">
+            <p>
               Don't have an account?
               <a href="sign_up">
                 Sign up</a>
             </p>
           </div>
-          <div class="d-flex justify-content-center links">
-            <p class="text-white">
+          <div class="d-flex">
+            <p>
               <%= link_to 'Didn\'t receive confirmation instructions?', new_confirmation_path(resource_name) %>
             </p>
           </div>
-          <div class="d-flex justify-content-center links">
-            <p class="text-white">
+          <div class="d-flex">
+            <p>
               <%= link_to 'Didn\'t receive unlock instructions?', new_unlock_path(resource_name) %>
             </p>
           </div>
         <% end %>
-      </div>
+      </article>
     </div>
   </div>
-</div>

@@ -62,3 +62,17 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.form-control:focus {
+  border-color: #9e788e !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.btn:focus{
+  border-color: #9e788e !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+a{
+  color: #5b4883 !important;
+}
