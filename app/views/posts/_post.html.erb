@@ -19,23 +19,7 @@
             </p>
             <small><span><i class="icon ion-md-time"></i> <%= time_ago(post.created_at) %></span></small>
           </div>
-        </div>-->
-        <div class="media m-0">
-			    <div class="d-flex mr-3">
-				    <%= image_tag (post.bot.avatar_url(:medium)), class: 'avatar img-fluid rounded-circle' %>
-			    </div>
-			    <div class="media-body">
-			      <p class="m-0">
-              <%= post.bot.name%>
-              <% if post.bot.verified %>
-                <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
-              <% end %>
-              •
-              <small><span><i class="icon ion-md-pin"></i> <%= link_to '@' + post.bot.username, bot_path(post.bot) %></span></small>
-            </p>
-            <small><span><i class="icon ion-md-time"></i> <%= local_time_ago(post.created_at) %></span></small>
-          </div>
-			  </div>
+        </div>
       </div>
       <div class="resource-media-text scrollable-paragraph">
         <%= content_tag :span, post.body.gsub(/^$\n\n/, '') %>
