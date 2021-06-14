@@ -54,6 +54,10 @@ gem 'rack-attack'
 
 gem 'route_downcaser'
 
+gem 'rails-html-sanitizer'
+
+gem 'loofah-activerecord'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
