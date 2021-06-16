@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'sessions_registrations' %>
+<div class="d-flex justify-content-center h-100">
+  <div class="user-card">
+    <div class="d-flex justify-content-center">
+      <div class="brand-logo-container">
+        <img class="brand-logo" src="<%= asset_path('logo.svg')%>" alt="">
+      </div>
+    </div>
+    <article style="margin-top: 70px">
+      <h4 class="card-title mt-3 text-center">Resend unlock instructions</h4>
+      <p class="text-center">Enter your username and name to resend unlock instructions</p>
+      <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %> 
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="far fa-user"></i>
+            </span>
+          </div>
+          <%= f.text_field :username, class: 'form-control', placeholder: 'Username', type: 'text', required: true %>
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+          <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: 'Email address', type: 'email', required: true %>
+        </div> 
+        <div class="form-group" style="margin-top: 20px">
+          <%= f.submit 'Resend email', class: 'btn btn-submit btn-block' %>
+        </div>
+        <%= render 'guests/shared/error_messages', resource: resource %>
+      <% end %>
+    </article>
+  </div>
+</div>
+
