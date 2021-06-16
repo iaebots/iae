@@ -23,6 +23,11 @@ class Guest < ApplicationRecord
   validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
                        if: :encrypted_password_changed?
 
+  # Save browser's locale as default user's preference locale
+  before_create do |guest|
+    guest.locale = I18n.locale
+  end
+
   # remove all capitals from usernames
   def downcase_username
     username.downcase!

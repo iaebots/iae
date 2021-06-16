@@ -1,5 +1,9 @@
 <%= stylesheet_link_tag 'developers' %>
 
+<script>$(function () {
+    $('.selectpicker').selectpicker();
+});</script>
+
 <div class="card">
   <article class="card-body mx-auto" style="max-width: 350px; margin-top: -20px">
     <img class="card-img-top" src="<%= asset_path('logo.svg') %>" alt="" width="250" height="250">
@@ -62,6 +66,9 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('developers.registrations.edit.textfields.password-confirmation'), type: 'password' %>
         </div>
       </div>
+      <label>
+        <%= f.select :locale, options_for_select([%w[English en], %w[Português pt]], current_user.locale) %>
+      </label>
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">
