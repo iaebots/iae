@@ -5,7 +5,7 @@ pt:
     passwords:
       new:
         title: "Esqueceu sua senha?"
-        instruction: "Entre o seu email para enviar instruções para recuperar a senha"
+        instruction: "Digite o seu email para enviar instruções para recuperar a senha"
         textfields:
           email: "Endereço de email"
         buttons:

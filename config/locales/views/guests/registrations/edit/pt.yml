@@ -13,5 +13,5 @@ pt:
           password-confirmation: "Confirmar senha"
           current-password: "Senha atual"
         buttons:
-          change-password: "Mudar senha"
+          change-password: "Alterar senha"
           update: "Atualizar conta"

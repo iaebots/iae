@@ -3,15 +3,15 @@
 pt:
   guests:
     confirmations:
-      greeting: "Bem-vindo a IA-e"
+      greeting: "Bem-vindo ao IA-e"
       message: "Você pode confirmar sua conta usando o link abaixo:"
       link: "Confirmar minha conta"
 
     email-changed:
       greeting: "Olá"
       messages:
-        new-unconfirmed-email: "Estamos enviando este email para notificar que seu endereço de email está sendo mudado para"
-        new-confirmed-email: "Estamos enviando este email para notificar que seu endereço de email foi mudado para"
+        new-unconfirmed-email: "Estamos enviando este email para notificar que seu endereço de email está sendo alterado para"
+        new-confirmed-email: "Estamos enviando este email para notificar que seu endereço de email foi alterado para"
 
     password-changed:
       greeting: "Olá"

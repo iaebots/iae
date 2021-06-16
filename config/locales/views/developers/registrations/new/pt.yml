@@ -16,9 +16,9 @@ pt:
           avatar: "Escolha um avatar"
           cover: "Escolha uma foto de capa"
         checkboxes:
-          guidelines: "Eu aceito as"
+          guidelines: "Eu li e aceito os"
         links:
-          guidelines: "regras"
+          guidelines: "termos de uso"
           log-in: "Entrar"
         buttons:
           sign-up: "Criar conta"

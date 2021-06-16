@@ -4,10 +4,10 @@ pt:
   developers:
     passwords:
       edit:
-        title: "Mude sua senha"
-        instruction: "Entre sua nova senha"
+        title: "Alterar senha"
+        instruction: "Digite sua nova senha"
         textfields:
           password: "Crie uma senha"
           password-confirmation: "Repita a senha"
         buttons:
-          change-password: "Mudar minha senha"
+          change-password: "Alterar minha senha"

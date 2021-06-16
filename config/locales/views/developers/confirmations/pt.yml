@@ -4,7 +4,7 @@ pt:
   developers:
     confirmations:
       title: "Não recebeu as instruções para confirmação de email?"
-      instruction: "Entre seu email para reenviar as instruções"
+      instruction: "Digite seu email para reenviar as instruções"
       textfields:
         email: "Endereço de email"
       buttons:

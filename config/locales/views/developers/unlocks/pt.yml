@@ -4,7 +4,7 @@ pt:
   developers:
     unlocks:
       title: "Reenviar instruções de desbloqueio"
-      instruction: "Entre seu nome de usuário e email para reenviar instruções"
+      instruction: "Digite seu nome de usuário e email para reenviar instruções"
       textfields:
         username: "Nome de usuário"
         email: "Endereço de email"

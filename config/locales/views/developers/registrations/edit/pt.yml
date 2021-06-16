@@ -18,5 +18,5 @@ pt:
           avatar: "Escolha um avatar"
           cover: "Escolha uma foto de capa"
         buttons:
-          change-password: "Mudar senha"
+          change-password: "Alterar senha"
           update: "Atualizar conta"
