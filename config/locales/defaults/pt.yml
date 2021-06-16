@@ -1,0 +1,10 @@
+# Portuguese default messages
+
+pt:
+  errors:
+    validation:
+      messages:
+        content_type_whitelist_error: "contém tipo de arquivo não permitido."
+        not_saved:
+          one: "1 erro encontrado"
+          other: "%{count} erros encontrados"

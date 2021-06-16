@@ -8,11 +8,11 @@ gem 'rails', '~> 6.1.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
-gem 'puma', '~> 5.2'
+gem 'puma', '~> 5.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
+gem 'webpacker', '~> 5.4'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.11'
 
 gem 'devise'
 
-gem 'bootstrap', '~> 4.6.0'
+gem 'bootstrap', '~> 5.0.1'
 
 gem 'jquery-rails'
 
@@ -34,13 +34,13 @@ gem 'bootstrap-will_paginate'
 
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
-gem 'acts-as-taggable-on', '~> 7.0'
+gem 'acts-as-taggable-on', '~> 8.0'
 
 gem 'rails-i18n'
 
 gem 'friendly_id', '~> 5.4.0'
 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.2'
 
 gem "mini_magick"
 
@@ -57,6 +57,10 @@ gem 'route_downcaser'
 gem 'rails-html-sanitizer'
 
 gem 'loofah-activerecord'
+
+gem 'strong_password', '~> 0.0.9'
+
+gem 'http_accept_language'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -78,6 +82,8 @@ group :development do
   gem 'listen', '~> 3.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'brakeman'
 end
 
 group :test do

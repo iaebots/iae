@@ -1,27 +1,28 @@
 class Guest < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
-         :recoverable, :rememberable, :validatable, authentication_keys: [:login]
+         :recoverable, :rememberable, :validatable, :timeoutable,
+         authentication_keys: [:login]
 
   attr_writer :login
+
   acts_as_follower
-  
+
   has_many :likes, dependent: :destroy
 
   validate :validate_username, if: :username_changed?
 
   # regex to assure username doesn't have a @
-  validates_format_of :username, with: /^[a-zA-Z0-9_-]*$/, multiline: true
+  validates_format_of :username, with: /\A[a-zA-Z0-9_-]*\z/
   validates_length_of :username, minimum: 4, maximum: 32
   before_save :downcase_username
 
-  #validates to guidelines
-  validates :accept_terms, :acceptance => true 
+  # validates to guidelines
+  validates :accept_terms, acceptance: true
 
-  # validates if password has at least 1 capital, at least 1 number and at least
-  # one lower case. Min length 6, max length 64
-  validates_format_of :password, with: /^(?=.*[A-Z].*)(?=.*[0-9].*)(?=.*[a-z].*).{6,64}$/, 
-    multiline: true, message: 'must contain at least one capital, one lowercase and one number', if: :encrypted_password_changed?
-    
+  # validate password strength
+  validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
+                       if: :encrypted_password_changed?
+
   # remove all capitals from usernames
   def downcase_username
     username.downcase!
@@ -51,5 +52,10 @@ class Guest < ApplicationRecord
     elsif Bot.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
     end
+  end
+
+  # send emails in background
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Bot < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -19,15 +21,18 @@ class Bot < ApplicationRecord
   validate :validate_minimum_cover_image_size
   validate :validate_maximum_cover_image_size
 
+  # validates avatar image size
+  validate :validate_maximum_avatar_image_size
+  validate :validate_minimum_avatar_image_size
+
   validates_length_of :bio, minimum: 1, maximum: 512 # validates length of bot's bio
 
   # ensure bot's username doesn't contain symbols nor special characters
-  validates_format_of :username, with: /^[a-zA-Z0-9_-]*$/, multiline: true
+  validates_format_of :username, with: /\A[a-zA-Z0-9_-]*\z/
   validates_length_of :username, minimum: 3, maximum: 32
 
-  #URL max value
-  validates_length_of :repository, maximum: 64 
-
+  # URL max value
+  validates_length_of :repository, maximum: 64
 
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
@@ -69,26 +74,27 @@ class Bot < ApplicationRecord
   def validate_username
     if Bot.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
-    elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists? 
+    elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
     end
   end
 
   # validates minimum and maximum number of tags and max tag length
-  def tag_list_count 
-    errors.add(:tag_list, '1 tags minimum') if tag_list.count < 1
-    errors.add(:tag_list, '16 tags maximum') if tag_list.count > 16
+  def tag_list_count
+    errors.add(:tag_list, :minimum_tags) if tag_list.count < 1
+    errors.add(:tag_list, :maximum_tags) if tag_list.count > 16
 
-    self.tag_list.each do |tag|
-      errors.add(:tag_list, "#{tag} must be shorter than 32 characters maximum") if tag.length > 32
-      errors.add(:tag_list, 'must only contain letters, numbers or _-. 
-            Tags must be separated by commas.') unless tag =~ /^[a-zA-z][a-zA-Z0-9_-]*$/
-      errors.add(:tag_list, "#{tag} must be longer than 4 characters minimum") if tag.length < 4
+    tag_list.each do |tag|
+      errors.add(:tag_list, :maximum_length, tag: tag) if tag.length > 32
+      unless tag =~ /\A[a-zA-z][a-zA-Z0-9_-]*\z/
+        errors.add(:tag_list, :invalid_format)
+      end
+      errors.add(:tag_list, :minimum_length, tag: tag) if tag.length < 2
     end
   end
 
-   # Generate a unique API key
-   def self.generate_api_key
+  # Generate a unique API key
+  def self.generate_api_key
     loop do
       token = SecureRandom.hex(16)
       break token unless Bot.exists?(api_key: token)
@@ -106,18 +112,32 @@ class Bot < ApplicationRecord
   def validate_minimum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      unless image[:width] > 640 && image[:height] > 180
-        errors.add :cover, "should be 640x180px minimum!" 
-      end
-    end  
+      errors.add :cover, :minimum_image_size unless image[:width] >= 640 && image[:height] >= 180
+    end
   end
 
   def validate_maximum_cover_image_size
     if cover.path
       image = MiniMagick::Image.open(cover.path)
-      unless image[:width] <= 1280 && image[:height] <= 360
-        errors.add :cover, "should be 1280x360px maximum!" 
+      errors.add :cover, :maximum_image_size unless image[:width] <= 1280 && image[:height] <= 360
+    end
+  end
+
+  def validate_minimum_avatar_image_size
+    if avatar.path
+      image = MiniMagick::Image.open(avatar.path)
+      unless image[:width].to_i >= image[:heigth].to_i / 2 && image[:height].to_i >= image[:width].to_i / 2
+        errors.add :avatar, :invalid_image_size
       end
-    end 
-  end 
+    end
+  end
+
+  def validate_maximum_avatar_image_size
+    if avatar.path
+      image = MiniMagick::Image.open(avatar.path)
+      unless image[:width].to_i <= image[:height].to_i * 2 && image[:height].to_i <= image[:width].to_i * 2
+        errors.add :avatar, :invalid_image_size
+      end
+    end
+  end
 end
