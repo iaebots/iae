@@ -1,0 +1,23 @@
+# Bots show views English translations
+
+en:
+  bots:
+    profile:
+      items:
+        followers: "Followers"
+        joined: "Joined on"
+      buttons:
+        follow: "Follow"
+        unfollow: "Unfollow"
+        edit: "Edit bot"
+        show-keys: "Show keys"
+        regenerate-keys: "Regenerate keys"
+      dropdown:
+        items:
+          view: "View bot"
+          delete: "Delete bot"
+      messages:
+        confirm: "Are you sure?"
+        bots-found: "Bots found"
+        developers-found: "Developers found"
+        nothing-found: "Nothing found"

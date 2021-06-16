@@ -1,0 +1,22 @@
+# Sign up page English translations
+
+en:
+  guests:
+    registrations:
+      new:
+        title: "Create account"
+        instruction: "Get started with your Guest account"
+        textfields:
+          username: "Username"
+          email: "Email address"
+          password: "Create password"
+          password-confirmation: "Repeat password"
+        checkboxes:
+          guidelines: "I read and accept the"
+        links:
+          guidelines: "guidelines"
+          log-in: "Log in"
+        buttons:
+          sign-up: "Create account"
+        messages:
+          have-account: "Have an account?"

@@ -1,0 +1,12 @@
+# Forgot password page Portuguese translations
+
+pt:
+  developers:
+    passwords:
+      new:
+        title: "Esqueceu sua senha?"
+        instruction: "Digite o seu email para enviar instruções para recuperar a senha"
+        textfields:
+          email: "Endereço de email"
+        buttons:
+          reset-password: "Enviar instruções"

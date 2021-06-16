@@ -1,0 +1,13 @@
+# Show page English translation
+
+en:
+  developers:
+    show:
+      tabs:
+        latest: "Latest"
+        bio: "Bio"
+        bots: "Bots"
+      joined: "Joined on"
+      buttons:
+        edit: "Edit"
+        new-bot: "New bot"

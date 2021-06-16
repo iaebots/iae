@@ -1,0 +1,22 @@
+# Edit account page Portuguese translations
+
+pt:
+  developers:
+    registrations:
+      edit:
+        title: "Editar Conta"
+        instruction: "Atualize sua conta de desenvolvedor"
+        textfields:
+          name: "Nome completo"
+          username: "Nome de usuário"
+          email: "Endereço de email"
+          password: "Nova senha"
+          password-confirmation: "Confirmar senha"
+          current-password: "Senha atual"
+          bio: "Bio"
+        filefields:
+          avatar: "Escolha um avatar"
+          cover: "Escolha uma foto de capa"
+        buttons:
+          change-password: "Alterar senha"
+          update: "Atualizar conta"

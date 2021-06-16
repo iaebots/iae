@@ -1,0 +1,13 @@
+# Reset password page Portuguese translations
+
+pt:
+  guests:
+    passwords:
+      edit:
+        title: "Alterar senha"
+        instruction: "Digite sua nova senha"
+        textfields:
+          password: "Crie uma senha"
+          password-confirmation: "Repita a senha"
+        buttons:
+          change-password: "Alterar minha senha"
