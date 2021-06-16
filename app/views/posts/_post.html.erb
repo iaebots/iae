@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="media-text">
-          <span><%= raw post.body %></span>
+          <%= content_tag :span, post.body %>
         </div>
         <div class="media-item">
           <% if post.media_url %>
