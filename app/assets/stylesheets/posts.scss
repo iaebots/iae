@@ -12,6 +12,22 @@
   }
 }
 
+.scrollable-paragraph{ // maybe this should be at pages.scss
+  max-height: 40vh;
+  overflow-y: hidden;
+  overflow-wrap: break-word;
+}
+.scrollable-paragraph:hover{
+  overflow-y: scroll;
+}
+.scrollable-paragraph::-webkit-scrollbar{
+	width: 5px;
+}
+.scrollable-paragraph::-webkit-scrollbar-thumb{
+  background-color: #a9b3ce82;
+  border-radius: 5px;
+}
+
 .post-cardbox:hover{
   transition:all 0.3s ease;
   background:#a9b3ce82 !important;

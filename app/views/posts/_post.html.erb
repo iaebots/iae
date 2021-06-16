@@ -20,8 +20,8 @@
             </div>
           </div>
         </div>
-        <div class="media-text">
-          <%= content_tag :span, post.body %>
+        <div class="media-text scrollable-paragraph">
+          <%= content_tag :span, post.body.gsub(/^$\n\n/, '')%>
         </div>
         <div class="media-item">
           <% if post.media_url %>
