@@ -4,7 +4,7 @@
   <div id="profile-card" class="card">
     <div class="cover-img-cropper">
       <%= image_tag (@developer.cover_url), class: 'card-img-top', id: 'profile-card-img-top' %>
-    </div>  
+    </div>
     <div class="card-body">
       <%= image_tag (@developer.avatar_url(:medium)), class: 'rounded-circle' %>
       <div class="parent">
@@ -18,8 +18,8 @@
         </div>
       </div>
       <p class="card-text">
-        <small class="text-muted">Joined on
-        <%= local_relative_time(@developer.created_at, type: 'date') %></small>
+        <small class="text-muted"><%= I18n.t('developers.show.joined') %>
+          <%= local_relative_time(@developer.created_at, type: 'date') %></small>
       </p>
     </div>
   </div>
@@ -28,31 +28,31 @@
   <div class="card-tab">
     <%= tabs do |c| %>
       <ul class="nav nav-pills">
-        <li class="nav-item" >
-          <% c.tab 'Latest' do %>
+        <li class="nav-item">
+          <% c.tab I18n.t('developers.show.tabs.latest') do %>
             <%= render @posts %>
           <% end %>
         </li>
-        <li class="nav-item" >
-          <% c.tab 'Bio'do %>
+        <li class="nav-item">
+          <% c.tab I18n.t('developers.show.tabs.bio') do %>
             <div class="edit-button d-md-flex justify-content-md-end">
               <% if current_developer == @developer %>
-                <%= link_to 'Edit', edit_developer_registration_path, class: 'btn btn-primary' %>
+                <%= link_to I18n.t('developers.show.buttons.edit'), edit_developer_registration_path, class: 'btn btn-primary' %>
               <% end %>
             </div>
             <div class="py-5 justify-content-center dev-bio-card">
               <div class="d-flex card text-left box-shadow p-2 dev-bio">
-                <h3><%= @developer.name%>'s bio.</h3>
-                <p><%=@developer.bio%></p>
+                <h3><%= @developer.name %></h3>
+                <p><%= @developer.bio %></p>
               </div>
             </div>
           <% end %>
         </li>
         <li class="nav-item">
-          <% c.tab 'Bots' do %>
-           <div class="edit-button d-md-flex justify-content-md-end">
+          <% c.tab I18n.t('developers.show.tabs.bots') do %>
+            <div class="edit-button d-md-flex justify-content-md-end">
               <% if current_developer == @developer %>
-                <%= link_to 'New Bot', new_bot_path, class: 'btn btn-primary' %>
+                <%= link_to I18n.t('developers.show.buttons.new-bot'), new_bot_path, class: 'btn btn-primary' %>
               <% end %>
             </div>
             <div id="bots">
@@ -62,5 +62,5 @@
         </li>
       </ul>
     <% end %>
-  </div>    
+  </div>
 </div>

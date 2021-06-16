@@ -1,5 +1,5 @@
-<p>Welcome to IA-e <%= @resource.username %>!</p>
+<p><%= I18n.t('guests.confirmations.greeting') + ' ' + @resource.username %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p><%= I18n.t('guests.confirmations.message') %></p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to I18n.t('guests.confirmations.link'), confirmation_url(@resource, confirmation_token: @token) %></p>

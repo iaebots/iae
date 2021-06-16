@@ -2,17 +2,17 @@
 
 <div class="card">
   <article class="card-body mx-auto" style="max-width: 350px; margin-top: -20px">
-    <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="", width="250", height="250">
-    <h4 class="card-title mt-3 text-center">Edit Account</h4>
-    <p class="text-center">Change your developer account</p>
+    <img class="card-img-top" src="<%= asset_path('logo.svg') %>" alt="" width="250" height="250">
+    <h4 class="card-title mt-3 text-center"><%= I18n.t('developers.registrations.edit.title') %></h4>
+    <p class="text-center"><%= I18n.t('developers.registrations.edit.instruction') %></p>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="form-group input-group">
-      <div class="input-group-prepend">
+        <div class="input-group-prepend">
           <span class="input-group-text">
             <i class="fa fa-user"></i>
           </span>
-          </div>
-        <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Full name', type: 'text' %> 
+        </div>
+        <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: I18n.t('developers.registrations.edit.textfields.name'), type: 'text' %>
       </div>
       <div class="form-group input-group">
         <div class="input-group-prepend">
@@ -20,7 +20,7 @@
             <i class="far fa-user"></i>
           </span>
         </div>
-        <%= f.text_field :username, class: 'form-control', placeholder: 'Username', type: 'text'%>
+        <%= f.text_field :username, class: 'form-control', placeholder: I18n.t('developers.registrations.edit.textfields.username'), type: 'text' %>
       </div>
       <!-- form-group// -->
       <div class="form-group input-group">
@@ -29,18 +29,18 @@
             <i class="fa fa-envelope"></i>
           </span>
         </div>
-        <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: 'Email address', type: 'email' %>
+        <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: I18n.t('developers.registrations.edit.textfields.email'), type: 'email' %>
       </div>
       <div class="form-group input-group">
-            <div class="input-group-prepend">
+        <div class="input-group-prepend">
               <span class="input-group-text">
                 <i class="fas fa-book"></i>
               </span>
-              </div>
-              <%= f.text_area :bio , placeholder: 'Bio', class:'form-control' , type: 'Bio' %>
-          </div>
+        </div>
+        <%= f.text_area :bio, placeholder: I18n.t('developers.registrations.edit.textfields.bio'), class: 'form-control', type: 'Bio' %>
+      </div>
       <button class="btn btn-primary btn-block" style="margin-bottom:15px;" type="button" data-toggle="collapse" data-target="#passwords" aria-controls="passwords" aria-expanded="false" aria-label="Toggle navigation">
-        Change Password
+        <%= I18n.t('developers.registrations.edit.buttons.change-password') %>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="passwords">
         <!-- form-group// -->
@@ -50,7 +50,7 @@
               <i class="fa fa-lock"></i>
             </span>
           </div>
-          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'New password', type: 'password', minlength: 6 %>
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('developers.registrations.edit.textfields.password'), type: 'password', minlength: 6 %>
         </div>
         <!-- form-group// -->
         <div class="form-group input-group">
@@ -59,7 +59,7 @@
               <i class="fa fa-lock"></i>
             </span>
           </div>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: 'Repeat new password', type: 'password'%>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('developers.registrations.edit.textfields.password-confirmation'), type: 'password' %>
         </div>
       </div>
       <div class="form-group input-group">
@@ -68,21 +68,21 @@
             <i class="fa fa-lock" style="color: #dc3545;"></i>
           </span>
         </div>
-        <%= f.password_field :current_password, autocomplete: "current-passord", class: 'form-control', placeholder: 'Current Password', type: 'password', required: true %>
+        <%= f.password_field :current_password, autocomplete: "current-passord", class: 'form-control', placeholder: I18n.t('developers.registrations.edit.textfields.current-password'), type: 'password', required: true %>
       </div>
       <div class="custom-file">
-        <%= f.file_field :avatar, class: 'custom-file-input', type: 'file'%>
-        <label class="custom-file-label" for="customFile">Update avatar</label>
+        <%= f.file_field :avatar, class: 'custom-file-input', type: 'file' %>
+        <label class="custom-file-label" for="customFile"><%= I18n.t('developers.registrations.edit.filefields.avatar') %></label>
       </div>
       <div class="custom-file" style="margin-top: 10px">
-        <%= f.file_field :cover, class: 'custom-file-input', type: 'file'%>
-        <label class="custom-file-label" for="customFile">Update cover</label>
+        <%= f.file_field :cover, class: 'custom-file-input', type: 'file' %>
+        <label class="custom-file-label" for="customFile"><%= I18n.t('developers.registrations.edit.filefields.cover') %></label>
       </div>
       <!-- form-group// -->
       <%= render "developers/shared/error_messages", resource: resource %>
       <div class="form-group" style="margin-top: 20px">
-        <%= f.submit "Update Account", class: 'btn btn-primary btn-block' %>
+        <%= f.submit I18n.t('developers.registrations.edit.buttons.update'), class: 'btn btn-primary btn-block' %>
       </div>
-  <% end %>
+    <% end %>
   </article>
 </div>

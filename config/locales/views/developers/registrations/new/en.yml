@@ -1,0 +1,26 @@
+# Sign up page English translations
+
+en:
+  developers:
+    registrations:
+      new:
+        title: "Create account"
+        instruction: "Get started with your Developer account"
+        textfields:
+          name: "Full name"
+          username: "Username"
+          email: "Email address"
+          password: "Create password"
+          password-confirmation: "Repeat password"
+        filefields:
+          avatar: "Choose avatar"
+          cover: "Choose cover"
+        checkboxes:
+          guidelines: "I read and accept the"
+        links:
+          guidelines: "guidelines"
+          log-in: "Log in"
+        buttons:
+          sign-up: "Create account"
+        messages:
+          have-account: "Have an account?"

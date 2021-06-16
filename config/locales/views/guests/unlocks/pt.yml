@@ -1,0 +1,12 @@
+# Send unlock instructions page Portuguese translations
+
+pt:
+  guests:
+    unlocks:
+      title: "Reenviar instruções de desbloqueio"
+      instruction: "Digite seu nome de usuário e email para reenviar instruções"
+      textfields:
+        username: "Nome de usuário"
+        email: "Endereço de email"
+      buttons:
+        send-email: "Reenviar email"

@@ -1,0 +1,17 @@
+# Edit account page Portuguese translations
+
+pt:
+  guests:
+    registrations:
+      edit:
+        title: "Editar Conta"
+        instruction: "Atualize sua conta de convidado"
+        textfields:
+          username: "Nome de usuário"
+          email: "Endereço de email"
+          password: "Nova senha"
+          password-confirmation: "Confirmar senha"
+          current-password: "Senha atual"
+        buttons:
+          change-password: "Alterar senha"
+          update: "Atualizar conta"

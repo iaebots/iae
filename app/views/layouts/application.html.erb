@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>Iae</title>
+    <title>Ia-e</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
 
@@ -15,42 +15,42 @@
 
   <body>
     <nav class="navbar navbar-dark bg-transparent shadow" style="padding-left:3rem; padding-right:3rem;">
-      <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg')%>" alt="" width="30px" height="30px"></a>
+      <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg') %>" alt="" width="30px" height="30px"></a>
       <div class="btn-group dropdown dropdown-menu-right">
-        <% if current_developer%>
-          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= current_developer.avatar_url(:medium)%>" alt="Avatar" class="avatar" width="30px" height="30px"></a>
-        <%else%>
-          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= asset_path('logo.svg')%>" alt="Avatar" class="avatar" width="30px" height="30px"></a>
+        <% if current_developer %>
+          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= current_developer.avatar_url(:medium) %>" alt="Avatar" class="avatar" width="30px" height="30px"></a>
+        <% else %>
+          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= asset_path('logo.svg') %>" alt="Avatar" class="avatar" width="30px" height="30px"></a>
         <% end %>
         <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="dropdownMenu2">
-          <% if current_developer or current_guest%>
+          <% if current_developer or current_guest %>
             <%= form_tag bots_path, method: :get do %>
-              <div class = "autocomplete_bar dropdown-item d-flex" data-controller="autocomplete">
-                <input data-target = "autocomplete.field" id="input" name="input" placeholder="Search..." type="text"></input>
+              <div class="autocomplete_bar dropdown-item d-flex" data-controller="autocomplete">
+                <input data-target="autocomplete.field" id="input" name="input" placeholder="Search..." type="text"/>
               </div>
             <% end %>
           <% end %>
-          <% if current_developer%>
-            <%= link_to 'My account', developer_path(current_developer), method: :get, class: 'dropdown-item', type: 'button'%>
-            <%= link_to 'Log out', destroy_developer_session_path, method: :delete, class: 'dropdown-item', type: 'button'%>
+          <% if current_developer %>
+            <%= link_to I18n.t('application.nav-bar.items.account'), developer_path(current_developer), method: :get, class: 'dropdown-item', type: 'button' %>
+            <%= link_to I18n.t('application.nav-bar.items.log-out'), destroy_developer_session_path, method: :delete, class: 'dropdown-item', type: 'button' %>
           <% end %>
-          <% if current_guest%>
-            <%= link_to 'My account', edit_guest_registration_path, method: :get, class: 'dropdown-item', type: 'button'%>
-            <%= link_to 'Log out', destroy_guest_session_path, method: :delete, class: 'dropdown-item', type: 'button'%>
+          <% if current_guest %>
+            <%= link_to I18n.t('application.nav-bar.items.account'), edit_guest_registration_path, method: :get, class: 'dropdown-item', type: 'button' %>
+            <%= link_to I18n.t('application.nav-bar.items.log-out'), destroy_guest_session_path, method: :delete, class: 'dropdown-item', type: 'button' %>
           <% end %>
-          <% if !current_developer and !current_guest%>
-            <%= link_to 'Developer',  new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button'%>
-            <%= link_to 'Guest',  new_guest_session_path, method: :get, class: 'dropdown-item', type: 'button'%>
+          <% if !current_developer and !current_guest %>
+            <%= link_to I18n.t('application.nav-bar.items.developer'), new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button' %>
+            <%= link_to I18n.t('application.nav-bar.items.guest'), new_guest_session_path, method: :get, class: 'dropdown-item', type: 'button' %>
           <% end %>
         </div>
       </div>
-    </nav> 
+    </nav>
     <% if notice %>
-      <div id="notice-wrapper" >
+      <div id="notice-wrapper">
         <p class="notice"><%= notice %></p>
       </div>
     <% elsif alert %>
-      <div id="notice-wrapper" >
+      <div id="notice-wrapper">
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>

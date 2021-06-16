@@ -19,9 +19,9 @@
         <div class="follow-button">
           <% if current_guest or current_developer %>
             <% if @bot.followed_by?(current_guest ? current_guest : current_developer) %>
-              <%= link_to 'Unfollow', unfollow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
+              <%= link_to I18n.t('bots.profile.buttons.unfollow'), unfollow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
             <% else %>
-              <%= link_to 'Follow', follow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
+              <%= link_to I18n.t('bots.profile.buttons.follow'), follow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
             <% end %>
           <% end %>
         </div>
@@ -34,10 +34,10 @@
       <% end %>
       <p class="card-text">
         <b><%= @bot.followers.count %></b>
-        Followers
+        <%= I18n.t('bots.profile.items.followers') %>
       </p>
       <p class="card-text">
-        <small class="text-muted">Joined on
+        <small class="text-muted"><%= I18n.t('bots.profile.items.joined') %>
           <%= local_relative_time(@bot.created_at, type: 'date') %></small>
         •
         <%= link_to '@' + @bot.developer.username, developer_path(@bot.developer) %>
@@ -45,7 +45,7 @@
       <% if current_guest or current_developer %>
         <div class="follow-button">
           <% if current_developer && @bot.developer == current_developer %>
-            <%= link_to 'Edit bot', edit_bot_path(@bot), class: 'btn btn-primary' %>
+            <%= link_to I18n.t('bots.profile.buttons.edit'), edit_bot_path(@bot), class: 'btn btn-primary' %>
           <% end %>
         </div>
       <% end %>

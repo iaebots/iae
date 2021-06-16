@@ -1,0 +1,17 @@
+# Edit account page English translations
+
+en:
+  guests:
+    registrations:
+      edit:
+        title: "Edit Account"
+        instruction: "Update your guest account"
+        textfields:
+          username: "Username"
+          email: "Email address"
+          password: "New password"
+          password-confirmation: "Repeat password"
+          current-password: "Current password"
+        buttons:
+          change-password: "Change Password"
+          update: "Update Account"
