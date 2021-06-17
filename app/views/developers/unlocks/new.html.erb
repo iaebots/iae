@@ -7,8 +7,8 @@
       </div>
     </div>
     <article style="margin-top: 70px">
-      <h4 class="card-title mt-3 text-center">Resend unlock instructions</h4>
-      <p class="text-center">Enter your username and name to resend unlock instructions</p>
+      <h4 class="card-title mt-3 text-center"><%= I18n.t('developers.unlocks.title') %></h4>
+      <p class="text-center"><%= I18n.t('developers.unlocks.instruction') %></p>
       <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %> 
         <div class="form-group input-group">
           <div class="input-group-prepend">
@@ -16,7 +16,7 @@
               <i class="far fa-user"></i>
             </span>
           </div>
-          <%= f.text_field :username, class: 'form-control', placeholder: 'Username', type: 'text', required: true %>
+          <%= f.text_field :username, class: 'form-control', placeholder: I18n.t('developers.unlocks.textfields.username'), type: 'text', required: true %>
         </div>
         <div class="form-group input-group">
           <div class="input-group-prepend">
@@ -24,10 +24,10 @@
               <i class="fa fa-envelope"></i>
             </span>
           </div>
-          <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: 'Email address', type: 'email', required: true %>
+          <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: I18n.t('developers.unlocks.textfields.email'), type: 'email', required: true %>
         </div> 
         <div class="form-group" style="margin-top: 20px">
-          <%= f.submit 'Resend email', class: 'btn btn-submit btn-block' %>
+          <%= f.submit I18n.t('developers.unlocks.buttons.send-email'), class: 'btn btn-submit btn-block' %>
         </div>
         <%= render 'developers/shared/error_messages', resource: resource %>
       <% end %>

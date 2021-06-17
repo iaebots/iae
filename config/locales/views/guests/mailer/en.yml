@@ -1,0 +1,32 @@
+# Devise emails English translations
+en:
+  guests:
+    confirmations:
+      greeting: "Welcome to IA-e"
+      message: "You can confirm your account email through the link below:"
+      link: "Confirm my account"
+
+    email-changed:
+      greeting: "Hello"
+      messages:
+        new-unconfirmed-email: "We're contacting you to notify you that your email is being changed to"
+        new-confirmed-email: "We're contacting you to notify you that your email has been changed to"
+
+    password-changed:
+      greeting: "Hello"
+      message: "We're contacting you to notify you that your password has been changed."
+
+    reset-password:
+      greeting: "Hello"
+      messages:
+        reset-password-requested: "Someone has requested a link to change your password. You can do this through the link below."
+        ignore-email: "If you didn't request this, please ignore this email."
+        wont-change: "Your password won't change until you access the link above and create a new one."
+      link: "Change my password"
+
+    unlock-instructions:
+      greeting: "Hello"
+      messages:
+        locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        instruction: "Click the link below to unlock your account:"
+      link: "Unlock my account"

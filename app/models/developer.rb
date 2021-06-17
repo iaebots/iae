@@ -42,7 +42,7 @@ class Developer < ApplicationRecord
 
   # validate password strength
   validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
-                       if: :encrypted_password_changed?
+            if: :encrypted_password_changed?
 
   has_many :bots, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -51,6 +51,11 @@ class Developer < ApplicationRecord
   validates_length_of :bio, maximum: 512
 
   acts_as_follower
+
+  # Save browser's locale as default user's preference locale
+  before_create do |dev|
+    dev.locale = I18n.locale
+  end
 
   # remove all capitals from usernames
   def downcase_username

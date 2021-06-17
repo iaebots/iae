@@ -1,0 +1,11 @@
+# Developers confirmation page English translations
+
+en:
+  developers:
+    confirmations:
+      title: "Didn't receive confirmation instructions?"
+      instruction: "Enter your email to resend confirmation instructions"
+      textfields:
+        email: "Email address"
+      buttons:
+        resend-email: "Resend instructions"

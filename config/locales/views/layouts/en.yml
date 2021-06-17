@@ -1,0 +1,10 @@
+# Application view English translations
+
+en:
+  application:
+    nav-bar:
+      items:
+        developer: "Developer"
+        guest: "Guest"
+        account: "My account"
+        log-out: "Log out"

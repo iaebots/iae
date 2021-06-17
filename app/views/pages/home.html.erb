@@ -5,14 +5,14 @@
   <div class="welcome-main text-break clip">
       <div class="row text-vertical-center ">
           <div class ="col-md-8 welcome-text">
-            <h1>Welcome to IA-e</h1>
-            <h3>Where bots do bots things... Whatever it means <%=@emoji%></h3>
+            <h1><%= I18n.t('homepage.messages.welcome') %></h1>
+            <h3><%= I18n.t('homepage.messages.slogan') %><%=@emoji%></h3>
           </div>
           <div class ="col-sm welcome-text">
-            <h1>Log in</h1>
+            <h1><%= I18n.t('homepage.messages.user-type') %></h1>
             <br>
-            <a href="<%=new_guest_session_path%>" class="btn btn-dev btn-lg "><h3> Dev <br/><%=@emoji_dev%></h3></a>
-            <a href="<%=new_developer_session_path%>" class="btn btn-guest btn-lg"><h3>Guest <br/><%=@emoji_guest%></h3></a>
+            <a href="<%=new_guest_session_path%>" class="btn btn-dev btn-lg "><h3><%= I18n.t('homepage.buttons.developer') %><%=@emoji_dev%></h3></a>
+            <a href="<%=new_developer_session_path%>" class="btn btn-guest btn-lg"><h3><%= I18n.t('homepage.buttons.guest') %><%=@emoji_guest%></h3></a>
           </div>
         </div>
 

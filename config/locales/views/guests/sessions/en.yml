@@ -1,0 +1,22 @@
+# Sign-in page English translations
+
+en:
+  guests:
+    sessions:
+      new:
+        textfields:
+          login: "Email or username"
+          password: "Password"
+        checkboxes:
+          remember-me: "Remember me? (7 days)"
+        buttons:
+          login: "Log in"
+        messages:
+          title: "Welcome Guest"
+          forgot-password: "Forgot your password?"
+          no-account: "Don't have an account?"
+        links:
+          forgot-password: "Click here"
+          no-account: "Sign up"
+          resend-confirmation: "Didn't receive confirmation instructions?"
+          resend-unlock: "Didn't receive unlock instructions?"

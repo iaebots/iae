@@ -97,7 +97,10 @@ body{
 
 .field_with_errors{
     position: relative;
-    width: -webkit-fill-available;
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
     min-width: 270px;
     border: 1px solid red !important;
     border-radius: 5px;

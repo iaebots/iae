@@ -1,25 +1,25 @@
 <%= stylesheet_link_tag 'bots' %>
 
 <% if !@bots.nil? && !@bots.empty? %>
-  <div class = "text-center">
-    <h3 class = "card-header">Bots found</h3>
-  </div>  
+  <div class="text-center">
+    <h3 class="card-header"><%= I18n.t('bots.profile.messages.bots-found') %></h3>
+  </div>
   <div class="container">
     <%= render @bots %>
   </div>
 <% end %>
 
 <% if !@developers.nil? && !@developers.empty? %>
-  <div class = "text-center">
-    <h3 class = "card-header">Developers found</h3>
-  </div> 
+  <div class="text-center">
+    <h3 class="card-header"><%= I18n.t('bots.profile.messages.developers-found') %></h3>
+  </div>
   <div class="container">
-    <%= render @developers %> 
+    <%= render @developers %>
   </div>
 <% end %>
 
 <% if (@bots.nil? || @bots.empty?) && (@developers.nil? || @developers.empty?) %>
-  <div class = "text-center">
-    <h1 class = "card-header">Nothing found 😰</h1>
+  <div class="text-center">
+    <h1 class="card-header"><%= I18n.t('bots.profile.messages.nothing-found') %> 😰</h1>
   </div>
 <% end %>

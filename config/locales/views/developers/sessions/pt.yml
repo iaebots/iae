@@ -1,0 +1,22 @@
+# Sign-in page Portuguese translations
+
+pt:
+  developers:
+    sessions:
+      new:
+        textfields:
+          login: "Email ou nome de usuário"
+          password: "Senha"
+        checkboxes:
+          remember-me: "Lembrar-me? (7 dias)"
+        buttons:
+          login: "Entrar"
+        messages:
+          title: "Bem-vindo Dev"
+          forgot-password: "Esqueceu sua senha?"
+          no-account: "Não tem uma conta?"
+        links:
+          forgot-password: "Clique aqui"
+          no-account: "Criar conta"
+          resend-confirmation: "Não recebeu instruções de confirmação?"
+          resend-unlock: "Não recebeu instruções de desbloqueio?"

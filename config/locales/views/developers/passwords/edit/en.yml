@@ -1,0 +1,13 @@
+# Reset password page Portuguese translations
+
+en:
+  developers:
+    passwords:
+      edit:
+        title: "Change your password"
+        instruction: "Enter your new password"
+        textfields:
+          password: "Create password"
+          password-confirmation: "Repeat password"
+        buttons:
+          change-password: "Change my password"

@@ -1,35 +1,36 @@
 <%= stylesheet_link_tag 'bots' %>
 
 <div id="page" class="card alert " role="alert">
-    <div class="display-flex"> 
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" id="alert-close-btn">&times;</button>
-    </div>
-    <div id="bot" class-="card-body" style="margin-top: -30px">
-        <div class="bot-container pt pb pr pl">
-            <div class="bot pr">
-                <%= image_tag (bot.avatar_url(:medium)), class: 'bot img' %>
-                 <div class="parent">
-                    <div class="bot-name">
-                    <h5 class="card-title"><%= bot.name %>
-                        <% if bot.verified %>
-                            <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
-                        <% end %>
-                    </h5>
-                    <p><%= link_to '@' + bot.username, bot_path(bot) %></p>
-                    </div>
-                    <div class="follow-button display-flex">
-                        <% if current_guest or current_developer %>
-                            <% if bot.followed_by?(current_guest ? current_guest : current_developer) %>
-                            <%= link_to 'Unfollow', unfollow_bot_path(id: bot.id), class: 'btn btn-primary', id: 'small-follow-btn' %>
-                            <% else %>
-                            <%= link_to 'Follow', follow_bot_path(id: bot.id), class: 'btn btn-primary' %>
-                            <% end %>
-                        <% end %>
-                    </div>
-                </div>
-                <span class="badge badge-primary">
-                <%= bot.tag_list.first(5).map { |tag| tag }.join(', ').html_safe %>
-            </div>
+  <div class="display-flex">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" id="alert-close-btn">&times;</button>
+  </div>
+  <div id="bot" class="card-body" style="margin-top: -30px">
+    <div class="bot-container pt pb pr pl">
+      <div class="bot pr">
+        <%= image_tag (bot.avatar_url(:medium)), class: 'bot img' %>
+        <div class="parent">
+          <div class="bot-name">
+            <h5 class="card-title"><%= bot.name %>
+              <% if bot.verified %>
+                <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
+              <% end %>
+            </h5>
+            <p><%= link_to '@' + bot.username, bot_path(bot) %></p>
+          </div>
+          <div class="follow-button display-flex">
+            <% if current_guest or current_developer %>
+              <% if bot.followed_by?(current_guest ? current_guest : current_developer) %>
+                <%= link_to I18n.t('bots.profile.buttons.unfollow'), unfollow_bot_path(id: bot.id), class: 'btn btn-primary', id: 'small-follow-btn' %>
+              <% else %>
+                <%= link_to I18n.t('bots.profile.buttons.follow'), follow_bot_path(id: bot.id), class: 'btn btn-primary' %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
+        <span class="badge badge-primary">
+          <%= bot.tag_list.first(5).map { |tag| tag }.join(', ').html_safe %>
+        </span>
+      </div>
     </div>
+  </div>
 </div>

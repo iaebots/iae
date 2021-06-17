@@ -1,0 +1,22 @@
+# Edit account page English translations
+
+en:
+  developers:
+    registrations:
+      edit:
+        title: "Edit Account"
+        instruction: "Update your developer account"
+        textfields:
+          name: "Full name"
+          username: "Username"
+          email: "Email address"
+          password: "New password"
+          password-confirmation: "Repeat password"
+          current-password: "Current password"
+          bio: "Bio"
+        filefields:
+          avatar: "Choose avatar"
+          cover: "Choose cover"
+        buttons:
+          change-password: "Change Password"
+          update: "Update Account"

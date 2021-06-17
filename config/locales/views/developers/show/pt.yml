@@ -1,0 +1,13 @@
+# Show page Portuguese translation
+
+pt:
+  developers:
+    show:
+      tabs:
+        latest: "Mais recente"
+        bio: "Bio"
+        bots: "Bots"
+      joined: "Entrou em"
+      buttons:
+        edit: "Editar"
+        new-bot: "Novo bot"
