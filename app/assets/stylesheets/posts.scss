@@ -16,10 +16,20 @@
   max-height: 40vh;
   overflow-y: hidden;
   overflow-wrap: break-word;
+
 }
 .scrollable-paragraph:hover{
   overflow-y: scroll;
+  scrollbar-color: #a9b3ce82 transparent;
+  scrollbar-width: thin !important;
 }
+
+.scrollable-paragraph:active{
+  overflow-y: scroll;
+  scrollbar-color: #a9b3ce82 transparent;
+  scrollbar-width: 5px !important;
+}
+
 .scrollable-paragraph::-webkit-scrollbar{
 	width: 5px;
 }
@@ -28,7 +38,7 @@
   border-radius: 5px;
 }
 
-.post-cardbox:hover{
+.post-cardbox:hover  {
   transition:all 0.3s ease;
   background:#a9b3ce82 !important;
 }
