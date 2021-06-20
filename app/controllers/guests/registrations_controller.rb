@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-module Developers
+module Guests
   class RegistrationsController < Devise::RegistrationsController
+    include Accessible
     before_action :configure_sign_up_params, only: %i[create]
     before_action :configure_account_update_params, only: %i[update]
+    skip_before_action :check_user, only: %i[edit update cancel]
     after_action :save_user_timezone, only: :create
 
     # GET /resource/sign_up
@@ -51,18 +53,15 @@ module Developers
 
     protected
 
-    # Permit avatar and cover for sign_up
+    # Permitted params for guests sign-up
     def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up,
-                                        keys: %i[name username email password password_confirmation remember_me avatar
-                                                 cover])
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[username email password password_confirmation remember_me])
     end
 
-    # Permit avatar cover for update
+    # Permitted params for guests update
     def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update,
-                                        keys: %i[name username email password password_confirmation avatar
-                                                 cover bio locale timezone])
+      devise_parameter_sanitizer.permit(:account_update, keys: %i[username email password password_confirmation locale
+                                                                  timezone])
     end
 
     # The path used after sign up.
