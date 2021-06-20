@@ -30,7 +30,7 @@
         </p>
       <p class="card-text">
         <small class="text-muted"><%= I18n.t('developers.show.joined') %>
-          <%= local_relative_time(@developer.created_at, type: 'date') %></small>
+          <%= created_at_formatted(@developer.created_at) %></small>
       </p>
     </div>
     <nav>

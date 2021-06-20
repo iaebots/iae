@@ -18,7 +18,7 @@
                 <small><span><i class="icon ion-md-pin"></i> <%= '@' + developer.username %></span></small>
               </div>
             </div>
-            <small><span><i class="icon ion-md-time"></i><%= I18n.t('developers.show.joined') %> <%= local_relative_time(developer.created_at, type: 'date') %></span></small>
+            <small><span><i class="icon ion-md-time"></i><%= I18n.t('developers.show.joined') %><%= created_at_formatted(developer.created_at) %></span></small>
             <p class="card-text limit-text">
               <%= developer.bio %>
             </p>
