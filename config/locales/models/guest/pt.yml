@@ -9,6 +9,7 @@ pt:
           username: "Nome de usuário"
           password: "Senha"
           password_confirmation: "Confirmação de senha"
+          current_password: "Senha atual"
     errors:
       models:
         guest:
@@ -18,5 +19,7 @@ pt:
             password:
               password:
                 password_strength: "é muito fraca. Tente novamente com uma senha mais forte."
+            current_password:
+              invalid: "é inválida"
       messages:
         confirmation: "deve ser igual a senha."
