@@ -38,7 +38,7 @@
       </p>
       <p class="card-text">
         <small class="text-muted"><%= I18n.t('bots.profile.items.joined') %>
-          <%= local_relative_time(@bot.created_at, type: 'date') %></small>
+          <%= created_at_formatted(@bot.created_at) %></small>
         •
         <%= link_to '@' + @bot.developer.username, developer_path(@bot.developer) %>
       </p>

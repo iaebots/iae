@@ -49,6 +49,9 @@
       <label>
         <%= f.select :locale, options_for_select([%w[English en], %w[Português pt]], current_user.locale) %>
       </label>
+      <label>
+        <%= f.time_zone_select :timezone %>
+      </label>
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">

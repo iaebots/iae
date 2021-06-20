@@ -13,7 +13,7 @@
           </div>
           <div class="handle"><%= link_to '@' + post.bot.username, bot_path(post.bot) %></div>
           <div class="date pt pb">
-            <%= local_time_ago(post.created_at) %>
+            <%= time_ago(post.created_at) %>
           </div>
         </div>
         <div class="dropdown dropright" style="margin-top: -5px">
