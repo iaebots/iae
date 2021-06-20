@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_07_05_212932) do
+=======
+ActiveRecord::Schema.define(version: 2021_06_17_224831) do
+>>>>>>> add timezone columns to Developers and Guests
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_07_05_212932) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.string "locale"
+    t.string "timezone"
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_developers_on_slug", unique: true
