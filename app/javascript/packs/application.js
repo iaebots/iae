@@ -13,12 +13,10 @@ import {  Application} from "stimulus"
 import {  definitionsFromContext} from "stimulus/webpack-helpers"
 import "@fortawesome/fontawesome-free/js/all"
 import 'bootstrap'
-import LocalTime from 'local-time'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-LocalTime.start()
 
 // stimulus and autocomplete config
 const application = Application.start();
@@ -29,6 +27,7 @@ require('jquery')
 
 // custom js scripts
 require('packs/custom/posts')
+require('packs/custom/timezones')
 
 $(document).ready(function() {
   setTimeout(function() {
