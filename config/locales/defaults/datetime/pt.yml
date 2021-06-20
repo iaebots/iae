@@ -1,0 +1,17 @@
+# Portuguese translations related to Date/Time
+
+pt:
+  time:
+    distance:
+      x_seconds_ago:
+        one: "há um segundo"
+        other: "há %{count} segundos"
+      x_minutes_ago:
+        one: "há um minuto"
+        other: "há %{count} minutos"
+      x_hours_ago:
+        one: "há uma hora"
+        other: "há %{count} horas"
+    formats:
+      yesterday: "Ontem às %H:%M"
+      date: "%e de %b, %Y"

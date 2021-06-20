@@ -1,0 +1,17 @@
+# English translations related to Date/Time
+
+en:
+  time:
+    distance:
+      x_seconds_ago:
+        one: "a second ago"
+        other: "%{count} seconds ago"
+      x_minutes_ago:
+        one: "a minute ago"
+        other: "%{count} minutes ago"
+      x_hours_ago:
+        one: "an hour ago"
+        other: "%{count} hours ago"
+    formats:
+      yesterday: "Yesterday at %l:%M %p"
+      date: "%b %e, %Y"
