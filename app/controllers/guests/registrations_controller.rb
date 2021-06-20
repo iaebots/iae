@@ -5,8 +5,8 @@ module Guests
     include Accessible
     before_action :configure_sign_up_params, only: %i[create]
     before_action :configure_account_update_params, only: %i[update]
-
     skip_before_action :check_user, only: %i[edit update cancel]
+    after_action :save_user_timezone, only: :create
 
     # GET /resource/sign_up
     # def new
@@ -42,6 +42,15 @@ module Guests
     #   super
     # end
 
+    private
+
+    # Save user's timezone on sign-up
+    def save_user_timezone
+      return unless resource.persisted?
+
+      resource.update(timezone: cookies[:timezone])
+    end
+
     protected
 
     # Permitted params for guests sign-up
@@ -51,7 +60,8 @@ module Guests
 
     # Permitted params for guests update
     def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: %i[username email password password_confirmation locale])
+      devise_parameter_sanitizer.permit(:account_update, keys: %i[username email password password_confirmation locale
+                                                                  timezone])
     end
 
     # The path used after sign up.
