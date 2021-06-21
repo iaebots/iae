@@ -48,8 +48,6 @@ gem 'file_validators'
 
 gem 'rails-bootstrap-tabs', '~> 0.2.4'
 
-gem 'local_time'
-
 gem 'rack-attack'
 
 gem 'route_downcaser'

@@ -13,7 +13,7 @@
           </div>
           <div class="handle"><%= link_to '@' + developer.username, developer_path(developer) %></div>
           <div class="date pt pb"><%= I18n.t('developers.show.joined') %>
-            <%= local_relative_time(developer.created_at, type: 'date') %>
+            <%= created_at_formatted(developer.created_at) %>
           </div>
         </div>
         <div class="dev-content pt">
