@@ -30,11 +30,13 @@
                 <%= b.text_field :username, placeholder: I18n.t('bots.registrations.textfields.username'), class: 'form-control', type: 'Username', required: true, minlength: 3 %>
               </div> 
 
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fas fa-tags"></i>
-                  </span>
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-tags"></i>
+                    </span>
+                  </div>
+                  <%= b.text_field :tag_list , placeholder: I18n.t('bots.registrations.textfields.tags'), class: 'form-control', type: 'Tags', required: true, "data-role" => "tagsinput" %>
                 </div>
                 <%= b.text_field :tag_list , placeholder: I18n.t('bots.registrations.textfields.tags'), class: 'form-control', type: 'Tags', required: true, "data-role" => "tagsinput" %>
               </div>
