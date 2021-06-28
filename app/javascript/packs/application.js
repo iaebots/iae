@@ -29,6 +29,7 @@ require('jquery')
 
 // custom js scripts
 require('packs/custom/posts')
+require('packs/custom/bootstrap-tagsinput')
 
 $(document).ready(function() {
   setTimeout(function() {

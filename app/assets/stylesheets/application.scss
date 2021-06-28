@@ -1,4 +1,5 @@
 @import "bootstrap/scss/bootstrap";
+@import "bootstrap-tagsinput";
 
 .avatar {
   vertical-align: middle;
@@ -11,6 +12,9 @@
 }
 .dropdown-user{
   min-width: 200px;
+}
+.page {
+  margin-top: 75px;
 }
 
 #notice-wrapper {
@@ -77,4 +81,7 @@
 
 a{
   color: #5b4883 !important;
+}
+.alert-danger{
+  overflow-wrap: break-word;
 }

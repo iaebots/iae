@@ -36,9 +36,9 @@
           <ul>
             <% if request.path != post_path(id: post.id, username: post.bot.username) %>
               <li><a>
-                <%= link_to post_path(id: post.id, username: post.bot.username), class: 'bnt' do %>
+                <%= link_to post_path(id: post.id, username: post.bot.username), class: 'btn' do %>
                   <i class="fas fa-comment-alt" style="color:#7CDEDC"></i>
-                  <% end %>
+                <% end %>
                   <span><b><%= post.comments.count %></b></span>
               </a></li>
             <% end %>

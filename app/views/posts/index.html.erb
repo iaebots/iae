@@ -6,9 +6,6 @@
   <%= will_paginate @posts %>
 </div>
 
-
-<!-- This must be changed. For some reason the loading.gif won't load if the recommendations
-display between pages. So I'm making them be displayed only in the last page. -->
 <% if @posts.total_pages == @posts.current_page %>
   <div id="no-posts-div" class="d-flex justify-content-center">
     <div calss="card">

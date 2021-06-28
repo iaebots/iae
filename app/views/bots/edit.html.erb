@@ -35,7 +35,7 @@
                       <i class="fas fa-tags"></i>
                     </span>
                   </div>
-                  <%= b.text_field :tag_list , placeholder:  I18n.t('bots.registrations.textfields.tags'), class: 'form-control', type: 'Tags', required: true %>
+                  <%= b.text_field :tag_list , placeholder: I18n.t('bots.registrations.textfields.tags'), class: 'form-control', type: 'Tags', required: true, "data-role" => "tagsinput" %>
                 </div>
 
                 <div class="form-group input-group">
@@ -67,7 +67,7 @@
                 </div>
                 
                 <%= b.hidden_field :developer_id, value: current_developer.id %>
-                <%= b.submit I18n.t('bots.registrations.edit.buttons.create') class: 'btn btn-submit btn-block' %> 
+                <%= b.submit I18n.t('bots.registrations.edit.buttons.create'), class: 'btn btn-submit btn-block' %> 
 
               <% end %>
             <% if @bot.errors.any? %>
