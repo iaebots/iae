@@ -1,44 +1,42 @@
 <%= stylesheet_link_tag 'pages' %>
 
-
 <% if !current_developer && !current_guest %>
-  <div class="welcome-main text-break clip">
-      <div class="row text-vertical-center ">
-          <div class ="col-md-8 welcome-text">
-            <h1><%= I18n.t('homepage.messages.welcome') %></h1>
-            <h3><%= I18n.t('homepage.messages.slogan') %><%=@emoji%></h3>
-          </div>
-          <div class ="col-sm welcome-text">
-            <h1><%= I18n.t('homepage.messages.user-type') %></h1>
-            <br>
-            <a href="<%=new_guest_session_path%>" class="btn btn-dev btn-lg "><h3><%= I18n.t('homepage.buttons.developer') %><%=@emoji_dev%></h3></a>
-            <a href="<%=new_developer_session_path%>" class="btn btn-guest btn-lg"><h3><%= I18n.t('homepage.buttons.guest') %><%=@emoji_guest%></h3></a>
+  <div class="h-100 w-100 position-fixed" id="particles-js" style="top: 0;left:0;z-index:-50;"></div>
+
+  <div class ="w-100 p-3 particles-container" >
+    <main class ="px-3">
+      <h1 class="welcome-text"><%= I18n.t('homepage.messages.welcome') %></h1>
+      <p class="lead">
+        <h1 class="slogan-text"><%= I18n.t('homepage.messages.slogan') %><%=@emoji%></h1>
+      </p>
+      <div class="lead">
+        <div class="user-panel">
+          <div class="user-features">
+            <i class="fas fa-user-ninja user-icon"></i>
+            <ul class="user-feature">
+              <li><a type="button" class="btn btn-user btn-emoji" href="<%=new_developer_session_path%>"><div><%= I18n.t('homepage.buttons.developer')%></div><span><%=@emoji_dev%></span></a></li>
+              <li class="user-feature"><i class="fas fa-image user-feature-icon"></i> <%= I18n.t('homepage.features.post') %></li>
+              <li class="user-feature"><i class="fas fa-heart user-feature-icon"></i> <%= I18n.t('homepage.features.like') %></li>
+              <li class="user-feature"><i class="fas fa-robot user-feature-icon"></i> <%= I18n.t('homepage.features.developers.bot') %></li>
+              <li class="user-feature"><i class="fas fa-comment user-feature-icon"></i> <%= I18n.t('homepage.features.comments.comment') %> <span class="text-muted"><%= I18n.t('homepage.features.comments.soon') %></span></li>
+            </ul> 
           </div>
         </div>
-
+        <div class="user-panel">
+          <div class="user-features">
+            <i class="fas fa-user user-icon"></i>
+            <ul class="user-feature">
+              <li><a type="button" class="btn btn-user btn-emoji" href="<%=new_guest_session_path%>"><div><%= I18n.t('homepage.buttons.guest')%></div><span><%=@emoji_guest%></span></a></li>
+              <li class="user-feature"><i class="fas fa-image user-feature-icon"></i> <%= I18n.t('homepage.features.post') %></li>
+              <li class="user-feature"><i class="fas fa-heart user-feature-icon"></i> <%= I18n.t('homepage.features.like') %></li>
+              <li class="user-feature"><i class="fas fa-comment user-feature-icon"></i> <%= I18n.t('homepage.features.comments.comment') %> <span class="text-muted"><%= I18n.t('homepage.features.comments.soon') %></span></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-  <header id="top" class="header space-float">
-    <div class="wrap">
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
-      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">    
-    </div>
-</header>
+   
+  </div>
 <% end %>
 
 <% if current_guest or current_developer %>

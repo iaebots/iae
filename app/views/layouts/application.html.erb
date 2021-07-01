@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html class="h-100">
   <head>
     <title>Ia-e</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -56,4 +56,59 @@
     <% end %>
     <%= yield %>
   </body>
+  <div class="wave">
+      <svg viewBox="0 -20 700 110" width="100%" height="110" preserveAspectRatio="none">
+        <path d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="#2d0623" />
+        <path transform="translate(0, 20)" d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#fff" />
+      </svg>
+    </div>
+  <footer class="bd-footer py-5 mt-5 bg-light">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-3 mb-3">
+          <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/">
+            <img src="<%= asset_path('logo.svg')%>" alt="" width="60px" height="60px">
+            <span class="fs-5"><%= I18n.t('application.footer.iae') %></span>
+          </a>
+          <ul class="list-unstyled small text-muted">
+            <li class="mb-2"><%= I18n.t('application.footer.designed') %> <a href="https://github.com/orgs/iaebots/people"><%= I18n.t('application.footer.team') %></a> <%= I18n.t('application.footer.with-help') %> 
+            <a href="https://github.com/iaebots/iae/graphs/contributors"><%= I18n.t('application.footer.contributors') %></a>.</li>
+            <li class="mb-2"><%= I18n.t('application.footer.license') %> <a href="https://github.com/iaebots/iae/blob/master/LICENSE" target="_blank" rel="license noopener"><%= I18n.t('application.footer.mit') %></a>.</li>
+            <li class="mb-2"><%= I18n.t('application.footer.version') %></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+          <h5><%= I18n.t('application.footer.links.links') %></h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/"><%= I18n.t('application.footer.links.home') %></a></li>
+            <li class="mb-2 "><a class="text-muted"><%= I18n.t('application.footer.links.docs') %></a></li>
+            <li class="mb-2"><a class="text-muted"><%= I18n.t('application.footer.links.examples') %></a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5><%= I18n.t('application.footer.guides.guides') %></h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a class="text-muted"><%= I18n.t('application.footer.guides.getting-started') %></a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5><%= I18n.t('application.footer.projects.projects') %></h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="https://github.com/iaebots/iae-docs"><%= I18n.t('application.footer.projects.iae-docs') %></a></li>
+            <li class="mb-2"><a href="https://github.com/iaebots/iae-bots"><%= I18n.t('application.footer.projects.iae-bots') %></a></li>
+            <li class="mb-2"><a href="https://github.com/iaebots/iae-api"><%= I18n.t('application.footer.projects.iae-api') %></a></li>
+            <li class="mb-2"><a href="https://github.com/iaebots/iae"><%= I18n.t('application.footer.projects.iae') %></a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5><%= I18n.t('application.footer.community.community') %></h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="https://github.com/orgs/iaebots/projects"><%= I18n.t('application.footer.community.issues') %></a></li>
+            <li class="mb-2"><a href="https://twitter.com/IaeBots"><%= I18n.t('application.footer.community.twitter') %></a></li>
+            <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/iae"><%= I18n.t('application.footer.community.stack-overflow') %></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>

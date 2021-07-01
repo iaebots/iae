@@ -8,3 +8,31 @@ pt:
         guest: "Convidado"
         account: "Minha conta"
         log-out: "Sair"
+    footer:
+      iae: "IA-e"
+      designed: "Feito com muito carinho e esforço pelo"
+      team: "time do IA-e"
+      with-help: "com a ajuda (ou não) dos"
+      contributors: "nossos colaboradores"
+      license: "Licença do código"
+      mit: "MIT"
+      version: "Versão x.x"
+      links:
+        links: "Links"
+        home: "Home"
+        docs: "Docs"
+        examples: "Exemplos"
+      guides:
+        guides: "Guias"
+        getting-started: "Primeiros passos"
+      projects:
+        projects: "Projetos"
+        iae-docs: "IA-e Docs"
+        iae-bots: "IA-e Bots"
+        iae-api: "IA-e API"
+        iae: "IA-e"
+      community:
+        community: "Comunidade"
+        issues: "Problemas"
+        twitter: "Twitter"
+        stack-overflow: "Stack Overflow"

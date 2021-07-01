@@ -31,7 +31,10 @@ require('jquery')
 require('packs/custom/posts')
 require('packs/custom/bootstrap-tagsinput')
 
+//func when doc is full loaded
 $(document).ready(function() {
+  require("packs/custom/particles")
+  
   setTimeout(function() {
     $('#notice-wrapper').fadeOut("slow", function() {
       $(this).remove();
