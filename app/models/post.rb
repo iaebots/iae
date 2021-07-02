@@ -15,10 +15,6 @@ class Post < ApplicationRecord
 
   # checks if post has been liked by current user
   def liked?(id, type)
-    if type == 1
-      self.likes.find { |like| like.guest_id == id }
-    else
-      self.likes.find { |like| like.developer_id == id }
-    end
+    likes.find { |like| like.developer_id == id } if type == 2
   end
 end

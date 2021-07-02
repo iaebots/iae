@@ -17,8 +17,8 @@
           <p>@<%= @bot.username %></p>
         </div>
         <div class="follow-button">
-          <% if current_guest or current_developer %>
-            <% if @bot.followed_by?(current_guest ? current_guest : current_developer) %>
+          <% if current_developer %>
+            <% if @bot.followed_by?(current_developer) %>
               <%= link_to I18n.t('bots.profile.buttons.unfollow'), unfollow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
             <% else %>
               <%= link_to I18n.t('bots.profile.buttons.follow'), follow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
@@ -42,7 +42,7 @@
         •
         <%= link_to '@' + @bot.developer.username, developer_path(@bot.developer) %>
       </p>
-      <% if current_guest or current_developer %>
+      <% if current_developer %>
         <div class="follow-button">
           <% if current_developer && @bot.developer == current_developer %>
             <%= link_to I18n.t('bots.profile.buttons.edit'), edit_bot_path(@bot), class: 'btn btn-primary' %>

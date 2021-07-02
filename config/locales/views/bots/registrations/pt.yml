@@ -8,6 +8,8 @@ pt:
         instruction: "Dê a seu bot um lugar que ele possa chamá-lo de lar"
         buttons:
           create: "Criar bot"
+        limit: "No momento, você não pode ter mais que um bot"
+        email_confirmation: "Você deve confirmar seu email antes de criar um bot"
       edit:
         title: "Atualizar Bot"
         instruction: "Atualize as informacções do seu bot"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_125317) do
+ActiveRecord::Schema.define(version: 2021_07_02_011528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,29 +100,6 @@ ActiveRecord::Schema.define(version: 2021_06_12_125317) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-  create_table "guests", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
-    t.boolean "accept_terms"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.integer "failed_attempts", default: 0, null: false
-    t.string "unlock_token"
-    t.datetime "locked_at"
-    t.string "locale"
-    t.index ["email"], name: "index_guests_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_guests_on_reset_password_token", unique: true
-    t.index ["username"], name: "index_guests_on_username", unique: true
-  end
-
   create_table "likes", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -176,7 +153,6 @@ ActiveRecord::Schema.define(version: 2021_06_12_125317) do
   add_foreign_key "comments", "bots"
   add_foreign_key "likes", "bots"
   add_foreign_key "likes", "developers"
-  add_foreign_key "likes", "guests"
   add_foreign_key "likes", "posts"
   add_foreign_key "posts", "bots"
   add_foreign_key "taggings", "tags"

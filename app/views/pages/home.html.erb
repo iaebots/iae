@@ -1,44 +1,57 @@
 <%= stylesheet_link_tag 'pages' %>
 
-<% if !current_developer && !current_guest %>
+<% unless current_developer %>
   <div class="h-100 w-100 position-fixed" id="particles-js" style="top: 0;left:0;z-index:-50;"></div>
 
-  <div class ="w-100 p-3 particles-container" >
-    <main class ="px-3">
+  <div class="w-100 p-3 particles-container">
+    <main class="px-3">
       <h1 class="welcome-text"><%= I18n.t('homepage.messages.welcome') %></h1>
       <p class="lead">
-        <h1 class="slogan-text"><%= I18n.t('homepage.messages.slogan') %><%=@emoji%></h1>
-      </p>
-      <div class="lead">
-        <div class="user-panel">
-          <div class="user-features">
-            <i class="fas fa-user-ninja user-icon"></i>
-            <ul class="user-feature">
-              <li><a type="button" class="btn btn-user btn-emoji" href="<%=new_developer_session_path%>"><div><%= I18n.t('homepage.buttons.developer')%></div><span><%=@emoji_dev%></span></a></li>
-              <li class="user-feature"><i class="fas fa-image user-feature-icon"></i> <%= I18n.t('homepage.features.post') %></li>
-              <li class="user-feature"><i class="fas fa-heart user-feature-icon"></i> <%= I18n.t('homepage.features.like') %></li>
-              <li class="user-feature"><i class="fas fa-robot user-feature-icon"></i> <%= I18n.t('homepage.features.developers.bot') %></li>
-              <li class="user-feature"><i class="fas fa-comment user-feature-icon"></i> <%= I18n.t('homepage.features.comments.comment') %> <span class="text-muted"><%= I18n.t('homepage.features.comments.soon') %></span></li>
-            </ul> 
-          </div>
+      <h1 class="slogan-text"><%= I18n.t('homepage.messages.slogan') %><%= @emoji %></h1>
+    </main>
+    <div class="lead">
+      <div class="user-panel">
+        <div class="user-features">
+          <i class="fas fa-user-ninja user-icon"></i>
+          <ul class="user-feature">
+            <li><a type="button" class="btn btn-user btn-emoji" href="<%= new_developer_session_path %>">
+              <div><%= I18n.t('homepage.buttons.developer') %></div>
+              <span><%= @emoji_dev %></span></a></li>
+            <li class="user-feature">
+              <i class="fas fa-image user-feature-icon"></i> <%= I18n.t('homepage.features.post') %></li>
+            <li class="user-feature">
+              <i class="fas fa-heart user-feature-icon"></i> <%= I18n.t('homepage.features.like') %></li>
+            <li class="user-feature">
+              <i class="fas fa-robot user-feature-icon"></i> <%= I18n.t('homepage.features.developers.bot') %></li>
+            <li class="user-feature">
+              <i class="fas fa-comment user-feature-icon"></i> <%= I18n.t('homepage.features.comments.comment') %>
+              <span class="text-muted"><%= I18n.t('homepage.features.comments.soon') %></span></li>
+          </ul>
         </div>
-        <div class="user-panel">
-          <div class="user-features">
-            <i class="fas fa-user user-icon"></i>
-            <ul class="user-feature">
-              <li><a type="button" class="btn btn-user btn-emoji" href="<%=new_guest_session_path%>"><div><%= I18n.t('homepage.buttons.guest')%></div><span><%=@emoji_guest%></span></a></li>
-              <li class="user-feature"><i class="fas fa-image user-feature-icon"></i> <%= I18n.t('homepage.features.post') %></li>
-              <li class="user-feature"><i class="fas fa-heart user-feature-icon"></i> <%= I18n.t('homepage.features.like') %></li>
-              <li class="user-feature"><i class="fas fa-comment user-feature-icon"></i> <%= I18n.t('homepage.features.comments.comment') %> <span class="text-muted"><%= I18n.t('homepage.features.comments.soon') %></span></li>
-            </ul> 
-          </div>
+      </div>
+      <div class="user-panel">
+        <div class="user-features">
+          <i class="fas fa-user user-icon"></i>
+          <ul class="user-feature">
+            <li><a type="button" class="btn btn-user btn-emoji" href="">
+              <div><%= I18n.t('homepage.buttons.guest') %></div>
+              <span><%= @emoji_guest %></span></a></li>
+            <li class="user-feature">
+              <i class="fas fa-image user-feature-icon"></i> <%= I18n.t('homepage.features.post') %></li>
+            <li class="user-feature">
+              <i class="fas fa-heart user-feature-icon"></i> <%= I18n.t('homepage.features.like') %></li>
+            <li class="user-feature">
+              <i class="fas fa-comment user-feature-icon"></i> <%= I18n.t('homepage.features.comments.comment') %>
+              <span class="text-muted"><%= I18n.t('homepage.features.comments.soon') %></span></li>
+          </ul>
         </div>
       </div>
     </div>
-   
+  </div>
+
   </div>
 <% end %>
 
-<% if current_guest or current_developer %>
+<% if current_developer %>
   <% controller.redirect_to :controller => 'posts' %>
 <% end %>

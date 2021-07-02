@@ -79,9 +79,9 @@ class Developer < ApplicationRecord
 
   # validates if username is not taken
   def validate_username
-    if Guest.where(email: username.downcase).exists? || Developer.where(email: username.downcase).exists?
+    if Developer.where(email: username.downcase).exists?
       errors.add(:username, :already_taken)
-    elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists?
+    elsif Developer.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
     elsif Bot.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
