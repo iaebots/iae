@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_07_05_212932) do
-=======
-ActiveRecord::Schema.define(version: 2021_06_17_224831) do
->>>>>>> add timezone columns to Developers and Guests
+ActiveRecord::Schema.define(version: 2021_07_02_011528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"

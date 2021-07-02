@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :set_timezone
-
+  
   private
 
   # Set locale for current user
