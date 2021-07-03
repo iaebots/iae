@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_02_225043) do
+ActiveRecord::Schema.define(version: 2021_07_03_182417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,17 @@ ActiveRecord::Schema.define(version: 2021_07_02_225043) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "post_id"
-    t.bigint "bot_id", null: false
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.string "commenter_type"
+    t.bigint "commenter_id"
+    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "body"
-    t.index ["bot_id"], name: "index_comments_on_bot_id"
+    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["commenter_id", "commenter_type"], name: "index_comments_on_commenter_id_and_commenter_type"
+    t.index ["commenter_type", "commenter_id"], name: "index_comments_on_commenter"
   end
 
   create_table "developers", force: :cascade do |t|
@@ -150,7 +155,6 @@ ActiveRecord::Schema.define(version: 2021_07_02_225043) do
   end
 
   add_foreign_key "bots", "developers"
-  add_foreign_key "comments", "bots"
   add_foreign_key "posts", "bots"
   add_foreign_key "taggings", "tags"
 end
