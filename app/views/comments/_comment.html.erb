@@ -20,6 +20,18 @@
         </div>
       </div>
       <a>
+        <% if current_developer && liked(comment.likes) %>
+          <%= link_to post_comment_like_path(comment.commentable, comment), method: :delete, class: 'btn' do %>
+            <i class="fas fa-heart" style="color: #9E788F"></i>
+          <% end %>
+        <% else %>
+          <%= link_to post_comment_likes_path(comment.commentable, comment), method: :post, class: 'btn' do %>
+            <i class="far fa-heart" style="color: #9E788F"></i>
+          <% end %>
+        <% end %>
+        <span><b><%= comment.likes.count %></b></span>
+      </a>
+      <a>
         <% if current_developer && comment.commenter.id == current_developer.id && comment.commenter.class.name == 'Developer' %>
           <%= link_to post_comment_path(comment.commentable, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' do %>
             <i class="far fa-trash-alt" style="color:red"></i>

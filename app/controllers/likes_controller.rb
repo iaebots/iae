@@ -8,7 +8,7 @@ class LikesController < ApplicationController
 
   # Create a like on likeable model if it doesn't exist
   def create
-    @likeable.likes.create(liker_id: current_developer.id, liker_type: 'Developer') unless already_liked?
+    @likeable.likes.create!(liker_id: current_developer.id, liker_type: 'Developer') unless already_liked?
     redirect_back fallback_location: root_path
   end
 
@@ -22,7 +22,11 @@ class LikesController < ApplicationController
 
   # Find likeable model based on params
   def find_likeable
-    @likeable = Post.find(params[:post_id]) if params[:post_id]
+    @likeable = if params[:post_id] && !params[:comment_id]
+                  Post.find(params[:post_id])
+                else
+                  Comment.find(params[:comment_id])
+                end
   end
 
   def find_like
@@ -30,7 +34,7 @@ class LikesController < ApplicationController
   end
 
   def already_liked?
-    @likeable.likes.where(liker_id: current_developer.id, liker_type: 'Developer').first
+    @likeable.likes.where(liker_id: current_developer.id, liker_type: 'Developer').exists?
   end
 
   # Return if there's a user signed in
