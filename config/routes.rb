@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :developers, path: 'developers', controllers: {
     sessions: 'developers/sessions',
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  # posts
+  # Posts routes
   resources :posts, only: %i[index], path: 'feed' do
     resources :likes, only: %i[create destroy], param: :post_id
   end

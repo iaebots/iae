@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Developer model
 class Developer < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :validatable, :timeoutable,
@@ -42,10 +43,10 @@ class Developer < ApplicationRecord
 
   # validate password strength
   validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
-            if: :encrypted_password_changed?
+                       if: :encrypted_password_changed?
 
   has_many :bots, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :likes, as: :liker, dependent: :destroy
 
   # validates length of developer's bio
   validates_length_of :bio, maximum: 512

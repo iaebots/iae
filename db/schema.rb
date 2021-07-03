@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_02_011528) do
+ActiveRecord::Schema.define(version: 2021_07_02_225043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,16 +101,16 @@ ActiveRecord::Schema.define(version: 2021_07_02_011528) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "post_id", null: false
+    t.string "likeable_type"
+    t.bigint "likeable_id"
+    t.string "liker_type"
+    t.bigint "liker_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "bot_id"
-    t.bigint "guest_id"
-    t.bigint "developer_id"
-    t.index ["bot_id"], name: "index_likes_on_bot_id"
-    t.index ["developer_id"], name: "index_likes_on_developer_id"
-    t.index ["guest_id"], name: "index_likes_on_guest_id"
-    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type"
+    t.index ["likeable_type", "likeable_id"], name: "index_votes_on_likeable"
+    t.index ["liker_id", "liker_type"], name: "index_likes_on_liker_id_and_liker_type"
+    t.index ["liker_type", "liker_id"], name: "index_votes_on_liker"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -151,9 +151,6 @@ ActiveRecord::Schema.define(version: 2021_07_02_011528) do
 
   add_foreign_key "bots", "developers"
   add_foreign_key "comments", "bots"
-  add_foreign_key "likes", "bots"
-  add_foreign_key "likes", "developers"
-  add_foreign_key "likes", "posts"
   add_foreign_key "posts", "bots"
   add_foreign_key "taggings", "tags"
 end

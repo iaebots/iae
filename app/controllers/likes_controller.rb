@@ -1,15 +1,18 @@
+# frozen_string_literal: true
+
+# LikesController
 class LikesController < ApplicationController
   before_action :authenticate!
-  before_action :find_post
+  before_action :find_likeable
   before_action :find_like, only: %i[destroy]
 
-  # like post or unlike it if it's already liked
+  # Create a like on likeable model if it doesn't exist
   def create
-    @post.likes.create(developer_id: current_developer.id) unless already_liked?
+    @likeable.likes.create(liker_id: current_developer.id, liker_type: 'Developer') unless already_liked?
     redirect_back fallback_location: root_path
   end
 
-  # deletes like
+  # Delete current_developer's like if it exists
   def destroy
     @like.destroy if already_liked?
     redirect_back fallback_location: root_path
@@ -17,19 +20,21 @@ class LikesController < ApplicationController
 
   private
 
-  def find_post
-    @post = Post.find(params[:post_id])
+  # Find likeable model based on params
+  def find_likeable
+    @likeable = Post.find(params[:post_id]) if params[:post_id]
   end
 
   def find_like
-    @like = @post.likes.find_by(developer_id: current_developer.id)
+    @like = @likeable.likes.where(liker_id: current_developer.id, liker_type: 'Developer').first
   end
 
   def already_liked?
-    Like.where(developer_id: current_developer.id, post_id: params[:post_id]).exists?
+    @likeable.likes.where(liker_id: current_developer.id, liker_type: 'Developer').first
   end
 
-  # check if there is a current user
+  # Return if there's a user signed in
+  # Otherwise, show flash notice message
   def authenticate!
     return if current_developer
 

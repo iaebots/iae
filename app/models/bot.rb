@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+# Bot model
 class Bot < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, as: :liker, dependent: :destroy
 
   belongs_to :developer
 
