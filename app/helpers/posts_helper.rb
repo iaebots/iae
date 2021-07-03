@@ -21,5 +21,9 @@ module PostsHelper
     else
       I18n.l(created_at.in_time_zone, format: :date)
     end
+
+  # Returns true if current_developer like is found in a posts likes list
+  def liked(likes)
+    likes.find { |like| like.liker_id == current_developer.id && like.liker_type == 'Developer' }
   end
 end
