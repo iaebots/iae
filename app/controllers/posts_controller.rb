@@ -25,7 +25,6 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments.paginate(page: params[:page]).order('created_at DESC')
-
   end
 
   def destroy

@@ -5,6 +5,7 @@ class Bot < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, as: :liker, dependent: :destroy
+  has_many :comments, as: :commenter, dependent: :destroy
 
   belongs_to :developer
 

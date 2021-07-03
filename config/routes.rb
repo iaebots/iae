@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # Posts routes
   resources :posts, only: %i[index], path: 'feed' do
     resources :likes, only: %i[create destroy], param: :post_id
+    resources :comments, only: %i[create destroy]
   end
 
   resources :posts, only: %i[show destroy], path: '/:username/posts'

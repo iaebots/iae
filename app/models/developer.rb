@@ -47,6 +47,7 @@ class Developer < ApplicationRecord
 
   has_many :bots, dependent: :destroy
   has_many :likes, as: :liker, dependent: :destroy
+  has_many :comments, as: :commenter, dependent: :destroy
 
   # validates length of developer's bio
   validates_length_of :bio, maximum: 512
