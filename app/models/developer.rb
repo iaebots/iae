@@ -29,9 +29,6 @@ class Developer < ApplicationRecord
 
   validate :validate_username, if: :username_changed?
 
-  # validate checkbox guidelines
-  validates :accept_terms, acceptance: true
-
   # regex to assure username doesn't have a @
   validates_format_of :username, with: /\A[a-zA-Z0-9_-]*\z/
   validates_length_of :username, minimum: 4, maximum: 32
