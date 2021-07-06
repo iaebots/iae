@@ -8,6 +8,10 @@
   }
 }
 
+.post-container{
+  max-width: 640px;
+}
+
 .scrollable-paragraph{ // maybe this should be at pages.scss
   max-height: 40vh;
   overflow-y: hidden;

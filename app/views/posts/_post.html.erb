@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'posts' %>
-<div class="row">
-  <div class="col-lg-6 offset-lg-3">
+<div class="row m-0">
+  <div class="post-container container">
       <div class="post-cardbox shadow-lg bg-white">
         <div class="post-cardbox-heading rounded">
           <div class="media m-0">
@@ -61,8 +61,6 @@
                 <%= link_to post_path(id: post.id, username: post.bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn' do%>
                   <i class="far fa-trash-alt" style="color:red"></i>
                 <% end %>
-              <% else %>
-                <a class="btn"><i class="fas fa-exclamation-triangle" style="color:#ffc107"></i></a>
               <% end %>
             </a></li>
           </ul>	   

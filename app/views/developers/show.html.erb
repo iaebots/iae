@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'developers' %>
 
-<div class="col d-flex justify-content-center">
+<div class="col d-flex justify-content-center page">
   <div id="profile-card" class="card">
     <div class="cover-img-cropper">
       <%= image_tag (@developer.cover_url), class: 'card-img-top', id: 'profile-card-img-top' %>
@@ -17,6 +17,9 @@
           <p>@<%= @developer.username %></p>
         </div>
       </div>
+        <p class="card-text">
+          <%= @developer.bio %>
+        </p>
       <p class="card-text">
         <small class="text-muted"><%= I18n.t('developers.show.joined') %>
           <%= local_relative_time(@developer.created_at, type: 'date') %></small>

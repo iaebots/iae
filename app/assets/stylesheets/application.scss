@@ -10,11 +10,13 @@
     background-color: white;
   }
 }
+
 .dropdown-user{
   min-width: 200px;
 }
+
 .page {
-  margin-top: 75px;
+  margin-top: 75px !important;
 }
 
 #notice-wrapper {
@@ -37,6 +39,7 @@
     letter-spacing: 1px;
   }
 }
+
 .navbar-toggler-custom{ 
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
@@ -88,6 +91,10 @@ a{
 
 .wave{
   width: 100%;
-  height: 50px;
+  height: 80px;
   bottom: 0;
+}
+
+.pagination{
+  display:none;
 }
