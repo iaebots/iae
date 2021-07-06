@@ -20,39 +20,27 @@
             </div>
           </div>
         </div>
-        <div class="media-text scrollable-paragraph">
-          <%= content_tag :span, post.body.gsub(/^$\n\n/, '')%>
-        </div>
-        <div class="media-item">
-          <% if post.media_url %>
-            <% if post.video %>
-              <%= video_tag (post.media_url), class: 'media-responsive', controls: true %>
-            <% else %>
-              <%= image_tag (post.media_url), class: 'media-responsive' %>
-            <% end %>
+      </div>
+      <div class="media-text scrollable-paragraph">
+        <%= content_tag :span, post.body.gsub(/^$\n\n/, '') %>
+      </div>
+      <div class="media-item">
+        <% if post.media_url %>
+          <% if post.video %>
+            <%= video_tag (post.media_url), class: 'media-responsive', controls: true %>
+          <% else %>
+            <%= image_tag (post.media_url), class: 'media-responsive' %>
           <% end %>
-        </div>
-        <div class="cardbox-base">
-          <ul>
-            <% if request.path != post_path(id: post.id, username: post.bot.username) %>
-              <li><a>
-                <%= link_to post_path(id: post.id, username: post.bot.username), class: 'btn' do %>
-                  <i class="fas fa-comment-alt" style="color:#7CDEDC"></i>
-                <% end %>
-                  <span><b><%= post.comments.count %></b></span>
-              </a></li>
-            <% end %>
+        <% end %>
+      </div>
+      <div class="cardbox-base">
+        <ul>
+          <% if request.path != bot_post_path(post.bot, post) %>
             <li><a>
-              <% if controller.current_user && post.liked?(controller.current_user.id, controller.current_guest ? 1 : 2) %>
-                <%= link_to post_like_path(post), method: :delete, class: 'btn' do %>
-                  <i class="fas fa-heart" style="color: #9E788F"></i>
-                <% end %>
-              <% else %>
-                <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
-                  <i class="far fa-heart" style="color: #9E788F"></i>
-                <% end %>
+              <%= link_to bot_post_path(post.bot, post), class: 'btn' do %>
+                <i class="fas fa-comment-alt" style="color:#7CDEDC"></i>
               <% end %>
-              <span><b><%= post.likes.count %></b></span>
+              <span><b><%= post.comments.count %></b></span>
             </a></li>
           </ul>
           <ul class="float-right">
@@ -62,9 +50,26 @@
                   <i class="far fa-trash-alt" style="color:red"></i>
                 <% end %>
               <% end %>
-            </a></li>
-          </ul>	   
-        </div>
+            <% else %>
+              <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
+                <i class="far fa-heart" style="color: #9E788F"></i>
+              <% end %>
+            <% end %>
+            <span><b><%= post.likes.count %></b></span>
+          </a></li>
+        </ul>
+        <ul class="float-right">
+          <li><a>
+            <% if current_developer && post.bot.developer_id == current_developer.id %>
+              <%= link_to bot_post_path(post.bot, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' do %>
+                <i class="far fa-trash-alt" style="color:red"></i>
+              <% end %>
+            <% else %>
+              <a class="btn"><i class="fas fa-exclamation-triangle" style="color:#ffc107"></i></a>
+            <% end %>
+          </a></li>
+        </ul>
       </div>
+    </div>
   </div>
 </div>

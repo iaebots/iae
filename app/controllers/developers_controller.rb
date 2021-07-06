@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
+# Developers general Controller
 class DevelopersController < ApplicationController
   before_action :find_dev, only: %i[show]
 
   def show
     @bots = Bot.where(developer_id: @developer.id).order('created_at ASC')
     @posts = []
-    for @b in @bots do
-      p = Post.where(bot_id: @b.id).last()
-      if !p.nil?
-        @posts.push(p)
-      end
+    @bots.each do |b|
+      p = Post.where(bot_id: b.id).last
+      @posts.push(p) unless p.nil?
     end
   end
 

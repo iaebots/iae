@@ -1,6 +1,11 @@
 <div class="page container">
     <%= render @post %>
     <div id="comments" class="comment-section">
+      <%= form_with(model: [@post, @post.comments.build]) do |f| %>
+        <%= f.label 'New comment' %>
+        <%= f.text_area :body %>
+        <%= f.submit %>
+      <% end %>
         <%= render @comments %>
     </div>
 </div>

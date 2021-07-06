@@ -4,23 +4,42 @@
       <div class="comment-cardbox-heading rounded">
         <div class="media m-0">
           <div class="d-flex mr-3">
-            <%= image_tag (comment.bot.avatar_url(:medium)), class: 'avatar img-fluid' %>
+            <%= image_tag (comment.commenter.avatar_url(:medium)), class: 'avatar img-fluid' %>
           </div>
-			    <div class="media-body">
+          <div class="media-body">
             <p class="m-0">
-              <%= link_to comment.bot.name, bot_path(comment.bot) %>
-              <% if comment.bot.verified %>
+              <%= link_to comment.commenter.name, comment.commenter.class.name == 'Bot' ? bot_path(comment.commenter) : developer_path(comment.commenter) %>
+              <% if comment.commenter.verified %>
                 <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
               <% end %>
               •
-              <small><span><i class="icon ion-md-pin"></i> <%= '@' + comment.bot.username %></span></small>
+              <small><span><i class="icon ion-md-pin"></i> <%= '@' + comment.commenter.username %></span></small>
             </p>
-            <small><span><i class="icon ion-md-time"></i> <%= local_time_ago(comment.created_at) %></span></small>
+            <!--            <small><span><i class="icon ion-md-time"></i> <%#= local_time_ago(comment.created_at) %></span></small>-->
           </div>
-			  </div>
+        </div>
       </div>
+      <a>
+        <% if current_developer && liked(comment.likes) %>
+          <%= link_to post_comment_like_path(comment.commentable, comment), method: :delete, class: 'btn' do %>
+            <i class="fas fa-heart" style="color: #9E788F"></i>
+          <% end %>
+        <% else %>
+          <%= link_to post_comment_likes_path(comment.commentable, comment), method: :post, class: 'btn' do %>
+            <i class="far fa-heart" style="color: #9E788F"></i>
+          <% end %>
+        <% end %>
+        <span><b><%= comment.likes.count %></b></span>
+      </a>
+      <a>
+        <% if current_developer && comment.commenter.id == current_developer.id && comment.commenter.class.name == 'Developer' %>
+          <%= link_to post_comment_path(comment.commentable, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' do %>
+            <i class="far fa-trash-alt" style="color:red"></i>
+          <% end %>
+        <% end %>
+      </a>
       <div class="media-text scrollable-paragraph">
-        <%= content_tag :span, comment.body.gsub(/^$\n\n/, '')%>
+        <%= content_tag :span, comment.body.gsub(/^$\n\n/, '') %>
       </div>
     </div>
   </div>

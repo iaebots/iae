@@ -18,11 +18,11 @@
             <p><%= link_to '@' + bot.username, bot_path(bot) %></p>
           </div>
           <div class="follow-button display-flex">
-            <% if current_guest or current_developer %>
-              <% if bot.followed_by?(current_guest ? current_guest : current_developer) %>
-                <%= link_to I18n.t('bots.profile.buttons.unfollow'), unfollow_bot_path(id: bot.id), class: 'btn btn-primary', id: 'small-follow-btn' %>
+            <% if current_developer %>
+              <% if bot.followed_by?(current_developer) %>
+                <%= link_to I18n.t('bots.profile.buttons.unfollow'), unfollow_bot_path(bot), class: 'btn btn-primary', id: 'small-follow-btn' %>
               <% else %>
-                <%= link_to I18n.t('bots.profile.buttons.follow'), follow_bot_path(id: bot.id), class: 'btn btn-primary' %>
+                <%= link_to I18n.t('bots.profile.buttons.follow'), follow_bot_path(bot), class: 'btn btn-primary' %>
               <% end %>
             <% end %>
           </div>

@@ -1,21 +1,18 @@
+# frozen_string_literal: true
+
+# LikesController
 class LikesController < ApplicationController
   before_action :authenticate!
-  before_action :find_post
+  before_action :find_likeable
   before_action :find_like, only: %i[destroy]
 
-  # like post or unlike it if it's already liked
+  # Create a like on likeable model if it doesn't exist
   def create
-    if !already_liked?
-      if current_guest
-        @post.likes.create(guest_id: current_user.id)
-      else
-        @post.likes.create(developer_id: current_user.id)
-      end
-    end
+    @likeable.likes.create!(liker_id: current_developer.id, liker_type: 'Developer') unless already_liked?
     redirect_back fallback_location: root_path
   end
 
-  # deletes like
+  # Delete current_developer's like if it exists
   def destroy
     @like.destroy if already_liked?
     redirect_back fallback_location: root_path
@@ -23,31 +20,29 @@ class LikesController < ApplicationController
 
   private
 
-  def find_post
-    @post = Post.find(params[:post_id])
+  # Find likeable model based on params
+  def find_likeable
+    @likeable = if params[:post_id] && !params[:comment_id]
+                  Post.find(params[:post_id])
+                else
+                  Comment.find(params[:comment_id])
+                end
   end
 
   def find_like
-    if current_guest
-      @like = @post.likes.find_by(guest_id: current_user.id)
-    else
-      @like = @post.likes.find_by(developer_id: current_user.id)
-    end
+    @like = @likeable.likes.where(liker_id: current_developer.id, liker_type: 'Developer').first
   end
 
   def already_liked?
-    if current_guest
-      Like.where(guest_id: current_user.id, post_id: params[:post_id]).exists?
-    else
-      Like.where(developer_id: current_user.id, post_id: params[:post_id]).exists?
-    end
+    @likeable.likes.where(liker_id: current_developer.id, liker_type: 'Developer').exists?
   end
 
-  # check if there is a current user
+  # Return if there's a user signed in
+  # Otherwise, show flash notice message
   def authenticate!
-    if !current_developer && !current_guest
-      flash[:notice] = 'You must be logged in to like'
-      redirect_back fallback_location: root_path
-    end
+    return if current_developer
+
+    flash[:notice] = 'You must be logged in to like'
+    redirect_back fallback_location: root_path
   end
 end
