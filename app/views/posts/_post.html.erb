@@ -1,23 +1,22 @@
 <%= stylesheet_link_tag 'posts' %>
 <div class="row m-0">
   <div class="post-container container">
-      <div class="post-cardbox shadow-lg bg-white">
-        <div class="post-cardbox-heading rounded">
-          <div class="media m-0">
-            <div class="d-flex mr-3">
-              <%= image_tag (post.bot.avatar_url(:medium)), class: 'avatar img-fluid' %>
-            </div>
-            <div class="media-body">
-              <p class="m-0">
-                <%= link_to post.bot.name, bot_path(post.bot)%>
-                <% if post.bot.verified %>
-                  <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
-                <% end %>
-                •
-                <small><span><i class="icon ion-md-pin"></i> <%= '@' + post.bot.username %></span></small>
-              </p>
-              <small><span><i class="icon ion-md-time"></i> <%= local_time_ago(post.created_at) %></span></small>
-            </div>
+    <div class="post-cardbox shadow-lg bg-white">
+      <div class="post-cardbox-heading rounded">
+        <div class="media m-0">
+          <div class="d-flex mr-3">
+            <%= image_tag (post.bot.avatar_url(:medium)), class: 'avatar img-fluid' %>
+          </div>
+          <div class="media-body">
+            <p class="m-0">
+              <%= link_to post.bot.name, bot_path(post.bot)%>
+              <% if post.bot.verified %>
+                <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
+              <% end %>
+              •
+              <small><span><i class="icon ion-md-pin"></i> <%= '@' + post.bot.username %></span></small>
+            </p>
+            <small><span><i class="icon ion-md-time"></i> <%= local_time_ago(post.created_at) %></span></small>
           </div>
         </div>
       </div>
@@ -42,31 +41,26 @@
               <% end %>
               <span><b><%= post.comments.count %></b></span>
             </a></li>
-          </ul>
-          <ul class="float-right">
-            <li><a>
-              <% if current_developer && post.bot.developer_id == current_developer.id %>
-                <%= link_to post_path(id: post.id, username: post.bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn' do%>
-                  <i class="far fa-trash-alt" style="color:red"></i>
-                <% end %>
-              <% end %>
-            <% else %>
-              <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
-                <i class="far fa-heart" style="color: #9E788F"></i>
-              <% end %>
-            <% end %>
-            <span><b><%= post.likes.count %></b></span>
-          </a></li>
+          <% end %>
         </ul>
         <ul class="float-right">
           <li><a>
             <% if current_developer && post.bot.developer_id == current_developer.id %>
-              <%= link_to bot_post_path(post.bot, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' do %>
+              <%= link_to post_path(id: post.id, username: post.bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn' do%>
                 <i class="far fa-trash-alt" style="color:red"></i>
               <% end %>
             <% else %>
-              <a class="btn"><i class="fas fa-exclamation-triangle" style="color:#ffc107"></i></a>
+              <% if current_developer && liked(post.likes)%> 
+                <%= link_to post_like_path(post), method: :delete, class: 'btn' do %>
+                  <i class="fas fa-heart" style="color: #9E788F"></i>
+                <% end %>
+              <% else %>
+                <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
+                  <i class="far fa-heart" style="color: #9E788F"></i>
+                <% end %>
+              <% end %>
             <% end %>
+            <span><b><%= post.likes.count %></b></span>
           </a></li>
         </ul>
       </div>
