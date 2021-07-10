@@ -1,18 +1,4 @@
-.post-cardbox {
-  border-radius: 10px;
-  margin-bottom: 20px;
-  padding: 0px !important;
-  .avatar{
-    width: 54px;
-    height: 54px;
-  }
-}
-
-.post-container{
-  max-width: 640px;
-}
-
-.scrollable-paragraph{ // maybe this should be at pages.scss
+.scrollable-paragraph{
   max-height: 40vh;
   overflow-y: hidden;
   overflow-wrap: break-word;
@@ -38,17 +24,6 @@
   border-radius: 5px;
 }
 
-.post-cardbox:hover  {
-  transition:all 0.3s ease;
-  background:#a9b3ce82 !important;
-}
-
-.post-cardbox .post-cardbox-heading {
-  padding-inline: 16px;
-  padding-block: 8px;
-  margin: 0;
-}
-
 .comment-cardbox{
   border-bottom: 3px solid #5b4883;
   padding: 0px !important;
@@ -67,69 +42,6 @@
   padding-inline: 16px;
   padding-block: 8px;
   margin: 0;
-}
-
-.media {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: start;
-  align-items: flex-start;
-}
-
-.media-body {
-  -ms-flex: 1;
-  flex: 1;
-  padding-top: 6px;
-}
-
-.media-text{
-  padding-inline: 16px;
-  padding-block: 8px;
-  position: relative;
-  display: block;
-  white-space: pre-line;
-}
-
-.media-item {
-  position: relative;
-  display: block;
-}
-
-.media-responsive{
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 600px;
-  object-fit: cover;
-  object-position: 50% 50%;
-}	
-
-.cardbox-base{	
-  ul{
-    margin: 10px 16px 10px 16px !important;
-    padding: 10px !important;
-    display: inline-block;
-  }
-
-  li{
-    list-style: none;
-    margin: 0px !important;
-    padding: 0px !important;
-    display: inline-block;
-  }
-
-  li a{
-    margin: 0px !important;
-    padding: 0px !important;
-  }
-
-  li a i{
-    position: relative;
-    top: 4px; 
-    font-size: 16px;
-    color: #8d8d8d;
-    margin-right: 16px;
-  }
 }
 
  .comment-section{

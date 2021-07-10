@@ -1,62 +1,84 @@
 <%= stylesheet_link_tag 'bots' %>
-
-<div id="page" class="card">
-  <div id="bot" class="card-body">
-    <div class="bot-container pt pb pr pl">
-      <div class="bot pr">
-        <%= image_tag (bot.avatar_url(:medium)), class: 'bot img' %>
-        <div class="username">
-          <div class="name"><%= bot.name %>
-            <% if bot.verified %>
-              <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
-            <% end %>
+<div class="row m-0">
+  <div class="resource-container container">
+    <div class="resource-cardbox shadow-lg bg-white">
+      <div class="resource-cardbox-heading rounded">
+        <div class="resource-media m-0">
+          <div class="d-flex mr-3">
+            <%= image_tag (bot.avatar_url(:medium)), class: 'avatar img-fluid' %>
           </div>
-          <div class="handle"><%= link_to '@' + bot.username, bot_path(bot) %></div>
-          <div class="date pt pb"><%= I18n.t('bots.profile.items.joined') %>
-            <%= local_relative_time(bot.created_at, type: 'date') %>
+          <div class="resource-media-body">
+            <div class="m-0 d-flex justify-content-between">
+             <div>
+                <%= link_to bot.name, bot_path(bot)%>
+                <% if bot.verified %>
+                  <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
+                <% end %>
+                •
+                <small><span><i class="icon ion-md-pin"></i> <%= '@' + bot.username %></span></small>
+              </div>
+              <div>
+                <% if current_developer && bot.developer_id == current_developer.id %>
+                  <%= link_to  edit_bot_path(bot), class: 'btn pt-0 pb-0' do%>
+                    <i class="fas fa-user-edit"></i>
+                  <% end %>
+                  <a class="btn pt-0 pb-0" data-toggle="collapse" data-target="#collapse<%= bot.id %>" aria-expanded="false" aria-controls="collapse<%= bot.id %>">
+                    <i class="fas fa-key"></i>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+            <small><span><i class="icon ion-md-time"></i><%= I18n.t('bots.profile.items.joined') %> <%= local_relative_time(bot.created_at, type: 'date') %></span></small>
+          <p class="card-text">
+            <%= bot.bio %>
+          </p>
           </div>
         </div>
-        <div class="dropdown dropright">
-          <i style="font-size: 12px" class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <%= link_to I18n.t('bots.profile.dropdown.items.view'), bot_path(id: bot.id, username: bot.username), class: 'dropdown-item' %>
-            <% if current_developer && bot.developer_id == current_developer.id %>
-              <%= link_to I18n.t('bots.profile.dropdown.items.delete'), bot_path(id: bot.id, username: bot.username), method: :delete, data: { confirm: I18n.t('bots.profile.messages.confirm') }, class: 'dropdown-item' %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="bot-content pt">
-        <%= truncate(strip_tags(bot.bio), length: 512) %>
       </div>
       <% if current_developer && current_developer.id == bot.developer_id %>
-        <div class="bot-content pt">
-          <p>
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse<%= bot.id %>" aria-expanded="false" aria-controls="collapse<%= bot.id %>">
-              <%= I18n.t('bots.profile.buttons.show-keys') %>
-            </button>
-          </p>
+        <div class="pl-3 pr-3">
           <div class="collapse" id="collapse<%= bot.id %>">
-            <div class="card card-body">
-              <p>
-                Api Key:
-                  <input class="form-control" value="<%= bot.api_key %>" readonly>
-              </p>
-              <p>
-                Api Secret:
-                  <input class="form-control" value="<%= bot.api_secret %>" readonly>
-              </p>
-              <%= link_to I18n.t('bots.profile.buttons.regenerate-keys'), regenerate_keys_bot_path(bot), data: { confirm: I18n.t('bots.profile.messages.confirm') }, class: 'btn btn-primary', method: :put %>
-            </div>
+            <p>
+              Api Key:
+                <input class="form-control" value="<%= bot.api_key %>" readonly>
+            </p>
+            <p>
+              Api Secret:
+                <input class="form-control" value="<%= bot.api_secret %>" readonly>
+            </p>
+            <%= link_to regenerate_keys_bot_path(bot), data: { confirm: I18n.t('bots.profile.messages.confirm') }, class: 'btn', method: :put do%>
+              <%= I18n.t('bots.profile.buttons.regenerate-keys') %> <i class="fas fa-redo-alt"></i>
+            <% end %>
           </div>
         </div>
       <% end %>
-      <div class="icons">
-        <div id="heart-icon" class="likes">
-          <i class="fas fa-user-friends gray-text"></i>
-          <b><%= bot.followers.count %></b>
+      <% if current_developer %>
+        <div class="resource-cardbox-base">
+          <ul>
+            <li><a>
+                <% if bot.followed_by?(current_developer) %>
+                  <%= link_to unfollow_bot_path(id: bot.id), class: 'btn' do%>
+                    <i class="fas fa-user-friends" style="color: #6d5e92"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to follow_bot_path(id: bot.id), class: 'btn' do%>
+                    <i class="fas fa-user-friends" style="color: #7284a8"></i>
+                  <% end %>
+                <% end %>
+                <b><%= bot.followers.count %></b>
+            </a></li>
+          </ul>
+          <% if bot.developer_id == current_developer.id %>
+            <ul class="float-right">
+              <li><a>
+                <%= link_to bot_path(id: bot.id, username: bot.username), method: :delete, data: { confirm: I18n.t('bots.profile.messages.confirm') }, class: 'btn' do%>
+                  <i class="far fa-trash-alt" style="color:red"></i>
+                <% end %>
+              </a></li>
+            </ul>
+          <% end %>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

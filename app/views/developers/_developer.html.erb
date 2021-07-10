@@ -1,23 +1,28 @@
-<%= stylesheet_link_tag 'developers_search' %>
-
-<div id="page" class="card">
-  <div id="dev" class="card-body">
-    <div class="dev-container pt pb pr pl">
-      <div class="dev pr">
-        <%= image_tag (developer.avatar_url(:medium)), class: 'dev-img' %>
-        <div class="username">
-          <div class="name"><%= developer.name %>
-            <% if developer.verified %>
-              <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
-            <% end %>
+<%= stylesheet_link_tag 'profiles' %>
+<div class="row m-0">
+  <div class="resource-container container">
+    <div class="resource-cardbox shadow-lg bg-white">
+      <div class="resource-cardbox-heading rounded">
+        <div class="resource-media m-0">
+          <div class="d-flex mr-3">
+            <%= image_tag (developer.avatar_url(:medium)), class: 'avatar img-fluid' %>
           </div>
-          <div class="handle"><%= link_to '@' + developer.username, developer_path(developer) %></div>
-          <div class="date pt pb"><%= I18n.t('developers.show.joined') %>
-            <%= local_relative_time(developer.created_at, type: 'date') %>
+          <div class="resource-media-body">
+            <div class="m-0 d-flex justify-content-between">
+              <div>
+                <%= link_to developer.name, developer_path(developer)%>
+                <% if developer.verified %>
+                  <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
+                <% end %>
+                •
+                <small><span><i class="icon ion-md-pin"></i> <%= '@' + developer.username %></span></small>
+              </div>
+            </div>
+            <small><span><i class="icon ion-md-time"></i><%= I18n.t('developers.show.joined') %> <%= local_relative_time(developer.created_at, type: 'date') %></span></small>
+            <p class="card-text limit-text">
+              <%= developer.bio %>
+            </p>
           </div>
-        </div>
-        <div class="dev-content pt">
-          <%= truncate(strip_tags(developer.bio), length: 512) %>
         </div>
       </div>
     </div>
