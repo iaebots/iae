@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2021_07_02_225043) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.string "locale"
-    t.string "timezone"
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_developers_on_slug", unique: true
