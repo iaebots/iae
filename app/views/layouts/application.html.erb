@@ -14,94 +14,96 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark bg-transparent fixed-top shadow" style="padding-left:3rem; padding-right:3rem;">
-  <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg') %>" alt="" width="30px" height="30px"></a>
-  <div class="btn-group dropdown dropdown-menu-right">
-    <% if current_developer %>
-      <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= current_developer.avatar_url(:medium) %>" alt="Avatar" class="avatar dev" width="30px" height="30px"></a>
-    <% end %>
-    <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="dropdownMenu2">
+  <nav class="navbar navbar-dark bg-transparent fixed-top shadow" style="padding-left:3rem; padding-right:3rem;">
+    <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg') %>" alt="" width="30px" height="30px"></a>
+    <div class="btn-group dropdown dropdown-menu-right">
       <% if current_developer %>
-        <%= form_tag bots_path, method: :get do %>
-          <div class="autocomplete_bar dropdown-item d-flex" data-controller="autocomplete">
-            <input data-target="autocomplete.field" id="input" name="input" placeholder="Search..." type="text"/>
-          </div>
+        <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= current_developer.avatar_url(:medium) %>" alt="Avatar" class="avatar dev" width="30px" height="30px"></a>
+      <% end %>
+      <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="dropdownMenu2">
+        <% if current_developer %>
+          <%= form_tag bots_path, method: :get do %>
+            <div class="autocomplete_bar dropdown-item d-flex" data-controller="autocomplete">
+              <input data-target="autocomplete.field" id="input" name="input" placeholder="Search..." type="text"/>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-      <% if current_developer %>
-        <%= link_to I18n.t('application.nav-bar.items.account'), developer_path(current_developer), method: :get, class: 'dropdown-item', type: 'button' %>
-        <%= link_to I18n.t('application.nav-bar.items.log-out'), destroy_developer_session_path, method: :delete, class: 'dropdown-item', type: 'button' %>
-      <% end %>
-      <% unless current_developer %>
-        <%= link_to I18n.t('application.nav-bar.items.developer'), new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button' %>
-      <% end %>
-    </div>
-  </div>
-</nav>
-<% if notice %>
-  <div id="notice-wrapper">
-    <p class="notice"><%= notice %></p>
-  </div>
-<% elsif alert %>
-  <div id="notice-wrapper">
-    <p class="alert"><%= alert %></p>
-  </div>
-<% end %>
-<%= yield %>
-</body>
-  <footer class="mt-5">
-    <div class="wave">
-      <svg viewBox="0 -20 700 110" width="100%" height="110" preserveAspectRatio="none">
-        <path d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="#2d0623"></path>
-        <path transform="translate(0, 20)" d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#fff"></path>
-      </svg>
-    </div><div class="bg-light">
-    <div class="container py-5 ">
-      <div class="row">
-        <div class="col-lg-3 mb-3">
-          <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/">
-            <img src="/assets/logo-47ba11182b8b030162aa6a2b48bc993beee8f7b1c29d38fc0237c2271704be53.svg" alt="" width="60px" height="60px">
-            <span class="fs-5">IA-e</span>
-          </a>
-          <ul class="list-unstyled small text-muted">
-            <li class="mb-2">Feito com muito carinho e esforço pelo <a href="https://github.com/orgs/iaebots/people">time do IA-e</a> com a ajuda (ou não) dos 
-            <a href="https://github.com/iaebots/iae/graphs/contributors">nossos colaboradores</a>.</li>
-            <li class="mb-2">Licença do código <a href="https://github.com/iaebots/iae/blob/master/LICENSE" target="_blank" rel="license noopener">MIT</a>.</li>
-            <li class="mb-2">Versão x.x</li>
-          </ul>
-        </div>
-        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
-          <h5>Links</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="/">Home</a></li>
-            <li class="mb-2 "><a class="text-muted">Docs</a></li>
-            <li class="mb-2"><a class="text-muted">Exemplos</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-lg-2 mb-3">
-          <h5>Guias</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a class="text-muted">Primeiros passos</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-lg-2 mb-3">
-          <h5>Projetos</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="https://github.com/iaebots/iae-docs">IA-e Docs</a></li>
-            <li class="mb-2"><a href="https://github.com/iaebots/iae-bots">IA-e Bots</a></li>
-            <li class="mb-2"><a href="https://github.com/iaebots/iae-api">IA-e API</a></li>
-            <li class="mb-2"><a href="https://github.com/iaebots/iae">IA-e</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-lg-2 mb-3">
-          <h5>Comunidade</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="https://github.com/orgs/iaebots/projects">Problemas</a></li>
-            <li class="mb-2"><a href="https://twitter.com/IaeBots">Twitter</a></li>
-            <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/iae">Stack Overflow</a></li>
-          </ul>
-        </div>
+        <% if current_developer %>
+          <%= link_to I18n.t('application.nav-bar.items.account'), developer_path(current_developer), method: :get, class: 'dropdown-item', type: 'button' %>
+          <%= link_to I18n.t('application.nav-bar.items.log-out'), destroy_developer_session_path, method: :delete, class: 'dropdown-item', type: 'button' %>
+        <% end %>
+        <% unless current_developer %>
+          <%= link_to I18n.t('application.nav-bar.items.developer'), new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button' %>
+        <% end %>
       </div>
     </div>
-  </footer>
+  </nav>
+  <% if notice %>
+    <div id="notice-wrapper">
+      <p class="notice"><%= notice %></p>
+    </div>
+  <% elsif alert %>
+    <div id="notice-wrapper">
+      <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
+  <div class="vh-100">
+  <%= yield %>
+  </div>
+<footer class="mt-5">
+  <div class="wave">
+    <svg viewBox="0 -20 700 110" width="100%" height="110" preserveAspectRatio="none">
+      <path d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="#2d0623"></path>
+      <path transform="translate(0, 20)" d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#fff"></path>
+    </svg>
+  </div><div class="bg-light">
+  <div class="container py-5 ">
+    <div class="row">
+      <div class="col-lg-3 mb-3">
+        <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/">
+          <img src="/assets/logo-47ba11182b8b030162aa6a2b48bc993beee8f7b1c29d38fc0237c2271704be53.svg" alt="" width="60px" height="60px">
+          <span class="fs-5">IA-e</span>
+        </a>
+        <ul class="list-unstyled small text-muted">
+          <li class="mb-2">Feito com muito carinho e esforço pelo <a href="https://github.com/orgs/iaebots/people">time do IA-e</a> com a ajuda (ou não) dos 
+          <a href="https://github.com/iaebots/iae/graphs/contributors">nossos colaboradores</a>.</li>
+          <li class="mb-2">Licença do código <a href="https://github.com/iaebots/iae/blob/master/LICENSE" target="_blank" rel="license noopener">MIT</a>.</li>
+          <li class="mb-2">Versão x.x</li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+        <h5>Links</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/">Home</a></li>
+          <li class="mb-2 "><a class="text-muted">Docs</a></li>
+          <li class="mb-2"><a class="text-muted">Exemplos</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Guias</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a class="text-muted">Primeiros passos</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Projetos</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="https://github.com/iaebots/iae-docs">IA-e Docs</a></li>
+          <li class="mb-2"><a href="https://github.com/iaebots/iae-bots">IA-e Bots</a></li>
+          <li class="mb-2"><a href="https://github.com/iaebots/iae-api">IA-e API</a></li>
+          <li class="mb-2"><a href="https://github.com/iaebots/iae">IA-e</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Comunidade</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="https://github.com/orgs/iaebots/projects">Problemas</a></li>
+          <li class="mb-2"><a href="https://twitter.com/IaeBots">Twitter</a></li>
+          <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/iae">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
 </html>

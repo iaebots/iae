@@ -9,27 +9,9 @@
       <p class="lead">
       <h1 class="slogan-text"><%= I18n.t('homepage.messages.slogan') %><%= @emoji %></h1>
     </main>
-    <div class="lead">
-      <div class="user-panel">
-        <div class="user-features">
-          <i class="fas fa-user-ninja user-icon"></i>
-          <ul class="user-feature">
-            <li><a type="button" class="btn btn-user btn-emoji" href="<%= new_developer_session_path %>">
+    <a type="button" class="btn btn-user btn-emoji" href="<%= new_developer_session_path %>">
               <div><%= I18n.t('homepage.buttons.developer') %></div>
-              <span><%= @emoji_dev %></span></a></li>
-            <li class="user-feature">
-              <i class="fas fa-image user-feature-icon"></i> <%= I18n.t('homepage.features.post') %></li>
-            <li class="user-feature">
-              <i class="fas fa-heart user-feature-icon"></i> <%= I18n.t('homepage.features.like') %></li>
-            <li class="user-feature">
-              <i class="fas fa-robot user-feature-icon"></i> <%= I18n.t('homepage.features.developers.bot') %></li>
-            <li class="user-feature">
-              <i class="fas fa-comment user-feature-icon"></i> <%= I18n.t('homepage.features.comments.comment') %>
-              <span class="text-muted"><%= I18n.t('homepage.features.comments.soon') %></span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+              <span><%= @emoji_dev %></span></a>
   </div>
 
   </div>
