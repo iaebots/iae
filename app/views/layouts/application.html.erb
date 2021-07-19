@@ -34,7 +34,35 @@
       <% unless current_developer %>
         <%= link_to I18n.t('application.nav-bar.items.developer'), new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button' %>
       <% end %>
+      <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="dropdownMenu2">
+        <% if current_developer %>
+          <%= form_tag bots_path, method: :get do %>
+            <div class="autocomplete_bar dropdown-item d-flex" data-controller="autocomplete">
+              <input data-target="autocomplete.field" id="input" name="input" placeholder="Search..." type="text"/>
+            </div>
+          <% end %>
+        <% end %>
+        <% if current_developer %>
+          <%= link_to I18n.t('application.nav-bar.items.account'), developer_path(current_developer), method: :get, class: 'dropdown-item', type: 'button' %>
+          <%= link_to I18n.t('application.nav-bar.items.log-out'), destroy_developer_session_path, method: :delete, class: 'dropdown-item', type: 'button' %>
+        <% end %>
+        <% unless current_developer %>
+          <%= link_to I18n.t('application.nav-bar.items.developer'), new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button' %>
+        <% end %>
+      </div>
     </div>
+  </nav>
+  <% if notice %>
+    <div id="notice-wrapper">
+      <p class="notice"><%= notice %></p>
+    </div>
+  <% elsif alert %>
+    <div id="notice-wrapper">
+      <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
+  <div class="vh-100">
+  <%= yield %>
   </div>
 </nav>
 <div class="min-vh-100">
