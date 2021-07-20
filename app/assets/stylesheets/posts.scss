@@ -25,26 +25,43 @@
 }
 
 .comment-cardbox{
-  border-bottom: 3px solid #5b4883;
-  padding: 0px !important;
-  .avatar{
-    width: 54px;
-    height: 54px;
-  }
-}
-
-.comment-cardbox:hover{
-  transition:all 0.3s ease;
-  background:#a9b3ce82 !important;
-}
-
-.comment-cardbox .comment-cardbox-heading {
-  padding-inline: 16px;
-  padding-block: 8px;
-  margin: 0;
+  border-bottom: 1px solid #5b4883;
+  -webkit-box-shadow: -50px 0px 90px -10px #5b488357; 
+  box-shadow: -50px 0px 90px -10px #5b488357;
 }
 
  .comment-section{
   margin-top: -20px;
   padding-inline: 16px;
  }
+
+ .comment-textbox{
+  min-height: 150px;
+  border: none;
+  overflow: auto;
+  resize: none;
+ }
+
+ .comment-form{
+  border: 1px solid #a9b3ce;
+  border-radius: 6px;
+ }
+
+ .btn-comment{
+  border-radius: 0px 0px 5px 5px !important;
+  color: #fff;
+  background: linear-gradient(45deg, rgba(158,120,143,1) 0%, rgba(169,179,206,1) 100%);
+  border-color: rgb(158, 120, 143) ;
+}
+.btn-comment:active{
+  color: #fff;
+  background: linear-gradient(45deg, rgb(144, 107, 129) 0%, rgb(108, 130, 188) 100%);
+}
+.btn-comment:focus{
+  color: #fff;
+  border-color: rgb(45,6,35);
+}
+.btn-comment:hover{
+  color: #fff;
+  border-color: #a9b3ce;
+}
