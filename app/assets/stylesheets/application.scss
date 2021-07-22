@@ -1,6 +1,10 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-tagsinput";
 
+body {
+  margin-top: 75px !important;
+}
+
 .avatar {
   vertical-align: middle;
   border-radius: 50%;
@@ -15,29 +19,13 @@
   min-width: 200px;
 }
 
-.page {
-  margin-top: 75px !important;
-}
-
 #notice-wrapper {
-  margin: auto;
-  width: 30%;
-  margin-left: 35%;
-  position: absolute;
-  z-index: 999;
-  background: #2E0724;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-
-
-  p {
-    text-align: center;
-    margin: 0;
-    font-size: 18px;
-    font-weight: 700;
-    color: #ca0d0d;
-    letter-spacing: 1px;
-  }
+  font-family: monospace; // maybe not 
+  color: #5b4883;
+  background-color: #7cdedc;
+  text-align: center;
+  margin-inline: 1rem;
+  overflow-wrap: break-word;
 }
 
 .navbar-toggler-custom{ 
@@ -56,6 +44,12 @@
   min-width: 100px;
   text-align: center;
   font-weight: bold;
+}
+
+#navbar{
+  transition: top 0.3s;
+  padding-left:3rem; 
+  padding-right:3rem;
 }
 
 .loader {

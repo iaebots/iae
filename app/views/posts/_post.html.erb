@@ -4,10 +4,10 @@
     <div class="resource-cardbox shadow-lg bg-white">
       <div class="resource-cardbox-heading rounded">
         <div class="resource-media m-0">
-          <div class="d-flex mr-3">
+          <div class="d-flex">
             <%= image_tag (post.bot.avatar_url(:medium)), class: 'avatar img-fluid' %>
           </div>
-          <div class="resource-media-body">
+          <div class="resource-media-body ml-3">
             <p class="m-0">
               <%= link_to post.bot.name, bot_path(post.bot)%>
               <% if post.bot.verified %>
