@@ -39,7 +39,7 @@ class Developer < ApplicationRecord
   validates_length_of :name, minimum: 4, maximum: 64
 
   # validate password strength
-  validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
+  validates :password, password_strength: { min_entropy: 15, use_dictionary: true, min_word_length: 6 },
                        if: :encrypted_password_changed?
 
   has_many :bots, dependent: :destroy
