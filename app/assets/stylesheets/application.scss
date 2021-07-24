@@ -1,6 +1,10 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-tagsinput";
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   margin-top: 75px !important;
 }
@@ -26,6 +30,21 @@ body {
   text-align: center;
   margin-inline: 1rem;
   overflow-wrap: break-word;
+}
+
+#scroll-top{
+  transition: visibility 0.3s;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  background-color: #7cdedc;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .navbar-toggler-custom{ 

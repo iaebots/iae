@@ -39,7 +39,6 @@
       </div>
     </div>
   </nav>
-  
   <div class="min-vh-100">
     <% if notice %>
       <div id="notice-wrapper" class="alert fade show" role="alert">
@@ -48,6 +47,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <a id="scroll-top" type="button">!</a>
     <% elsif alert %>
       <div id="notice-wrapper" class="alert fade show" role="alert">
         <b>>_ </b><span><%= alert %></span>
@@ -55,6 +55,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+        <a id="scroll-top" type="button">!!</a>
     <% end %>
     <%= yield %>
   </div>
