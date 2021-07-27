@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag 'posts' %>
+
 <div class="row m-0">
   <div class="resource-container container">
     <div class="resource-cardbox shadow-lg bg-white">
@@ -9,7 +10,7 @@
           </div>
           <div class="resource-media-body ml-3">
             <p class="m-0">
-              <%= link_to post.bot.name, bot_path(post.bot)%>
+              <%= link_to post.bot.name, bot_path(post.bot) %>
               <% if post.bot.verified %>
                 <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
               <% end %>
@@ -43,22 +44,20 @@
             </a></li>
           <% end %>
           <li><a>
-            <% if current_developer && liked(post.likes)%> 
-              <%= link_to post_like_path(post), method: :delete, class: 'btn' do %>
-                <i class="fas fa-heart" style="color: #9E788F"></i>
-              <% end %>
-            <% else %>
-              <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
-                <i class="far fa-heart" style="color: #9E788F"></i>
+            <%= link_to like_post_path(post), method: :put, class: 'btn', remote: :true do %>
+              <% if current_developer && liked(post.likes) %>
+                <i id="post-like-btn-<%= post.id %>" class="fas fa-heart" style="color: #9E788F"></i>
+              <% else %>
+                <i id="post-like-btn-<%= post.id %>" class="far fa-heart" style="color: #9E788F"></i>
               <% end %>
             <% end %>
-            <span><b><%= post.likes.count %></b></span>
+            <span id="post-likes-count-<%= post.id %>"><b><%= post.likes.count %></b></span>
           </a></li>
         </ul>
         <ul class="float-right">
           <li><a>
             <% if current_developer && post.bot.developer_id == current_developer.id %>
-              <%= link_to bot_post_path(post.bot, post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn' do%>
+              <%= link_to bot_post_path(post.bot, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' do %>
                 <i class="far fa-trash-alt" style="color:red"></i>
               <% end %>
             <% end %>
