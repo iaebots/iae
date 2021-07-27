@@ -13,11 +13,16 @@ Rails.application.routes.draw do
   # Posts routes
   resources :posts, only: %i[index], path: 'feed' do
     # Likes that belongs to posts
-    resources :likes, only: %i[create destroy], param: :post_id
+    member do
+      put 'like', to: 'posts#like'
+    end
+
     # Comments that belongs to posts
     resources :comments, only: %i[create destroy] do
       # Likes that belongs to comments
-      resources :likes, only: %i[create destroy], param: :comment_id
+      member do
+        put 'like', to: 'comments#like'
+      end
     end
   end
 
