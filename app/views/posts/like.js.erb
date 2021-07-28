@@ -1,0 +1,7 @@
+<% if current_developer && liked(@post.likes) %>
+  $('#post-like-btn-<%= @post.id %>').html('<i class="fas fa-heart" style="color: #9E788F"></i>')
+<% else %>
+  $('#post-like-btn-<%= @post.id %>').html('<i id="like-btn" class="far fa-heart" style="color: #9E788F"></i>')
+<% end %>
+
+$('#post-likes-count-<%= @post.id %>').html('<b><%= @post.likes.count %></br>')
