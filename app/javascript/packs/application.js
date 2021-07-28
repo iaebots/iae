@@ -30,5 +30,6 @@ require('packs/custom/posts')
 require('packs/custom/navbar-scroll')
 require('packs/custom/notice-alert')
 require('packs/custom/timezones')
-require('packs/custom/bootstrap-tagsinput')
+require('packs/custom/navbar-scroll')
+require('packs/custom/notice-alert')
 
