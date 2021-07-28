@@ -2,7 +2,9 @@
 
 class PostsController < ApplicationController
   before_action :authenticate!, only: %i[index]
-  before_action :set_post, only: %i[show destroy]
+  before_action :set_post, only: %i[show destroy like]
+  before_action :authenticate_like!, only: %i[like]
+  respond_to :html, :js, :json
 
   def index
     @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
@@ -27,14 +29,17 @@ class PostsController < ApplicationController
     @comments = @post.comments.paginate(page: params[:page]).order('created_at DESC')
   end
 
+  def like
+    if !already_liked?
+      @post.likes.create(liker_id: current_developer.id, liker_type: 'Developer')
+    else
+      @post.likes.where(liker_id: current_developer.id, liker_type: 'Developer').first.destroy
+    end
+  end
+
   def destroy
     @post.destroy
     redirect_to root_path
-  end
-
-  respond_to do |format|
-    format.html
-    format.js
   end
 
   private
@@ -45,5 +50,16 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def already_liked?
+    @post.likes.where(liker_id: current_developer.id, liker_type: 'Developer').exists?
+  end
+
+  def authenticate_like!
+    return if current_developer
+
+    flash[:notice] = 'You must be logged in to like'
+    redirect_back fallback_location: root_path
   end
 end

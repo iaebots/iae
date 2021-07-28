@@ -1,4 +1,3 @@
-
 <div class="row m-0">
   <div class="resource-container container">
     <div class="resource-cardbox comment-cardbox mx-2 mb-0 bg-white">
@@ -26,16 +25,14 @@
       <div class="resource-cardbox-base">
         <ul>
           <li><a>
-            <% if current_developer && liked(comment.likes) %>
-              <%= link_to post_comment_like_path(comment.commentable, comment), method: :delete, class: 'btn' do %>
-                <i class="fas fa-heart" style="color: #9E788F"></i>
-              <% end %>
-            <% else %>
-              <%= link_to post_comment_likes_path(comment.commentable, comment), method: :post, class: 'btn' do %>
-                <i class="far fa-heart" style="color: #9E788F"></i>
+            <%= link_to like_post_comment_path(comment.commentable, comment), method: :put, class: 'btn', remote: :true do %>
+              <% if current_developer && liked(comment.likes) %>
+                <i id="comment-like-btn-<%= comment.id %>" class="fas fa-heart" style="color: #9E788F"></i>
+              <% else %>
+                <i id="comment-like-btn-<%= comment.id %>" class="far fa-heart" style="color: #9E788F"></i>
               <% end %>
             <% end %>
-            <span><b><%= comment.likes.count %></b></span>
+            <span id="comment-likes-count-<%= comment.id %>"><b><%= comment.likes.count %></b></span>
           </a></li>
         </ul>
         <ul class="float-right">
