@@ -6,6 +6,18 @@ body{
     background: linear-gradient(rgb(169,179,206) 50%, rgb(158, 120, 143) 100%) center center fixed;
 }
 
+textarea{
+    min-height: 100px;
+}
+
+.locale-select{
+    position: absolute;
+    z-index: 900;
+    top: 0px;
+    right: 0px;
+    margin: 15px;
+}
+
 .user-container{
     display: flex;
     flex-direction: column;
@@ -110,3 +122,4 @@ body{
     border: 1px solid red !important;
     border-radius: 5px;
   }
+

@@ -46,6 +46,10 @@
   border: 1px solid #a9b3ce;
   border-radius: 6px;
  }
+ .comment-form:hover  {
+  transition:all 0.3s ease;
+  background:#a9b3ce82 !important;
+}
 
  .btn-comment{
   border-radius: 0px 0px 5px 5px !important;
