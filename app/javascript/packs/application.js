@@ -29,33 +29,6 @@ require('jquery')
 
 // custom js scripts
 require('packs/custom/posts')
-require('packs/custom/bootstrap-tagsinput')
+require('packs/custom/navbar-scroll')
+require('packs/custom/notice-alert')
 
-//func when doc is full loaded
-$(document).ready(function() {
-  require("packs/custom/particles")
-  setTimeout(function() {
-    $('#notice-wrapper').fadeOut("slow", function() {
-      $(this).remove();
-    })
-    $("#scroll-top").fadeOut("slow");
-  }, 60000); //Hides notice wrapper and notificator after that time
-});
-
-$(document).ready(function() {
-  $("#scroll-top").click(function(){
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    $("#scroll-top").fadeOut("slow");
-  })
-  var prevScrollpos = window.pageYOffset;
-  window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navbar").style.top = "0";
-  } else {
-    document.getElementById("navbar").style.top = "-100px";
-  }
-  prevScrollpos = currentScrollPos;
-}
-});

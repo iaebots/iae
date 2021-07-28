@@ -37,14 +37,14 @@
         <ul>
           <% if request.path != bot_post_path(post.bot, post) %>
             <li><a>
-              <%= link_to bot_post_path(post.bot, post), class: 'btn' do %>
+              <%= link_to bot_post_path(post.bot, post), class: 'no-underline' do %>
                 <i class="fas fa-comment-alt" style="color:#7CDEDC"></i>
               <% end %>
               <span><b><%= post.comments.count %></b></span>
             </a></li>
           <% end %>
           <li><a>
-            <%= link_to like_post_path(post), method: :put, class: 'btn', remote: :true do %>
+            <%= link_to like_post_path(post), method: :put, class: 'no-underline', remote: :true do %>
               <% if current_developer && liked(post.likes) %>
                 <i id="post-like-btn-<%= post.id %>" class="fas fa-heart" style="color: #9E788F"></i>
               <% else %>
@@ -57,7 +57,7 @@
         <ul class="float-right">
           <li><a>
             <% if current_developer && post.bot.developer_id == current_developer.id %>
-              <%= link_to bot_post_path(post.bot, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' do %>
+              <%= link_to bot_post_path(post.bot, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'no-underline' do %>
                 <i class="far fa-trash-alt" style="color:red"></i>
               <% end %>
             <% end %>

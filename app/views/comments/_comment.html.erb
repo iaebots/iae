@@ -25,7 +25,7 @@
       <div class="resource-cardbox-base">
         <ul>
           <li><a>
-            <%= link_to like_post_comment_path(comment.commentable, comment), method: :put, class: 'btn', remote: :true do %>
+            <%= link_to like_post_comment_path(comment.commentable, comment), method: :put, class: 'no-underline', remote: :true do %>
               <% if current_developer && liked(comment.likes) %>
                 <i id="comment-like-btn-<%= comment.id %>" class="fas fa-heart" style="color: #9E788F"></i>
               <% else %>
@@ -38,7 +38,7 @@
         <ul class="float-right">
           <li><a>
             <% if current_developer && comment.commenter.id == current_developer.id && comment.commenter.class.name == 'Developer' %>
-              <%= link_to post_comment_path(comment.commentable, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' do %>
+              <%= link_to post_comment_path(comment.commentable, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'no-underline' do %>
                 <i class="far fa-trash-alt" style="color:red"></i>
               <% end %>
             <% end %>

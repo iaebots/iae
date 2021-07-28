@@ -19,7 +19,7 @@
 
         <div>
           <% if current_developer && @developer == current_developer %>
-            <%= link_to edit_developer_registration_path, class: 'btn pt-0 pb-0' do%>
+            <%= link_to edit_developer_registration_path, class: 'no-underline pt-0 pb-0' do%>
               <i class="fas fa-user-edit"></i>
              <% end %>
           <% end %>
@@ -50,7 +50,7 @@
   <div class="tab-pane fade p-2" id="nav-bots" role="tabpanel" aria-labelledby="nav-bots-tab">
     <% if current_developer == @developer && current_developer.bots.count < 1 %>
       <div class="edit-button d-md-flex justify-content-md-center">
-        <%= link_to new_bot_path, class: 'btn btn-new' do %>
+        <%= link_to new_bot_path, class: 'no-underline btn-new' do %>
           <%=I18n.t('developers.show.buttons.new-bot')%>
           <i class="fas fa-plus"></i>
         <% end %>

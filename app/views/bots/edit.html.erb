@@ -1,4 +1,6 @@
 <%= stylesheet_link_tag 'sessions_registrations' %>
+<%= javascript_pack_tag 'custom/bootstrap-tagsinput' %>
+
 <div class="d-flex justify-content-center h-100">
   <div class="user-card">
     <div class="d-flex justify-content-center">
@@ -67,7 +69,6 @@
               
               <%= b.hidden_field :developer_id, value: current_developer.id %>
               <%= b.submit I18n.t('bots.registrations.edit.buttons.create'), class: 'btn btn-submit btn-block' %> 
-
             <% end %>
           <% if @bot.errors.any? %>
             <%= render "bots/error_messages", resource: @bot %>
