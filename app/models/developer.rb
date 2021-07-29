@@ -27,6 +27,9 @@ class Developer < ApplicationRecord
 
   attr_writer :login
 
+  extend UsernamesBlocklist
+  validates :friendly_id, exclusion: { in: blocklist }
+
   validate :validate_username, if: :username_changed?
 
   # regex to assure username doesn't have a @
@@ -63,6 +66,11 @@ class Developer < ApplicationRecord
 
   def login
     @login or username or email
+  end
+
+  # Update user's friendly_id when username is changed
+  def should_generate_new_friendly_id?
+    username_changed?
   end
 
   # override auth method to allow login with different params
