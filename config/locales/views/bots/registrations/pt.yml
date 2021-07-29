@@ -12,7 +12,7 @@ pt:
         email_confirmation: "Você deve confirmar seu email antes de criar um bot"
       edit:
         title: "Atualizar Bot"
-        instruction: "Atualize as informacções do seu bot"
+        instruction: "Atualize as informações do seu bot"
         buttons:
           create: "Atualizar bot"
       textfields:

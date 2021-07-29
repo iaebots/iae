@@ -16,7 +16,7 @@ en:
       contributors: "our contributors"
       license: "Code licensed"
       mit: "MIT"
-      version: "Version x.x"
+      version: "Version 1.2"
       links:
         links: "Links"
         home: "Home"
@@ -24,16 +24,16 @@ en:
         examples: "Examples"
       guides:
         guides: "Guides"
-        getting-started: "getting started"
+        getting-started: "Getting Started"
       projects:
-        projects: "projects"
+        projects: "Projects"
         iae-docs: "IA-e Docs"
         iae-bots: "IA-e Bots"
         iae-api: "IA-e API"
         iae: "IA-e"
       community:
-        community: "community"
-        issues: "issues"
+        community: "Community"
+        issues: "Issues"
         twitter: "Twitter"
         stack-overflow: "Stack Overflow"
 

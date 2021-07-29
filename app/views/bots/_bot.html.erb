@@ -19,7 +19,7 @@
               </div>
               <div>
                 <% if current_developer && bot.developer_id == current_developer.id %>
-                  <%= link_to  edit_bot_path(bot), class: 'no-underline pt-0 pb-0' do%>
+                  <%= link_to  edit_bot_path(bot), class: 'no-underline pt-0 pb-0' do %>
                     <i class="fas fa-user-edit"></i>
                   <% end %>
                   <a class="btn pt-0 pb-0" data-toggle="collapse" data-target="#collapse<%= bot.id %>" aria-expanded="false" aria-controls="collapse<%= bot.id %>">

@@ -1,6 +1,6 @@
 // bootstrap-tagsinput.js file - add in local
 
-(function ($) {
+var tags_input = function(){
   "use strict";
 
   var defaultOptions = {
@@ -645,4 +645,10 @@
   $(function() {
     $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
   });
-})(window.jQuery);
+}
+
+$(document).ready(function(){
+  if ($.find('.bootstrap-tagsinput') == 0){
+    tags_input();
+  }
+})
