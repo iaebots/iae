@@ -3,291 +3,170 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap/scss/bootstrap";
 
-.max-post-img {
-  max-height: 50vh;
-  max-width: 50vw;
+body{
+    text-align: center !important;
+    background: linear-gradient(#a9b3ce 50%, #9e788f 100%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-attachment: fixed;
 }
 
-.overflow {
-  width: 10em;
-  outline: 1px solid #000;
-  margin: 0 0 2em;
-  /**
-   * Required properties to achieve text-overflow
-   */
-  white-space: nowrap;
-  overflow: hidden;
+ul {
+  list-style-type: none;
 }
 
-.card {
-  background-color: transparent;
-  border: unset;
-  height: 100%;
-}
-
-.btn-user {
-  background-color: rgba(134, 55, 123, 0.666);
-  margin: 5px;
-  color: white;
-  font-size: 10vw;
-}
-
-.btn-user.dev {
-  background-color: rgba(78, 78, 134, 0.666);
-}
-
-.profile-pic {
-  display: inline;
-  margin: 0 auto 0 0; //centers the image
-  height: 100%;
-  width: 100%;
-}
-
-#onhover-verified-icon {
-  visibility: hidden;
-  position: relative;
-  margin-left: 10px;
-  border: 1px solid #333;
-  background-color: #161616;
-  border-radius: 5px;
-  padding: 10px;
-  color: #fff;
-  font-size: 12px Arial;
-}
-
-#verified-icon:hover ~ #onhover-verified-icon {
-  visibility: visible;
-}
-
-.image-cropper {
-  width: 60px;
-  height: 60px;
-  position: relative;
-  margin-bottom: 20px;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-.main-div {
-  margin-left: 0;
-  margin-right: 0;
-  height: 100vh;
-  max-height: 100vh;
-  margin-bottom: 5px;
-}
-
-.main-card {
-  margin: 15px;
-  border-radius: 5px;
-  background-color: rgba(0,0,0, 0.4);
-  /* Black w/opacity/see-through */
-}
-
-.post-card {
-  max-height: 20vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-.post-card::-webkit-scrollbar {
-  display: none;
-}
-
-h1 {
-  font-weight: bold;
-  font-size: 9vmin;
-  color: rgb(255,255,255);
-}
-
-h2 {
-  font-size: 6vmin;
-  color: rgb(199, 199, 199);
-}
-
-h6 {
-  font-size: 5vmin;
-  color: rgb(255,255,255);
-}
-
-.card-body {
-  padding-top: 0;
-}
-
-.card-post {
-  background-color: rgb(255, 255, 255);
-}
-@media only screen and (max-height: 600px) {
-  #post-newest {
-    display: none;
-  }
-}
-@keyframes move_wave {
-  0% {
-    transform: translateX(0) translateZ(0) scaleY(1);
-  }
-
-  50% {
-    transform: translateX(-25%) translateZ(0) scaleY(0.55);
-  }
-
-  100% {
-    transform: translateX(-50%) translateZ(0) scaleY(1);
-  }
-}
-
-.waveWrapper {
-  z-index: -20;
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  margin: auto;
-  background-image: linear-gradient(to top, #86377b 20%, #4e4e86 80%);
-}
-
-.waveWrapperInner {
-  position: absolute;
-  width: 100%;
-  overflow: hidden;
-  height: 100vh;
-}
-
-.bgTop {
-  z-index: -5;
-  opacity: 0.5;
-}
-
-.bgMiddle {
-  z-index: -10;
-  opacity: 0.75;
-}
-
-.bgBottom {
-  z-index: -12;
-}
-
-.wave {
-  position: absolute;
-  left: 0;
-  width: 200%;
-  height: 100%;
-  background-repeat: repeat no-repeat;
-  background-position: 0 bottom;
-  transform-origin: center bottom;
-}
-
-.waveTop {
-  background-size: 50% 100px;
-}
-
-.waveAnimation .waveTop {
-  animation: move-wave 3s;
-  -webkit-animation: move-wave 3s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
-.waveMiddle {
-  background-size: 50% 120px;
-}
-
-.waveAnimation .waveMiddle {
-  animation: move_wave 10s linear infinite;
-}
-
-.waveBottom {
-  background-size: 50% 100px;
-}
-
-.waveAnimation .waveBottom {
-  animation: move_wave 15s linear infinite;
-}
-// css from feed
-.top_bar_right {
-  height: 100px;
-  width: 25%;
-  margin: 1px auto auto 75%;
-  background: #343a40;
-  position: relative;
-  display: grid;
-  grid-template-columns: 15%;
-  grid-auto-rows: minmax(25px, 40px);
-  justify-content: right;
+main, .particles-container{
+  display: flex;
   flex-direction: column;
-  padding: 10px;
-  border: none;
-  text-align: right;
+  align-items: center;
 }
 
-.top_bar_left {
-  height: 100px;
-  width: 75%;
-  margin: 1px auto auto;
-  background: #343a40;
-  position: absolute;
-  top: 0;
-  left: 0;
+.lead{
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  padding: 5px;
-  border: none;
-  text-align: left;
+  flex-wrap: wrap;
 }
 
-div.bot_card {
-  height: 450px;
-  width: 15%;
-  margin: 20px 10px auto auto;
-  background: #343a40;
-  position: relative;
-  display: flex;
-  justify-content: right;
-  flex-direction: column;
-  padding: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 5px;
-  text-align: center;
+.user-panel{
+  margin: 10px;
+  padding-inline: 10px;
+  border-radius: 15px;
+  background-color: #c4c4d6;
+  -webkit-box-shadow: 0px 10px 10px -1px #2d0623; 
+  box-shadow: 0px 10px 10px -1px #2d0623;
+  z-index: 0;
+}
+.user-features {
+  color: #2D0623;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 50px 0 25px;
 }
 
-div.post_card {
+.user-feature {
+  font-size: 24px;
+  line-height: 1.5;
+  padding: 5px 0;
+}
+
+.user-feature-icon{
+  color: #9E788F;
+}
+
+.user-icon{
+  width: 200px!important; 
   height: auto;
-  width: 83%;
-  margin: 20px 10px auto;
-  background: #343a4000;
-  position: absolute;
-  top: 110px;
-  left: 0;
-  display: flex;
-  justify-content: left;
-  flex-direction: column;
-  padding: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 5px;
-  text-align: center;
 }
 
-.button {
-  height: 40px;
-  width: 50px;
-  background-color: #2e0724;
-  border: none;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding: 8px 16px;
+.btn-emoji{
+  margin-bottom: 50px;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 30px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+}
+.btn-emoji span {
+  opacity: 0;
+  font-size: 20px;
+  transition: 1s;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  transition: transform 1;
+}
+
+.btn-emoji div {
+  transition: transform 0.8s;
+}
+
+.btn-emoji:hover div {
+  transform: translateX(-15px);
+}
+
+.btn-emoji::after {
+  content: "";
+  background-color: #7cdedc;
+  border-radius: 5px;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.btn-emoji:hover span {
+  opacity: 1;
+  transform: translateX(-6px);
+}
+
+.btn-emoji:hover::after {
+  top: 0px;
+  left: 0px;
+}
+
+.welcome-text{
+  color: #2d0623;
+  font-family: 'Raleway',sans-serif;
+  font-size: 62px; font-weight: 800;
+  line-height: 72px;
+  margin: 0 0 24px;
   text-align: center;
-  text-decoration: none;
-  display: flex;
-  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid #2d0623;
+  border-radius: 10px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0 10px;
+
+}
+
+.welcome-text::after {
+  content: "";
+  background-color: #beeeed;
+  border-radius: 10px;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.slogan-text{ 
+  color: #2d0623;
+  font-family: 'Raleway',sans-serif;
+  font-size: 30px; font-weight: 800;
+  line-height: 36px;
+  margin: 0 0 24px;
+  text-align: center;
+  letter-spacing: 1px;
+  border: 1px solid #2d0623;
+  border-radius: 10px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0 10px;
+}
+.slogan-text::after {
+  content: "";
+  background-color: #c4c4d6;
+  border-radius: 10px;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
 }

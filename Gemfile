@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.3'
+gem 'rails', '~> 6.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
@@ -46,15 +46,18 @@ gem "mini_magick"
 
 gem 'file_validators'
 
-gem 'rails-bootstrap-tabs', '~> 0.2.4'
+gem 'rails-bootstrap-tabs', '~> 0.2.7'
 
 gem 'rack-attack'
 
 gem 'route_downcaser'
 
+gem 'rails-html-sanitizer'
+
 gem 'strong_password', '~> 0.0.9'
 
 gem 'http_accept_language'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

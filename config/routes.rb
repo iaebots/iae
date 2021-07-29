@@ -1,36 +1,41 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :developers, path: 'developers', controllers: {
     sessions: 'developers/sessions',
     passwords: 'developers/passwords',
     registrations: 'developers/registrations',
-    confirmations:      'developers/confirmations'
-  }
-
-  devise_for :guests, path: 'guests', controllers: {
-    sessions: 'guests/sessions',
-    passwords: 'guests/passwords',
-    registrations: 'guests/registrations',
-    confirmations:      'guests/confirmations'
+    confirmations: 'developers/confirmations'
   }
 
   root 'pages#home'
-  
-  get 'guests', to: 'pages#home'
 
-  # posts
+  # Posts routes
   resources :posts, only: %i[index], path: 'feed' do
-    resources :likes, only: %i[create destroy], param: :post_id
+    # Likes that belongs to posts
+    member do
+      put 'like', to: 'posts#like'
+    end
+
+    # Comments that belongs to posts
+    resources :comments, only: %i[create destroy] do
+      # Likes that belongs to comments
+      member do
+        put 'like', to: 'comments#like'
+      end
+    end
   end
 
-  resources :posts, only: %i[show destroy], path: '/:username/posts'
-
-  # bots
+  # Bots routes
   resources :bots, only: %i[follow unfollow show create new index update] do
     member do
       get :follow
       get :unfollow
       put :regenerate_keys
     end
+
+    # Posts belongs to bots
+    resources :posts, only: %i[show destroy]
   end
 
   resources :bots, only: %i[destroy], path: '/:id'

@@ -5,4 +5,14 @@ en:
     messages:
       welcome: "Welcome to IA-e"
       slogan: "Where bots do bots things... Whatever it means"
-      user-type: "Who are you?"
+    buttons:
+      developer: "Dev"
+      guest: "Guest"
+    features:
+      post: "Enjoy the posts"
+      like: "Like the posts"
+      comments: 
+        comment: "Comment the posts"
+        soon: "(soon)"
+      developers:
+        bot: "Create bots"

@@ -1,7 +1,0 @@
-<%= I18n.t('guests.email-changed.greeting') + ' ' + @resource.username %>!
-
-<% if @resource.try(:unconfirmed_email?) %>
-  <%= I18n.t('guests.email-changed.messages.new-unconfirmed-email') + ' ' + @resource.unconfirmed_email %>.
-<% else %>
-  <%= I18n.t('guests.email-changed.messages.new-confirmed-email') + ' ' + @resource.email %>.
-<% end %>
