@@ -1,27 +1,34 @@
-<%= stylesheet_link_tag 'bots' %>
+<%= stylesheet_link_tag 'profiles' %>
 
-<div class="col d-flex justify-content-center">
+<div class="col d-flex justify-content-center page">
   <div id="profile-card" class="card">
     <div class="cover-img-cropper">
       <%= image_tag (@bot.cover_url), class: 'card-img-top', id: 'profile-card-img-top' %>
     </div>
     <div class="card-body">
-      <%= image_tag (@bot.avatar_url(:medium)), class: 'rounded-circle' %>
-      <div class="parent">
-        <div class="bot-name">
+      <%= image_tag (@bot.avatar_url(:medium)), class: 'rounded-circle profile-image' %>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
           <h4 class="card-title"><%= @bot.name %>
             <% if @bot.verified %>
               <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
             <% end %>
           </h4>
-          <p>@<%= @bot.username %></p>
+          <p class="mt-n3">@<%= @bot.username %></p>
         </div>
+       
         <div class="follow-button">
-          <% if current_guest or current_developer %>
-            <% if @bot.followed_by?(current_guest ? current_guest : current_developer) %>
-              <%= link_to I18n.t('bots.profile.buttons.unfollow'), unfollow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
+          <% if current_developer %>
+            <% if @bot.followed_by?(current_developer) %>
+              <%= link_to unfollow_bot_path(id: @bot.id), class: 'no-underline' do %>
+                <%= I18n.t('bots.profile.buttons.unfollow') %>
+                <i class="fas fa-user-friends" style="color: #6d5e92"></i>
+              <% end %>
             <% else %>
-              <%= link_to I18n.t('bots.profile.buttons.follow'), follow_bot_path(id: @bot.id), class: 'btn btn-primary' %>
+              <%= link_to  follow_bot_path(id: @bot.id), class: 'no-underline' do %>
+                <%= I18n.t('bots.profile.buttons.follow') %>
+                <i class="fas fa-user-friends" style="color: #6d5e92"></i>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -32,28 +39,31 @@
           <a href="http://<%= @bot.repository %>"><%= @bot.repository %></a>
         </p>
       <% end %>
-      <p class="card-text">
-        <b><%= @bot.followers.count %></b>
-        <%= I18n.t('bots.profile.items.followers') %>
-      </p>
-      <p class="card-text">
-        <small class="text-muted"><%= I18n.t('bots.profile.items.joined') %>
-          <%= created_at_formatted(@bot.created_at) %></small>
-        •
-        <%= link_to '@' + @bot.developer.username, developer_path(@bot.developer) %>
-      </p>
-      <% if current_guest or current_developer %>
-        <div class="follow-button">
+        <div class="card-text">
+          <b><%= @bot.followers.count %></b>
+          <%= I18n.t('bots.profile.items.followers') %>
+        </div>
+      <div class="d-flex justify-content-between">
+        <div class="card-text">
+          <small class="text-muted"><%= I18n.t('bots.profile.items.joined') %>
+            <%= created_at_formatted(@bot.created_at) %>
+          </small>
+          •
+          <%= link_to '@' + @bot.developer.username, developer_path(@bot.developer) %>
+        </div>
+        <div>
           <% if current_developer && @bot.developer == current_developer %>
-            <%= link_to I18n.t('bots.profile.buttons.edit'), edit_bot_path(@bot), class: 'btn btn-primary' %>
+            <%= link_to edit_bot_path(@bot), class: 'no-underline pt-0 pb-0' do%>
+              <i class="fas fa-user-edit"></i>
+            <% end %>
           <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="d-flex justify-content-center">
+<div class="p-2">
   <div id="posts">
     <%= render @posts %>
   </div>

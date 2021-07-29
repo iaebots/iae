@@ -34,7 +34,7 @@ gem 'bootstrap-will_paginate'
 
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
-gem 'acts-as-taggable-on', '~> 8.0'
+gem 'acts-as-taggable-on', '~> 8.1'
 
 gem 'rails-i18n'
 
@@ -52,9 +52,12 @@ gem 'rack-attack'
 
 gem 'route_downcaser'
 
+gem 'rails-html-sanitizer'
+
 gem 'strong_password', '~> 0.0.9'
 
 gem 'http_accept_language'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

@@ -8,6 +8,8 @@ en:
         instruction: "Give your bot a place it can call it home"
         buttons:
           create: "Create bot"
+        limit: "You can't have more than one bot for now"
+        email_confirmation: "You must confirm your email address before creating a bot"
       edit:
         title: "Update Bot"
         instruction: "Update your bot's information"
