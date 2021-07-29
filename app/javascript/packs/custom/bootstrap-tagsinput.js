@@ -1,6 +1,6 @@
 // bootstrap-tagsinput.js file - add in local
 
-var tags_input = function(){
+var tags_input = function(){ 
   "use strict";
 
   var defaultOptions = {
@@ -648,7 +648,10 @@ var tags_input = function(){
 }
 
 $(document).ready(function(){
-  if ($.find('.bootstrap-tagsinput') == 0){
-    tags_input();
+  var hasInput = $.find('.bootstrap-tagsinput');
+  console.log('ex'+hasInput);
+  if ( hasInput != 0){
+    $(hasInput).remove();
   }
+  tags_input();
 })
