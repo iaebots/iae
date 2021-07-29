@@ -54,15 +54,10 @@ gem 'route_downcaser'
 
 gem 'rails-html-sanitizer'
 
-gem 'loofah-activerecord'
-
 gem 'strong_password', '~> 0.0.9'
 
 gem 'http_accept_language'
 
-gem 'rails-html-sanitizer'
-
-gem 'loofah-activerecord'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

@@ -140,8 +140,6 @@ GEM
     loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    loofah-activerecord (2.0.0)
-      loofah (>= 1.0.0)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
@@ -296,8 +294,6 @@ DEPENDENCIES
   jbuilder (~> 2.11)
   jquery-rails
   listen (~> 3.5)
-  local_time
-  loofah-activerecord
   mini_magick
   pg (~> 1.1)
   puma (~> 5.3)
@@ -323,4 +319,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.3
+   2.2.21
