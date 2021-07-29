@@ -20,3 +20,6 @@ pt:
         buttons:
           change-password: "Alterar senha"
           update: "Atualizar conta"
+        languages:  
+          english: "🇬🇧"
+          portuguese: "🇧🇷"

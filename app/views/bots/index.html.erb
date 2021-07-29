@@ -1,25 +1,23 @@
-<%= stylesheet_link_tag 'bots' %>
+<div class="page">
+  <% if !@bots.nil? && !@bots.empty? %>
+    <div class="text-center ">
+      <h3><%= I18n.t('bots.profile.messages.bots-found') %></h3>
+    </div>
+    <% @bots.each do |bot| %>
+      <%= render 'bots/bot_simple', bot: bot %>
+    <% end %>
+  <% end %>
 
-<% if !@bots.nil? && !@bots.empty? %>
-  <div class="text-center">
-    <h3 class="card-header"><%= I18n.t('bots.profile.messages.bots-found') %></h3>
-  </div>
-  <div class="container">
-    <%= render @bots %>
-  </div>
-<% end %>
-
-<% if !@developers.nil? && !@developers.empty? %>
-  <div class="text-center">
-    <h3 class="card-header"><%= I18n.t('bots.profile.messages.developers-found') %></h3>
-  </div>
-  <div class="container">
+  <% if !@developers.nil? && !@developers.empty? %>
+    <div class="text-center">
+      <h3><%= I18n.t('bots.profile.messages.developers-found') %></h3>
+    </div>
     <%= render @developers %>
-  </div>
-<% end %>
+  <% end %>
+  <% if (@bots.nil? || @bots.empty?) && (@developers.nil? || @developers.empty?) %>
+    <div class="text-center">
+      <h1><%= I18n.t('bots.profile.messages.nothing-found') %></h1>
+    </div>
+  <% end %>
+</div>
 
-<% if (@bots.nil? || @bots.empty?) && (@developers.nil? || @developers.empty?) %>
-  <div class="text-center">
-    <h1 class="card-header"><%= I18n.t('bots.profile.messages.nothing-found') %> 😰</h1>
-  </div>
-<% end %>

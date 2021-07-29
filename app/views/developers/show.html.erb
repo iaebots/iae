@@ -1,66 +1,63 @@
-<%= stylesheet_link_tag 'developers' %>
+<%= stylesheet_link_tag 'profiles' %>
 
-<div class="col d-flex justify-content-center">
+<div class="col d-flex justify-content-center page">
   <div id="profile-card" class="card">
     <div class="cover-img-cropper">
       <%= image_tag (@developer.cover_url), class: 'card-img-top', id: 'profile-card-img-top' %>
     </div>
     <div class="card-body">
-      <%= image_tag (@developer.avatar_url(:medium)), class: 'rounded-circle' %>
-      <div class="parent">
-        <div class="bot-name">
+      <%= image_tag (@developer.avatar_url(:medium)), class: 'rounded-circle profile-image' %>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
           <h4 class="card-title"><%= @developer.name %>
             <% if @developer.verified %>
               <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
             <% end %>
           </h4>
-          <p>@<%= @developer.username %></p>
+          <p class="mt-n3">@<%= @developer.username %></p>
+        </div>
+
+        <div>
+          <% if current_developer && @developer == current_developer %>
+            <%= link_to edit_developer_registration_path, class: 'no-underline pt-0 pb-0' do%>
+              <i class="fas fa-user-edit"></i>
+             <% end %>
+          <% end %>
         </div>
       </div>
+        <p class="card-text">
+          <%= @developer.bio %>
+        </p>
       <p class="card-text">
         <small class="text-muted"><%= I18n.t('developers.show.joined') %>
           <%= created_at_formatted(@developer.created_at) %></small>
       </p>
     </div>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-latest-tab" data-toggle="tab" href="#nav-latest" role="tab" aria-controls="nav-latest" aria-selected="true"> <%= I18n.t('developers.show.tabs.latest') %></a>
+        <a class="nav-item nav-link" id="nav-bots-tab" data-toggle="tab" href="#nav-bots" role="tab" aria-controls="nav-bots" aria-selected="false"><%= I18n.t('developers.show.tabs.bots') %></a>
+      </div>
+    </nav>
   </div>
 </div>
-<div class="col d-flex justify-content-center">
-  <div class="card-tab">
-    <%= tabs do |c| %>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <% c.tab I18n.t('developers.show.tabs.latest') do %>
-            <%= render @posts %>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <% c.tab I18n.t('developers.show.tabs.bio') do %>
-            <div class="edit-button d-md-flex justify-content-md-end">
-              <% if current_developer == @developer %>
-                <%= link_to I18n.t('developers.show.buttons.edit'), edit_developer_registration_path, class: 'btn btn-primary' %>
-              <% end %>
-            </div>
-            <div class="py-5 justify-content-center dev-bio-card">
-              <div class="d-flex card text-left box-shadow p-2 dev-bio">
-                <h3><%= @developer.name %></h3>
-                <p><%= @developer.bio %></p>
-              </div>
-            </div>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <% c.tab I18n.t('developers.show.tabs.bots') do %>
-            <div class="edit-button d-md-flex justify-content-md-end">
-              <% if current_developer == @developer %>
-                <%= link_to I18n.t('developers.show.buttons.new-bot'), new_bot_path, class: 'btn btn-primary' %>
-              <% end %>
-            </div>
-            <div id="bots">
-              <%= render @bots %>
-            </div>
-          <% end %>
-        </li>
-      </ul>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active p-2" id="nav-latest" role="tabpanel" aria-labelledby="nav-latest-tab">
+    <div>
+      <%= render @posts %>
+    </div>
+  </div>
+  <div class="tab-pane fade p-2" id="nav-bots" role="tabpanel" aria-labelledby="nav-bots-tab">
+    <% if current_developer == @developer && current_developer.bots.count < 1 %>
+      <div class="edit-button d-md-flex justify-content-md-center">
+        <%= link_to new_bot_path, class: 'no-underline btn-new' do %>
+          <%=I18n.t('developers.show.buttons.new-bot')%>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </div>
     <% end %>
+    <div id="bots" class="container">
+      <%= render @bots %>
+    </div>
   </div>
 </div>

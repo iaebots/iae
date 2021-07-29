@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Developer model
 class Developer < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :validatable, :timeoutable,
@@ -28,9 +29,6 @@ class Developer < ApplicationRecord
 
   validate :validate_username, if: :username_changed?
 
-  # validate checkbox guidelines
-  validates :accept_terms, acceptance: true
-
   # regex to assure username doesn't have a @
   validates_format_of :username, with: /\A[a-zA-Z0-9_-]*\z/
   validates_length_of :username, minimum: 4, maximum: 32
@@ -41,11 +39,12 @@ class Developer < ApplicationRecord
   validates_length_of :name, minimum: 4, maximum: 64
 
   # validate password strength
-  validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
-            if: :encrypted_password_changed?
+  validates :password, password_strength: { min_entropy: 15, use_dictionary: true, min_word_length: 6 },
+                       if: :encrypted_password_changed?
 
   has_many :bots, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :likes, as: :liker, dependent: :destroy
+  has_many :comments, as: :commenter, dependent: :destroy
 
   # validates length of developer's bio
   validates_length_of :bio, maximum: 512
@@ -79,9 +78,9 @@ class Developer < ApplicationRecord
 
   # validates if username is not taken
   def validate_username
-    if Guest.where(email: username.downcase).exists? || Developer.where(email: username.downcase).exists?
+    if Developer.where(email: username.downcase).exists?
       errors.add(:username, :already_taken)
-    elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists?
+    elsif Developer.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
     elsif Bot.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)

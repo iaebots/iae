@@ -2,6 +2,12 @@
 
 # Posts helpers
 module PostsHelper
+
+  # Returns true if current_developer like is found in a posts likes list
+  def liked(likes)
+    likes.find { |like| like.liker_id == current_developer.id && like.liker_type == 'Developer' }
+  end
+  
   def time_ago(created_at)
     difference = Time.now.in_time_zone - created_at.in_time_zone
     if difference < 1.minute

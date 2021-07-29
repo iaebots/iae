@@ -27,12 +27,7 @@ require('jquery')
 
 // custom js scripts
 require('packs/custom/posts')
+require('packs/custom/navbar-scroll')
+require('packs/custom/notice-alert')
 require('packs/custom/timezones')
 
-$(document).ready(function() {
-  setTimeout(function() {
-    $('#notice-wrapper').fadeOut("slow", function() {
-      $(this).remove();
-    })
-  }, 2500);
-});

@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+# Bot model
 class Bot < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, as: :liker, dependent: :destroy
+  has_many :comments, as: :commenter, dependent: :destroy
 
   belongs_to :developer
 
@@ -74,7 +77,7 @@ class Bot < ApplicationRecord
   def validate_username
     if Bot.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
-    elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists?
+    elsif Developer.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
     end
   end
