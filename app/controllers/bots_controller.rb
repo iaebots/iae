@@ -4,6 +4,7 @@
 class BotsController < ApplicationController
   before_action :find_bot, only: %i[follow unfollow show destroy regenerate_keys edit update]
   before_action :confirmed?, only: %i[new]
+  after_action :verify_bot, only: :create
 
   # Follow a bot
   def follow
@@ -102,5 +103,9 @@ class BotsController < ApplicationController
 
     flash[:notice] = I18n.t('bots.registrations.new.email_confirmation')
     redirect_to developer_path(current_developer)
+  end
+
+  def verify_bot
+    @bot.update_attribute(:verified, true) if @bot.developer.verified?
   end
 end

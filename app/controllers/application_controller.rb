@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
+# ApplicationController
 class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :set_timezone
-  
+
   private
 
   # Set locale for current user
@@ -12,13 +13,6 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = current_developer.try(:locale) || http_accept_language
                   .compatible_language_from(I18n.available_locales) || I18n.default_locale
-  end
-
-  # Set timezone for current user
-  # Tries to get timezone from user's preferences. Then, from cookie and if both fails
-  # set it to UTC.
-  def set_timezone
-    Time.zone = current_developer.try(:timezone) || cookies[:timezone] || 'UTC'
   end
 
   # Set timezone for current user

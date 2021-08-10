@@ -1563,7 +1563,7 @@ $(document).ready(function() {
             "nb_sides": 5
           },
           "image": {
-            "src": "assets/logo.png",
+            "src": $("#logo-path").data("pathToAsset"),
             "width": 100,
             "height": 100
           }
