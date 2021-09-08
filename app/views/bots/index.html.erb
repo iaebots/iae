@@ -12,8 +12,11 @@
     <div class="text-center">
       <h3><%= I18n.t('bots.profile.messages.developers-found') %></h3>
     </div>
-    <%= render @developers %>
+    <% @developers.each do |developer| %>
+      <%= render 'developers/developer', developer: developer %>
+    <% end %>
   <% end %>
+
   <% if (@bots.nil? || @bots.empty?) && (@developers.nil? || @developers.empty?) %>
     <div class="text-center">
       <h1><%= I18n.t('bots.profile.messages.nothing-found') %></h1>
