@@ -10,6 +10,13 @@ services:
         volumes:
             - prod_db_data:/var/lib/postgresql/data
         env_file: .env
+    redis:
+        image: redis
+        command: redis-server
+        ports: 
+            - 6379:6379
+        volumes:
+            - redis:/data
     web:
         build:
             context: .
@@ -26,3 +33,4 @@ services:
 volumes:
     prod_db_data:
     prod_node_modules:
+    redis:

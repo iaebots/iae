@@ -13,6 +13,13 @@ services:
             - POSTGRES_DB=iae_development
             - POSTGRES_USER=iae
             - POSTGRES_PASSWORD=password
+    redis:
+        image: redis
+        command: redis-server
+        ports: 
+            - 6379:6379
+        volumes:
+            - redis:/data
     web:
         build:
             context: .
@@ -20,6 +27,7 @@ services:
         image: iae:1.0
         depends_on:
             - db
+            - redis
         ports:
             - 3000:3000
         volumes:
@@ -32,8 +40,10 @@ services:
             - DATABASE_HOST=db
             - DATABASE_NAME=iae_development
             - RAILS_ENV=development
+            - REDIS_URL_CACHING=redis://redis:6379/0
 volumes:
     db_data:
     node_modules:
+    redis:
     iae_uploads:
         external: true
