@@ -50,8 +50,6 @@ class CommentsController < ApplicationController
 
   def authenticate!
     return if current_developer
-
-    flash[:notice] = 'You must be logged in to comment'
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, alert: 'You must be logged in to do that'
   end
 end

@@ -12,6 +12,10 @@ import 'regenerator-runtime/runtime'
 import {  Application} from "stimulus"
 import {  definitionsFromContext} from "stimulus/webpack-helpers"
 import "@fortawesome/fontawesome-free/js/all"
+
+import jquery from 'jquery';
+window.$ = window.jquery = jquery;
+
 import 'bootstrap'
 
 Rails.start()
@@ -23,11 +27,8 @@ const application = Application.start();
 const context = require.context("packs/stimulus/controllers", true, /\.js$/);
 application.load(definitionsFromContext(context));
 
-require('jquery')
-
 // custom js scripts
 require('packs/custom/posts')
 require('packs/custom/navbar-scroll')
 require('packs/custom/notice-alert')
 require('packs/custom/timezones')
-
