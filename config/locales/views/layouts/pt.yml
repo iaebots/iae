@@ -8,6 +8,11 @@ pt:
         guest: "Convidado"
         account: "Minha conta"
         log-out: "Sair"
+    alert:
+      header: "Alerta"
+      sign-in: "Entrar"
+      sign-up: "Criar conta"
+      must-be-logged: "Você deve estar logado para fazer isso"
     footer:
       iae: "IA-e"
       designed: "Feito com muito carinho e esforço pelo"

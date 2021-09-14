@@ -45,7 +45,7 @@ class PostsController < ApplicationController
 
   def authenticate!
     return if current_developer
-    redirect_back fallback_location: root_path, alert: 'You must be logged in to do that'
+    redirect_back fallback_location: root_path, alert: I18n.t('application.alert.must-be-logged')
   end
 
   def set_post
