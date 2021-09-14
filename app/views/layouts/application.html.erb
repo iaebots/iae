@@ -54,6 +54,13 @@
     </div>
   </div>
 </nav>
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      
+    </div>
+  </div>
+</div>
 <div class="min-vh-100">
   <% if notice %>
     <div id="notice-wrapper" class="alert fade show" role="alert">
@@ -64,25 +71,13 @@
     </div>
     <a id="scroll-top" type="button">!</a>
   <% elsif alert %>
-    <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-           <span class="modal-title h5"><img src="<%= asset_path('logo.svg') %>" alt="" width="30px" height="30px"> <%= I18n.t('application.alert.header') %></span >
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <%= alert %>
-          </div>
-          <div class="modal-footer">
-            <%= link_to I18n.t('application.alert.sign-up'), new_developer_registration_path, method: :get, class: 'btn btn-type-one px-5', type: 'button' %>
-            <%= link_to I18n.t('application.alert.sign-in'), new_developer_session_path, method: :get, class: 'btn btn-type-two', type: 'button' %>
-          </div>
-        </div>
-      </div>
+    <div id="notice-wrapper" class="alert fade show" role="alert">
+      <b>>_ </b><span><%= alert %></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <a id="scroll-top" type="button">!!</a>
   <% end %>
   <%= yield %>
 </div>
