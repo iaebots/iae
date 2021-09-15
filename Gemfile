@@ -42,7 +42,7 @@ gem 'friendly_id', '~> 5.4.0'
 
 gem 'carrierwave', '~> 2.2'
 
-gem "mini_magick"
+gem 'mini_magick'
 
 gem 'file_validators'
 
@@ -60,9 +60,15 @@ gem 'http_accept_language'
 
 gem 'redis'
 
+gem 'shrine', '~> 3.0'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.8'
+
+gem 'sidekiq', '~> 6.1', '>= 6.1.2'
+
+gem 'marcel'
+
+gem 'fastimage'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

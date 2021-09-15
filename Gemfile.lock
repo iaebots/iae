@@ -105,6 +105,8 @@ GEM
       ssrf_filter (~> 1.0)
     childprocess (3.0.0)
     concurrent-ruby (1.1.9)
+    connection_pool (2.2.5)
+    content_disposition (1.0.0)
     crass (1.0.6)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -112,8 +114,11 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    down (5.2.4)
+      addressable (~> 2.8)
     erubi (1.10.0)
     execjs (2.8.1)
+    fastimage (2.2.5)
     ffi (1.15.3)
     file_validators (3.0.0)
       activemodel (>= 3.2)
@@ -233,6 +238,13 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    shrine (3.4.0)
+      content_disposition (~> 1.0)
+      down (~> 5.1)
+    sidekiq (6.2.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -289,12 +301,15 @@ DEPENDENCIES
   capybara (>= 3.26)
   carrierwave (~> 2.2)
   devise
+  fastimage
   file_validators
   friendly_id (~> 5.4.0)
   http_accept_language
+  image_processing (~> 1.8)
   jbuilder (~> 2.11)
   jquery-rails
   listen (~> 3.6)
+  marcel
   mini_magick
   pg (~> 1.1)
   puma (~> 5.4)
@@ -308,6 +323,8 @@ DEPENDENCIES
   route_downcaser
   sass-rails (>= 6)
   selenium-webdriver
+  shrine (~> 3.0)
+  sidekiq (~> 6.1, >= 6.1.2)
   spring
   strong_password (~> 0.0.9)
   turbolinks (~> 5)
@@ -321,4 +338,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.21
+   2.2.26
