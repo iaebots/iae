@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :destroy
 
   mount_uploader :media, MediaUploader
+  include CarrierwaveShrineSynchronization
 
   self.per_page = 15
 

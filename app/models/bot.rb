@@ -12,21 +12,8 @@ class Bot < ApplicationRecord
   acts_as_followable
   acts_as_taggable_on :tags
 
-  # Mount uploaders
-  mount_uploader :avatar, AvatarUploader
+  include AvatarUploader::Attachment(:avatar)
   mount_uploader :cover, CoverUploader
-
-  # Validate uploaded files size
-  validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
-  validates :cover, file_size: { less_than_or_equal_to: 2.megabytes }
-
-  # validates cover image sizes
-  validate :validate_minimum_cover_image_size
-  validate :validate_maximum_cover_image_size
-
-  # validates avatar image size
-  validate :validate_maximum_avatar_image_size
-  validate :validate_minimum_avatar_image_size
 
   validates_length_of :bio, minimum: 1, maximum: 512 # validates length of bot's bio
 
@@ -117,38 +104,6 @@ class Bot < ApplicationRecord
     loop do
       token = SecureRandom.hex(16)
       break token unless Bot.exists?(api_secret: token)
-    end
-  end
-
-  def validate_minimum_cover_image_size
-    if cover.path
-      image = MiniMagick::Image.open(cover.path)
-      errors.add :cover, :minimum_image_size unless image[:width] >= 640 && image[:height] >= 180
-    end
-  end
-
-  def validate_maximum_cover_image_size
-    if cover.path
-      image = MiniMagick::Image.open(cover.path)
-      errors.add :cover, :maximum_image_size unless image[:width] <= 1280 && image[:height] <= 360
-    end
-  end
-
-  def validate_minimum_avatar_image_size
-    if avatar.path
-      image = MiniMagick::Image.open(avatar.path)
-      unless image[:width].to_i >= image[:heigth].to_i / 2 && image[:height].to_i >= image[:width].to_i / 2
-        errors.add :avatar, :invalid_image_size
-      end
-    end
-  end
-
-  def validate_maximum_avatar_image_size
-    if avatar.path
-      image = MiniMagick::Image.open(avatar.path)
-      unless image[:width].to_i <= image[:height].to_i * 2 && image[:height].to_i <= image[:width].to_i * 2
-        errors.add :avatar, :invalid_image_size
-      end
     end
   end
 end

@@ -9,21 +9,8 @@ class Developer < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
-  # Mount uploaders
-  mount_uploader :avatar, AvatarUploader
+  include AvatarUploader::Attachment(:avatar)
   mount_uploader :cover, CoverUploader
-
-  # Validate uploaded files size
-  validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes }
-  validates :cover, file_size: { less_than_or_equal_to: 2.megabytes }
-
-  # validates cover image sizes
-  validate :validate_minimum_cover_image_size
-  validate :validate_maximum_cover_image_size
-
-  # validates avatar image size
-  validate :validate_maximum_avatar_image_size
-  validate :validate_minimum_avatar_image_size
 
   attr_writer :login
 
@@ -92,38 +79,6 @@ class Developer < ApplicationRecord
       errors.add(:username, :already_taken)
     elsif Bot.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
-    end
-  end
-
-  def validate_minimum_cover_image_size
-    if cover.path
-      image = MiniMagick::Image.open(cover.path)
-      errors.add(:cover, :minimum_image_size) unless image[:width] >= 640 && image[:height] >= 180
-    end
-  end
-
-  def validate_maximum_cover_image_size
-    if cover.path
-      image = MiniMagick::Image.open(cover.path)
-      errors.add(:cover, :maximum_image_size) unless image[:width] <= 1280 && image[:height] <= 360
-    end
-  end
-
-  def validate_minimum_avatar_image_size
-    if avatar.path
-      image = MiniMagick::Image.open(avatar.path)
-      unless image[:width].to_i >= image[:height].to_i / 2 && image[:height].to_i >= image[:width].to_i / 2
-        errors.add(:avatar, :invalid_image_size)
-      end
-    end
-  end
-
-  def validate_maximum_avatar_image_size
-    if avatar.path
-      image = MiniMagick::Image.open(avatar.path)
-      unless image[:width].to_i <= image[:height].to_i * 2 && image[:height].to_i <= image[:width].to_i * 2
-        errors.add(:avatar, :invalid_image_size)
-      end
     end
   end
 
