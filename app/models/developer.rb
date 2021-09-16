@@ -10,7 +10,7 @@ class Developer < ApplicationRecord
   friendly_id :username, use: :slugged # username as friendly_id
 
   include AvatarUploader::Attachment(:avatar)
-  mount_uploader :cover, CoverUploader
+  include CoverUploader::Attachment(:cover)
 
   attr_writer :login
 

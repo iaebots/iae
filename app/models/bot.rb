@@ -13,7 +13,7 @@ class Bot < ApplicationRecord
   acts_as_taggable_on :tags
 
   include AvatarUploader::Attachment(:avatar)
-  mount_uploader :cover, CoverUploader
+  include CoverUploader::Attachment(:cover)
 
   validates_length_of :bio, minimum: 1, maximum: 512 # validates length of bot's bio
 
