@@ -3,7 +3,7 @@
 <div class="col d-flex justify-content-center page">
   <div id="profile-card" class="card">
     <div class="cover-img-cropper">
-      <%= image_tag (@bot.cover_url), class: 'card-img-top', id: 'profile-card-img-top' %>
+      <%= image_tag (@bot.cover_url(:cover) || @bot.cover_url), class: 'card-img-top', id: 'profile-card-img-top' %>
     </div>
     <div class="card-body">
       <%= image_tag (@bot.avatar_url(:small) || @bot.avatar_url), class: 'rounded-circle profile-image' %>
