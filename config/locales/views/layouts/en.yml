@@ -10,9 +10,13 @@ en:
         log-out: "Log out"
     alert:
       header: "Alert"
+      must-be-logged: "You must be logged in to do that"
       sign-in: "Sign in"
       sign-up: "Sign up"
-      must-be-logged: "You must be logged in to do that"
+    confirm:
+      are-you-sure: "Are you sure?"
+      commit: "Confirm"
+      cancel: "Cancel"
     footer:
       iae: "IA-e"
       designed: "Built with love and effort by the"

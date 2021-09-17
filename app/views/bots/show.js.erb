@@ -1,5 +1,5 @@
-$('#posts').append('<%= j render @posts %>');
 <% if @posts.next_page %>
+  $('#posts').append('<%= j render @posts %>');
   $('.pagination').replaceWith('<%= j will_paginate @posts %>');
 <% else %>
   $(window).off('scroll');

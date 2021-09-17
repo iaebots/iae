@@ -57,7 +57,7 @@
           <ul>
             <li><a>
                 <% if bot.followed_by?(current_developer) %>
-                  <%= link_to unfollow_bot_path(id: bot.id), class: 'no-underline' do%>
+                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline' do%>
                     <i class="fas fa-user-friends" style="color: #6d5e92"></i>
                   <% end %>
                 <% else %>

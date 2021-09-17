@@ -27,10 +27,9 @@ Rails.application.routes.draw do
   end
 
   # Bots routes
-  resources :bots, only: %i[follow unfollow show create new index update] do
+  resources :bots, only: %i[follow show create new index update] do
     member do
-      get :follow
-      get :unfollow
+      put :follow, to: 'bots#follow'
       put :regenerate_keys
     end
 

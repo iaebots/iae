@@ -47,10 +47,8 @@
             <%= link_to like_post_path(post), method: :put, class: 'no-underline', remote: :true do %>
               <% if current_developer && liked(post.likes) %>
                 <i id="post-like-btn-<%= post.id %>" class="fas fa-heart" style="color: #9E788F"></i>
-              <% elsif current_developer && !liked(post.likes)%>
-                <i id="post-like-btn-<%= post.id %>" class="far fa-heart" style="color: #9E788F"></i>
               <% else %>
-                <i id="post-like-btn-<%= post.id %>" class="far fa-heart" style="color: #9E788F" data-toggle="modal" data-target="#alertModal"></i>
+                <i id="post-like-btn-<%= post.id %>" class="far fa-heart" style="color: #9E788F"></i>
               <% end %>
             <% end %>
             <span id="post-likes-count-<%= post.id %>"><b><%= post.likes.count %></b></span>

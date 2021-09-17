@@ -10,9 +10,13 @@ pt:
         log-out: "Sair"
     alert:
       header: "Alerta"
+      must-be-logged: "Você deve estar logado para fazer isso"
       sign-in: "Entrar"
       sign-up: "Criar conta"
-      must-be-logged: "Você deve estar logado para fazer isso"
+    confirm:
+      are-you-sure: "Você tem certeza disso?"
+      commit: "Confirmar"
+      cancel: "Cancelar"
     footer:
       iae: "IA-e"
       designed: "Feito com muito carinho e esforço pelo"
