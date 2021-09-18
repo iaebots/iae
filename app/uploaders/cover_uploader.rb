@@ -12,6 +12,7 @@ class CoverUploader < Shrine
   plugin :remove_invalid # remove invalid cached files
   plugin :store_dimensions
   plugin :default_url
+  plugin :remove_attachment
 
   Attacher.validate do
     validate_min_size 1 * 1024 # 1KB
