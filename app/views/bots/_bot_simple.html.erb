@@ -20,11 +20,11 @@
               <div>
                 <% if current_developer %>
                   <% if bot.followed_by?(current_developer) %>
-                    <%= link_to follow_bot_path(id: bot.id), class: '' do%>
+                    <%= link_to follow_bot_path(id: bot.id), class: '', method: :put, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel')} do %>
                       <i class="fas fa-user-friends" style="color: #6d5e92"></i>
                     <% end %>
                   <% else %>
-                    <%= link_to follow_bot_path(id: bot.id), class: '' do%>
+                    <%= link_to follow_bot_path(id: bot.id), class: '', method: :put do%>
                       <i class="fas fa-user-friends" style="color: #7284a8"></i>
                     <% end %>
                   <% end %>
