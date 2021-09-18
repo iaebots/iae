@@ -28,7 +28,8 @@ RUN apk add --update --no-cache \
       postgresql-dev \
       tzdata \
       yarn \
-      imagemagick
+      imagemagick \
+      ffmpeg
 
 RUN gem install bundler -v 2.2.21
 

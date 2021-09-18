@@ -1,8 +1,5 @@
-class MediaUploader < CarrierWave::Uploader::Base
-  storage :file
+# frozen_string_literal: true
 
-  # define store_dir path so a media_url is created
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+# Shrine MediaUploader
+class MediaUploader < Shrine
 end

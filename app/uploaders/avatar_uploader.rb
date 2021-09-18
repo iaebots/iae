@@ -20,10 +20,6 @@ class AvatarUploader < Shrine
     validate_max_dimensions [5000, 5000] if validate_mime_type %w[image/jpeg image/png image/webp image/gif]
   end
 
-  Attacher.default_url do
-    'default.png'
-  end
-
   Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
 

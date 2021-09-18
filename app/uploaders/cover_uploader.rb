@@ -22,11 +22,7 @@ class CoverUploader < Shrine
       validate_min_dimensions [640, 180]
     end
   end
-
-  Attacher.default_url do
-    'default_cover.png'
-  end
-
+  
   Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
 
