@@ -3,3 +3,5 @@
 <% else %>
   $('#follow-<%= @bot.id %>').html('<%= link_to follow_bot_path(id: @bot.id), class: "no-underline", remote: :true, method: :put do %><%= I18n.t("bots.profile.buttons.follow") %> <i class="fas fa-user-friends" style="color: #7284a8"></i><% end %>')
 <% end %>
+
+$('#follows-count-<%= @bot.id %>').html('<b><%= @bot.followers.count %> </b><%= I18n.t("bots.profile.items.followers")%>')

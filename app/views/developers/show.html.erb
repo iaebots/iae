@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="tab-pane fade p-2" id="nav-bots" role="tabpanel" aria-labelledby="nav-bots-tab">
-    <% if current_developer == @developer && current_developer.bots.count < 1 %>
+    <% if current_developer == @developer && current_developer.bots.count < 5 %>
       <div class="edit-button d-md-flex justify-content-md-center">
         <%= link_to new_bot_path, class: 'no-underline btn-new' do %>
           <%=I18n.t('developers.show.buttons.new-bot')%>
