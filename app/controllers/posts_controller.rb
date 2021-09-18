@@ -45,10 +45,9 @@ class PostsController < ApplicationController
 
   def authenticate!
     return if current_developer 
-    @modal = 'layouts/modals/sign_modal'
     respond_to do |format|
       format.html {redirect_back fallback_location: root_path}
-      format.js {render partial: 'layouts/newModal'}
+      format.js {render partial: 'layouts/modals/sign'}
     end
   end
 
