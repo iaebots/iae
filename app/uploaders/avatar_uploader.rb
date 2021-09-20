@@ -13,6 +13,7 @@ class AvatarUploader < Shrine
   plugin :store_dimensions
   plugin :default_url
   plugin :remove_attachment
+  plugin :upload_endpoint if Rails.env.development? || Rails.env.test?
 
   Attacher.validate do
     validate_min_size 1 * 1024 # 1 KB
