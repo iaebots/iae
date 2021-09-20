@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_134520) do
+ActiveRecord::Schema.define(version: 2021_09_20_173524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_09_17_134520) do
     t.bigint "developer_id", null: false
     t.boolean "verified"
     t.string "slug"
-    t.string "cover"
     t.string "repository"
     t.text "avatar_data"
     t.text "cover_data"
@@ -64,7 +63,6 @@ ActiveRecord::Schema.define(version: 2021_09_17_134520) do
     t.string "slug"
     t.string "bio"
     t.boolean "verified"
-    t.string "cover"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
