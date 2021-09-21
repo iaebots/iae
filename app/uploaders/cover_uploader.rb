@@ -17,14 +17,14 @@ class CoverUploader < Shrine
 
   Attacher.validate do
     validate_min_size 1 * 1024 # 1KB
-    validate_max_size 15 * 1024 * 1024 # 15MB
+    validate_max_size 5 * 1024 * 1024 # 5MB
     validate_extension %w[jpg jpeg png webp gif]
     if validate_mime_type %w[image/jpeg image/png image/webp image/gif]
       validate_max_dimensions [5000, 5000]
       validate_min_dimensions [640, 180]
     end
   end
-  
+
   Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
 

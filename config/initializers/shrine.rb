@@ -13,10 +13,10 @@ elsif Rails.env.production?
   require 'shrine/storage/s3'
 
   s3_options = {
-    bucket: Rails.application.secrets.s3_bucket,
-    access_key_id: Rails.application.secrets.s3_access_key_id,
-    secret_access_key: Rails.application.secrets.s3_secret_access_key,
-    region: Rails.application.secrets.s3_region
+    bucket: Rails.application.credentials.aws[:bucket],
+    access_key_id: Rails.application.credentials.aws[:access_key_id],
+    secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+    region: Rails.application.credentials.aws[:region]
   }
 
   # production storage as Amazon S3 bucket
