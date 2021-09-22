@@ -1,60 +1,35 @@
-class CoverUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+# frozen_string_literal: true
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
+require 'image_processing/mini_magick'
 
-  before :process, :validate
+# Shrine CoverUploader
+class CoverUploader < Shrine
+  Shrine.plugin :cached_attachment_data
+  Shrine.plugin :restore_cached_data
 
-  # Override the directory where uploaded files will be stored.
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  plugin :determine_mime_type, analyzer: :marcel
+  plugin :validation_helpers
+  plugin :remove_invalid # remove invalid cached files
+  plugin :store_dimensions
+  plugin :default_url
+  plugin :remove_attachment
+  plugin :upload_endpoint if Rails.env.development? || Rails.env.test?
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
-  def default_url(*_args)
-    ActionController::Base.helpers.asset_path("fallback/#{['default_cover.png'].compact.join('_')}")
-  end
-
-  # Process files as they are uploaded:
-  # process resize_to_fit: [780, 180]
-
-  # Add an allowlist of extensions which are allowed to be uploaded.
-  def extension_allowlist
-    %w[jpg jpeg gif png]
-  end
-
-  # Override the filename of the uploaded files:
-  def filename
-    "#{model.username.to_s.underscore}-cover.#{file.extension}" if original_filename
-  end
-
-  # validate content type of image before processing it
-  def validate(file)
-    unless file_is_image(file.path)
-      StandardError
-      raise CarrierWave::IntegrityError, I18n.t('errors.validation.messages.content_type_whitelist_error')
+  Attacher.validate do
+    validate_min_size 1 * 1024 # 1KB
+    validate_max_size 10 * 1024 * 1024 # 10MB
+    validate_extension %w[jpg jpeg png webp gif]
+    if validate_mime_type %w[image/jpeg image/png image/webp image/gif]
+      validate_max_dimensions [5000, 5000]
+      validate_min_dimensions [640, 180]
     end
   end
 
-  # list of valid signatures for this uploader
-  VALID_IMAGE_SIGNATURES = [
-    "\x89PNG\r\n\x1A\n".force_encoding(Encoding::ASCII_8BIT), # PNG
-    "\xFF\xD8".force_encoding(Encoding::ASCII_8BIT) # JPEG/JPG
-  ].freeze
+  Attacher.derivatives do |original|
+    magick = ImageProcessing::MiniMagick.source(original)
 
-  # read first 8 bytes of file and check if it's a valid signature
-  def file_is_image(temporary_file_path)
-    return false unless temporary_file_path
-
-    file_stream = File.new(temporary_file_path, 'r')
-    first_eight_bytes = file_stream.readpartial(8)
-    file_stream.close
-
-    VALID_IMAGE_SIGNATURES.each do |signature|
-      return true if first_eight_bytes.start_with?(signature)
-    end
-
-    false
+    {
+      cover: magick.resize_to_limit!(1280, 360)
+    }
   end
 end

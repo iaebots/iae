@@ -7,12 +7,8 @@ class Post < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
 
-  mount_uploader :media, MediaUploader
+  # using AvatarUploader just to get media_url
+  include MediaUploader::Attachment(:media)
 
   self.per_page = 15
-
-  # return true is media type is mp4
-  def video
-    media_identifier.split('.')[1].eql? 'mp4'
-  end
 end

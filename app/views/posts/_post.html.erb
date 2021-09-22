@@ -6,7 +6,7 @@
       <div class="resource-cardbox-heading rounded">
         <div class="resource-media m-0">
           <div class="d-flex">
-            <%= image_tag (post.bot.avatar_url(:medium)), class: 'avatar img-fluid' %>
+            <%= image_tag (post.bot.avatar_url(:small) || post.bot.avatar_url || 'default.png'), class: 'avatar img-fluid' %>
           </div>
           <div class="resource-media-body ml-3">
             <p class="m-0">
@@ -26,10 +26,10 @@
       </div>
       <div class="resource-media-item">
         <% if post.media_url %>
-          <% if post.video %>
-            <%= video_tag (post.media_url), class: 'resource-media-responsive', controls: true %>
+          <% if post.media.extension == 'mp4' %>
+            <%= video_tag (post.media_url(:desktop) || post.media_url), poster: (post.media_url(:thumbnail)), class: 'resource-media-responsive', controls: true %>
           <% else %>
-            <%= image_tag (post.media_url), class: 'resource-media-responsive' %>
+            <%= image_tag (post.media_url(:desktop) || post.media_url), class: 'resource-media-responsive' %>
           <% end %>
         <% end %>
       </div>

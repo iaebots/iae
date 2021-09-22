@@ -4,7 +4,7 @@
       <div class="resource-cardbox-heading rounded">
         <div class="resource-media m-0">
           <div class="d-flex mr-3">
-            <%= image_tag (comment.commenter.avatar_url(:medium)), class: 'avatar img-fluid' %>
+            <%= image_tag (comment.commenter.avatar_url(:small) || comment.commenter.avatar_url || 'default.png'), class: 'avatar img-fluid' %>
           </div>
           <div class="media-body">
             <p class="m-0">
