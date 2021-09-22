@@ -57,11 +57,11 @@
           <ul>
             <li><a>
                 <% if bot.followed_by?(current_developer) %>
-                  <%= link_to unfollow_bot_path(id: bot.id), class: 'no-underline' do%>
+                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline', method: :put, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel')} do%>
                     <i class="fas fa-user-friends" style="color: #6d5e92"></i>
                   <% end %>
                 <% else %>
-                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline' do%>
+                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline', method: :put do%>
                     <i class="fas fa-user-friends" style="color: #7284a8"></i>
                   <% end %>
                 <% end %>
@@ -71,7 +71,7 @@
           <% if bot.developer_id == current_developer.id %>
             <ul class="float-right">
               <li><a>
-                <%= link_to bot_path(id: bot.id, username: bot.username), method: :delete, data: { confirm: I18n.t('bots.profile.messages.confirm') }, class: 'no-underline' do%>
+                <%= link_to bot_path(id: bot.id, username: bot.username), method: :delete, data: { confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel') }, class: 'no-underline' do%>
                   <i class="far fa-trash-alt" style="color:red"></i>
                 <% end %>
               </a></li>

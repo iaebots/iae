@@ -2,28 +2,31 @@
 
 # BotsController
 class BotsController < ApplicationController
-  before_action :find_bot, only: %i[follow unfollow show destroy regenerate_keys edit update]
+  before_action :find_bot, only: %i[follow show destroy regenerate_keys edit update]
   before_action :confirmed?, only: %i[new]
   after_action :verify_bot, only: :create
-
-  # Follow a bot
-  def follow
-    current_developer.follow(@bot)
-    redirect_back fallback_location: posts_path
-  end
+  before_action :authenticate!, except: %i[show confirmation_modal]
+  respond_to :html, :js, :json  
 
   def show
     @posts = Post.where(bot_id: @bot.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')
   end
 
-  # Destroy current_developer follow relation
-  def unfollow
-    current_developer.stop_following(@bot)
-    redirect_back fallback_location: posts_path
+  # Follow and unfollow a bot
+  def follow
+    if !@bot.followed_by?(current_developer)
+      current_developer.follow(@bot)
+    else
+      current_developer.stop_following(@bot)
+    end
+    respond_to do |format|
+      format.html {redirect_back fallback_location: root_path}
+      format.js
+    end
   end
 
   def new
-    if !current_developer.verified? && current_developer.bots.count >= 1
+    if !current_developer.verified? && current_developer.bots.count >= 5
       flash[:notice] = I18n.t('bots.registrations.new.limit')
       redirect_back fallback_location: developer_path(current_developer)
     else
@@ -87,7 +90,7 @@ class BotsController < ApplicationController
 
     redirect_to developer_path(@bot.developer)
   end
-
+  
   private
 
   def find_bot
@@ -107,5 +110,14 @@ class BotsController < ApplicationController
 
   def verify_bot
     @bot.update_attribute(:verified, true) if @bot.developer.verified?
+  end
+
+  def authenticate!
+    return if current_developer
+    @modal = 'layouts/modals/sign_modal'
+    respond_to do |format|
+      format.html {redirect_back fallback_location: root_path}
+      format.js {render partial: 'layouts/modals/sign'}
+    end
   end
 end

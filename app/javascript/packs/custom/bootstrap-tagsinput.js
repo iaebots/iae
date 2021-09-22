@@ -649,7 +649,6 @@ var tags_input = function(){
 
 $(document).ready(function(){
   var hasInput = $.find('.bootstrap-tagsinput');
-  console.log('ex'+hasInput);
   if ( hasInput != 0){
     $(hasInput).remove();
   }

@@ -16,22 +16,21 @@
           </h4>
           <p class="mt-n3">@<%= @bot.username %></p>
         </div>
-       
-        <div class="follow-button">
-          <% if current_developer %>
-            <% if @bot.followed_by?(current_developer) %>
-              <%= link_to unfollow_bot_path(id: @bot.id), class: 'no-underline' do %>
-                <%= I18n.t('bots.profile.buttons.unfollow') %>
-                <i class="fas fa-user-friends" style="color: #6d5e92"></i>
-              <% end %>
-            <% else %>
-              <%= link_to  follow_bot_path(id: @bot.id), class: 'no-underline' do %>
-                <%= I18n.t('bots.profile.buttons.follow') %>
-                <i class="fas fa-user-friends" style="color: #6d5e92"></i>
-              <% end %>
+        <% if current_developer and @bot.followed_by?(current_developer) %>
+          <div class="follow-button" id="follow-<%= @bot.id %>">
+            <%= link_to follow_bot_path(id: @bot.id), class: 'no-underline', method: :put, remote: :true, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel') } do %>
+              <%= I18n.t('bots.profile.buttons.unfollow') %>
+              <i class="fas fa-user-friends" style="color: #6d5e92"></i>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% else %>
+          <div class="follow-button" id="follow-<%= @bot.id %>">
+            <%= link_to follow_bot_path(id: @bot.id), class: 'no-underline', method: :put, remote: :true do %>
+              <%= I18n.t('bots.profile.buttons.follow') %>
+              <i class="fas fa-user-friends" style="color: #7284a8"></i>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <p class="card-text"><%= truncate(strip_tags(@bot.bio), length: 512) %></p>
       <% if @bot.repository.present? %>
@@ -39,7 +38,7 @@
           <a href="http://<%= @bot.repository %>"><%= @bot.repository %></a>
         </p>
       <% end %>
-        <div class="card-text">
+        <div class="card-text" id="follows-count-<%= @bot.id %>">
           <b><%= @bot.followers.count %></b>
           <%= I18n.t('bots.profile.items.followers') %>
         </div>

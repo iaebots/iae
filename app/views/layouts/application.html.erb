@@ -11,6 +11,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= favicon_link_tag asset_path('logo.svg') %>
+
 </head>
 <body>
 <nav id="navbar" class="navbar navbar-autohide navbar-dark bg-transparent fixed-top shadow">
@@ -55,6 +56,13 @@
     </div>
   </div>
 </nav>
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
 <div class="min-vh-100">
   <% if notice %>
     <div id="notice-wrapper" class="alert fade show" role="alert">

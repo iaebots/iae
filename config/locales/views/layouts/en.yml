@@ -8,6 +8,15 @@ en:
         guest: "Guest"
         account: "My account"
         log-out: "Log out"
+    alert:
+      header: "Alert"
+      must-be-logged: "You must be logged in to do that"
+      sign-in: "Sign in"
+      sign-up: "Sign up"
+    confirm:
+      are-you-sure: "Are you sure?"
+      commit: "Confirm"
+      cancel: "Cancel"
     footer:
       iae: "IA-e"
       designed: "Built with love and effort by the"
@@ -36,5 +45,3 @@ en:
         issues: "Issues"
         twitter: "Twitter"
         stack-overflow: "Stack Overflow"
-
-

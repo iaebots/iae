@@ -50,8 +50,9 @@ class CommentsController < ApplicationController
 
   def authenticate!
     return if current_developer
-
-    flash[:notice] = 'You must be logged in to comment'
-    redirect_back fallback_location: root_path
+    respond_to do |format|
+      format.html {redirect_back fallback_location: root_path}
+      format.js {render partial: 'layouts/modals/sign'}
+    end
   end
 end

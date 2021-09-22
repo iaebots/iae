@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :authenticate!, only: %i[index]
+  before_action :authenticate!, only: %i[index destroy like]
   before_action :set_post, only: %i[show destroy like]
-  before_action :authenticate_like!, only: %i[like]
   respond_to :html, :js, :json
 
   def index
@@ -45,7 +44,11 @@ class PostsController < ApplicationController
   private
 
   def authenticate!
-    redirect_back fallback_location: root_path unless current_developer
+    return if current_developer 
+    respond_to do |format|
+      format.html {redirect_back fallback_location: root_path}
+      format.js {render partial: 'layouts/modals/sign'}
+    end
   end
 
   def set_post
@@ -54,12 +57,5 @@ class PostsController < ApplicationController
 
   def already_liked?
     @post.likes.where(liker_id: current_developer.id, liker_type: 'Developer').exists?
-  end
-
-  def authenticate_like!
-    return if current_developer
-
-    flash[:notice] = 'You must be logged in to like'
-    redirect_back fallback_location: root_path
   end
 end
