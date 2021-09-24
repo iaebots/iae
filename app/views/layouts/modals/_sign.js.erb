@@ -1,10 +1,9 @@
 Swal.fire({
-  buttonsStyling: false,
-  customClass: {
-  },
-  title: '<img src="<%= asset_path("logo.svg") %>" alt="" width="30px" height="30px"> <%= I18n.t("application.alert.header") %>',
-  text: '<%= I18n.t("application.alert.must-be-logged") %>',
-  showConfirmButton: false,
+  showCloseButton: true,
+  width: 640,
+  title: '<%= escape_javascript @action %>',
+  html: '<i class="<%= escape_javascript @icon %>" style="color: #9E788F; font-size: 100px; block-size: 175px; animation: bounceInDown; animation-duration: 2s;"></i></br>' + '<%= I18n.t("application.alert.must-be-logged") %>',
+  showConfirmButton: false, 
   footer:'<%= link_to I18n.t("application.alert.sign-up"), new_developer_registration_path, method: :get, class: "btn btn-type-one px-5 mx-1", type: "button" %>' +
           '<%= link_to I18n.t("application.alert.sign-in"), new_developer_session_path, method: :get, class: "btn btn-type-two mx-1", type: "button" %>'
 })

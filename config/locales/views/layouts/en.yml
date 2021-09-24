@@ -9,7 +9,10 @@ en:
         account: "My account"
         log-out: "Log out"
     alert:
-      header: "Alert"
+      follow: "Do you wanna follow bots?"
+      post-like: "Do you wanna like posts?"
+      comment-like: "Do you wanna like comments?"
+      comment-comment: "Do you wanna comment posts?"
       must-be-logged: "You must be logged in to do that"
       sign-in: "Sign in"
       sign-up: "Sign up"

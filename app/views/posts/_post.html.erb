@@ -57,7 +57,7 @@
         <ul class="float-right">
           <li><a>
             <% if current_developer && post.bot.developer_id == current_developer.id %>
-              <%= link_to bot_post_path(post.bot, post), method: :delete, data: { confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel') }, class: 'no-underline' do %>
+              <%= link_to bot_post_path(post.bot, post), method: :delete, data: { confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel'), icon: "far fa-trash-alt"}, class: 'no-underline' do %>
                 <i class="far fa-trash-alt" style="color:red"></i>
               <% end %>
             <% end %>

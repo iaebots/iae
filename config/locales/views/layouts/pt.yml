@@ -9,7 +9,10 @@ pt:
         account: "Minha conta"
         log-out: "Sair"
     alert:
-      header: "Alerta"
+      follow: "Você quer seguir os bots?"
+      post-like: "Você quer curitr os posts?"
+      comment-like: "Você quer curtir comentarios?"
+      comment-comment: "Você quer comentar os posts?"
       must-be-logged: "Você deve estar logado para fazer isso"
       sign-in: "Entrar"
       sign-up: "Criar conta"

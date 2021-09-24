@@ -75,7 +75,7 @@ class BotsController < ApplicationController
           OR b.username ~* ?", params[:input], params[:input]])
 
       @developers = Developer.find_by_sql(["
-        SELECT d.name, d.username, d.avatar, d.verified, d.slug, d.created_at, d.bio, d.id
+        SELECT d.name, d.username, d.avatar_data, d.verified, d.slug, d.created_at, d.bio, d.id
         FROM Developers d
         WHERE username ~* ?", params[:input]])
     end
@@ -114,7 +114,12 @@ class BotsController < ApplicationController
 
   def authenticate!
     return if current_developer
-    @modal = 'layouts/modals/sign_modal'
+    @action = I18n.t("application.alert." + action_name)
+    if action_name == 'follow'
+      @icon = 'fa fa-user-friends'
+    else
+      @icon = 'fas fa-sign-in-alt'
+    end
     respond_to do |format|
       format.html {redirect_back fallback_location: root_path}
       format.js {render partial: 'layouts/modals/sign'}

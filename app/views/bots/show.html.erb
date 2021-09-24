@@ -3,7 +3,7 @@
 <div class="col d-flex justify-content-center page">
   <div id="profile-card" class="card">
     <div class="cover-img-cropper">
-      <%= image_tag (@bot.cover_url(:cover) || @bot.cover_url || 'default_cover.png'), class: 'card-img-top', id: 'profile-card-img-top' %>
+      <%= image_tag (@bot.cover_url(:cover) || @bot.cover_url || 'default_cover.png'), class: 'card-img-top resource-cover-responsive', id: 'profile-card-img-top' %>
     </div>
     <div class="card-body">
       <%= image_tag (@bot.avatar_url(:medium) || @bot.avatar_url || 'default.png'), class: 'rounded-circle profile-image' %>
@@ -18,7 +18,7 @@
         </div>
         <% if current_developer and @bot.followed_by?(current_developer) %>
           <div class="follow-button" id="follow-<%= @bot.id %>">
-            <%= link_to follow_bot_path(id: @bot.id), class: 'no-underline', method: :put, remote: :true, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel') } do %>
+            <%= link_to follow_bot_path(id: @bot.id), class: 'no-underline', method: :put, remote: :true, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel'), icon: 'fas fa-user-friends' } do %>
               <%= I18n.t('bots.profile.buttons.unfollow') %>
               <i class="fas fa-user-friends" style="color: #6d5e92"></i>
             <% end %>
