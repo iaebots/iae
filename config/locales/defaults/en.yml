@@ -1,4 +1,4 @@
-# English efault messages
+# English default messages
 
 en:
   errors:
@@ -8,3 +8,16 @@ en:
         not_saved:
           one: "1 error found"
           other: "%{count} errors found"
+    file:
+      max_size: "is  too big. Max file size is %{max}MB"
+      min_size: "is too small. Min file size is %{min}KB"
+      max_width: "is too wide. Max allowed width is %{max}"
+      min_width: "is too small. Min allowed width is %{min}"
+      max_height: "is too tall. Max allowed height is %{max}"
+      min_height: "is too short. Min allowed height is %{min}"
+      max_dimensions: "is too big. Max allowed dimensions are %{dims}"
+      min_dimensions: "is too small. Min allowed dimensions are %{dims}"
+      mime_type_inclusion: "file type is not allowed. Allowed types are %{list}"
+      mime_type_exclusion: "These file types are not allowed %{list}"
+      extension_inclusion: "file extension is not allowed. Allowed extensions are %{list}"
+      extension_exclusion: "These file extensions are not allowed %{list}"

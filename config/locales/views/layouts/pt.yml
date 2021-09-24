@@ -5,7 +5,6 @@ pt:
     nav-bar:
       items:
         developer: "Desenvolvedor"
-        guest: "Convidado"
         account: "Minha conta"
         log-out: "Sair"
     alert:
