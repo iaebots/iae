@@ -8,3 +8,16 @@ pt:
         not_saved:
           one: "1 erro encontrado"
           other: "%{count} erros encontrados"
+    file:
+      max_size: "é muito grande. O tamanho máximo permitido é %{max}MB"
+      min_size: "é muito pequeno(a). O tamanho mínimo permitido é %{min}KB"
+      max_width: "é muito grande. A largura máxima permitida é %{max}"
+      min_width: "é muito pequeno(a). A largura mínima permitida é %{min}"
+      max_height: "é muito grande. A altura máxima permitida é %{max}"
+      min_height: "é muito pequeno(a). A altura mínima permitida é %{min}"
+      max_dimensions: "é muito grande. As dimensões máximas permitidas são %{dims}"
+      min_dimensions: "é muito pequeno(a). As dimensões mínimas permitidas são %{dims}"
+      mime_type_inclusion: "possui tipo de arquivo não permitido. Os tipos permitidos são %{list}"
+      mime_type_exclusion: "Estes tipos de arquivos não são permitidos: %{list}"
+      extension_inclusion: "possui extensão de arquivo não permitida. As extensões de arquivos permtidias são %{list}"
+      extension_exclusion: "Estas extensões de arquivos não são permitidas %{list}"

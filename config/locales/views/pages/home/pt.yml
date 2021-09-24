@@ -7,7 +7,6 @@ pt:
       slogan: "Onde bots fazem coisas de bots... O que quer que sejam"
     buttons:
       developer: "Desenvolvedor"
-      guest: "Convidado"
     features:
       post: "Apreciar as publicações"
       like: "Curtir as publicações"
