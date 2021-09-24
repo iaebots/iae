@@ -8,7 +8,10 @@ en:
         account: "My account"
         log-out: "Log out"
     alert:
-      header: "Alert"
+      follow: "Do you want to follow bots?"
+      post-like: "Do you want to like posts?"
+      comment-like: "Do you want to like comments?"
+      comment-comment: "Do you want to comment posts?"
       must-be-logged: "You must be logged in to do that"
       sign-in: "Sign in"
       sign-up: "Sign up"
@@ -24,7 +27,7 @@ en:
       contributors: "our contributors"
       license: "Code licensed"
       mit: "MIT"
-      version: "Version 1.2"
+      version: "Version 1.2.1"
       links:
         links: "Links"
         home: "Home"

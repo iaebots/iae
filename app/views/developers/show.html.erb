@@ -3,7 +3,7 @@
 <div class="col d-flex justify-content-center page">
   <div id="profile-card" class="card">
     <div class="cover-img-cropper">
-      <%= image_tag (@developer.cover_url(:cover) || @developer.cover_url || 'default_cover.png'), class: 'card-img-top', id: 'profile-card-img-top' %>
+      <%= image_tag (@developer.cover_url(:cover) || @developer.cover_url || 'default_cover.png'), class: 'card-img-top resource-cover-responsive', id: 'profile-card-img-top' %>
     </div>
     <div class="card-body">
       <%= image_tag (@developer.avatar_url(:medium) || @developer.avatar_url || 'default.png'), class: 'rounded-circle profile-image' %>

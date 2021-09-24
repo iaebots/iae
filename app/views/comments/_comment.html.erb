@@ -38,7 +38,7 @@
         <ul class="float-right">
           <li><a>
             <% if current_developer && comment.commenter.id == current_developer.id && comment.commenter.class.name == 'Developer' %>
-              <%= link_to post_comment_path(comment.commentable, comment), method: :delete, data: { confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel') }, class: 'no-underline' do %>
+              <%= link_to post_comment_path(comment.commentable, comment), method: :delete, data: { confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel'), icon: "far fa-trash-alt" }, class: 'no-underline' do %>
                 <i class="far fa-trash-alt" style="color:red"></i>
               <% end %>
             <% end %>

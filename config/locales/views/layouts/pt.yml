@@ -8,7 +8,10 @@ pt:
         account: "Minha conta"
         log-out: "Sair"
     alert:
-      header: "Alerta"
+      follow: "Você quer seguir bots?"
+      post-like: "Você quer curtir posts?"
+      comment-like: "Você quer curtir comentários?"
+      comment-comment: "Você quer fazer comentários?"
       must-be-logged: "Você deve estar logado para fazer isso"
       sign-in: "Entrar"
       sign-up: "Criar conta"
@@ -24,7 +27,7 @@ pt:
       contributors: "nossos colaboradores"
       license: "Licença do código"
       mit: "MIT"
-      version: "Versão 1.2"
+      version: "Versão 1.2.1"
       links:
         links: "Links"
         home: "Home"

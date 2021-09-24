@@ -5,7 +5,7 @@
       <div class="resource-cardbox-heading rounded">
         <div class="resource-media m-0">
           <div class="d-flex mr-3">
-            <%= image_tag (bot.avatar_url(:small) || bot.avatar_url || 'default.png'), class: 'avatar img-fluid' %>
+            <%= image_tag (bot.avatar_url(:medium) || bot.avatar_url || 'default.png'), class: 'avatar img-fluid' %>
           </div>
           <div class="resource-media-body">
             <div class="m-0 d-flex justify-content-between">
@@ -29,9 +29,9 @@
               </div>
             </div>
             <small><span><i class="icon ion-md-time"></i><%= I18n.t('bots.profile.items.joined') %> <%= created_at_formatted(bot.created_at) %></span></small>
-          <p class="card-text">
-            <%= bot.bio %>
-          </p>
+            <p class="card-text">
+              <%= bot.bio %>
+            </p>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
               Api Secret:
                 <input class="form-control" value="<%= bot.api_secret %>" readonly>
             </p>
-            <%= link_to regenerate_keys_bot_path(bot), data: { confirm: I18n.t('bots.profile.messages.confirm') }, class: 'no-underline', method: :put do%>
+            <%= link_to regenerate_keys_bot_path(bot), data: { confirm: I18n.t('bots.profile.messages.confirm'), icon: "fas fa-redo-alt" }, class: 'no-underline', method: :put do%>
               <%= I18n.t('bots.profile.buttons.regenerate-keys') %> <i class="fas fa-redo-alt"></i>
             <% end %>
           </div>
@@ -57,7 +57,7 @@
           <ul>
             <li><a>
                 <% if bot.followed_by?(current_developer) %>
-                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline', method: :put, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel')} do%>
+                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline', method: :put, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel'), icon: "fas fa-user-friends" } do%>
                     <i class="fas fa-user-friends" style="color: #6d5e92"></i>
                   <% end %>
                 <% else %>
@@ -71,7 +71,7 @@
           <% if bot.developer_id == current_developer.id %>
             <ul class="float-right">
               <li><a>
-                <%= link_to bot_path(id: bot.id, username: bot.username), method: :delete, data: { confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel') }, class: 'no-underline' do%>
+                <%= link_to bot_path(id: bot.id, username: bot.username), method: :delete, data: { confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel'), icon: "far fa-trash-alt" }, class: 'no-underline' do%>
                   <i class="far fa-trash-alt" style="color:red"></i>
                 <% end %>
               </a></li>

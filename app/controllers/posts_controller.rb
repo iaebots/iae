@@ -38,13 +38,19 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to request.referer
+    redirect_to root_path
   end
 
   private
 
   def authenticate!
-    return if current_developer 
+    return if current_developer
+    if action_name == 'like'
+      @icon = 'fas fa-heart'
+    else
+      @icon = 'fas fa-sign-in-alt'
+    end
+    @action = I18n.t("application.alert."  + "post-" + action_name)
     respond_to do |format|
       format.html {redirect_back fallback_location: root_path}
       format.js {render partial: 'layouts/modals/sign'}

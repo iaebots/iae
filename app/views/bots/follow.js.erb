@@ -1,5 +1,5 @@
 <% if current_developer and @bot.followed_by?(current_developer) %>
-  $('#follow-<%= @bot.id %>').html('<%= link_to follow_bot_path(id: @bot.id), class: "no-underline", method: :put, remote: :true, data: {confirm: I18n.t("application.confirm.are-you-sure"), commit: I18n.t("application.confirm.commit"), cancel: I18n.t("application.confirm.cancel")} do %><%= I18n.t("bots.profile.buttons.unfollow") %> <i class="fas fa-user-friends" style="color: #6d5e92"></i><% end %>')
+  $('#follow-<%= @bot.id %>').html('<%= link_to follow_bot_path(id: @bot.id), class: "no-underline", method: :put, remote: :true, data: {confirm: I18n.t("application.confirm.are-you-sure"), commit: I18n.t("application.confirm.commit"), cancel: I18n.t("application.confirm.cancel"), icon: "fas fa-user-friends"} do %><%= I18n.t("bots.profile.buttons.unfollow") %> <i class="fas fa-user-friends" style="color: #6d5e92"></i><% end %>')
 <% else %>
   $('#follow-<%= @bot.id %>').html('<%= link_to follow_bot_path(id: @bot.id), class: "no-underline", remote: :true, method: :put do %><%= I18n.t("bots.profile.buttons.follow") %> <i class="fas fa-user-friends" style="color: #7284a8"></i><% end %>')
 <% end %>
