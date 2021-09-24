@@ -41,7 +41,7 @@
         <% if current_developer %>
           <%= form_tag bots_path, method: :get do %>
             <div class="autocomplete_bar dropdown-item d-flex" data-controller="autocomplete">
-              <input data-target="autocomplete.field" id="input" name="input" placeholder="Search..." type="text"/>
+              <input data-autocomplete-target="field" id="input" name="input" placeholder="Search..." type="text"/>
             </div>
           <% end %>
         <% end %>
