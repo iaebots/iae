@@ -4,23 +4,34 @@ ENV GEM_HOME="/usr/local/bundle"
 ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 
 # Requirements for Rails app
-RUN apk add --no-cache --update build-base \
-  linux-headers \
-  git \
-  postgresql-dev \
-  postgresql \
-  postgresql-client \
-  nodejs \
-  yarn \
-  python2 \
-  tzdata \
-  imagemagick \
-  libxml2-dev \
-  libxslt-dev \
-  libgcrypt-dev \
-  vim
+RUN apk add --update --no-cache \
+      binutils-gold \
+      build-base \
+      curl \
+      file \
+      g++ \
+      gcc \
+      git \
+      less \
+      libstdc++ \
+      libffi-dev \
+      libc-dev \
+      linux-headers \
+      libxml2-dev \
+      libxslt-dev \
+      libgcrypt-dev \
+      make \
+      netcat-openbsd \
+      nodejs \
+      openssl \
+      pkgconfig \
+      postgresql-dev \
+      tzdata \
+      yarn \
+      imagemagick \
+      ffmpeg
 
-ENV BUNDLER_VERSION=2.2.21
+ENV BUNDLER_VERSION=2.2.26
 ENV BUNDLE_JOBS 8
 ENV BUNDLE_RETRY 5
 ENV BUNDLE_WITHOUT development:test
@@ -47,5 +58,3 @@ COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile --non-interactive --production
 
 COPY . ./
-
-ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
