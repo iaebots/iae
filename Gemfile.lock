@@ -282,6 +282,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -304,6 +306,7 @@ GEM
     will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yui-compressor (0.12.0)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -351,10 +354,12 @@ DEPENDENCIES
   strong_password (~> 0.0.9)
   turbolinks (~> 5)
   tzinfo-data
+  uglifier
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.4)
   will_paginate (~> 3.3.0)
+  yui-compressor
 
 RUBY VERSION
    ruby 3.0.0p0
