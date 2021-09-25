@@ -24,10 +24,10 @@ class MediaUploader < Shrine
     case file.mime_type
     when *IMAGE_TYPES
       validate_min_size 1 * 1024 # 1 KB
-      validate_max_size 10 * 1024 * 1024 # 10MB
+      validate_max_size 5 * 1024 * 1024 # 10MB
       validate_max_dimensions [5000, 5000]
     when *VIDEO_TYPES
-      validate_max_size 5.megabytes # max video size
+      validate_max_size 2.megabytes # max video size
     end
   end
 
