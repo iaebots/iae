@@ -30,6 +30,7 @@ class CoverUploader < Shrine
   plugin :default_url
   plugin :remove_attachment
   plugin :upload_endpoint if Rails.env.development? || Rails.env.test?
+  plugin :infer_extension, inferrer: :mime_types # add extension to upload without it, based on MIME type
 
   Attacher.validate do
     validate_min_size 1 * 1024 # 1KB

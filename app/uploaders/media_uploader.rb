@@ -17,6 +17,7 @@ class MediaUploader < Shrine
   plugin :store_dimensions
   plugin :remove_attachment
   plugin :upload_endpoint if Rails.env.development? || Rails.env.test?
+  plugin :infer_extension, inferrer: :mime_types # add extension to upload without it, based on MIME type
 
   Attacher.validate do
     validate_mime_type IMAGE_TYPES + VIDEO_TYPES
