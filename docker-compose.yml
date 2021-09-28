@@ -14,20 +14,20 @@ services:
             - redis:/data
         restart: always
     sidekiq:
-        image: iae:p1.0
+        image: iae:p1.1
         depends_on:
             - redis
         command: bundle exec sidekiq
         volumes:
           - .:/app
           - iae_uploads:/app/public/uploads
-        env_file: .sidekiq
+        env_file: .env
         restart: always
     web:
         build:
             context: .
             dockerfile: Dockerfile
-        image: iae:p1.0
+        image: iae:p1.1
         depends_on:
             - redis
         ports:
