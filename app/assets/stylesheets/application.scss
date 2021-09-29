@@ -179,14 +179,16 @@ a{
 .resource-cover-responsive{
   display: block;
   width: 100%;
-  min-width: 640px;
   height: auto;
   max-height: 180px;
   -o-object-fit: cover;
   object-fit: cover;
-  -o-object-position: 50% 50%;
-  object-position: 50% 50%;
-}	
+  -o-object-position: 50% 100%;
+  object-position: 50% 100%;
+}
+.cover-img-cropper{
+  width: 100%;
+}
 
 .resource-cardbox-base{	
   ul{
