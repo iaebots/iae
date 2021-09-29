@@ -33,7 +33,7 @@ class AvatarUploader < Shrine
 
   Attacher.validate do
     validate_min_size 1 * 1024 # 1 KB
-    validate_max_size 10 * 1024 * 1024 # 10MB
+    validate_max_size 5 * 1024 * 1024 # 10MB
     validate_max_dimensions [5000, 5000] if validate_mime_type %w[image/jpeg image/png image/webp image/gif]
   end
 

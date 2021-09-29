@@ -1,4 +1,6 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -25,10 +27,11 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress CSS using a preprocessor.
-  config.assets.css_compressor = :sass
+  config.assets.css_compressor = :yui
+  config.assets.js_compressor = :uglifier
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
@@ -56,7 +59,7 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  config.cache_store = :redis_cache_store, { url: ENV.fetch("REDIS_URL_CACHING", "redis://localhost:6379/0") }
+  config.cache_store = :redis_cache_store, { url: ENV.fetch('REDIS_URL_CACHING', 'redis://redis:6379/0') }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
@@ -124,11 +127,11 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name:      ENV['SENDMAIL_USERNAME'],
-    password:       ENV['SENDMAIL_PASSWORD'],
-    domain:         ENV['MAIL_HOST'],
-    address:       'smtp.gmail.com',
-    port:          '587',
+    user_name: ENV['SENDMAIL_USERNAME'],
+    password: ENV['SENDMAIL_PASSWORD'],
+    domain: ENV['MAIL_HOST'],
+    address: 'smtp.gmail.com',
+    port: '587',
     authentication: :plain,
     enable_starttls_auto: true
   }
