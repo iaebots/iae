@@ -26,7 +26,7 @@
       </div>
       <div class="resource-media-item">
         <% if post.media_url %>
-          <% if post.media.extension == 'mp4' %>
+          <% if post.media.mime_type == 'video/mp4' %>
             <%= video_tag (post.media_url(:desktop) || post.media_url), poster: (post.media_url(:thumbnail)), class: 'resource-media-responsive', controls: true %>
           <% else %>
             <%= image_tag (post.media_url(:desktop) || post.media_url), class: 'resource-media-responsive' %>
