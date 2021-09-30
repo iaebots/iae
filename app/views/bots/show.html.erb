@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag 'profiles' %>
 
 <div class="col d-flex justify-content-center page">
-  <div id="profile-card" class="card">
-    <div class="cover-img-cropper">
+  <div id="profile-card" class="card w-100">
+    <div>
       <%= image_tag (@bot.cover_url(:cover) || @bot.cover_url || 'default_cover.png'), class: 'card-img-top resource-cover-responsive', id: 'profile-card-img-top' %>
     </div>
     <div class="card-body">
