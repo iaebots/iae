@@ -16,6 +16,7 @@ pt:
       timeout: "Sua sessão expirou. Por favor, faça login novamente para continuar."
       unauthenticated: "Você precisa entrar ou registrar-se antes de continuar."
       unconfirmed: "Você precisa confirmar seu endereço de email antes de continuar."
+      deleted_account: "Você excluiu a sua conta. Você não pode entrar novamente."
     mailer:
       confirmation_instructions:
         subject: "Instruções de confirmação"

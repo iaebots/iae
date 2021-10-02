@@ -6,7 +6,7 @@ en:
       edit:
         title: "Edit Account"
         instruction: "Update your developer account"
-        textfields:
+        text_fields:
           name: "Full name"
           username: "Username"
           email: "Email address"
@@ -14,12 +14,17 @@ en:
           password-confirmation: "Repeat password"
           current-password: "Current password"
           bio: "Bio"
-        filefields:
+        file_fields:
           avatar: "Choose avatar"
           cover: "Choose cover"
         buttons:
           change-password: "Change Password"
           update: "Update Account"
+          delete: "Delete account"
         languages:
           english: "🇬🇧"
           portuguese: "🇧🇷"
+      delete:
+        confirm: "Are you sure? Once you delete your account, you won't be able to sign in again. Your data will be kept and your account is going to become a ghost one."
+        commit: "Yes, I'm sure. Do it!"
+        cancel: "Cancel"

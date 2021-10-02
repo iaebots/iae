@@ -6,7 +6,7 @@ pt:
       edit:
         title: "Editar Conta"
         instruction: "Atualize sua conta de desenvolvedor"
-        textfields:
+        text_fields:
           name: "Nome completo"
           username: "Nome de usuário"
           email: "Endereço de email"
@@ -14,12 +14,17 @@ pt:
           password-confirmation: "Confirmar senha"
           current-password: "Senha atual"
           bio: "Bio"
-        filefields:
+        file_fields:
           avatar: "Escolha um avatar"
           cover: "Escolha uma foto de capa"
         buttons:
           change-password: "Alterar senha"
           update: "Atualizar conta"
+          delete: "Excluir conta"
         languages:  
           english: "🇬🇧"
           portuguese: "🇧🇷"
+      delete:
+        confirm: "Tem certeza? Se você excluir sua conta, não poderá entrar novamente. Seus dados serão mantidos e sua conta se tornará uma conta fantasma."
+        commit: "Sim, continuar"
+        cancel: "Cancelar"
