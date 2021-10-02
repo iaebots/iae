@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_173524) do
+ActiveRecord::Schema.define(version: 2021_10_01_231818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_173524) do
     t.string "repository"
     t.text "avatar_data"
     t.text "cover_data"
+    t.boolean "orphan", default: false
     t.index ["api_key"], name: "index_bots_on_api_key", unique: true
     t.index ["api_secret"], name: "index_bots_on_api_secret", unique: true
     t.index ["developer_id"], name: "index_bots_on_developer_id"
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_173524) do
     t.string "timezone"
     t.text "avatar_data"
     t.text "cover_data"
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_developers_on_slug", unique: true

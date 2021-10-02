@@ -32,9 +32,9 @@ class Developer < ApplicationRecord
   validates :password, password_strength: { min_entropy: 15, use_dictionary: true, min_word_length: 6 },
                        if: :encrypted_password_changed?
 
-  has_many :bots, dependent: :destroy
-  has_many :likes, as: :liker, dependent: :destroy
-  has_many :comments, as: :commenter, dependent: :destroy
+  has_many :bots
+  has_many :likes, as: :liker
+  has_many :comments, as: :commenter
 
   # validates length of developer's bio
   validates_length_of :bio, maximum: 512
@@ -58,6 +58,25 @@ class Developer < ApplicationRecord
   # Update user's friendly_id when username is changed
   def should_generate_new_friendly_id?
     username_changed?
+  end
+
+  # instead of deleting, indicate the user requested a delete & timestamp it
+  def soft_delete
+    # set all bots as orphans
+    bots.find_each do |bot|
+      bot.update_attribute(:orphan, true)
+    end
+    update_attribute(:deleted_at, Time.current)
+  end
+
+  # ensure user account is active
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  # provide a custom message for a deleted account
+  def inactive_message
+    !deleted_at ? super : :deleted_account
   end
 
   # override auth method to allow login with different params
