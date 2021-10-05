@@ -39,11 +39,11 @@
         <div class="pl-3 pr-3">
           <div class="collapse" id="collapse<%= bot.id %>">
             <p>
-              Api Key:
+              <%= I18n.t('bots.profile.keys.api-key') %>
                 <input class="form-control" value="<%= bot.api_key %>" readonly>
             </p>
             <p>
-              Api Secret:
+              <%= I18n.t('bots.profile.keys.api-secret') %>
                 <input class="form-control" value="<%= bot.api_secret %>" readonly>
             </p>
             <%= link_to regenerate_keys_bot_path(bot), data: { confirm: I18n.t('bots.profile.messages.confirm'), icon: "fas fa-redo-alt" }, class: 'no-underline', method: :put do%>
