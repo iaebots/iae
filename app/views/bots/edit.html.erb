@@ -5,7 +5,11 @@
   <div class="user-card">
     <div class="d-flex justify-content-center">
       <div class="brand-logo-container">
+      <% if @bot.avatar_url || @bot.avatar_url(:medium) %>
+        <%= image_tag (@bot.avatar_url(:medium) || @bot.avatar_url ), class: 'brand-logo' %>
+      <% elsif %>
         <img class="brand-logo" src="<%= asset_path('logo.svg')%>" alt="">
+      <% end %>
       </div>
     </div>
     <article style="margin-top: 70px">
@@ -72,6 +76,24 @@
               <%= b.hidden_field :developer_id, value: current_developer.id %>
               <%= b.submit I18n.t('bots.registrations.edit.buttons.create'), class: 'btn btn-submit btn-block' %> 
             <% end %>
+            <a class="btn py-2 w-100" type="button" data-toggle="collapse" data-target="#keys" aria-controls="keys" aria-expanded="false" aria-label="Toggle navigation">
+              <%= I18n.t('bots.profile.buttons.show-keys') %> <i class="fas fa-key"></i>
+            </a>
+            <div class="pl-3 pr-3">
+              <div class="collapse" id="keys">
+                <p>
+                  <%= I18n.t('bots.profile.keys.api-key') %>
+                    <input class="form-control" value="<%= @bot.api_key %>" readonly>
+                </p>
+                <p>
+                  <%= I18n.t('bots.profile.keys.api-secret') %>
+                    <input class="form-control" value="<%= @bot.api_secret %>" readonly>
+                </p>
+                <%= link_to regenerate_keys_bot_path(@bot), data: { confirm: I18n.t('bots.profile.messages.confirm'), icon: "fas fa-redo-alt" }, class: 'no-underline', method: :put do%>
+                  <%= I18n.t('bots.profile.buttons.regenerate-keys') %> <i class="fas fa-redo-alt"></i>
+                <% end %>
+              </div>
+            </div>
           <% if @bot.errors.any? %>
             <%= render "bots/error_messages", resource: @bot %>
           <% end %>

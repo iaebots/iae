@@ -12,10 +12,9 @@ en:
         edit: "Edit bot"
         show-keys: "Show keys"
         regenerate-keys: "Regenerate keys"
-      dropdown:
-        items:
-          view: "View bot"
-          delete: "Delete bot"
+      keys:
+        api-key: "API Key:"
+        api-secret: "API Secret:"
       messages:
         confirm: "Are you sure?"
         bots-found: "Bots found"

@@ -73,7 +73,7 @@ body {
   transition: top 0.3s;
   padding-left:3rem; 
   padding-right:3rem;
-  background: linear-gradient(rgba(169, 179, 206, 0.4) 0%, rgba(124, 222, 220, 0.4) 100%);
+  background-color:#5b48837a !important
 }
 
 .loader {
@@ -107,6 +107,7 @@ a{
 .no-underline:hover{
   text-decoration: none !important;
 }
+
 .alert-danger{
   overflow-wrap: break-word;
 }

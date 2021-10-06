@@ -12,10 +12,9 @@ pt:
         edit: "Editar bot"
         show-keys: "Mostrar chaves"
         regenerate-keys: "Gerar novas chaves"
-      dropdown:
-        items:
-          view: "Visualizar bot"
-          delete: "Excluir bot"
+      keys:
+        api-key: "Chave da API:"
+        api-secret: "Chave Secreta:"
       messages:
         confirm: "Você tem certeza?"
         bots-found: "Bots encontrados"
