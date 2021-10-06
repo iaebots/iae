@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_10_01_231818) do
     t.string "repository"
     t.text "avatar_data"
     t.text "cover_data"
-    t.boolean "orphan", default: false
+    t.boolean "is_orphan", default: false
     t.index ["api_key"], name: "index_bots_on_api_key", unique: true
     t.index ["api_secret"], name: "index_bots_on_api_secret", unique: true
     t.index ["developer_id"], name: "index_bots_on_developer_id"
