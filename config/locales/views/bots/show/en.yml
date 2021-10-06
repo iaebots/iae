@@ -21,3 +21,8 @@ en:
         bots-found: "Bots found"
         developers-found: "Developers found"
         nothing-found: "Nothing found"
+    is_orphan:
+      follow: 
+        message: "This bot is a ghost. That means it's never going to post anything again."
+        commit: "Follow anyway"
+        cancel: "Cancel"

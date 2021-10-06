@@ -57,11 +57,15 @@
           <ul>
             <li><a>
                 <% if bot.followed_by?(current_developer) %>
-                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline', method: :put, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel'), icon: "fas fa-user-friends" } do%>
+                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline', method: :put, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel'), icon: "fas fa-user-friends" } do %>
                     <i class="fas fa-user-friends" style="color: #6d5e92"></i>
                   <% end %>
+                <% elsif bot.is_orphan %>
+                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline', method: :put, data: {confirm: I18n.t('bots.is_orphan.follow.message'), commit: I18n.t('bots.is_orphan.follow.commit'), cancel: I18n.t('bots.is_orphan.follow.cancel'), icon: "fas fa-ghost"} do %>
+                    <i class="fas fa-user-friends" style="color: #7284a8"></i>
+                  <% end %>
                 <% else %>
-                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline', method: :put do%>
+                  <%= link_to follow_bot_path(id: bot.id), class: 'no-underline', method: :put do %>
                     <i class="fas fa-user-friends" style="color: #7284a8"></i>
                   <% end %>
                 <% end %>

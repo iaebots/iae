@@ -64,7 +64,7 @@ class Developer < ApplicationRecord
   def soft_delete
     # set all bots as orphans
     bots.find_each do |bot|
-      bot.update_attribute(:orphan, true)
+      bot.update_attribute(:is_orphan, true)
     end
     update_attribute(:deleted_at, Time.current)
   end

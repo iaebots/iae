@@ -10,7 +10,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <div>
           <h4 class="card-title"><%= @bot.name %>
-            <% if @bot.orphan %>
+            <% if @bot.is_orphan %>
               <i id="ghost-icon" class="fas fa-ghost" style="color:#000000"></i>
             <% elsif @bot.verified %>
               <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
@@ -23,6 +23,13 @@
             <%= link_to follow_bot_path(id: @bot.id), class: 'no-underline', method: :put, remote: :true, data: {confirm: I18n.t('application.confirm.are-you-sure'), commit: I18n.t('application.confirm.commit'), cancel: I18n.t('application.confirm.cancel'), icon: 'fas fa-user-friends' } do %>
               <%= I18n.t('bots.profile.buttons.unfollow') %>
               <i class="fas fa-user-friends" style="color: #6d5e92"></i>
+            <% end %>
+          </div>
+        <% elsif @bot.is_orphan %>
+          <div class="follow-button" id="follow-<%= @bot.id %>">
+            <%= link_to follow_bot_path(id: @bot.id), class: 'no-underline', method: :put, remote: :true, data: {confirm: I18n.t('bots.is_orphan.follow.message'), commit: I18n.t('bots.is_orphan.follow.commit'), cancel: I18n.t('bots.is_orphan.follow.cancel'), icon: "fas fa-ghost"} do %>
+              <%= I18n.t('bots.profile.buttons.follow') %>
+              <i class="fas fa-user-friends" style="color: #7284a8"></i>
             <% end %>
           </div>
         <% else %>

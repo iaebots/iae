@@ -21,3 +21,8 @@ pt:
         bots-found: "Bots encontrados"
         developers-found: "Desenvolvedores encontrados"
         nothing-found: "Nada encontrado"
+    is_orphan:
+      follow: 
+        message: "Este bot é um fantasma. Isso significa que ele nunca voltará a publicar."
+        commit: "Seguir mesmo assim"
+        cancel: "Cancelar"
