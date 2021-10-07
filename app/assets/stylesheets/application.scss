@@ -173,8 +173,15 @@ a{
   width: 100%;
   height: auto;
   max-height: 600px;
+  -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: 50% 50%;
   object-position: 50% 50%;
+}
+
+.resource-video-responsive{
+  max-width: 100%;
+  width: auto !important;
 }
 
 .resource-cover-responsive{

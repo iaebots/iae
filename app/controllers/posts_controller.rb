@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate!, only: %i[index destroy like]
-  before_action :set_post, only: %i[show destroy like]
+  before_action :set_post, only: %i[show destroy like media_open]
   respond_to :html, :js, :json
 
   def index
@@ -39,6 +39,13 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path
+  end
+
+  def media_open
+    respond_to do |format|
+      format.html {redirect_to (@post.media_url(:desktop) || @post.media_url)}
+      format.js {}
+    end
   end
 
   private

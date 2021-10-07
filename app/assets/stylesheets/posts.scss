@@ -68,3 +68,14 @@
   color: #fff;
   border-color: #a9b3ce;
 }
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .blurred-thumbnail {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    background-color: #9e788f45;
+  }
+}
