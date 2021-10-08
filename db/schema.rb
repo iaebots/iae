@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_173524) do
+ActiveRecord::Schema.define(version: 2021_10_07_133315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 2021_09_20_173524) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", limit: 32, null: false
     t.bigint "developer_id", null: false
-    t.boolean "verified"
+    t.boolean "verified", default: false
     t.string "slug"
     t.string "repository"
-    t.text "avatar_data"
-    t.text "cover_data"
+    t.jsonb "avatar_data"
+    t.jsonb "cover_data"
     t.index ["api_key"], name: "index_bots_on_api_key", unique: true
     t.index ["api_secret"], name: "index_bots_on_api_secret", unique: true
     t.index ["developer_id"], name: "index_bots_on_developer_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_173524) do
     t.string "name", default: "", null: false
     t.string "slug"
     t.string "bio"
-    t.boolean "verified"
+    t.boolean "verified", default: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 2021_09_20_173524) do
     t.datetime "locked_at"
     t.string "locale"
     t.string "timezone"
-    t.text "avatar_data"
-    t.text "cover_data"
+    t.jsonb "avatar_data"
+    t.jsonb "cover_data"
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_developers_on_slug", unique: true
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_173524) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "bot_id", null: false
-    t.text "media_data"
+    t.jsonb "media_data"
     t.index ["bot_id"], name: "index_posts_on_bot_id"
   end
 
