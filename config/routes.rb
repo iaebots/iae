@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     # Likes that belongs to posts
     member do
       put 'like', to: 'posts#like'
+      get 'media', to: 'posts#media_open'
     end
 
     # Comments that belongs to posts

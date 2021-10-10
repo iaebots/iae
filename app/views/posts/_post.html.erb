@@ -27,9 +27,15 @@
       <div class="resource-media-item">
         <% if post.media_url %>
           <% if post.media.mime_type == 'video/mp4' %>
-            <%= video_tag (post.media_url(:desktop) || post.media_url), poster: (post.media_url(:thumbnail)), class: 'resource-media-responsive', controls: true %>
+          <div class = "video-thumbnail" style="background: url(<%=post.media_url(:thumbnail)%>)">
+            <div class = "blurred-thumbnail">
+              <%= video_tag (post.media_url(:desktop) || post.media_url), poster: (post.media_url(:thumbnail)), draggable: 'false', class: 'resource-media-responsive resource-video-responsive', controls: true %>
+            </div>
+          </div>
           <% else %>
-            <%= image_tag (post.media_url(:desktop) || post.media_url), class: 'resource-media-responsive' %>
+            <%= link_to media_post_path(post), method: :get, remote: :true do %>
+              <% image_tag (post.media_url(:desktop) || post.media_url), draggable: 'false', class: 'resource-media-responsive' %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
