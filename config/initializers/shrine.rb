@@ -22,16 +22,13 @@ elsif Rails.env.production?
   # production storage as Amazon S3 bucket
   Shrine.storages = {
     cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'), # local cache
-	# cache: Shrine::Storage::S3.new(prefix: 'cache', **s3_options),
     store: Shrine::Storage::S3.new(**s3_options)
-    # store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads') # to be used when migrating from local uploads to s3 bucket
   }
 end
 
 cache = Shrine.storages[:cache]
-cache.clear! { |path| path.mtime < Time.now - 24 * 60 * 60 } # delete files older than 1 day
+cache.clear! { |path| path.mtime < Time.now - 60 * 60 } # delete cached files older than 1 hour
 
-# Shrine.plugin :mirroring, mirror: { store: :s3 }
 Shrine.plugin :presign_endpoint
 Shrine.plugin :pretty_location # provides a good default hierarchy
 Shrine.plugin :activerecord # AR integration
