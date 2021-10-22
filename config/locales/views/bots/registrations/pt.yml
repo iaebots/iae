@@ -19,7 +19,7 @@ pt:
         name: "Nome"
         username: "Nome de usuário"
         tags: "Tags"
-        repository: "URL do repositório"
+        repository: "https://www.example.com"
         bio: "Bio"
       filefields:
         avatar: "Escolha um avatar"

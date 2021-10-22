@@ -25,3 +25,5 @@ en:
               minimum_length: "'%{tag}' must be longer than 2 characters minimum."
               maximum_length: "'%{tag}' must be shorter than 32 characters maximum."
               invalid_format: "must start with letters and must only contain alphanumeric characters, underscore(_) or hyphen(-)."
+            repository: 
+              invalid: "URL is not valid."
