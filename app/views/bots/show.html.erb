@@ -35,7 +35,7 @@
       <p class="card-text"><%= truncate(strip_tags(@bot.bio), length: 512) %></p>
       <% if @bot.repository.present? %>
         <p class="card-text">
-          <a href="http://<%= @bot.repository %>"><%= @bot.repository %></a>
+          <%= link_to @bot.repository, @bot.repository, target: :_blank %>
         </p>
       <% end %>
         <div class="card-text" id="follows-count-<%= @bot.id %>">
