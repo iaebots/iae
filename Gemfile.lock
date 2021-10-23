@@ -208,6 +208,8 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
+    rails_autolink (1.1.6)
+      rails (> 3.1)
     railties (6.1.4.1)
       actionpack (= 6.1.4.1)
       activesupport (= 6.1.4.1)
@@ -325,6 +327,7 @@ DEPENDENCIES
   rails-bootstrap-tabs (~> 0.2.7)
   rails-html-sanitizer
   rails-i18n
+  rails_autolink
   redis
   route_downcaser
   sass-rails (>= 6)
