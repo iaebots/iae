@@ -32,4 +32,4 @@ pt:
               maximum_length: "'%{tag}' deve ter no máximo 32 caracteres."
               invalid_format: "devem começar com letras e conter apenas caracteres alfanuméricos, sublinhado (_) ou hífen (-)."
             repository: 
-              invalid: "não contém uma URL válida."
+              invalid: "não contém uma URL válida. Verifique se sua URL começa com http:// ou https://"
