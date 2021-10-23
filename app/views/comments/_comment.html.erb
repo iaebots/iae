@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="resource-media-text scrollable-paragraph">
-        <%= content_tag :span, comment.body.gsub(/^$\n\n/, '') %>
+       <%= auto_link(comment.body.gsub(/^$\n\n/, ''), link: :urls, html: {target: :_blank}) %>
       </div>
       <div class="resource-cardbox-base">
         <ul>
