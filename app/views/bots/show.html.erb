@@ -32,7 +32,7 @@
           </div>
         <% end %>
       </div>
-      <p class="card-text"><%= auto_link(@bot.bio.gsub(/^$\n\n/, ''), link: :urls, html: {target: :_blank}) %></p>
+      <p class="card-text"><%= truncate(strip_tags(@bot.bio), length: 512) %></p>
       <% if @bot.repository.present? %>
         <p class="card-text">
           <a href="http://<%= @bot.repository %>"><%= @bot.repository %></a>

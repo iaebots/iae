@@ -26,7 +26,7 @@
         </div>
       </div>
         <p class="card-text">
-          <%= auto_link(@developer.bio.gsub(/^$\n\n/, ''), link: :urls, html: {target: :_blank}) %>
+          <%= @developer.bio %>
         </p>
       <p class="card-text">
         <small class="text-muted"><%= I18n.t('developers.show.joined') %>
