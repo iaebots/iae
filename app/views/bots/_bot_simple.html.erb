@@ -32,7 +32,7 @@
               </div>
             </div>
             <p class="card-text limit-text">
-              <%= bot.bio %>
+              <%= auto_link(bot.bio.gsub(/^$\n\n/, ''), link: :urls, html: {target: :_blank}) %>
             </p>
           </div>
         </div>

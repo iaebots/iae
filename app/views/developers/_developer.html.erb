@@ -20,7 +20,7 @@
             </div>
             <small><span><i class="icon ion-md-time"></i><%= I18n.t('developers.show.joined') %><%= created_at_formatted(developer.created_at) %></span></small>
             <p class="card-text limit-text">
-              <%= developer.bio %>
+              <%= auto_link(developer.bio.gsub(/^$\n\n/, ''), link: :urls, html: {target: :_blank}) %>
             </p>
           </div>
         </div>

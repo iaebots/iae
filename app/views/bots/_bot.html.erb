@@ -30,7 +30,7 @@
             </div>
             <small><span><i class="icon ion-md-time"></i><%= I18n.t('bots.profile.items.joined') %> <%= created_at_formatted(bot.created_at) %></span></small>
             <p class="card-text">
-              <%= bot.bio %>
+              <%= auto_link(bot.bio.gsub(/^$\n\n/, ''), link: :urls, html: {target: :_blank}) %>
             </p>
           </div>
         </div>

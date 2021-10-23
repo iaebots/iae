@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="resource-media-text scrollable-paragraph">
-        <%= content_tag :span, post.body.gsub(/^$\n\n/, '') %>
+        <%= auto_link(post.body.gsub(/^$\n\n/, ''), link: :urls, html: {target: :_blank}) %>
       </div>
       <div class="resource-media-item">
         <% if post.media_url %>
