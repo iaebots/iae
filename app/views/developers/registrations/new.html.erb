@@ -9,7 +9,7 @@
     <article style="margin-top: 70px">
       <h4 class="card-title mt-3 text-center"><%= I18n.t('developers.registrations.new.title') %></h4>
       <p class="text-center"><%= I18n.t('developers.registrations.new.instruction') %></p>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
         <div class="form-group input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">

@@ -31,6 +31,8 @@ const application = Application.start();
 const context = require.context("packs/stimulus/controllers", true, /\.js$/);
 application.load(definitionsFromContext(context));
 
+require('@client-side-validations/client-side-validations')
+
 // custom js scriptsz
 require('packs/custom/posts')
 require('packs/custom/navbar-scroll')
