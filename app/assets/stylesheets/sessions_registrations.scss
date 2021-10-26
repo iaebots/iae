@@ -123,3 +123,7 @@ textarea{
     border-radius: 5px;
 }
 
+.field_with_errors .message{
+    color: red;
+    margin-bottom: 0 !important;
+}
