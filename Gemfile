@@ -70,6 +70,10 @@ gem 'yui-compressor'
 
 gem 'rails_autolink'
 
+gem 'predictor'
+
+gem 'hiredis'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
