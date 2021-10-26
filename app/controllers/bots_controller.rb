@@ -6,7 +6,8 @@ class BotsController < ApplicationController
   before_action :confirmed?, only: %i[new]
   after_action :verify_bot, only: :create
   before_action :authenticate!, except: %i[show confirmation_modal]
-  respond_to :html, :js, :json  
+  respond_to :html, :js, :json
+  after_action :update_matrix, only: %i[create update]
 
   def show
     @posts = Post.where(bot_id: @bot.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')
@@ -90,7 +91,7 @@ class BotsController < ApplicationController
 
     redirect_to developer_path(@bot.developer)
   end
-  
+
   private
 
   def find_bot
@@ -114,15 +115,31 @@ class BotsController < ApplicationController
 
   def authenticate!
     return if current_developer
-    @action = I18n.t("application.alert." + action_name)
-    if action_name == 'follow'
-      @icon = 'fa fa-user-friends'
-    else
-      @icon = 'fas fa-sign-in-alt'
-    end
+
+    @action = I18n.t("application.alert.#{action_name}")
+    @icon = if action_name == 'follow'
+              'fa fa-user-friends'
+            else
+              'fas fa-sign-in-alt'
+            end
+
     respond_to do |format|
-      format.html {redirect_back fallback_location: root_path}
-      format.js {render partial: 'layouts/modals/sign'}
+      format.html { redirect_back fallback_location: root_path }
+      format.js { render partial: 'layouts/modals/sign' }
     end
+  end
+
+  def update_matrix
+    recommender = BotsRecommender.new
+
+    @bot.tag_list.each do |tag|
+      t = Tag.where(name: tag).first
+      if !t.nil? && t.taggings_count > 1
+        recommender.tags.add_to_set(tag, @bot.username)
+      else
+        recommender.add_to_matrix!(:tags, tag, @bot.username)
+      end
+    end
+    recommender.process!
   end
 end
