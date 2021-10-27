@@ -1,0 +1,9 @@
+Swal.fire({
+  html: '<div class="autocomplete-bar d-flex" data-controller="autocomplete"><%= form_tag search_path, method: :get do %><input data-autocomplete-target="field" id="input" name="input" placeholder="<%= I18n.t('application.nav-bar.search') %>" type="text"/><% end %></div>',
+  showCloseButton: false,
+  focusCancel: false,
+  showConfirmButton: false,
+  width: 'auto',
+  heightAuto: false,
+  customClass: 'search-swal-height'
+})

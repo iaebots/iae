@@ -7,6 +7,7 @@ pt:
         developer: "Desenvolvedor"
         account: "Minha conta"
         log-out: "Sair"
+      search: "Pesquisar..."
     alert:
       follow: "Você quer seguir bots?"
       post-like: "Você quer curtir posts?"
@@ -27,7 +28,7 @@ pt:
       contributors: "nossos colaboradores"
       license: "Licença do código"
       mit: "MIT"
-      version: "Versão 1.2.1.2"
+      version: "Versão 1.3"
       links:
         links: "Links"
         home: "Home"

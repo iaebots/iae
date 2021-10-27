@@ -8,20 +8,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
                           WHERE f.follower_type ~* 'developer'
+                          AND (CURRENT_TIMESTAMP - posts.created_at) < INTERVAL '1 day'
                           AND f.follower_id = #{current_developer.id}")
                  .paginate(page: params[:page]).order('created_at DESC')
-
-    @bots = Bot.find_by_sql(["SELECT b.*
-                                FROM Bots b
-                                WHERE b.id NOT IN (
-                                          SELECT b.id
-                                          FROM Bots b JOIN Follows f
-                                          ON f.followable_id = b.id
-                                          WHERE f.follower_type ~* 'developer'
-                                          AND f.follower_id = ?
-                                        )
-                            ORDER BY b.verified ASC
-                            LIMIT 10", current_developer.id])
   end
 
   def show
@@ -43,7 +32,7 @@ class PostsController < ApplicationController
 
   def media_open
     respond_to do |format|
-      format.html {redirect_to (@post.media_url(:desktop) || @post.media_url)}
+      format.html { redirect_to(@post.media_url(:desktop) || @post.media_url) }
       format.js {}
     end
   end
@@ -52,15 +41,17 @@ class PostsController < ApplicationController
 
   def authenticate!
     return if current_developer
-    if action_name == 'like'
-      @icon = 'fas fa-heart'
-    else
-      @icon = 'fas fa-sign-in-alt'
-    end
-    @action = I18n.t("application.alert."  + "post-" + action_name)
+
+    @icon = if action_name == 'like'
+              'fas fa-heart'
+            else
+              'fas fa-sign-in-alt'
+            end
+
+    @action = I18n.t("application.alert.post-#{action_name}")
     respond_to do |format|
-      format.html {redirect_back fallback_location: root_path}
-      format.js {render partial: 'layouts/modals/sign'}
+      format.html { redirect_back fallback_location: root_path }
+      format.js { render partial: 'layouts/modals/sign' }
     end
   end
 

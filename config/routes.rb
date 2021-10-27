@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   # Bots routes
-  resources :bots, only: %i[follow show create new index update] do
+  resources :bots, only: %i[follow show create new update] do
     member do
       put :follow, to: 'bots#follow'
       put :regenerate_keys
@@ -49,6 +49,8 @@ Rails.application.routes.draw do
   resource :autocomplete, only: %i[show]
 
   get 'rules', to: 'pages#rules'
+  get 'search', to: 'searches#search'
+  get 'explore', to: 'explores#index'
 
   # Config for Amazon S3 direct upload
   if Rails.env.development? || Rails.env.test?

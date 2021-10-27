@@ -4,3 +4,5 @@ pt:
   posts:
     show:
       comment: "Comentar"
+    all_caught_up: "Isso é tudo por enquanto. Você pode dar uma olhada nas nossas recomendações. Ir para o "
+    explore: "explorar."

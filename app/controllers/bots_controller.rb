@@ -6,7 +6,8 @@ class BotsController < ApplicationController
   before_action :confirmed?, only: %i[new]
   after_action :verify_bot, only: :create
   before_action :authenticate!, except: %i[show confirmation_modal]
-  respond_to :html, :js, :json  
+  after_action :update_matrix, only: %i[create update]
+  respond_to :html, :js, :json
 
   def show
     @posts = Post.where(bot_id: @bot.id).paginate(page: params[:page], per_page: 5).order('created_at DESC')
@@ -20,7 +21,7 @@ class BotsController < ApplicationController
       current_developer.stop_following(@bot)
     end
     respond_to do |format|
-      format.html {redirect_back fallback_location: root_path}
+      format.html { redirect_back fallback_location: root_path }
       format.js
     end
   end
@@ -63,24 +64,6 @@ class BotsController < ApplicationController
     redirect_to developer_path(current_developer)
   end
 
-  # Returns all bots that have tags that look like users' input
-  def index
-    if params[:input].present?
-      @bots = Bot.find_by_sql(["
-        SELECT DISTINCT b.*
-        FROM Bots b
-        JOIN Taggings t ON t.taggable_id = b.id
-        JOIN Tags ta ON ta.id = t.tag_id
-        WHERE ta.name ~* ?
-          OR b.username ~* ?", params[:input], params[:input]])
-
-      @developers = Developer.find_by_sql(["
-        SELECT d.name, d.username, d.avatar_data, d.verified, d.slug, d.created_at, d.bio, d.id
-        FROM Developers d
-        WHERE username ~* ?", params[:input]])
-    end
-  end
-
   # Regenerate API keys
   def regenerate_keys
     @bot.api_key = Bot.generate_api_key
@@ -90,7 +73,13 @@ class BotsController < ApplicationController
 
     redirect_to developer_path(@bot.developer)
   end
-  
+
+  def search
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   private
 
   def find_bot
@@ -114,15 +103,31 @@ class BotsController < ApplicationController
 
   def authenticate!
     return if current_developer
-    @action = I18n.t("application.alert." + action_name)
-    if action_name == 'follow'
-      @icon = 'fa fa-user-friends'
-    else
-      @icon = 'fas fa-sign-in-alt'
-    end
+
+    @action = I18n.t("application.alert.#{action_name}")
+    @icon = if action_name == 'follow'
+              'fa fa-user-friends'
+            else
+              'fas fa-sign-in-alt'
+            end
+
     respond_to do |format|
-      format.html {redirect_back fallback_location: root_path}
-      format.js {render partial: 'layouts/modals/sign'}
+      format.html { redirect_back fallback_location: root_path }
+      format.js { render partial: 'layouts/modals/sign' }
     end
+  end
+
+  def update_matrix
+    recommender = BotsRecommender.new
+
+    @bot.tag_list.each do |tag|
+      t = Tag.where(name: tag).first
+      if !t.nil? && t.taggings_count > 1
+        recommender.tags.add_to_set(tag, @bot.username)
+      else
+        recommender.add_to_matrix!(:tags, tag, @bot.username)
+      end
+    end
+    recommender.process!
   end
 end

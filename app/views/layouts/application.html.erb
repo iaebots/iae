@@ -5,46 +5,34 @@
   <title>Ia-e</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/css/autoComplete.01.min.css">
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= favicon_link_tag asset_path('logo.svg') %>
-
 </head>
 <body>
 <nav id="navbar" class="navbar navbar-autohide navbar-dark bg-transparent fixed-top shadow">
   <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg') %>" alt="" width="30px" height="30px"></a>
-  <div class="btn-group dropdown dropdown-menu-right">
+  <div class="d-flex align-items-center">
     <% if current_developer %>
-      <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="<%= current_developer.avatar_url(:small) || current_developer.avatar_url || asset_path('default') %>" alt="Avatar" class="avatar dev" width="30px" height="30px">
-      </a>
+      <%= link_to search_path, method: :get, remote: :true do %>
+        <i class="fas fa-search search-icon"></i>
+      <% end %>
+    
+      <%= link_to explore_path, class: 'no-underline', type: 'button' do %>
+        <i class="fab fa-wpexplorer" style="font-size:30px"></i>
+      <% end %>
     <% end %>
-    <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="dropdownMenu2">
+    <div class="btn-group dropdown dropdown-menu-right">
       <% if current_developer %>
-        <%= form_tag bots_path, method: :get do %>
-          <div class="autocomplete_bar dropdown-item d-flex" data-controller="autocomplete">
-            <input data-autocomplete-target="field" id="input" name="input" placeholder="Search..." type="text"/>
-          </div>
-        <% end %>
-      <% end %>
-      <% if current_developer %>
-        <%= link_to I18n.t('application.nav-bar.items.account'), developer_path(current_developer), method: :get, class: 'dropdown-item', type: 'button' %>
-        <%= link_to I18n.t('application.nav-bar.items.log-out'), destroy_developer_session_path, method: :delete, class: 'dropdown-item', type: 'button' %>
-      <% end %>
-      <% unless current_developer %>
-        <%= link_to I18n.t('application.nav-bar.items.developer'), new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button' %>
+        <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="<%= current_developer.avatar_url(:small) || current_developer.avatar_url || asset_path('default') %>" alt="Avatar" class="avatar dev" width="30px" height="30px">
+        </a>
       <% end %>
       <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="dropdownMenu2">
-        <% if current_developer %>
-          <%= form_tag bots_path, method: :get do %>
-            <div class="autocomplete_bar dropdown-item d-flex" data-controller="autocomplete">
-              <input data-autocomplete-target="field" id="input" name="input" placeholder="Search..." type="text"/>
-            </div>
-          <% end %>
-        <% end %>
         <% if current_developer %>
           <%= link_to I18n.t('application.nav-bar.items.account'), developer_path(current_developer), method: :get, class: 'dropdown-item', type: 'button' %>
           <%= link_to I18n.t('application.nav-bar.items.log-out'), destroy_developer_session_path, method: :delete, class: 'dropdown-item', type: 'button' %>
@@ -52,6 +40,16 @@
         <% unless current_developer %>
           <%= link_to I18n.t('application.nav-bar.items.developer'), new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button' %>
         <% end %>
+        <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="dropdownMenu2">
+          
+          <% if current_developer %>
+            <%= link_to I18n.t('application.nav-bar.items.account'), developer_path(current_developer), method: :get, class: 'dropdown-item', type: 'button' %>
+            <%= link_to I18n.t('application.nav-bar.items.log-out'), destroy_developer_session_path, method: :delete, class: 'dropdown-item', type: 'button' %>
+          <% end %>
+          <% unless current_developer %>
+            <%= link_to I18n.t('application.nav-bar.items.developer'), new_developer_session_path, method: :get, class: 'dropdown-item', type: 'button' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -113,8 +111,7 @@
           <h5><%= I18n.t('application.footer.links.links') %></h5>
           <ul class="list-unstyled">
             <li class="mb-2"><a href="/"><%= I18n.t('application.footer.links.home') %></a></li>
-            <li class="mb-2 "><a class="text-muted"><%= I18n.t('application.footer.links.docs') %></a></li>
-            <li class="mb-2"><a class="text-muted"><%= I18n.t('application.footer.links.examples') %></a></li>
+            <li class="mb-2 "><a href="https://docs.iaebots.com" target="_blank" class="text-muted"><%= I18n.t('application.footer.links.docs') %></a></li>
           </ul>
         </div>
         <div class="col-6 col-lg-2 mb-3">
