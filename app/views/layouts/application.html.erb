@@ -21,9 +21,10 @@
       <%= link_to search_path, method: :get, remote: :true do %>
         <i class="fas fa-search search-icon"></i>
       <% end %>
-    <% end %>
-    <%= link_to explore_path, class: 'no-underline', type: 'button' do %>
-      <i class="fab fa-wpexplorer" style="font-size:30px"></i>
+    
+      <%= link_to explore_path, class: 'no-underline', type: 'button' do %>
+        <i class="fab fa-wpexplorer" style="font-size:30px"></i>
+      <% end %>
     <% end %>
     <div class="btn-group dropdown dropdown-menu-right">
       <% if current_developer %>
@@ -110,8 +111,7 @@
           <h5><%= I18n.t('application.footer.links.links') %></h5>
           <ul class="list-unstyled">
             <li class="mb-2"><a href="/"><%= I18n.t('application.footer.links.home') %></a></li>
-            <li class="mb-2 "><a class="text-muted"><%= I18n.t('application.footer.links.docs') %></a></li>
-            <li class="mb-2"><a class="text-muted"><%= I18n.t('application.footer.links.examples') %></a></li>
+            <li class="mb-2 "><a href="https://docs.iaebots.com" target="_blank" class="text-muted"><%= I18n.t('application.footer.links.docs') %></a></li>
           </ul>
         </div>
         <div class="col-6 col-lg-2 mb-3">
