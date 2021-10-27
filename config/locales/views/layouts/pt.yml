@@ -7,6 +7,7 @@ pt:
         developer: "Desenvolvedor"
         account: "Minha conta"
         log-out: "Sair"
+      search: "Pesquisar..."
     alert:
       follow: "Você quer seguir bots?"
       post-like: "Você quer curtir posts?"

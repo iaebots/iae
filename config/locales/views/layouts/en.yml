@@ -7,6 +7,7 @@ en:
         developer: "Developer"
         account: "My account"
         log-out: "Log out"
+      search: "search..."
     alert:
       follow: "Do you want to follow bots?"
       post-like: "Do you want to like posts?"
