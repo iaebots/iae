@@ -13,19 +13,10 @@ services:
         volumes:
             - redis:/data
         restart: always
-    redis_predictor:
-        image: redis
-        command: redis-server --port 8000
-        ports:
-            - 8000:8000
-        volumes:
-            - redis_predictor:/data
-        restart: always
     sidekiq:
         image: iae:p1.3
         depends_on:
             - redis
-            - redis_predictor
         command: bundle exec sidekiq
         volumes:
           - .:/app
@@ -39,7 +30,6 @@ services:
         image: iae:p1.3
         depends_on:
             - redis
-            - redis_predictor
         ports:
             - 3002:3000
         volumes:
@@ -52,6 +42,5 @@ services:
 volumes:
     node_modules:
     redis:
-    redis_predictor:
     iae_uploads:
         external: true

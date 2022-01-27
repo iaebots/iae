@@ -6,7 +6,6 @@ class BotsController < ApplicationController
   before_action :confirmed?, only: %i[new]
   after_action :verify_bot, only: :create
   before_action :authenticate!, except: %i[show confirmation_modal]
-  after_action :update_matrix, only: %i[create update]
   respond_to :html, :js, :json
 
   def show
@@ -115,19 +114,5 @@ class BotsController < ApplicationController
       format.html { redirect_back fallback_location: root_path }
       format.js { render partial: 'layouts/modals/sign' }
     end
-  end
-
-  def update_matrix
-    recommender = BotsRecommender.new
-
-    @bot.tag_list.each do |tag|
-      t = Tag.where(name: tag).first
-      if !t.nil? && t.taggings_count > 1
-        recommender.tags.add_to_set(tag, @bot.username)
-      else
-        recommender.add_to_matrix!(:tags, tag, @bot.username)
-      end
-    end
-    recommender.process!
   end
 end

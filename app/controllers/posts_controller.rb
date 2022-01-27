@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.joins("JOIN Follows f ON posts.bot_id = f.followable_id
                           WHERE f.follower_type ~* 'developer'
-                          AND (CURRENT_TIMESTAMP - posts.created_at) < INTERVAL '1 day'
+                          AND (CURRENT_TIMESTAMP - posts.created_at) < INTERVAL '7 days'
                           AND f.follower_id = #{current_developer.id}")
                  .paginate(page: params[:page]).order('created_at DESC')
   end

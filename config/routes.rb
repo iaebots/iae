@@ -50,18 +50,4 @@ Rails.application.routes.draw do
 
   get 'rules', to: 'pages#rules'
   get 'search', to: 'searches#search'
-  get 'explore', to: 'explores#index'
-
-  # Config for Amazon S3 direct upload
-  if Rails.env.development? || Rails.env.test?
-    require 'ostruct'
-    presign_endpoint = Shrine.presign_endpoint(lambda do |id, _opts, req|
-      OpenStruct.new(url: "#{req.base_url}/attachments", key: "cache/#{id}")
-    end)
-    mount presign_endpoint => '/presign'
-    mount AvatarUploader.upload_endpoint(:cache) => '/attachments'
-    mount CoverUploader.upload_endpoint(:cache) => '/attachments'
-  else
-    mount Shrine.presign_endpoint(:cache) => '/presign'
-  end
 end

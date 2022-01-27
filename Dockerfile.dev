@@ -1,6 +1,6 @@
 FROM ruby:3.0.0-alpine
 
-ENV BUNDLER_VERSION=2.2.21
+ENV BUNDLER_VERSION=2.2.26
 ENV GEM_HOME="/usr/local/bundle"
 ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 

@@ -20,19 +20,11 @@ services:
             - 6379:6379
         volumes:
             - redis:/data
-    redis_predictor:
-        image: redis
-        command: redis-server --port 8000
-        ports:
-            - 8000:8000
-        volumes:
-            - redis_predictor:/data
     sidekiq:
         image: iae:1.0
         depends_on:
             - db
             - redis
-            - redis_predictor
         command: bundle exec sidekiq
         volumes:
             - .:/app
@@ -48,7 +40,6 @@ services:
         depends_on:
             - db
             - redis
-            - redis_predictor
         ports:
             - 3000:3000
         volumes:
@@ -62,12 +53,10 @@ services:
             - DATABASE_NAME=iae_development
             - RAILS_ENV=development
             - REDIS_URL_CACHING=redis://redis:6379/0
-            - PREDICTOR_REDIS=redis://redis_predictor:8000/0
         entrypoint: ./entrypoints/docker-entrypoint.sh
 volumes:
     db_data:
     node_modules:
     redis:
-    redis_predictor:
     iae_uploads:
         external: true
