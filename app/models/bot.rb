@@ -22,7 +22,7 @@ class Bot < ApplicationRecord
   validates_length_of :username, minimum: 3, maximum: 32
 
   validates_format_of :repository, with: %r{(http|https)://|[a-z0-9]+([\-.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(/.*)?/ix},
-                                   allow_blank: :true
+                                   allow_blank: true
   # URL max value
   validates_length_of :repository, maximum: 64
 
