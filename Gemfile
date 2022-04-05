@@ -30,7 +30,7 @@ gem 'bootstrap-will_paginate'
 
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
-gem 'acts-as-taggable-on', '~> 8.1'
+gem 'acts-as-taggable-on', '~> 9.0'
 
 gem 'rails-i18n'
 
