@@ -52,7 +52,7 @@ gem 'redis'
 
 gem 'shrine', '~> 3.0'
 
-gem 'image_processing', '~> 1.8'
+gem 'image_processing', '~> 1.12'
 
 gem 'sidekiq', '~> 6.4'
 
